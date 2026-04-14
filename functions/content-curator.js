@@ -8,6 +8,12 @@ require("dotenv").config();
 const Anthropic = require("@anthropic-ai/sdk");
 const fs = require("fs");
 const path = require("path");
+const { createClient } = require("@supabase/supabase-js");
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -162,6 +168,35 @@ Return valid JSON in this exact structure:
     // Save JSON for publishing later
     fs.writeFileSync(draftJsonPath, JSON.stringify(weeklyContent, null, 2));
     console.log(`✓ Draft JSON saved: ${draftJsonPath}`);
+
+    // Save each post to Supabase gtm_drafts for the publish-scheduler to read
+    const dayDates = {
+      Monday: getNextDate(1),
+      Tuesday: getNextDate(2),
+      Wednesday: getNextDate(3),
+      Thursday: getNextDate(4),
+      Friday: getNextDate(5),
+    };
+
+    const rows = weeklyContent.posts.map((post) => ({
+      draft_type: "linkedin_post",
+      draft_date: dayDates[post.day],
+      channel: post.channel,
+      title: `${post.day} — ${post.channel}`,
+      content: post.content,
+      status: "approved",
+    }));
+
+    const { error: upsertError } = await supabase.from("gtm_drafts").upsert(rows, {
+      onConflict: "draft_date,channel",
+      ignoreDuplicates: false,
+    });
+
+    if (upsertError) {
+      console.error("⚠️  Supabase save warning:", upsertError.message);
+    } else {
+      console.log(`✓ Saved ${rows.length} drafts to Supabase gtm_drafts`);
+    }
 
     return {
       statusCode: 200,
