@@ -41,9 +41,9 @@ CONTEXT:
 - Goal: Drive DMs with qualified leads
 
 CHANNELS & VOICE:
-- The Strategy Pitch (LinkedIn): Frameworks, strategic thinking, high-level insights
-- BarnesLam.co (LinkedIn): Personal, operator voice, raw lessons from founder experience
-- Axis Chamber (LinkedIn): Performance systems, accountability, execution
+- The Strategy Pitch (LinkedIn): Frameworks, strategic thinking, high-level insights — use channel: "the_strategy_pitch"
+- BarnesLam.co (LinkedIn): Strategic positioning and thought leadership ONLY — big ideas, market perspective, bold POVs. NEVER personal stories, tactical tips, or operational advice — use channel: "barneslam_co"
+- Axis Chamber (LinkedIn): Performance systems, accountability, execution, tactical operator lessons, personal founder stories — use channel: "axis_chamber"
 - @bizdevtitans (Instagram): Visual-first, carousel format, short punchy copy
 
 TASK: Generate 5 LinkedIn posts (Mon-Fri) that:
