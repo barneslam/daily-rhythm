@@ -1,0 +1,14 @@
+{
+  "id": "session-1776116257759",
+  "startedAt": "2026-04-13T21:37:37.759Z",
+  "cwd": "/Users/b.lamoutlook.com/daily-rhythm",
+  "context": {},
+  "metrics": {
+    "edits": 7,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "endedAt": "2026-04-13T21:44:26.693Z",
+  "duration": 408935
+}

@@ -1,0 +1,2341 @@
+{
+  "version": 1,
+  "updatedAt": 1776139562739,
+  "nodeCount": 184,
+  "nodes": {
+    "mem-MEMORY-memory-index": {
+      "id": "mem-MEMORY-memory-index",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109458
+    },
+    "mem-design_galoras_branding----": {
+      "id": "mem-design_galoras_branding----",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-color-palette": {
+      "id": "mem-design_galoras_branding-color-palette",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-typography": {
+      "id": "mem-design_galoras_branding-typography",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-layout-structure": {
+      "id": "mem-design_galoras_branding-layout-structure",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-component-patterns": {
+      "id": "mem-design_galoras_branding-component-patterns",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-styling-approach": {
+      "id": "mem-design_galoras_branding-styling-approach",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-spacing---layout": {
+      "id": "mem-design_galoras_branding-spacing---layout",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_galoras_branding-usage-notes": {
+      "id": "mem-design_galoras_branding-usage-notes",
+      "category": "design_galoras_branding",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109459
+    },
+    "mem-design_mitesh_layout_template----": {
+      "id": "mem-design_mitesh_layout_template----",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-color-palette": {
+      "id": "mem-design_mitesh_layout_template-color-palette",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-layout-sections--11-sections-i": {
+      "id": "mem-design_mitesh_layout_template-layout-sections--11-sections-i",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-key-design-patterns": {
+      "id": "mem-design_mitesh_layout_template-key-design-patterns",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-data-integration": {
+      "id": "mem-design_mitesh_layout_template-data-integration",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-navigation-flow": {
+      "id": "mem-design_mitesh_layout_template-navigation-flow",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-styling-approach": {
+      "id": "mem-design_mitesh_layout_template-styling-approach",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-design_mitesh_layout_template-design-philosophy": {
+      "id": "mem-design_mitesh_layout_template-design-philosophy",
+      "category": "design_mitesh_layout_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109460
+    },
+    "mem-feedback_daily_sow_report----": {
+      "id": "mem-feedback_daily_sow_report----",
+      "category": "feedback_daily_sow_report",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109461
+    },
+    "mem-feedback_elevenlabs----": {
+      "id": "mem-feedback_elevenlabs----",
+      "category": "feedback_elevenlabs",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109461
+    },
+    "mem-feedback_lovable_disconnect----": {
+      "id": "mem-feedback_lovable_disconnect----",
+      "category": "feedback_lovable_disconnect",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109463
+    },
+    "mem-feedback_no_linkedin----": {
+      "id": "mem-feedback_no_linkedin----",
+      "category": "feedback_no_linkedin",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109464
+    },
+    "mem-feedback_rin_dev----": {
+      "id": "mem-feedback_rin_dev----",
+      "category": "feedback_rin_dev",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points----": {
+      "id": "mem-galoras_conor_talking_points----",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-open-with-what-s-working": {
+      "id": "mem-galoras_conor_talking_points-open-with-what-s-working",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-the-coach-scaling-question": {
+      "id": "mem-galoras_conor_talking_points-the-coach-scaling-question",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-the-freemium-conversion-rate": {
+      "id": "mem-galoras_conor_talking_points-the-freemium-conversion-rate",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-the-coachee-subscription-fee": {
+      "id": "mem-galoras_conor_talking_points-the-coachee-subscription-fee",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-the-churn-assumption": {
+      "id": "mem-galoras_conor_talking_points-the-churn-assumption",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-the-headcount---margin-questio": {
+      "id": "mem-galoras_conor_talking_points-the-headcount---margin-questio",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-how-to-present-this-to-investo": {
+      "id": "mem-galoras_conor_talking_points-how-to-present-this-to-investo",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_conor_talking_points-one-last-thing": {
+      "id": "mem-galoras_conor_talking_points-one-last-thing",
+      "category": "galoras_conor_talking_points",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109468
+    },
+    "mem-galoras_investor_one_pager----": {
+      "id": "mem-galoras_investor_one_pager----",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-the-opportunity": {
+      "id": "mem-galoras_investor_one_pager-the-opportunity",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-fy26-financial-picture": {
+      "id": "mem-galoras_investor_one_pager-fy26-financial-picture",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-revenue-streams": {
+      "id": "mem-galoras_investor_one_pager-revenue-streams",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc": {
+      "id": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-competitive-position": {
+      "id": "mem-galoras_investor_one_pager-competitive-position",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-year-2--path": {
+      "id": "mem-galoras_investor_one_pager-year-2--path",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-galoras_investor_one_pager-bottom-line": {
+      "id": "mem-galoras_investor_one_pager-bottom-line",
+      "category": "galoras_investor_one_pager",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109471
+    },
+    "mem-project_barnes_offerings----": {
+      "id": "mem-project_barnes_offerings----",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_barnes_offerings-barnes-lam-coach-profile": {
+      "id": "mem-project_barnes_offerings-barnes-lam-coach-profile",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_barnes_offerings-page-structure": {
+      "id": "mem-project_barnes_offerings-page-structure",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_barnes_offerings-the-five-offerings--section-2-": {
+      "id": "mem-project_barnes_offerings-the-five-offerings--section-2-",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_barnes_offerings-galoras-programs--section-1---": {
+      "id": "mem-project_barnes_offerings-galoras-programs--section-1---",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_barnes_offerings-how-to-apply": {
+      "id": "mem-project_barnes_offerings-how-to-apply",
+      "category": "project_barnes_offerings",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109475
+    },
+    "mem-project_blotato_channels----": {
+      "id": "mem-project_blotato_channels----",
+      "category": "project_blotato_channels",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan----": {
+      "id": "mem-project_galoras_161k_gtm_plan----",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-the-daily-number": {
+      "id": "mem-project_galoras_161k_gtm_plan-the-daily-number",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali": {
+      "id": "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be": {
+      "id": "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-monthly-milestones": {
+      "id": "mem-project_galoras_161k_gtm_plan-monthly-milestones",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun": {
+      "id": "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if": {
+      "id": "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109476
+    },
+    "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m": {
+      "id": "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109477
+    },
+    "mem-project_galoras_161k_gtm_plan-how-to-apply": {
+      "id": "mem-project_galoras_161k_gtm_plan-how-to-apply",
+      "category": "project_galoras_161k_gtm_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109477
+    },
+    "mem-project_galoras_auth_otp----": {
+      "id": "mem-project_galoras_auth_otp----",
+      "category": "project_galoras_auth_otp",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109477
+    },
+    "mem-project_galoras_auth_otp-custom-otp-system--deployed-20": {
+      "id": "mem-project_galoras_auth_otp-custom-otp-system--deployed-20",
+      "category": "project_galoras_auth_otp",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109477
+    },
+    "mem-project_galoras_b2b_pivot----": {
+      "id": "mem-project_galoras_b2b_pivot----",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-the-pivot": {
+      "id": "mem-project_galoras_b2b_pivot-the-pivot",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi": {
+      "id": "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-credibility-question---no-coac": {
+      "id": "mem-project_galoras_b2b_pivot-credibility-question---no-coac",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase": {
+      "id": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi": {
+      "id": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_b2b_pivot-how-to-apply": {
+      "id": "mem-project_galoras_b2b_pivot-how-to-apply",
+      "category": "project_galoras_b2b_pivot",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109481
+    },
+    "mem-project_galoras_business_case_reality_check----": {
+      "id": "mem-project_galoras_business_case_reality_check----",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-fy26-forecast": {
+      "id": "mem-project_galoras_business_case_reality_check-fy26-forecast",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold": {
+      "id": "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-assumptions-that-hold": {
+      "id": "mem-project_galoras_business_case_reality_check-assumptions-that-hold",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review": {
+      "id": "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality": {
+      "id": "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_business_case_reality_check-recommended-presentation-frami": {
+      "id": "mem-project_galoras_business_case_reality_check-recommended-presentation-frami",
+      "category": "project_galoras_business_case_reality_check",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_hot_and_revenue_model----": {
+      "id": "mem-project_galoras_hot_and_revenue_model----",
+      "category": "project_galoras_hot_and_revenue_model",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-": {
+      "id": "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-",
+      "category": "project_galoras_hot_and_revenue_model",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files": {
+      "id": "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files",
+      "category": "project_galoras_hot_and_revenue_model",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef": {
+      "id": "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef",
+      "category": "project_galoras_hot_and_revenue_model",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-": {
+      "id": "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-",
+      "category": "project_galoras_hot_and_revenue_model",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109482
+    },
+    "mem-project_galoras_intelligence_dashboard----": {
+      "id": "mem-project_galoras_intelligence_dashboard----",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_intelligence_dashboard-purpose": {
+      "id": "mem-project_galoras_intelligence_dashboard-purpose",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_intelligence_dashboard-design-system": {
+      "id": "mem-project_galoras_intelligence_dashboard-design-system",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_intelligence_dashboard-tech-stack": {
+      "id": "mem-project_galoras_intelligence_dashboard-tech-stack",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_intelligence_dashboard-related-documents-in-repo": {
+      "id": "mem-project_galoras_intelligence_dashboard-related-documents-in-repo",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_intelligence_dashboard-how-to-apply": {
+      "id": "mem-project_galoras_intelligence_dashboard-how-to-apply",
+      "category": "project_galoras_intelligence_dashboard",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109483
+    },
+    "mem-project_galoras_sow_status----": {
+      "id": "mem-project_galoras_sow_status----",
+      "category": "project_galoras_sow_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109484
+    },
+    "mem-project_galoras_sow_status-part-1--validation-sprint--sow": {
+      "id": "mem-project_galoras_sow_status-part-1--validation-sprint--sow",
+      "category": "project_galoras_sow_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109484
+    },
+    "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow": {
+      "id": "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow",
+      "category": "project_galoras_sow_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109484
+    },
+    "mem-project_galoras_sow_status-budget-reference": {
+      "id": "mem-project_galoras_sow_status-budget-reference",
+      "category": "project_galoras_sow_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109485
+    },
+    "mem-project_gtm_engine----": {
+      "id": "mem-project_gtm_engine----",
+      "category": "project_gtm_engine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109486
+    },
+    "mem-project_mitesh_design_template----": {
+      "id": "mem-project_mitesh_design_template----",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-layout-pattern": {
+      "id": "mem-project_mitesh_design_template-layout-pattern",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-branding": {
+      "id": "mem-project_mitesh_design_template-branding",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-key-spacing-decisions": {
+      "id": "mem-project_mitesh_design_template-key-spacing-decisions",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-component-patterns": {
+      "id": "mem-project_mitesh_design_template-component-patterns",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-content-philosophy": {
+      "id": "mem-project_mitesh_design_template-content-philosophy",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-netlify-deployment": {
+      "id": "mem-project_mitesh_design_template-netlify-deployment",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.53,
+      "accessCount": 1,
+      "createdAt": 1776098109487
+    },
+    "mem-project_mitesh_design_template-browser-compatibility-notes": {
+      "id": "mem-project_mitesh_design_template-browser-compatibility-notes",
+      "category": "project_mitesh_design_template",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake----": {
+      "id": "mem-project_rin_ai_voice_intake----",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-architecture": {
+      "id": "mem-project_rin_ai_voice_intake-architecture",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-elevenlabs-agent-config": {
+      "id": "mem-project_rin_ai_voice_intake-elevenlabs-agent-config",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-": {
+      "id": "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-": {
+      "id": "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09": {
+      "id": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-known-issues---pending": {
+      "id": "mem-project_rin_ai_voice_intake-known-issues---pending",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_ai_voice_intake-daily-status-report": {
+      "id": "mem-project_rin_ai_voice_intake-daily-status-report",
+      "category": "project_rin_ai_voice_intake",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109487
+    },
+    "mem-project_rin_antifraud----": {
+      "id": "mem-project_rin_antifraud----",
+      "category": "project_rin_antifraud",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109488
+    },
+    "mem-project_rin_antifraud-required-protections": {
+      "id": "mem-project_rin_antifraud-required-protections",
+      "category": "project_rin_antifraud",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109488
+    },
+    "mem-project_rin_antifraud-price-flow--legally-sound-": {
+      "id": "mem-project_rin_antifraud-price-flow--legally-sound-",
+      "category": "project_rin_antifraud",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109488
+    },
+    "mem-project_rin_antifraud-data-retained-for-liability": {
+      "id": "mem-project_rin_antifraud-data-retained-for-liability",
+      "category": "project_rin_antifraud",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109488
+    },
+    "mem-project_rin_beta----": {
+      "id": "mem-project_rin_beta----",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_beta-correct-workflow--fully-implem": {
+      "id": "mem-project_rin_beta-correct-workflow--fully-implem",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_beta-amendment-flow--new--2026-03-2": {
+      "id": "mem-project_rin_beta-amendment-flow--new--2026-03-2",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_beta-driver-cancel-at-scene-flow--n": {
+      "id": "mem-project_rin_beta-driver-cancel-at-scene-flow--n",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_beta-key-db-facts": {
+      "id": "mem-project_rin_beta-key-db-facts",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_beta-test-data": {
+      "id": "mem-project_rin_beta-test-data",
+      "category": "project_rin_beta",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109489
+    },
+    "mem-project_rin_business_rules----": {
+      "id": "mem-project_rin_business_rules----",
+      "category": "project_rin_business_rules",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_business_rules-dispatch-rules": {
+      "id": "mem-project_rin_business_rules-dispatch-rules",
+      "category": "project_rin_business_rules",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_business_rules-standard-pricing": {
+      "id": "mem-project_rin_business_rules-standard-pricing",
+      "category": "project_rin_business_rules",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_business_rules-workflow-timeouts": {
+      "id": "mem-project_rin_business_rules-workflow-timeouts",
+      "category": "project_rin_business_rules",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_business_rules-special-vehicles": {
+      "id": "mem-project_rin_business_rules-special-vehicles",
+      "category": "project_rin_business_rules",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_caller_id----": {
+      "id": "mem-project_rin_caller_id----",
+      "category": "project_rin_caller_id",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109491
+    },
+    "mem-project_rin_customer_app----": {
+      "id": "mem-project_rin_customer_app----",
+      "category": "project_rin_customer_app",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109493
+    },
+    "mem-project_rin_customer_app-architecture": {
+      "id": "mem-project_rin_customer_app-architecture",
+      "category": "project_rin_customer_app",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109493
+    },
+    "mem-project_rin_customer_app-screens--status-based-routing-": {
+      "id": "mem-project_rin_customer_app-screens--status-based-routing-",
+      "category": "project_rin_customer_app",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109493
+    },
+    "mem-project_rin_customer_app-db-additions--2026-04-08-": {
+      "id": "mem-project_rin_customer_app-db-additions--2026-04-08-",
+      "category": "project_rin_customer_app",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109493
+    },
+    "mem-project_rin_customer_app-todo": {
+      "id": "mem-project_rin_customer_app-todo",
+      "category": "project_rin_customer_app",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109493
+    },
+    "mem-project_rin_edge_functions----": {
+      "id": "mem-project_rin_edge_functions----",
+      "category": "project_rin_edge_functions",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109494
+    },
+    "mem-project_rin_gps_location----": {
+      "id": "mem-project_rin_gps_location----",
+      "category": "project_rin_gps_location",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109495
+    },
+    "mem-project_rin_margin----": {
+      "id": "mem-project_rin_margin----",
+      "category": "project_rin_margin",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109496
+    },
+    "mem-project_rin_monitoring----": {
+      "id": "mem-project_rin_monitoring----",
+      "category": "project_rin_monitoring",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109498
+    },
+    "mem-project_rin_monitoring-components": {
+      "id": "mem-project_rin_monitoring-components",
+      "category": "project_rin_monitoring",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109498
+    },
+    "mem-project_rin_monitoring-known-limitation": {
+      "id": "mem-project_rin_monitoring-known-limitation",
+      "category": "project_rin_monitoring",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109498
+    },
+    "mem-project_rin_price_approval_flow----": {
+      "id": "mem-project_rin_price_approval_flow----",
+      "category": "project_rin_price_approval_flow",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109498
+    },
+    "mem-project_rin_pricing_agent----": {
+      "id": "mem-project_rin_pricing_agent----",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_pricing_agent-architecture": {
+      "id": "mem-project_rin_pricing_agent-architecture",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_pricing_agent-quote-tool": {
+      "id": "mem-project_rin_pricing_agent-quote-tool",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_pricing_agent-test-results--2026-04-10----35": {
+      "id": "mem-project_rin_pricing_agent-test-results--2026-04-10----35",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim": {
+      "id": "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_pricing_agent-next-steps": {
+      "id": "mem-project_rin_pricing_agent-next-steps",
+      "category": "project_rin_pricing_agent",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109499
+    },
+    "mem-project_rin_test_routine----": {
+      "id": "mem-project_rin_test_routine----",
+      "category": "project_rin_test_routine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109500
+    },
+    "mem-project_rin_test_routine--rin-test-skill": {
+      "id": "mem-project_rin_test_routine--rin-test-skill",
+      "category": "project_rin_test_routine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109500
+    },
+    "mem-project_rin_test_routine-key-testing-facts--2026-04-08-": {
+      "id": "mem-project_rin_test_routine-key-testing-facts--2026-04-08-",
+      "category": "project_rin_test_routine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109500
+    },
+    "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08": {
+      "id": "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08",
+      "category": "project_rin_test_routine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109500
+    },
+    "mem-project_rin_test_routine-production-monitor--deployed-2": {
+      "id": "mem-project_rin_test_routine-production-monitor--deployed-2",
+      "category": "project_rin_test_routine",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109500
+    },
+    "mem-project_rin_voice_gaps----": {
+      "id": "mem-project_rin_voice_gaps----",
+      "category": "project_rin_voice_gaps",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic": {
+      "id": "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic",
+      "category": "project_rin_voice_gaps",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_gaps-missing-critical-data": {
+      "id": "mem-project_rin_voice_gaps-missing-critical-data",
+      "category": "project_rin_voice_gaps",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_gaps-solution--speech-based-intake": {
+      "id": "mem-project_rin_voice_gaps-solution--speech-based-intake",
+      "category": "project_rin_voice_gaps",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_gaps-architecture": {
+      "id": "mem-project_rin_voice_gaps-architecture",
+      "category": "project_rin_voice_gaps",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_v2_design----": {
+      "id": "mem-project_rin_voice_v2_design----",
+      "category": "project_rin_voice_v2_design",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_v2_design-question-flow": {
+      "id": "mem-project_rin_voice_v2_design-question-flow",
+      "category": "project_rin_voice_v2_design",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_v2_design-key-design-principles": {
+      "id": "mem-project_rin_voice_v2_design-key-design-principles",
+      "category": "project_rin_voice_v2_design",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_voice_v2_design-toronto-specific": {
+      "id": "mem-project_rin_voice_v2_design-toronto-specific",
+      "category": "project_rin_voice_v2_design",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-project_rin_whatsapp_location----": {
+      "id": "mem-project_rin_whatsapp_location----",
+      "category": "project_rin_whatsapp_location",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109501
+    },
+    "mem-reference_calendly_links----": {
+      "id": "mem-reference_calendly_links----",
+      "category": "reference_calendly_links",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109502
+    },
+    "mem-security_audit_xss_auth----": {
+      "id": "mem-security_audit_xss_auth----",
+      "category": "security_audit_xss_auth",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109503
+    },
+    "mem-security_audit_xss_auth-critical-vulnerabilities--2026": {
+      "id": "mem-security_audit_xss_auth-critical-vulnerabilities--2026",
+      "category": "security_audit_xss_auth",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109503
+    },
+    "mem-security_audit_xss_auth-action-items": {
+      "id": "mem-security_audit_xss_auth-action-items",
+      "category": "security_audit_xss_auth",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109503
+    },
+    "mem-MEMORY-galoras-dev---memory-index": {
+      "id": "mem-MEMORY-galoras-dev---memory-index",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109504
+    },
+    "mem-domain_migration_plan----": {
+      "id": "mem-domain_migration_plan----",
+      "category": "domain_migration_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109505
+    },
+    "mem-domain_migration_plan-current-setup": {
+      "id": "mem-domain_migration_plan-current-setup",
+      "category": "domain_migration_plan",
+      "confidence": 0.53,
+      "accessCount": 1,
+      "createdAt": 1776098109505
+    },
+    "mem-domain_migration_plan-key-fact--mail-is-microsoft-36": {
+      "id": "mem-domain_migration_plan-key-fact--mail-is-microsoft-36",
+      "category": "domain_migration_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109505
+    },
+    "mem-domain_migration_plan-dns-records-needed--galoras-co": {
+      "id": "mem-domain_migration_plan-dns-records-needed--galoras-co",
+      "category": "domain_migration_plan",
+      "confidence": 0.53,
+      "accessCount": 1,
+      "createdAt": 1776098109505
+    },
+    "mem-domain_migration_plan-systems-to-update": {
+      "id": "mem-domain_migration_plan-systems-to-update",
+      "category": "domain_migration_plan",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109505
+    },
+    "mem-featured_coaches_tuning----": {
+      "id": "mem-featured_coaches_tuning----",
+      "category": "featured_coaches_tuning",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109506
+    },
+    "mem-product_system_rebuild----": {
+      "id": "mem-product_system_rebuild----",
+      "category": "product_system_rebuild",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109506
+    },
+    "mem-product_system_rebuild-what-was-done--2026-04-08-": {
+      "id": "mem-product_system_rebuild-what-was-done--2026-04-08-",
+      "category": "product_system_rebuild",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109506
+    },
+    "mem-product_system_rebuild-revert-before-go-live": {
+      "id": "mem-product_system_rebuild-revert-before-go-live",
+      "category": "product_system_rebuild",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109506
+    },
+    "mem-project_status----": {
+      "id": "mem-project_status----",
+      "category": "project_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109507
+    },
+    "mem-project_status-sow-completion-as-of-2026-04-0": {
+      "id": "mem-project_status-sow-completion-as-of-2026-04-0",
+      "category": "project_status",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109508
+    },
+    "mem-project_workflow----": {
+      "id": "mem-project_workflow----",
+      "category": "project_workflow",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109509
+    },
+    "mem-skills_created----": {
+      "id": "mem-skills_created----",
+      "category": "skills_created",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109509
+    },
+    "mem-skills_created-galoras-skills--created-2026-0": {
+      "id": "mem-skills_created-galoras-skills--created-2026-0",
+      "category": "skills_created",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109509
+    },
+    "mem-supabase_setup----": {
+      "id": "mem-supabase_setup----",
+      "category": "supabase_setup",
+      "confidence": 0.53,
+      "accessCount": 1,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-active-project--uat-galoras": {
+      "id": "mem-supabase_setup-active-project--uat-galoras",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-other-projects": {
+      "id": "mem-supabase_setup-other-projects",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-tables-in-uat-galoras": {
+      "id": "mem-supabase_setup-tables-in-uat-galoras",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-migrations-applied--uat-": {
+      "id": "mem-supabase_setup-migrations-applied--uat-",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-edge-functions-deployed": {
+      "id": "mem-supabase_setup-edge-functions-deployed",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-supabase_setup-secrets-set": {
+      "id": "mem-supabase_setup-secrets-set",
+      "category": "supabase_setup",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-user_profile----": {
+      "id": "mem-user_profile----",
+      "category": "user_profile",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-user_profile-role": {
+      "id": "mem-user_profile-role",
+      "category": "user_profile",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-user_profile-coach-profile--in-uat-galoras-": {
+      "id": "mem-user_profile-coach-profile--in-uat-galoras-",
+      "category": "user_profile",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-user_profile-preferences": {
+      "id": "mem-user_profile-preferences",
+      "category": "user_profile",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109510
+    },
+    "mem-work_style----": {
+      "id": "mem-work_style----",
+      "category": "work_style",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776098109511
+    },
+    "insight-1776116220437-3746": {
+      "id": "insight-1776116220437-3746",
+      "category": "insights",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1776116220437
+    }
+  },
+  "edges": [
+    {
+      "sourceId": "mem-design_galoras_branding----",
+      "targetId": "mem-design_galoras_branding-color-palette",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-color-palette",
+      "targetId": "mem-design_galoras_branding-typography",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-typography",
+      "targetId": "mem-design_galoras_branding-layout-structure",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-layout-structure",
+      "targetId": "mem-design_galoras_branding-component-patterns",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-component-patterns",
+      "targetId": "mem-design_galoras_branding-styling-approach",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-styling-approach",
+      "targetId": "mem-design_galoras_branding-spacing---layout",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_galoras_branding-spacing---layout",
+      "targetId": "mem-design_galoras_branding-usage-notes",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template----",
+      "targetId": "mem-design_mitesh_layout_template-color-palette",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-color-palette",
+      "targetId": "mem-design_mitesh_layout_template-layout-sections--11-sections-i",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-layout-sections--11-sections-i",
+      "targetId": "mem-design_mitesh_layout_template-key-design-patterns",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-key-design-patterns",
+      "targetId": "mem-design_mitesh_layout_template-data-integration",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-data-integration",
+      "targetId": "mem-design_mitesh_layout_template-navigation-flow",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-navigation-flow",
+      "targetId": "mem-design_mitesh_layout_template-styling-approach",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-design_mitesh_layout_template-styling-approach",
+      "targetId": "mem-design_mitesh_layout_template-design-philosophy",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points----",
+      "targetId": "mem-galoras_conor_talking_points-open-with-what-s-working",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-open-with-what-s-working",
+      "targetId": "mem-galoras_conor_talking_points-the-coach-scaling-question",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-the-coach-scaling-question",
+      "targetId": "mem-galoras_conor_talking_points-the-freemium-conversion-rate",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-the-freemium-conversion-rate",
+      "targetId": "mem-galoras_conor_talking_points-the-coachee-subscription-fee",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-the-coachee-subscription-fee",
+      "targetId": "mem-galoras_conor_talking_points-the-churn-assumption",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-the-churn-assumption",
+      "targetId": "mem-galoras_conor_talking_points-the-headcount---margin-questio",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-the-headcount---margin-questio",
+      "targetId": "mem-galoras_conor_talking_points-how-to-present-this-to-investo",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_conor_talking_points-how-to-present-this-to-investo",
+      "targetId": "mem-galoras_conor_talking_points-one-last-thing",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager----",
+      "targetId": "mem-galoras_investor_one_pager-the-opportunity",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-the-opportunity",
+      "targetId": "mem-galoras_investor_one_pager-fy26-financial-picture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-fy26-financial-picture",
+      "targetId": "mem-galoras_investor_one_pager-revenue-streams",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-revenue-streams",
+      "targetId": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
+      "targetId": "mem-galoras_investor_one_pager-competitive-position",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-competitive-position",
+      "targetId": "mem-galoras_investor_one_pager-year-2--path",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-galoras_investor_one_pager-year-2--path",
+      "targetId": "mem-galoras_investor_one_pager-bottom-line",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings----",
+      "targetId": "mem-project_barnes_offerings-barnes-lam-coach-profile",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings-barnes-lam-coach-profile",
+      "targetId": "mem-project_barnes_offerings-page-structure",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings-page-structure",
+      "targetId": "mem-project_barnes_offerings-the-five-offerings--section-2-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings-the-five-offerings--section-2-",
+      "targetId": "mem-project_barnes_offerings-galoras-programs--section-1---",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings-galoras-programs--section-1---",
+      "targetId": "mem-project_barnes_offerings-how-to-apply",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan----",
+      "targetId": "mem-project_galoras_161k_gtm_plan-the-daily-number",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-the-daily-number",
+      "targetId": "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali",
+      "targetId": "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be",
+      "targetId": "mem-project_galoras_161k_gtm_plan-monthly-milestones",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-monthly-milestones",
+      "targetId": "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun",
+      "targetId": "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if",
+      "targetId": "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m",
+      "targetId": "mem-project_galoras_161k_gtm_plan-how-to-apply",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_auth_otp----",
+      "targetId": "mem-project_galoras_auth_otp-custom-otp-system--deployed-20",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot----",
+      "targetId": "mem-project_galoras_b2b_pivot-the-pivot",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-the-pivot",
+      "targetId": "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi",
+      "targetId": "mem-project_galoras_b2b_pivot-credibility-question---no-coac",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-credibility-question---no-coac",
+      "targetId": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
+      "targetId": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
+      "targetId": "mem-project_galoras_b2b_pivot-how-to-apply",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check----",
+      "targetId": "mem-project_galoras_business_case_reality_check-fy26-forecast",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check-fy26-forecast",
+      "targetId": "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold",
+      "targetId": "mem-project_galoras_business_case_reality_check-assumptions-that-hold",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check-assumptions-that-hold",
+      "targetId": "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review",
+      "targetId": "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality",
+      "targetId": "mem-project_galoras_business_case_reality_check-recommended-presentation-frami",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_hot_and_revenue_model----",
+      "targetId": "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-",
+      "targetId": "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files",
+      "targetId": "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef",
+      "targetId": "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard----",
+      "targetId": "mem-project_galoras_intelligence_dashboard-purpose",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard-purpose",
+      "targetId": "mem-project_galoras_intelligence_dashboard-design-system",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard-design-system",
+      "targetId": "mem-project_galoras_intelligence_dashboard-tech-stack",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard-tech-stack",
+      "targetId": "mem-project_galoras_intelligence_dashboard-related-documents-in-repo",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard-related-documents-in-repo",
+      "targetId": "mem-project_galoras_intelligence_dashboard-how-to-apply",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_sow_status----",
+      "targetId": "mem-project_galoras_sow_status-part-1--validation-sprint--sow",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_sow_status-part-1--validation-sprint--sow",
+      "targetId": "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow",
+      "targetId": "mem-project_galoras_sow_status-budget-reference",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template----",
+      "targetId": "mem-project_mitesh_design_template-layout-pattern",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-layout-pattern",
+      "targetId": "mem-project_mitesh_design_template-branding",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-branding",
+      "targetId": "mem-project_mitesh_design_template-key-spacing-decisions",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-key-spacing-decisions",
+      "targetId": "mem-project_mitesh_design_template-component-patterns",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-component-patterns",
+      "targetId": "mem-project_mitesh_design_template-content-philosophy",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-content-philosophy",
+      "targetId": "mem-project_mitesh_design_template-netlify-deployment",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-netlify-deployment",
+      "targetId": "mem-project_mitesh_design_template-browser-compatibility-notes",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake----",
+      "targetId": "mem-project_rin_ai_voice_intake-architecture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-architecture",
+      "targetId": "mem-project_rin_ai_voice_intake-elevenlabs-agent-config",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-elevenlabs-agent-config",
+      "targetId": "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-",
+      "targetId": "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-",
+      "targetId": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
+      "targetId": "mem-project_rin_ai_voice_intake-known-issues---pending",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-known-issues---pending",
+      "targetId": "mem-project_rin_ai_voice_intake-daily-status-report",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_antifraud----",
+      "targetId": "mem-project_rin_antifraud-required-protections",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_antifraud-required-protections",
+      "targetId": "mem-project_rin_antifraud-price-flow--legally-sound-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_antifraud-price-flow--legally-sound-",
+      "targetId": "mem-project_rin_antifraud-data-retained-for-liability",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_beta----",
+      "targetId": "mem-project_rin_beta-correct-workflow--fully-implem",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_beta-correct-workflow--fully-implem",
+      "targetId": "mem-project_rin_beta-amendment-flow--new--2026-03-2",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_beta-amendment-flow--new--2026-03-2",
+      "targetId": "mem-project_rin_beta-driver-cancel-at-scene-flow--n",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_beta-driver-cancel-at-scene-flow--n",
+      "targetId": "mem-project_rin_beta-key-db-facts",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_beta-key-db-facts",
+      "targetId": "mem-project_rin_beta-test-data",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_business_rules----",
+      "targetId": "mem-project_rin_business_rules-dispatch-rules",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_business_rules-dispatch-rules",
+      "targetId": "mem-project_rin_business_rules-standard-pricing",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_business_rules-standard-pricing",
+      "targetId": "mem-project_rin_business_rules-workflow-timeouts",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_business_rules-workflow-timeouts",
+      "targetId": "mem-project_rin_business_rules-special-vehicles",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_customer_app----",
+      "targetId": "mem-project_rin_customer_app-architecture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_customer_app-architecture",
+      "targetId": "mem-project_rin_customer_app-screens--status-based-routing-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_customer_app-screens--status-based-routing-",
+      "targetId": "mem-project_rin_customer_app-db-additions--2026-04-08-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_customer_app-db-additions--2026-04-08-",
+      "targetId": "mem-project_rin_customer_app-todo",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_monitoring----",
+      "targetId": "mem-project_rin_monitoring-components",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_monitoring-components",
+      "targetId": "mem-project_rin_monitoring-known-limitation",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_pricing_agent----",
+      "targetId": "mem-project_rin_pricing_agent-architecture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_pricing_agent-architecture",
+      "targetId": "mem-project_rin_pricing_agent-quote-tool",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_pricing_agent-quote-tool",
+      "targetId": "mem-project_rin_pricing_agent-test-results--2026-04-10----35",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_pricing_agent-test-results--2026-04-10----35",
+      "targetId": "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim",
+      "targetId": "mem-project_rin_pricing_agent-next-steps",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_test_routine----",
+      "targetId": "mem-project_rin_test_routine--rin-test-skill",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_test_routine--rin-test-skill",
+      "targetId": "mem-project_rin_test_routine-key-testing-facts--2026-04-08-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_test_routine-key-testing-facts--2026-04-08-",
+      "targetId": "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08",
+      "targetId": "mem-project_rin_test_routine-production-monitor--deployed-2",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_gaps----",
+      "targetId": "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic",
+      "targetId": "mem-project_rin_voice_gaps-missing-critical-data",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_gaps-missing-critical-data",
+      "targetId": "mem-project_rin_voice_gaps-solution--speech-based-intake",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_gaps-solution--speech-based-intake",
+      "targetId": "mem-project_rin_voice_gaps-architecture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_v2_design----",
+      "targetId": "mem-project_rin_voice_v2_design-question-flow",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_v2_design-question-flow",
+      "targetId": "mem-project_rin_voice_v2_design-key-design-principles",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_rin_voice_v2_design-key-design-principles",
+      "targetId": "mem-project_rin_voice_v2_design-toronto-specific",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-security_audit_xss_auth----",
+      "targetId": "mem-security_audit_xss_auth-critical-vulnerabilities--2026",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-security_audit_xss_auth-critical-vulnerabilities--2026",
+      "targetId": "mem-security_audit_xss_auth-action-items",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-domain_migration_plan----",
+      "targetId": "mem-domain_migration_plan-current-setup",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-domain_migration_plan-current-setup",
+      "targetId": "mem-domain_migration_plan-key-fact--mail-is-microsoft-36",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-domain_migration_plan-key-fact--mail-is-microsoft-36",
+      "targetId": "mem-domain_migration_plan-dns-records-needed--galoras-co",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-domain_migration_plan-dns-records-needed--galoras-co",
+      "targetId": "mem-domain_migration_plan-systems-to-update",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-product_system_rebuild----",
+      "targetId": "mem-product_system_rebuild-what-was-done--2026-04-08-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-product_system_rebuild-what-was-done--2026-04-08-",
+      "targetId": "mem-product_system_rebuild-revert-before-go-live",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_status----",
+      "targetId": "mem-project_status-sow-completion-as-of-2026-04-0",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-skills_created----",
+      "targetId": "mem-skills_created-galoras-skills--created-2026-0",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup----",
+      "targetId": "mem-supabase_setup-active-project--uat-galoras",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup-active-project--uat-galoras",
+      "targetId": "mem-supabase_setup-other-projects",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup-other-projects",
+      "targetId": "mem-supabase_setup-tables-in-uat-galoras",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup-tables-in-uat-galoras",
+      "targetId": "mem-supabase_setup-migrations-applied--uat-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup-migrations-applied--uat-",
+      "targetId": "mem-supabase_setup-edge-functions-deployed",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-supabase_setup-edge-functions-deployed",
+      "targetId": "mem-supabase_setup-secrets-set",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-user_profile----",
+      "targetId": "mem-user_profile-role",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-user_profile-role",
+      "targetId": "mem-user_profile-coach-profile--in-uat-galoras-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-user_profile-coach-profile--in-uat-galoras-",
+      "targetId": "mem-user_profile-preferences",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-project_barnes_offerings-page-structure",
+      "targetId": "mem-project_barnes_offerings-how-to-apply",
+      "type": "similar",
+      "weight": 0.3795180722891566
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-credibility-question---no-coac",
+      "targetId": "mem-project_galoras_b2b_pivot-how-to-apply",
+      "type": "similar",
+      "weight": 0.36683417085427134
+    },
+    {
+      "sourceId": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
+      "targetId": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
+      "type": "similar",
+      "weight": 0.4976303317535545
+    },
+    {
+      "sourceId": "mem-project_galoras_intelligence_dashboard-purpose",
+      "targetId": "mem-project_galoras_intelligence_dashboard-related-documents-in-repo",
+      "type": "similar",
+      "weight": 0.32051282051282054
+    },
+    {
+      "sourceId": "mem-project_mitesh_design_template-layout-pattern",
+      "targetId": "mem-project_mitesh_design_template-key-spacing-decisions",
+      "type": "similar",
+      "weight": 0.4199134199134199
+    },
+    {
+      "sourceId": "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-",
+      "targetId": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
+      "type": "similar",
+      "weight": 0.321285140562249
+    },
+    {
+      "sourceId": "mem-project_rin_antifraud-required-protections",
+      "targetId": "mem-project_rin_antifraud-price-flow--legally-sound-",
+      "type": "similar",
+      "weight": 0.4942528735632184
+    },
+    {
+      "sourceId": "mem-project_rin_customer_app----",
+      "targetId": "mem-project_rin_customer_app-architecture",
+      "type": "similar",
+      "weight": 0.3063063063063063
+    },
+    {
+      "sourceId": "mem-supabase_setup-tables-in-uat-galoras",
+      "targetId": "mem-supabase_setup-migrations-applied--uat-",
+      "type": "similar",
+      "weight": 0.4069767441860465
+    }
+  ],
+  "pageRanks": {
+    "mem-MEMORY-memory-index": 0.0021368272211904848,
+    "mem-design_galoras_branding----": 0.0021368272211904848,
+    "mem-design_galoras_branding-color-palette": 0.003953130853599548,
+    "mem-design_galoras_branding-typography": 0.00549698972013506,
+    "mem-design_galoras_branding-layout-structure": 0.006809270347520137,
+    "mem-design_galoras_branding-component-patterns": 0.007924707380938062,
+    "mem-design_galoras_branding-styling-approach": 0.00887282325156672,
+    "mem-design_galoras_branding-spacing---layout": 0.009678716802635478,
+    "mem-design_galoras_branding-usage-notes": 0.010363733938727323,
+    "mem-design_mitesh_layout_template----": 0.0021368272211904848,
+    "mem-design_mitesh_layout_template-color-palette": 0.003953130853599548,
+    "mem-design_mitesh_layout_template-layout-sections--11-sections-i": 0.00549698972013506,
+    "mem-design_mitesh_layout_template-key-design-patterns": 0.006809270347520137,
+    "mem-design_mitesh_layout_template-data-integration": 0.007924707380938062,
+    "mem-design_mitesh_layout_template-navigation-flow": 0.00887282325156672,
+    "mem-design_mitesh_layout_template-styling-approach": 0.009678716802635478,
+    "mem-design_mitesh_layout_template-design-philosophy": 0.010363733938727323,
+    "mem-feedback_daily_sow_report----": 0.0021368272211904848,
+    "mem-feedback_elevenlabs----": 0.0021368272211904848,
+    "mem-feedback_lovable_disconnect----": 0.0021368272211904848,
+    "mem-feedback_no_linkedin----": 0.0021368272211904848,
+    "mem-feedback_rin_dev----": 0.0021368272211904848,
+    "mem-galoras_conor_talking_points----": 0.0021368272211904848,
+    "mem-galoras_conor_talking_points-open-with-what-s-working": 0.003953130853599548,
+    "mem-galoras_conor_talking_points-the-coach-scaling-question": 0.00549698972013506,
+    "mem-galoras_conor_talking_points-the-freemium-conversion-rate": 0.006809270347520137,
+    "mem-galoras_conor_talking_points-the-coachee-subscription-fee": 0.007924707380938062,
+    "mem-galoras_conor_talking_points-the-churn-assumption": 0.00887282325156672,
+    "mem-galoras_conor_talking_points-the-headcount---margin-questio": 0.009678716802635478,
+    "mem-galoras_conor_talking_points-how-to-present-this-to-investo": 0.010363733938727323,
+    "mem-galoras_conor_talking_points-one-last-thing": 0.010946014602921017,
+    "mem-galoras_investor_one_pager----": 0.0021368272211904848,
+    "mem-galoras_investor_one_pager-the-opportunity": 0.003953130853599548,
+    "mem-galoras_investor_one_pager-fy26-financial-picture": 0.00549698972013506,
+    "mem-galoras_investor_one_pager-revenue-streams": 0.006809270347520137,
+    "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc": 0.007924707380938062,
+    "mem-galoras_investor_one_pager-competitive-position": 0.00887282325156672,
+    "mem-galoras_investor_one_pager-year-2--path": 0.009678716802635478,
+    "mem-galoras_investor_one_pager-bottom-line": 0.010363733938727323,
+    "mem-project_barnes_offerings----": 0.0021368272211904848,
+    "mem-project_barnes_offerings-barnes-lam-coach-profile": 0.003953130853599548,
+    "mem-project_barnes_offerings-page-structure": 0.00549698972013506,
+    "mem-project_barnes_offerings-the-five-offerings--section-2-": 0.004473048784355311,
+    "mem-project_barnes_offerings-galoras-programs--section-1---": 0.005938919117268806,
+    "mem-project_barnes_offerings-how-to-apply": 0.009521128049015717,
+    "mem-project_blotato_channels----": 0.0021368272211904848,
+    "mem-project_galoras_161k_gtm_plan----": 0.0021368272211904848,
+    "mem-project_galoras_161k_gtm_plan-the-daily-number": 0.003953130853599548,
+    "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali": 0.00549698972013506,
+    "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be": 0.006809270347520137,
+    "mem-project_galoras_161k_gtm_plan-monthly-milestones": 0.007924707380938062,
+    "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun": 0.00887282325156672,
+    "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if": 0.009678716802635478,
+    "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m": 0.010363733938727323,
+    "mem-project_galoras_161k_gtm_plan-how-to-apply": 0.010946014602921017,
+    "mem-project_galoras_auth_otp----": 0.0021368272211904848,
+    "mem-project_galoras_auth_otp-custom-otp-system--deployed-20": 0.003953130853599548,
+    "mem-project_galoras_b2b_pivot----": 0.0021368272211904848,
+    "mem-project_galoras_b2b_pivot-the-pivot": 0.003953130853599548,
+    "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi": 0.00549698972013506,
+    "mem-project_galoras_b2b_pivot-credibility-question---no-coac": 0.006809270347520137,
+    "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase": 0.005030767301064274,
+    "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi": 0.006412977052583135,
+    "mem-project_galoras_b2b_pivot-how-to-apply": 0.010481793341259059,
+    "mem-project_galoras_business_case_reality_check----": 0.0021368272211904848,
+    "mem-project_galoras_business_case_reality_check-fy26-forecast": 0.003953130853599548,
+    "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold": 0.00549698972013506,
+    "mem-project_galoras_business_case_reality_check-assumptions-that-hold": 0.006809270347520137,
+    "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review": 0.007924707380938062,
+    "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality": 0.00887282325156672,
+    "mem-project_galoras_business_case_reality_check-recommended-presentation-frami": 0.009678716802635478,
+    "mem-project_galoras_hot_and_revenue_model----": 0.0021368272211904848,
+    "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-": 0.003953130853599548,
+    "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files": 0.00549698972013506,
+    "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef": 0.006809270347520137,
+    "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-": 0.007924707380938062,
+    "mem-project_galoras_intelligence_dashboard----": 0.0021368272211904848,
+    "mem-project_galoras_intelligence_dashboard-purpose": 0.003953130853599548,
+    "mem-project_galoras_intelligence_dashboard-design-system": 0.003816908470662772,
+    "mem-project_galoras_intelligence_dashboard-tech-stack": 0.005381200600559842,
+    "mem-project_galoras_intelligence_dashboard-related-documents-in-repo": 0.008390929800008847,
+    "mem-project_galoras_intelligence_dashboard-how-to-apply": 0.009269116546503723,
+    "mem-project_galoras_sow_status----": 0.0021368272211904848,
+    "mem-project_galoras_sow_status-part-1--validation-sprint--sow": 0.003953130853599548,
+    "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow": 0.00549698972013506,
+    "mem-project_galoras_sow_status-budget-reference": 0.006809270347520137,
+    "mem-project_gtm_engine----": 0.0021368272211904848,
+    "mem-project_mitesh_design_template----": 0.0021368272211904848,
+    "mem-project_mitesh_design_template-layout-pattern": 0.003953130853599548,
+    "mem-project_mitesh_design_template-branding": 0.003816908470662772,
+    "mem-project_mitesh_design_template-key-spacing-decisions": 0.007061281850032131,
+    "mem-project_mitesh_design_template-component-patterns": 0.008138918297496855,
+    "mem-project_mitesh_design_template-content-philosophy": 0.00905490562994493,
+    "mem-project_mitesh_design_template-netlify-deployment": 0.009833488543810063,
+    "mem-project_mitesh_design_template-browser-compatibility-notes": 0.010495283305995732,
+    "mem-project_rin_ai_voice_intake----": 0.0021368272211904848,
+    "mem-project_rin_ai_voice_intake-architecture": 0.003953130853599548,
+    "mem-project_rin_ai_voice_intake-elevenlabs-agent-config": 0.00549698972013506,
+    "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-": 0.006809270347520137,
+    "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-": 0.007924707380938062,
+    "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09": 0.00887282325156672,
+    "mem-project_rin_ai_voice_intake-known-issues---pending": 0.009678716802635478,
+    "mem-project_rin_ai_voice_intake-daily-status-report": 0.010363733938727323,
+    "mem-project_rin_antifraud----": 0.0021368272211904848,
+    "mem-project_rin_antifraud-required-protections": 0.003953130853599548,
+    "mem-project_rin_antifraud-price-flow--legally-sound-": 0.00549698972013506,
+    "mem-project_rin_antifraud-data-retained-for-liability": 0.006809270347520137,
+    "mem-project_rin_beta----": 0.0021368272211904848,
+    "mem-project_rin_beta-correct-workflow--fully-implem": 0.003953130853599548,
+    "mem-project_rin_beta-amendment-flow--new--2026-03-2": 0.00549698972013506,
+    "mem-project_rin_beta-driver-cancel-at-scene-flow--n": 0.006809270347520137,
+    "mem-project_rin_beta-key-db-facts": 0.007924707380938062,
+    "mem-project_rin_beta-test-data": 0.00887282325156672,
+    "mem-project_rin_business_rules----": 0.0021368272211904848,
+    "mem-project_rin_business_rules-dispatch-rules": 0.003953130853599548,
+    "mem-project_rin_business_rules-standard-pricing": 0.00549698972013506,
+    "mem-project_rin_business_rules-workflow-timeouts": 0.006809270347520137,
+    "mem-project_rin_business_rules-special-vehicles": 0.007924707380938062,
+    "mem-project_rin_caller_id----": 0.0021368272211904848,
+    "mem-project_rin_customer_app----": 0.0021368272211904848,
+    "mem-project_rin_customer_app-architecture": 0.003953130853599548,
+    "mem-project_rin_customer_app-screens--status-based-routing-": 0.00549698972013506,
+    "mem-project_rin_customer_app-db-additions--2026-04-08-": 0.006809270347520137,
+    "mem-project_rin_customer_app-todo": 0.007924707380938062,
+    "mem-project_rin_edge_functions----": 0.0021368272211904848,
+    "mem-project_rin_gps_location----": 0.0021368272211904848,
+    "mem-project_rin_margin----": 0.0021368272211904848,
+    "mem-project_rin_monitoring----": 0.0021368272211904848,
+    "mem-project_rin_monitoring-components": 0.003953130853599548,
+    "mem-project_rin_monitoring-known-limitation": 0.00549698972013506,
+    "mem-project_rin_price_approval_flow----": 0.0021368272211904848,
+    "mem-project_rin_pricing_agent----": 0.0021368272211904848,
+    "mem-project_rin_pricing_agent-architecture": 0.003953130853599548,
+    "mem-project_rin_pricing_agent-quote-tool": 0.00549698972013506,
+    "mem-project_rin_pricing_agent-test-results--2026-04-10----35": 0.006809270347520137,
+    "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim": 0.007924707380938062,
+    "mem-project_rin_pricing_agent-next-steps": 0.00887282325156672,
+    "mem-project_rin_test_routine----": 0.0021368272211904848,
+    "mem-project_rin_test_routine--rin-test-skill": 0.003953130853599548,
+    "mem-project_rin_test_routine-key-testing-facts--2026-04-08-": 0.00549698972013506,
+    "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08": 0.006809270347520137,
+    "mem-project_rin_test_routine-production-monitor--deployed-2": 0.007924707380938062,
+    "mem-project_rin_voice_gaps----": 0.0021368272211904848,
+    "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic": 0.003953130853599548,
+    "mem-project_rin_voice_gaps-missing-critical-data": 0.00549698972013506,
+    "mem-project_rin_voice_gaps-solution--speech-based-intake": 0.006809270347520137,
+    "mem-project_rin_voice_gaps-architecture": 0.007924707380938062,
+    "mem-project_rin_voice_v2_design----": 0.0021368272211904848,
+    "mem-project_rin_voice_v2_design-question-flow": 0.003953130853599548,
+    "mem-project_rin_voice_v2_design-key-design-principles": 0.00549698972013506,
+    "mem-project_rin_voice_v2_design-toronto-specific": 0.006809270347520137,
+    "mem-project_rin_whatsapp_location----": 0.0021368272211904848,
+    "mem-reference_calendly_links----": 0.0021368272211904848,
+    "mem-security_audit_xss_auth----": 0.0021368272211904848,
+    "mem-security_audit_xss_auth-critical-vulnerabilities--2026": 0.003953130853599548,
+    "mem-security_audit_xss_auth-action-items": 0.00549698972013506,
+    "mem-MEMORY-galoras-dev---memory-index": 0.0021368272211904848,
+    "mem-domain_migration_plan----": 0.0021368272211904848,
+    "mem-domain_migration_plan-current-setup": 0.003953130853599548,
+    "mem-domain_migration_plan-key-fact--mail-is-microsoft-36": 0.00549698972013506,
+    "mem-domain_migration_plan-dns-records-needed--galoras-co": 0.006809270347520137,
+    "mem-domain_migration_plan-systems-to-update": 0.007924707380938062,
+    "mem-featured_coaches_tuning----": 0.0021368272211904848,
+    "mem-product_system_rebuild----": 0.0021368272211904848,
+    "mem-product_system_rebuild-what-was-done--2026-04-08-": 0.003953130853599548,
+    "mem-product_system_rebuild-revert-before-go-live": 0.00549698972013506,
+    "mem-project_status----": 0.0021368272211904848,
+    "mem-project_status-sow-completion-as-of-2026-04-0": 0.003953130853599548,
+    "mem-project_workflow----": 0.0021368272211904848,
+    "mem-skills_created----": 0.0021368272211904848,
+    "mem-skills_created-galoras-skills--created-2026-0": 0.003953130853599548,
+    "mem-supabase_setup----": 0.0021368272211904848,
+    "mem-supabase_setup-active-project--uat-galoras": 0.003953130853599548,
+    "mem-supabase_setup-other-projects": 0.00549698972013506,
+    "mem-supabase_setup-tables-in-uat-galoras": 0.006809270347520137,
+    "mem-supabase_setup-migrations-applied--uat-": 0.007924707380938062,
+    "mem-supabase_setup-edge-functions-deployed": 0.00887282325156672,
+    "mem-supabase_setup-secrets-set": 0.009678716802635478,
+    "mem-user_profile----": 0.0021368272211904848,
+    "mem-user_profile-role": 0.003953130853599548,
+    "mem-user_profile-coach-profile--in-uat-galoras-": 0.00549698972013506,
+    "mem-user_profile-preferences": 0.006809270347520137,
+    "mem-work_style----": 0.0021368272211904848,
+    "insight-1776116220437-3746": 0.0021368272211904848
+  }
+}

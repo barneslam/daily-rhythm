@@ -1,0 +1,132 @@
+{
+  "icp": {
+    "label": "Execution-stalled operator",
+    "description": "Founders, CEOs, or CROs at $2M-$50M revenue companies in Tech, Telecom, IT Services, or B2B SaaS who have a viable offer but are stuck in the gap between knowing what to do and actually doing it. They're not failing from lack of ideas — they're failing from lack of rhythm, structure, and follow-through.",
+    "firmographic_filters": {
+      "revenue": "$2M - $50M",
+      "roles": ["Founder", "CEO", "CRO", "Chief Revenue Officer", "Co-founder", "Managing Director"],
+      "industries": ["Technology", "Telecom", "IT Services", "B2B SaaS", "Software", "Information Technology"],
+      "exclude": ["Enterprise (>$50M)", "Pre-revenue startups", "Solopreneurs under $2M"],
+      "disqualify_immediately": [
+        "Solo consultants",
+        "Pre-revenue startups",
+        "Exploring ideas / ideation stage",
+        "No established company or product",
+        "Freelancers and contractors",
+        "Students or career changers"
+      ]
+    },
+    "trigger_set": [
+      "Hiring sales team — posting for SDR, AE, VP Sales, CRO roles",
+      "New product or offer launch — expanding beyond core offering",
+      "Growth plateau — revenue flatlined after initial growth phase",
+      "Entering new market — geographic or vertical expansion",
+      "Funding event — just raised Series A/B/C, now under pressure to execute"
+    ],
+    "signals": [
+      "Job postings for sales/GTM roles — building or rebuilding revenue engine",
+      "Press releases about new product lines or market entry",
+      "Revenue plateau visible in public statements, interviews, or industry reports",
+      "Funding announcements with stated plans to 'scale GTM' or 'accelerate growth'",
+      "Leadership team changes — VP Sales or CRO departures",
+      "Podcast or interview where CEO admits to execution challenges"
+    ]
+  },
+  "triggers": {
+    "label": "Moments of visible tension",
+    "sources": [
+      "Press releases announcing pivots, relaunches, or 'new direction'",
+      "Crunchbase/funding data showing companies that raised but stalled on hiring",
+      "Job postings that signal panic-hiring (broad role descriptions, posted then removed)",
+      "Product Hunt launches with no follow-up traction (no updates, flat engagement)",
+      "Twitter/X threads revealing execution frustration or 'lessons learned from failure'",
+      "Substack/newsletter posts admitting to being stuck or overwhelmed",
+      "Indie Hackers / Hacker News posts asking for accountability or execution help",
+      "Google News for small companies announcing restructuring or pivots",
+      "Podcast appearances where founders admit to stalled growth"
+    ],
+    "search_queries": {
+      "hiring_sales_team": [
+        "B2B SaaS company hiring 'VP Sales' OR 'Head of Sales' OR 'CRO' 2026",
+        "tech company hiring 'SDR' OR 'Account Executive' OR 'sales team' first 2026",
+        "IT services company 'building sales team' OR 'first sales hire' 2026"
+      ],
+      "new_product_offer": [
+        "tech company 'launching new product' OR 'new offering' OR 'expanding portfolio' 2026",
+        "B2B SaaS 'new product launch' OR 'product expansion' CEO founder 2026",
+        "IT services 'new service line' OR 'new vertical' announcement 2026"
+      ],
+      "growth_plateau": [
+        "CEO OR founder 'growth plateau' OR 'stalled revenue' OR 'flatlined' tech 2026",
+        "B2B SaaS 'struggling to grow' OR 'revenue plateau' OR 'hit a ceiling' 2026",
+        "tech company CEO podcast 'execution challenges' OR 'scaling pain' 2026"
+      ],
+      "entering_new_market": [
+        "tech company 'entering new market' OR 'geographic expansion' OR 'new vertical' 2026",
+        "B2B company 'expanding into' OR 'entering' market CEO announcement 2026",
+        "IT services 'international expansion' OR 'new region' 2026"
+      ],
+      "funding_event": [
+        "series A OR series B tech company raised funding 2026",
+        "site:crunchbase.com funding round SaaS IT services telecom 2026",
+        "B2B startup 'just raised' OR 'closed round' OR 'Series A' accelerate growth 2026"
+      ]
+    },
+    "sales_navigator_filters": {
+      "revenue_range": "$2M - $50M (Annual Revenue)",
+      "title_filters": ["Founder", "CEO", "CRO", "Chief Revenue Officer", "Co-Founder", "Managing Director"],
+      "industry_filters": ["Technology", "Information Technology & Services", "Telecommunications", "Computer Software", "SaaS"],
+      "company_headcount": "11-200",
+      "geography": "North America (primary), APAC (secondary)"
+    },
+    "triangulation_method": "Cross-reference: person shows tension signal publicly + company is $2M-$50M revenue in target industries + person holds Founder/CEO/CRO role. All 3 must match for HIGH confidence. Two of 3 = MEDIUM. One = LOW — research before outreach.",
+    "channel_exclusions": ["LinkedIn DMs — dead channel, 3 years no results"]
+  },
+  "offer": {
+    "name": "GTM Breakdown Session",
+    "format": "90-minute paid diagnostic",
+    "price_range": "$750-$1,500",
+    "outcome": "Walk out with a prioritized execution plan — what to do this week, what to stop doing, and the daily rhythm to sustain it",
+    "positioning": "Not strategy. Not coaching. Operator-to-operator breakdown of what's actually blocking your revenue.",
+    "booking_links": {
+      "qualification": {
+        "name": "Execution Readiness Check",
+        "duration": "15 min",
+        "url": "https://calendly.com/barnes-lam/free-consultation-24-hour-business-sprint",
+        "use_in": "First outreach CTA, content posts, offer doc"
+      },
+      "diagnostic": {
+        "name": "GTM Execution Diagnostic Call",
+        "duration": "30 min",
+        "url": "https://calendly.com/barnes-lam/30-min-free-strategy-call-clone",
+        "use_in": "Follow-up after qualification call, warm leads ready for deeper conversation"
+      }
+    }
+  },
+  "outreach_angles": [
+    {
+      "name": "The pattern recognition angle",
+      "template": "Saw your post about [specific tension]. I work with operators who hit exactly this wall — the offer is solid but the daily execution stalls. Not pitching, but I broke this down for someone in a similar spot recently. Want me to share what we found?"
+    },
+    {
+      "name": "The rhythm angle",
+      "template": "Your [product/service] clearly has demand — the gap looks like it's between knowing what to do and having the operating rhythm to do it daily. I run GTM Breakdown Sessions specifically for operators in this spot. Would a 15-min convo be useful?"
+    },
+    {
+      "name": "The specificity angle",
+      "template": "I noticed [specific signal — hiring post, launch, pivot]. That usually means [what it signals]. I help operators at this exact inflection point build the daily system that turns their offer into consistent revenue. Happy to share how if relevant."
+    },
+    {
+      "name": "The peer angle",
+      "template": "I've been where you are — good offer, real skills, but the daily machine isn't running. Built a system that fixed it for me and now I run it for others. Not a course, not coaching — a 90-minute breakdown that gives you the operating rhythm. Interested?"
+    }
+  ],
+  "message_rules": [
+    "Never use templates verbatim — personalize every message to the specific person and their visible tension",
+    "Lead with what you observed, not what you sell",
+    "No pitch in the first message — start a diagnostic conversation",
+    "Keep messages under 100 words",
+    "Reference something specific they said or did publicly",
+    "Never say 'I noticed you're struggling' — reframe as 'I see you're at an inflection point'"
+  ]
+}

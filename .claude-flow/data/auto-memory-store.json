@@ -1,0 +1,2395 @@
+[
+  {
+    "id": "mem-MEMORY-memory-index",
+    "key": "memory-index",
+    "content": "- [RIN Beta — Project Overview](project_rin_beta.md) — Workflow, Supabase project ID, test data, correct flow steps 1–8\n- [RIN Beta — Edge Functions Reference](project_rin_edge_functions.md) — All deployed functions, versions, and purpose\n- [RIN Beta — Dev feedback](feedback_rin_dev.md) — Always use supabaseExternal, truck matching fix, single push policy, port 8080\n- [RIN Customer Mobile App](project_rin_customer_app.md) — Expo app with SMS fallback, real-time tracking, deep linking\n- [RIN Test",
+    "summary": "Memory Index",
+    "namespace": "core",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/MEMORY.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109458
+  },
+  {
+    "id": "mem-design_galoras_branding----",
+    "key": "-",
+    "content": "name: Galoras Brand Design System\ndescription: Complete Galoras brand colors, typography, components, and layout structure for coach landing pages\ntype: reference\noriginSessionId: 51c2d241-85cb-45de-80f3-54fb6f167eb0\n---",
+    "summary": "---",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-color-palette",
+    "key": "color-palette",
+    "content": "### Primary Colors\n- **Blue**: `#59A4E5` (primary action, accents)\n- **Blue Hover**: `#3d8fd4` (button hover state)\n- **Yellow**: `#FFD447` (secondary accent, highlights)\n- **Yellow Hover**: `#e6be30` (button hover state)\n\n### Neutrals\n- **Black (Background)**: `#0E0E0E` (main page background)\n- **Card Background**: `#1a1a1a` (section backgrounds, cards)\n- **Border**: `#2a2a2a` (borders, dividers)\n- **Gray (Text)**: `#999` (secondary text, descriptions)\n- **Light Gray**: `#aaa` (tertiary text)",
+    "summary": "Color Palette",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-typography",
+    "key": "typography",
+    "content": "- **Display Font**: Montserrat (weights: 800, 500, 400)\n  - Used for: headings (h1–h6), buttons, logo\n  - Style: uppercase, letter-spacing 0.02em (headings), 0.05em (buttons)\n  - Weight: 800 for headings, 800 for buttons\n\n- **Body Font**: Open Sans (weights: 400, 500, 600)\n  - Used for: body text, descriptions, paragraphs\n  - Weight: 400 regular, 500–600 for emphasis\n\n- **Import**: Google Fonts\n  ```css\n  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&family=Op",
+    "summary": "Typography",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-layout-structure",
+    "key": "layout-structure",
+    "content": "### Header (Sticky)\n- Background: rgba(14, 14, 14, 0.8) with backdrop blur (8px)\n- Border bottom: 1px solid #2a2a2a\n- Logo: \"BARNES LAM\" in gradient-text-blue-yellow\n- Buttons: Contact (blue border outline), Book Now (blue solid)\n- Padding: py-4, max-width 6xl container, responsive grid\n\n### Hero Section\n- Grid: md:grid-cols-2, gap-8 items-center\n- Left: Text content with yellow label, h2 gradient title, description, CTA buttons\n- Right: 3 stat cards (100+, $500M+, 18+) with border-top in altern",
+    "summary": "Layout Structure",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-component-patterns",
+    "key": "component-patterns",
+    "content": "### Buttons\nThree button styles:\n\n1. **Solid Blue Button**\n   ```javascript\n   style={{ backgroundColor: '#59A4E5' }}\n   onMouseEnter: backgroundColor = '#3d8fd4'\n   onMouseLeave: backgroundColor = '#59A4E5'\n   ```\n\n2. **Blue Border Outline Button**\n   ```javascript\n   style={{ borderColor: '#59A4E5', color: '#59A4E5', border: '1px solid' }}\n   onMouseEnter: backgroundColor = '#59A4E5', color = 'white'\n   onMouseLeave: backgroundColor = 'transparent', color = '#59A4E5'\n   ```\n\n3. **Yellow Button",
+    "summary": "Component Patterns",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-styling-approach",
+    "key": "styling-approach",
+    "content": "**Recommended**: Use inline React style objects for all colors, borders, and background colors. Avoid Tailwind arbitrary values (e.g., `bg-[#0E0E0E]`) as they can be unreliable in some configurations.\n\nExample:\n```javascript\nconst styles = {\n  bg: { backgroundColor: '#0E0E0E' },\n  cardBg: { backgroundColor: '#1a1a1a' },\n  border: { borderColor: '#2a2a2a' },\n  blue: { color: '#59A4E5' },\n  yellow: { color: '#FFD447' },\n  btnBlue: { backgroundColor: '#59A4E5' },\n  btnBlueHover: { backgroundColor: ",
+    "summary": "Styling Approach",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-spacing---layout",
+    "key": "spacing-layout",
+    "content": "- Container max-width: `max-w-6xl`\n- Horizontal padding: `px-6`\n- Section padding: `py-16` (major sections), `py-6–py-8` (hero)\n- Gap between grid items: `gap-8` (standard), `gap-4` (compact)\n- Responsive: `md:` breakpoint for 2+ column layouts",
+    "summary": "Spacing & Layout",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_galoras_branding-usage-notes",
+    "key": "usage-notes",
+    "content": "- **Dark mode only**: Site background is #0E0E0E, no light mode design\n- **Montserrat requirement**: All headings and buttons use Montserrat uppercase\n- **Gradient accent**: Apply blue-yellow gradient to key titles/logos for visual hierarchy\n- **Consistency**: All cards follow the dark bg + border + padding pattern\n- **Hover states**: Buttons always have hover effects (color shift or border change)\n- **No rounded corners**: Button `border-radius: 0` (hard edges)",
+    "summary": "Usage Notes",
+    "namespace": "design_galoras_branding",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_galoras_branding.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109459
+  },
+  {
+    "id": "mem-design_mitesh_layout_template----",
+    "key": "-",
+    "content": "name: Mitesh Coach Landing Page Design Template\ndescription: Complete layout structure, color scheme, components, and sections from deployed Mitesh coach landing page\ntype: reference\noriginSessionId: 51c2d241-85cb-45de-80f3-54fb6f167eb0\n---",
+    "summary": "---",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-color-palette",
+    "key": "color-palette",
+    "content": "### Background Colors\n- **Primary Background**: `bg-gradient-to-br from-slate-950 via-slate-900 to-slate-900` (dark slate gradient)\n- **Section Background**: `bg-slate-800/20` or `bg-slate-800/30` (semi-transparent slate)\n- **Card Background**: `bg-slate-800/50` (darker cards)\n- **Header Background**: `bg-slate-950/50 backdrop-blur` (frosted effect)\n\n### Text Colors\n- **Primary Text**: `text-white`\n- **Secondary Text**: `text-slate-400`, `text-slate-300`\n- **Tertiary Text**: `text-slate-200`\n- *",
+    "summary": "Color Palette",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-layout-sections--11-sections-i",
+    "key": "layout-sections-11-sections-in-order-",
+    "content": "### 1. Header (Sticky)\n```\nLayout:\n- Logo + Branding (Galoras — The Sport of Business)\n- Subtitle: \"Remove the Shackles. Unlock Performance\"\n- Right: Contact button (outline) + Book a Session button (solid blue)\n- Navigation tabs: About | Programs | Why Galoras | Case Studies | Contact\n- Sticky positioning with backdrop blur effect\n- Border bottom: border-slate-800\n```\n\n### 2. Hero Section\n```\nLayout: 2-column grid (md:grid-cols-2, gap-8)\n\nLeft column (Coach Info):\n- Coach name label (uppercase,",
+    "summary": "Layout Sections (11 sections in order)",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-key-design-patterns",
+    "key": "key-design-patterns",
+    "content": "### Card Component\n```\n- Background: bg-slate-800/50\n- Border: border-slate-700\n- Padding: p-8\n- Hover: hover:bg-slate-800/70 transition\n- Used for: pillars, outcomes, why-galoras, testimonials\n```\n\n### Button Variants\n```\n1. Solid Blue Button\n   - bg-blue-600 hover:bg-blue-700\n   - text-white font-bold\n   - With icon (Calendar, MessageCircle)\n   - Size: sm or lg\n\n2. Outline Button\n   - border border-slate-700 (or blue-500)\n   - text-white\n   - hover effect on background\n   - Size: sm or lg\n\n3. ",
+    "summary": "Key Design Patterns",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-data-integration",
+    "key": "data-integration",
+    "content": "**Key Difference from Static Pages:**\n- Mitesh design fetches **coach profile** from Supabase (name, headline, positioning statement, methodology, coaching_style, etc.)\n- Fetches **coach products** from Supabase (title, description, price, booking mode)\n- Uses **modals** for: Contact, Checkout (Stripe), Request Quote, Enterprise Request\n- Navigation tabs scroll to sections with smooth scrolling\n- Active tab styling with border-b-2",
+    "summary": "Data Integration",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-navigation-flow",
+    "key": "navigation-flow",
+    "content": "```\nHeader sticky navigation:\n- About → scrolls to #about (coaching style section)\n- Programs → scrolls to #programs (offerings from DB)\n- Why Galoras → scrolls to #why-galoras\n- Case Studies → scrolls to #case-studies (testimonials)\n- Contact → scrolls to #contact + opens ContactModal\n```",
+    "summary": "Navigation Flow",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-styling-approach",
+    "key": "styling-approach",
+    "content": "**Uses**: Tailwind CSS classes extensively (not inline styles)\n**Uses**: shadcn/ui components (Button, Card)\n**Uses**: lucide-react icons\n**Uses**: Custom CSS class `.gradient-text-blue-yellow` for gradient text effect\n**Pattern**: All colors applied via Tailwind classes, not hardcoded hex values",
+    "summary": "Styling Approach",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-design_mitesh_layout_template-design-philosophy",
+    "key": "design-philosophy",
+    "content": "1. **Dark, professional aesthetic** — slate-950/slate-900 base, not pure black\n2. **Gradient accents** — blue-yellow gradients on headlines for visual hierarchy\n3. **Card-based layout** — semi-transparent dark cards with subtle hover effects\n4. **Large readable text** — high contrast white on dark backgrounds\n5. **Clear CTAs** — distinct button styling (blue for primary, yellow for conversion)\n6. **Modular sections** — each section separated by borders and background color shifts\n7. **Data-drive",
+    "summary": "Design Philosophy",
+    "namespace": "design_mitesh_layout_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/design_mitesh_layout_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109460
+  },
+  {
+    "id": "mem-feedback_daily_sow_report----",
+    "key": "-",
+    "content": "name: Daily SOW Report Preference\ndescription: Barnes wants a daily 5am EST SOW audit emailed to barnes@thestrategypitch.com in table format with completion % and outstanding items\ntype: feedback\noriginSessionId: 07e3ad67-c31e-4303-bfee-fd26412e7b4a\n---\nRun Galoras SOW status audit every morning at 5am EST and email to barnes@thestrategypitch.com.\n\n**Why:** Barnes needs a daily snapshot of SOW completion vs GitHub to track dev progress against contract deliverables.\n\n**How to apply:**\n- Report f",
+    "summary": "---",
+    "namespace": "feedback_daily_sow_report",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/feedback_daily_sow_report.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109461
+  },
+  {
+    "id": "mem-feedback_elevenlabs----",
+    "key": "-",
+    "content": "name: ElevenLabs for multilingual voice\ndescription: User already started with ElevenLabs before — don't tell them to hold off again\ntype: feedback\n---\n\nUser had already begun ElevenLabs integration for multilingual TTS. In this session I suggested holding off. Don't repeat that mistake.\n\n**Why:** ElevenLabs provides much better multilingual voice quality than Twilio's built-in TTS (alice can't speak Cantonese, Polly.Zhiyu is Mandarin not Cantonese). Toronto has many nationalities — proper multi",
+    "summary": "---",
+    "namespace": "feedback_elevenlabs",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/feedback_elevenlabs.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109461
+  },
+  {
+    "id": "mem-feedback_lovable_disconnect----",
+    "key": "-",
+    "content": "name: Disconnect Lovable completely\ndescription: User had bad experience migrating from Lovable before — remove all Lovable dependencies now, don't defer\ntype: feedback\n---\n\nDisconnect all Lovable references immediately when encountered. Don't defer to \"later task.\"\n\n**Why:** User had a painful migration experience with a previous project (likely Galoras). Lovable remnants create hidden dependencies that break when the hosted app goes away or when Lovable changes their gateway/API.\n\n**How to app",
+    "summary": "---",
+    "namespace": "feedback_lovable_disconnect",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/feedback_lovable_disconnect.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109463
+  },
+  {
+    "id": "mem-feedback_no_linkedin----",
+    "key": "-",
+    "content": "name: No LinkedIn outreach\ndescription: User spent 3 years on LinkedIn with no results — never default to LinkedIn as a channel\ntype: feedback\noriginSessionId: d36d7873-eecd-4319-82c7-3963d64cc191\n---\nDo not suggest LinkedIn as an outreach channel. User tried it for 3 years and it did not convert.\n\n**Why:** Three years of effort with no meaningful results. LinkedIn is a dead channel for this user's GTM.\n\n**How to apply:** When building outreach strategies, GTM plans, or daily rhythms, default to",
+    "summary": "---",
+    "namespace": "feedback_no_linkedin",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/feedback_no_linkedin.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109464
+  },
+  {
+    "id": "mem-feedback_rin_dev----",
+    "key": "-",
+    "content": "name: RIN Beta — Dev feedback and approach\ndescription: Coding patterns, gotchas, and confirmed approaches for RIN beta development\ntype: feedback\n---\n\nAlways use `supabaseExternal` from `@/lib/supabaseExternal` — never `supabase` from `@/integrations/supabase/client`.\n**Why:** There is no `.env` file in the project so VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY are undefined. The internal client silently fails. `supabaseExternal` has hardcoded URL + anon key and works correctly.\n**How to ",
+    "summary": "---",
+    "namespace": "feedback_rin_dev",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/feedback_rin_dev.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points----",
+    "key": "-",
+    "content": "name: Galoras — Talking Points for Conor\ndescription: Direct conversation points. Lead with what's working. Address scaling assumptions head-on.\ntype: project\noriginSessionId: 2444e702-5061-46b0-8476-9e8f0cab98bd\n---",
+    "summary": "---",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-open-with-what-s-working",
+    "key": "open-with-what-s-working",
+    "content": "\"Your B2B plan is solid. $50K from two corporate engagements is credible — that's immediate revenue and funds the platform build. Let's make sure we're clear on the platform side.\"\n\n---",
+    "summary": "Open with What's Working",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-the-coach-scaling-question",
+    "key": "the-coach-scaling-question",
+    "content": "**Your plan:** 100 coaches by July 2026 (81 days from now)\n\n**Direct reality:** \n- You have 3 coaches today\n- That's 97 new coaches in 81 days\n- BetterUp (market leader) took 18 months to reach 100 with $10M funding\n\n**What we're seeing:**\n- 8–15 coaches by Dec 31 is aggressive but achievable\n- Expect strong first month; then natural plateau around Month 3–4\n\n**Why this matters:**\n- At 8–15 coaches, subscription revenue is $6K–$18K, not $67K\n- Don't let scaling pressure distract from the B2B win",
+    "summary": "The Coach Scaling Question",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-the-freemium-conversion-rate",
+    "key": "the-freemium-conversion-rate",
+    "content": "**Your plan:** 65% of free coaches convert to paid\n\n**Market reality:**\n- Industry standard: 2–8%\n- Best-in-class (Slack, Notion): 15–25%\n- 65% doesn't exist in any market\n\n**What we recommend:**\n- Skip freemium at launch\n- Start with invite-only paid cohort (10–15 coaches)\n- Once you have product-market fit, add freemium as acquisition lever\n\n**Benefit:** Better early metrics, lower churn spike, cleaner story.\n\n---",
+    "summary": "The Freemium Conversion Rate",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-the-coachee-subscription-fee",
+    "key": "the-coachee-subscription-fee",
+    "content": "**Your plan:** Coachees pay $20/mo on top of session fees\n\n**The friction:**\n- Coachees already pay $450–$675/session\n- You're asking them to pay platform fee on an unproven product\n- Precedent: Calendly, Zoom don't charge call participants\n\n**Our recommendation:**\n- Drop from launch\n- Reintroduce Month 4–5 when you have progress dashboards + goal tracking live\n- Position as \"premium features\" unlock, not base cost\n\n**Result:** Cleaner launch, better retention, justified pricing.\n\n---",
+    "summary": "The Coachee Subscription Fee",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-the-churn-assumption",
+    "key": "the-churn-assumption",
+    "content": "**Your plan:** 3% monthly churn (stable from Month 1)\n\n**Market reality:**\n- New platforms see 10–15% monthly churn first 3 months\n- Stabilizes to 3–5% once community + ROI proof kicks in\n- Your plan doesn't account for this spike\n\n**What to do:**\n- Model Year 1 separately (expect higher early churn)\n- Build retention playbook for Month 2–3\n- Don't promise board 3% churn; show *path* to 3% by Month 6\n\n---",
+    "summary": "The Churn Assumption",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-the-headcount---margin-questio",
+    "key": "the-headcount-margin-question",
+    "content": "**Your plan:** $60K contractor spend managing 500 coaches by FY28, with 75%+ margins\n\n**Reality check:**\n- 500 coaches with 1 contractor is lean\n- Service quality and team burnout risk at that ratio\n\n**Suggestion:**\n- Plan for $80K–$100K contractor spend at 500-coach scale\n- Adjust margins to 55–65% instead of 75%\n- You're still highly profitable; more realistic headcount prevents problems later\n\n---",
+    "summary": "The Headcount / Margin Question",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-how-to-present-this-to-investo",
+    "key": "how-to-present-this-to-investors",
+    "content": "**Frame:** \"Year 1 is about B2B foundation + platform building. Year 2+ is where platform scales.\"\n\n**Narrative:**\n1. **Immediate revenue:** B2B consulting ($50K) funds the build\n2. **Platform MVPs:** 8–15 coaches in Year 1 = proof of concept\n3. **Scaling path:** If we hit product-market fit by Q4 Y1, Year 2 is 40–50 coaches + stronger unit economics\n4. **Realistic burn:** Year 1 loss of $48K–$88K is standard marketplace; shows healthy growth trajectory by Year 2\n\n**Why investors like this:** Cl",
+    "summary": "How to Present This to Investors",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_conor_talking_points-one-last-thing",
+    "key": "one-last-thing",
+    "content": "This plan is *stronger* with these adjustments. The B2B story is genuinely good. The platform will scale — just not in 81 days. Let's tell the real story and let the results prove it.",
+    "summary": "One Last Thing",
+    "namespace": "galoras_conor_talking_points",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_conor_talking_points.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109468
+  },
+  {
+    "id": "mem-galoras_investor_one_pager----",
+    "key": "-",
+    "content": "name: Galoras — Investor One-Pager\ndescription: Direct, facts-based summary for investor review. B2B anchor + platform upside framing.\ntype: project\noriginSessionId: 2444e702-5061-46b0-8476-9e8f0cab98bd\n---",
+    "summary": "---",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-the-opportunity",
+    "key": "the-opportunity",
+    "content": "Coaching marketplace + SaaS enablement platform founded by Conor McGowan Smyth (author, Sport of Business methodology). Addresses $20B+ coaching market with enterprise B2B + peer-to-peer platform tiers.\n\n---",
+    "summary": "The Opportunity",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-fy26-financial-picture",
+    "key": "fy26-financial-picture",
+    "content": "**Plan:** $161K revenue, +$37K net profit  \n**Market-adjusted:** $35K–$75K revenue, ($48K)–($88K) net loss\n\n**Why the gap:** Current plan assumes 100 coaches by July 2026. Market reality: 8–15 coaches is realistic for FY26.\n\n---",
+    "summary": "FY26 Financial Picture",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-revenue-streams",
+    "key": "revenue-streams",
+    "content": "### B2B (Consulting) — $50K FY26 ✓\n- Conor's proven \"Sport of Business\" methodology\n- 2 corporate engagements at $25K each\n- **Defensible.** This is immediate revenue independent of platform scale.\n\n### Platform (Coach + Coachee Subscriptions) — $10K–$25K FY26\n- Coach subscriptions: $6K–$18K (8–15 coaches)\n- Coachee subscriptions: $3.6K–$7.2K (if launched; consider deferring)\n- **Upside.** Scaling pressure should not dominate Year 1 narrative.\n\n---",
+    "summary": "Revenue Streams",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
+    "key": "key-adjustments-for-year-1-success",
+    "content": "| Area | Current Plan | Adjustment | Why |\n|---|---|---|---|\n| Coach scaling | 100 by July | 8–15 by Dec 31 | BetterUp = 18mo to 100 with $10M |\n| Freemium conversion | 65% | 25–35% | Industry std: 2–8%; best-in-class: 15–25% |\n| Coachee subscription | Day 1 launch | Defer to Month 4–5 | Reduces friction on unproven product |\n| Churn model | 3% monthly flat | 10–15% early, stabilize Y2 | Market typical for new platforms |\n\n---",
+    "summary": "Key Adjustments for Year 1 Success",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-competitive-position",
+    "key": "competitive-position",
+    "content": "- **vs. Noomii/Coaching.com:** Smaller but higher-touch SaaS layer\n- **vs. BetterUp:** Same market; Galoras is bootstrapped alternative\n- **Advantage:** Conor's brand + proven consulting track record\n\n---",
+    "summary": "Competitive Position",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-year-2--path",
+    "key": "year-2-path",
+    "content": "If platform reaches 40–50 coaches + healthy coachee community by end of Year 1, Year 2 margins improve significantly. Platform subscription model becomes meaningful at scale.\n\n---",
+    "summary": "Year 2+ Path",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-galoras_investor_one_pager-bottom-line",
+    "key": "bottom-line",
+    "content": "- **Safe bet:** B2B consulting ($50K, proven)\n- **Growth bet:** Platform scaling (Year 2+)\n- **Realistic burn:** ($48K)–($88K) Year 1 loss is standard for marketplace startups\n- **Path to breakeven:** Year 2, contingent on coach acquisition velocity",
+    "summary": "Bottom Line",
+    "namespace": "galoras_investor_one_pager",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/galoras_investor_one_pager.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109471
+  },
+  {
+    "id": "mem-project_barnes_offerings----",
+    "key": "-",
+    "content": "name: Barnes Lam — Five Galoras Offerings\ndescription: Five Galoras-branded engagements for Barnes Lam, live in UAT coach_products table (visibility_scope=public, coach_id=1d2772d1-6ba1-4812-9d1e-18b5115eaec4)\ntype: project\noriginSessionId: a863f4d0-9a17-4946-9051-03112a1d7f40\n---\n**Created: 2026-04-12 | Live in UAT-Galoras Supabase (qbjuomsmnrclsjhdsjcz)**",
+    "summary": "---",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_barnes_offerings-barnes-lam-coach-profile",
+    "key": "barnes-lam-coach-profile",
+    "content": "- **Coach ID:** `1d2772d1-6ba1-4812-9d1e-18b5115eaec4`\n- **Slug:** `barnes-lam`\n- **Tier:** Master\n- **Profile URL:** https://uat-galoras.site/coach/barnes-lam\n\n---",
+    "summary": "Barnes Lam Coach Profile",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_barnes_offerings-page-structure",
+    "key": "page-structure",
+    "content": "**Section 1 — Galoras Programs** (`visibility_scope = 'unlisted'`, sort_order 1–3)\nExisting products curated through the Galoras platform. These 3 are tagged 'unlisted' so they appear on the profile page but are not discoverable via marketplace search.\n\n**Section 2 — Barnes' Engagements** (`visibility_scope = 'public'`, sort_order 10–50)\nBarnes' five unique offerings aligned to his GTM/execution expertise.\n\n---",
+    "summary": "Page Structure",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_barnes_offerings-the-five-offerings--section-2-",
+    "key": "the-five-offerings-section-2-",
+    "content": "### 1. GTM Pressure Test (sort_order: 10)\n- **product_type:** single_session\n- **Price:** CA$750 (fixed, Stripe)\n- **Duration:** 90 min | Remote\n- **Target:** SaaS founders, CEOs post-plateau, AI company operators\n- **Outcome:** Stress-test of GTM hypothesis; top 3 execution constraints identified; prioritised fix list delivered\n- **Gateway product** — designed to convert to deeper engagements\n\n### 2. Commercial Readiness Score (sort_order: 20)\n- **product_type:** intensive\n- **Price:** CA$3,500",
+    "summary": "The Five Offerings (Section 2)",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_barnes_offerings-galoras-programs--section-1---",
+    "key": "galoras-programs-section-1-existing-moved-to-unlis",
+    "content": "| ID | Title | Price | Status |\n|---|---|---|---|\n| bdde3469 | AI in the C-Suite: What Executives Need to Know | CA$2,500 | Active |\n| d5975754 | A.I. for Executive Performance | CA$5,000 | Inactive |\n| 085870b5 | GTM Execution Sprint: 90-Day Founder Accelerator | CA$15,000 | Active |\n\n---",
+    "summary": "Galoras Programs (Section 1 — existing, moved to 'unlisted')",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_barnes_offerings-how-to-apply",
+    "key": "how-to-apply",
+    "content": "When updating Barnes' profile, pricing, or offerings: reference sort_order 10–50 for his own engagements; sort_order 1–3 for Galoras Programs. The CoachProfile.tsx splits on visibility_scope: 'unlisted' = Galoras Programs, 'public' = Barnes' own offerings.",
+    "summary": "How to Apply",
+    "namespace": "project_barnes_offerings",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_barnes_offerings.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109475
+  },
+  {
+    "id": "mem-project_blotato_channels----",
+    "key": "-",
+    "content": "name: Blotato publishing channels\ndescription: Connected social accounts for GTM content distribution via Blotato MCP tools\ntype: reference\noriginSessionId: d36d7873-eecd-4319-82c7-3963d64cc191\n---\nBlotato social accounts for autonomous content publishing:\n\n- **LinkedIn Personal** (Barnes LAM): accountId \"17347\", no pageId\n- **Biz Dev Titans** (LinkedIn page): accountId \"17347\", pageId \"106445950\"\n- **Growth Gurus** (LinkedIn page): accountId \"17347\", pageId \"107153914\"\n- **The Strategy Pitch** ",
+    "summary": "---",
+    "namespace": "project_blotato_channels",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_blotato_channels.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan----",
+    "key": "-",
+    "content": "name: Galoras $161K GTM Plan — Reverse-Engineered\ndescription: Operational plan reverse-engineered from $161K FY26 revenue target; daily targets, three-lever model, monthly milestones, May 1 gates\ntype: project\noriginSessionId: a863f4d0-9a17-4946-9051-03112a1d7f40\n---\n**Built: 2026-04-11 | Target period: May 1 – December 31, 2026 (8 months)**",
+    "summary": "---",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-the-daily-number",
+    "key": "the-daily-number",
+    "content": "**$161,168 ÷ 244 days = $660/day. Every day.**\n\n---",
+    "summary": "The Daily Number",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali",
+    "key": "three-lever-revenue-mix-realistic-path-to-161k-",
+    "content": "| Stream | Target | Mechanism |\n|---|---|---|\n| B2B (Sport of Business) | $75,000 | 3 engagements × $25K — Conor's warm pipeline |\n| Session commissions (25%) | $60,000 | $240K in sessions booked through platform |\n| Coach subscriptions | $18,000 | 10 coaches avg $150/mo × 8 months |\n| Coachee subscriptions | $8,000 | Reintroduce Month 4 only |\n| **Total** | **$161,000** | |\n\n**Key insight:** B2B pays for nearly half. Without 3 closed B2B deals, platform alone cannot hit $161K at a realistic coa",
+    "summary": "Three-Lever Revenue Mix (Realistic Path to $161K)",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be",
+    "key": "may-1-gates-non-negotiable-before-revenue-clock-st",
+    "content": "### Platform\n- [ ] Booking flow live end-to-end — customer can discover, book, pay without human help\n- [ ] Stripe live in production (confirmed April 9 ✓)\n- [ ] All 3 coach profiles complete — rates, bios, real photo, availability slots\n- [ ] OTP auth working for coachees (no friction)\n- [ ] Post-session AI summary visible to coachee (retention hook)\n\n### Coach Pipeline\n- [ ] 5 additional coaches signed and committed (not \"interested\") — profiles drafted, headshots loaded, 3+ weekly availabilit",
+    "summary": "May 1 Gates (Non-Negotiable Before Revenue Clock Starts)",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-monthly-milestones",
+    "key": "monthly-milestones",
+    "content": "| Month | Revenue Target | YTD | Key Event |\n|---|---|---|---|\n| May | $8,000 | $8,000 | Warm outreach, 5–8 paying clients, 6–8 coaches live |\n| June | $14,000 | $22,000 | 20–30 active clients, B2B at proposal stage |\n| July | $30,000 | $52,000 | Paid launch ($8K ads), B2B Deal 1 closes ($25K) |\n| Aug | $15,000 | $67,000 | Scale ads to proven channels only |\n| Sept | $30,000 | $97,000 | B2B Deal 2 closes ($25K) |\n| Oct | $15,000 | $112,000 | 100+ sessions/month run rate |\n| Nov | $35,000 | $147,",
+    "summary": "Monthly Milestones",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun",
+    "key": "daily-non-negotiables-may-june-",
+    "content": "**Conor:** 3 coaching sessions/day billable. ALL sessions pushed through platform — no off-platform payments allowed.\n\n**Barnes:** 10 outreach messages/day (mix of coach recruitment + client warm outreach). 1 piece of content published daily rotating across coaches' voices.\n\n**Weekly:**\n- Wk 1: Personal email to 50 warm contacts (Conor's personal email, not Galoras brand email)\n- Wk 2: 5–10 discovery calls. First paid booking. 2 new coaches onboarded.\n- Wk 3: First testimonials captured immediat",
+    "summary": "Daily Non-Negotiables (May–June)",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-three-things-that-kill-this-if",
+    "key": "three-things-that-kill-this-if-not-fixed-by-may-1",
+    "content": "1. **Conor runs sessions off-platform.** Every off-platform session = lost 25% commission + lost data. He must migrate existing clients onto Galoras before May 1.\n\n2. **Only 3 coaches at June 30.** Can't generate enough session volume. Coach recruitment is highest-leverage activity in May — above marketing, above content.\n\n3. **B2B pipeline has only 1 prospect.** Need 3 active conversations to reliably close 1. Conor must open those conversations before launch distracts him (i.e., now).\n\n---",
+    "summary": "Three Things That Kill This If Not Fixed by May 1",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109476
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m",
+    "key": "daily-scorecard-track-every-morning-",
+    "content": "```\nTODAY'S TARGET:    $660\nSESSIONS BOOKED:   ___  × avg rate × 25% = $___\nSUBS MRR / 30:     $___\nB2B this month:    $___  / $25,000\nDAILY TOTAL:       $___\n\nYTD:               $___  / $161,168\n```",
+    "summary": "Daily Scorecard (Track Every Morning)",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109477
+  },
+  {
+    "id": "mem-project_galoras_161k_gtm_plan-how-to-apply",
+    "key": "how-to-apply",
+    "content": "Use this plan as the accountability framework in weekly standups with Conor. The B2B pipeline status and coach count are the two leading indicators — if either slips by June 30, the July revenue spike ($30K) is at risk.",
+    "summary": "How to Apply",
+    "namespace": "project_galoras_161k_gtm_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_161k_gtm_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109477
+  },
+  {
+    "id": "mem-project_galoras_auth_otp----",
+    "key": "-",
+    "content": "name: Galoras Auth — Custom OTP System\ndescription: Custom OTP login/signup via Resend edge functions, bypassing Supabase built-in OTP (which is disabled)\ntype: project\noriginSessionId: 07e3ad67-c31e-4303-bfee-fd26412e7b4a\n---",
+    "summary": "---",
+    "namespace": "project_galoras_auth_otp",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_auth_otp.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109477
+  },
+  {
+    "id": "mem-project_galoras_auth_otp-custom-otp-system--deployed-20",
+    "key": "custom-otp-system-deployed-2026-04-09-",
+    "content": "Supabase's built-in OTP (`signInWithOtp`) is disabled on the hosted project and cannot be toggled in the dashboard. All OTP is handled via custom edge functions + Resend API.\n\n### Edge Functions\n- `send-login-otp` — generates 6-digit code, stores in `login_otp_codes`, sends via Resend\n- `verify-login-otp` — validates code, signs in with password, returns session\n- `send-signup-otp` — same as login but for new signups\n- `verify-signup-otp` — validates code, creates user via admin API\n- `complete-",
+    "summary": "Custom OTP System (deployed 2026-04-09)",
+    "namespace": "project_galoras_auth_otp",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_auth_otp.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109477
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot----",
+    "key": "-",
+    "content": "name: Galoras B2B Pivot — Strategy & Decision\ndescription: The critical strategic pivot agreed April 12 2026: B2B (Sport of Business) is the base case, not upside. Platform is the delivery vehicle, not the revenue engine in Year 1.\ntype: project\noriginSessionId: a863f4d0-9a17-4946-9051-03112a1d7f40\n---\n**Decided: 2026-04-12 | Applies: May 1, 2026 onward**",
+    "summary": "---",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-the-pivot",
+    "key": "the-pivot",
+    "content": "Galoras is repositioning from **marketplace-first** (coaches → clients → revenue) to **B2B-first** (Sport of Business enterprise engagements → platform delivery → marketplace as phase 2).\n\n**Why:** Platform revenue at realistic assumptions (8–15 coaches, 25–35% conversion, 5% churn) generates only $10K–$18K in FY26. B2B alone (3 × $25K) generates $75K and requires Conor's warm relationships, not coach count or platform traction.\n\n---",
+    "summary": "The Pivot",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi",
+    "key": "the-three-lever-model-post-pivot-",
+    "content": "| Priority | Stream | Target | Dependency |\n|---|---|---|---|\n| 1 | B2B — Sport of Business | $75,000 | Conor's warm pipeline |\n| 2 | Marketing-attributed sessions | $51,000 | $33.75K marketing at $500 CAC |\n| 3 | Coach subscriptions | $10K–$18K | Recruit 8–15 coaches in April |\n\nB2B is the anchor. Marketing-attributed sessions are #2. Platform organic is upside.\n\n---",
+    "summary": "The Three-Lever Model (post-pivot)",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-credibility-question---no-coac",
+    "key": "credibility-question-no-coaches-yet",
+    "content": "User asked: \"We do not have coaches — how do we establish credibility?\"\n\n### Answer: Lead with the methodology, not the marketplace\n\n1. **Conor IS the credential.** Sport of Business is a named methodology with enterprise track record. The B2B pitch is Conor-led, not platform-led. The platform is the delivery infrastructure, not the credibility source.\n\n2. **3 coaches at $300–$450/hr ARE credibility** for a curated model. Position as \"invitation-only\" or \"founder-selected\" rather than open marke",
+    "summary": "Credibility Question — No Coaches Yet",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
+    "key": "critical-fake-data-in-codebase-must-fix-before-any",
+    "content": "### About page (`src/pages/About.tsx`) — Lovable placeholder data\n- **Fake stats:** \"500+ Vetted Coaches\", \"10,000+ Clients Served\", \"50+ Countries\", \"98% Satisfaction Rate\"\n- **Fake team:** Alexandra Chen (Founder), Marcus Williams (Head of Coaching), Sarah Martinez (VP Tech) — fictional people\n\n### Business page (`src/pages/business/Business.tsx`) — Lovable placeholder data\n- **Fake stats:** \"200+ Organizations Served\", \"15,000+ Leaders Developed\", \"94% Client Retention\", \"40+ Fortune 500 Clie",
+    "summary": "Critical Fake Data in Codebase — MUST FIX Before Any B2B Prospect Sees the Site",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
+    "key": "what-needs-to-change-identified-from-code-review-",
+    "content": "### About page (`src/pages/About.tsx`)\n- Shows **fake stats**: \"500+ Vetted Coaches\", \"10,000+ Clients Served\", \"50+ Countries\", \"98% Satisfaction Rate\" — these are placeholder Lovable-generated numbers. MUST be removed before any B2B prospect sees the site.\n- Shows **placeholder team**: Alexandra Chen, Marcus Williams, Sarah Martinez — fictional people. Replace with Conor, Barnes, Mitesh with real bios.\n\n### Homepage (`src/pages/Index.tsx`)\n- Hero copy (\"Remove the Shackles\") is generic — does ",
+    "summary": "What Needs to Change (identified from code review)",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_b2b_pivot-how-to-apply",
+    "key": "how-to-apply",
+    "content": "When advising on platform changes, website copy, or investor/client pitch: lead with Sport of Business methodology → Conor's track record → platform as delivery infrastructure. Never lead with coach count or marketplace scale in Year 1.",
+    "summary": "How to Apply",
+    "namespace": "project_galoras_b2b_pivot",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_b2b_pivot.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109481
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check----",
+    "key": "-",
+    "content": "name: Galoras Business Case — Reality Check Findings\ndescription: Stress-test of Conor's revenue model (April 2026) against market benchmarks; which assumptions hold and which are unrealistic\ntype: project\noriginSessionId: a863f4d0-9a17-4946-9051-03112a1d7f40\n---\n**Analysed: 2026-04-11** against Galoras_Revenue_Model_Updated - April 2026.pdf and Galoras_Business_Plan_2026_H2.md",
+    "summary": "---",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-fy26-forecast",
+    "key": "fy26-forecast",
+    "content": "**Current plan:** $161K revenue, +$37K net profit  \n**Adjusted for market conditions:** $35K–$75K revenue, ($48K)–($88K) net loss  \n\n**Context:** Year 1 marketplace losses are standard. This adjustment reflects realistic scaling timelines based on comparable platforms.\n\n---",
+    "summary": "FY26 Forecast",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold",
+    "key": "assumptions-that-don-t-hold",
+    "content": "### 1. Coach Scaling Timeline — Opportunity for Adjustment\n**Current plan:** 100 coaches by July 2026 (81 days from April)  \n**Starting point:** 3 coaches (Conor, Barnes, Mitesh)  \n**Market comparison:** BetterUp reached 100 coaches in 18 months with $10M+ funding  \n**Conservative FY26 estimate:** 8–15 paying coaches by year-end  \n**Revenue impact:** Coach subscriptions $67,968 (plan) → $6,000–$18,000 (market-adjusted)\n\n### 2. Freemium Conversion Rate — Consider Market Benchmarks\n**Plan assumes:",
+    "summary": "Assumptions That Don't Hold",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-assumptions-that-hold",
+    "key": "assumptions-that-hold",
+    "content": "### B2B Revenue ($50K FY26) — On Track\n**Structure:** 2 engagements × $25K = $50K  \n**Basis:** \"Sport of Business\" = Conor's established enterprise methodology  \n**Pricing:** $25K = mid-market (range: $15K–$75K)  \n**Requirements:** 2 warm corporate relationships (not cold outreach)  \n**Key insight:** B2B revenue is independent of platform scaling — pure consulting  \n**Recommendation:** Model B2B separately from platform revenue going forward\n\n### Churn Assumption (3% monthly) — Optimistic for Ye",
+    "summary": "Assumptions That Hold",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review",
+    "key": "assumptions-flagged-for-review",
+    "content": "| Assumption | Status |\n|---|---|\n| **MD Salary/Headcount** | ⚠️ **To be reviewed** — validate salary range and FTE allocation |\n| Coach scaling velocity | Realism check required |\n| Churn spike timing | Model Year 1 separately |\n\n---",
+    "summary": "Assumptions Flagged for Review",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality",
+    "key": "revised-fy26-forecast-reality-based-",
+    "content": "| Stream | Plan | Reality |\n|---|---|---|\n| Coach subscriptions | $67,968 | $6,000–$18,000 |\n| Coachee subscriptions | $43,200 | $3,600–$7,200 |\n| B2B (consulting) | $50,000 | $25,000–$50,000 |\n| **Total Revenue** | **$161,168** | **$34,600–$75,200** |\n| Total Costs | $123,514 | $123,514 |\n| **Net Profit/(Loss)** | **+$37,654** | **($48,000)–($88,000)** |\n\n---",
+    "summary": "Revised FY26 Forecast (Reality-Based)",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_business_case_reality_check-recommended-presentation-frami",
+    "key": "recommended-presentation-framing",
+    "content": "- **Anchor:** B2B revenue ($50K) — proven track record, immediate revenue\n- **Growth platform:** Coach + coachee revenue as upside potential\n- **Approach:** Lead with B2B certainty, position platform scaling as Year 2+ opportunity\n- **Story:** \"Year 1 establishes B2B foundation while building platform; path to profitability in Year 2–3\"",
+    "summary": "Recommended Presentation Framing",
+    "namespace": "project_galoras_business_case_reality_check",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_business_case_reality_check.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_hot_and_revenue_model----",
+    "key": "-",
+    "content": "name: Galoras HoT Terms & Revenue Model Files\ndescription: Signed Heads of Terms binding compensation/equity terms, and location of April 2026 revenue model documents\ntype: project\noriginSessionId: a863f4d0-9a17-4946-9051-03112a1d7f40\n---",
+    "summary": "---",
+    "namespace": "project_galoras_hot_and_revenue_model",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_hot_and_revenue_model.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-",
+    "key": "heads-of-terms-signed-april-2-2026",
+    "content": "File: `~/Downloads/Conor's New Business Model/Galoras Operations LLC - Heads of Terms.pdf`\n\n**Binding terms (Section 8 states compensation, equity, and confidentiality are binding):**\n- Role: Managing Director, Galoras Operations LLC (Florida LLC)\n- MD Monthly Retainer: **$1,350/month** (payable in arrears, last business day of month)\n- Equity: **5%** — 4-year vest, 1-year cliff (vests from April 2, 2027)\n- All vendor/infrastructure costs paid directly by the Company (not deducted from retainer)",
+    "summary": "Heads of Terms — Signed April 2, 2026",
+    "namespace": "project_galoras_hot_and_revenue_model",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_hot_and_revenue_model.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_hot_and_revenue_model-revenue-model-source-files",
+    "key": "revenue-model-source-files",
+    "content": "All in: `~/Downloads/Conor's New Business Model/`\n\n| File | Contents |\n|---|---|\n| `Galoras_Revenue_Model_Updated - April 2026.pdf` | Full FY26–FY30 P&L: coach subs, coachee subs, B2B, OpEx, CapEx |\n| `Galoras_Coach_Tiers.pdf` | Three-tier coach ecosystem: Pro $49, Elite $99, Master $197 |\n| `Galoras Operations LLC - Heads of Terms.pdf` | Signed binding HoT |\n| `Galoras_Coach_Tiers.pptx` | Source deck for coach tier positioning |\n| `Galoras_Revenue_Model_Updated - April 2026.xlsx` | Editable spr",
+    "summary": "Revenue Model Source Files",
+    "namespace": "project_galoras_hot_and_revenue_model",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_hot_and_revenue_model.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef",
+    "key": "known-document-errors-fix-before-sending-to-conor-",
+    "content": "- `Galoras_CFO_Conversation_Brief.md` — Shows Conor's rate as **$800/hr** — **WRONG**\n- `Email_Draft_to_Conor_FINAL.txt` — Shows Conor's rate as **$800/hr** — **WRONG**\n- Correct rate (confirmed by user and Business Plan): **$450/hour**\n\n**Why:** These documents were drafted before the rate was locked. Both need updating before any external send.\n\n---",
+    "summary": "Known Document Errors (Fix Before Sending to Conor)",
+    "namespace": "project_galoras_hot_and_revenue_model",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_hot_and_revenue_model.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-",
+    "key": "coach-rates-confirmed-",
+    "content": "- Conor McGowan: **$450/hour**\n- Barnes Lam: $300/hour\n- Mitesh: $350/hour",
+    "summary": "Coach Rates (Confirmed)",
+    "namespace": "project_galoras_hot_and_revenue_model",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_hot_and_revenue_model.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109482
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard----",
+    "key": "-",
+    "content": "name: Galoras Revenue Intelligence Dashboard\ndescription: Interactive revenue modeling tool deployed at galoras-intelligence.netlify.app — single HTML file with Chart.js visualizations, stored in galoras-ops GitHub repo\ntype: project\noriginSessionId: 83929425-79f2-47de-9a55-dcad7893a169\n---\n**GitHub:** https://github.com/barneslam/galoras-ops.git\n**Live:** https://galoras-intelligence.netlify.app/\n**File:** `Galoras_Revenue_Intelligence.html` (self-contained)\n**Source format:** Single-file HTML ",
+    "summary": "---",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard-purpose",
+    "key": "purpose",
+    "content": "Interactive dashboard for Galoras revenue modeling and executive analysis. Supports multiple tabs including analysis views and revenue models.",
+    "summary": "Purpose",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard-design-system",
+    "key": "design-system",
+    "content": "Galoras official dark theme:\n- **Base:** `#131b2a` (navy)\n- **Surface:** `#1a2235`\n- **Accent (primary):** `#67d0f5` (sky blue)\n- **Accent (CTA):** `#1ab6ff` (electric blue)\n- **Typography:** Sora + Inter",
+    "summary": "Design System",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard-tech-stack",
+    "key": "tech-stack",
+    "content": "- **Chart.js 4.4.0** for visualizations\n- **Vanilla JavaScript** (no framework)\n- **Fonts:** Google Fonts (Sora, Inter)",
+    "summary": "Tech Stack",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard-related-documents-in-repo",
+    "key": "related-documents-in-repo",
+    "content": "- `Galoras_Revenue_Analysis_April2026.docx` — Executive analysis report",
+    "summary": "Related Documents in Repo",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_intelligence_dashboard-how-to-apply",
+    "key": "how-to-apply",
+    "content": "When updating Galoras revenue models, pricing, or executive dashboards: reference this tool. Changes go to the single HTML file in `galoras-ops`.",
+    "summary": "How to Apply",
+    "namespace": "project_galoras_intelligence_dashboard",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_intelligence_dashboard.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109483
+  },
+  {
+    "id": "mem-project_galoras_sow_status----",
+    "key": "-",
+    "content": "name: Galoras SOW Completion Status\ndescription: Phase 2 SOW vs installation audit — Part 1 (Sprint) and Part 2 (Remaining) with outstanding items per SOW\ntype: project\noriginSessionId: 07e3ad67-c31e-4303-bfee-fd26412e7b4a\n---\n**Last audited: 2026-04-09** against repo `barneslam/galoras-dev`",
+    "summary": "---",
+    "namespace": "project_galoras_sow_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_sow_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109484
+  },
+  {
+    "id": "mem-project_galoras_sow_status-part-1--validation-sprint--sow",
+    "key": "part-1-validation-sprint-sow-1-core-2-core-6-full-",
+    "content": "### SOW #1 Core — Structured Profile Core: **100%**\nAll 6 items DONE. No outstanding.\n\n### SOW #2 Core — Product Layer Core: **100%**\nAll 3 items DONE. No outstanding.\n\n### SOW #6 — Payment & Commercial Loop (Stripe): **100%**\nAll items DONE. Live Stripe transactions completed. No outstanding.\n\n---",
+    "summary": "Part 1: Validation Sprint (SOW #1 core, #2 core, #6 full) — 100%",
+    "namespace": "project_galoras_sow_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_sow_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109484
+  },
+  {
+    "id": "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow",
+    "key": "part-2-phase-2-remaining-sow-1-completion-2-comple",
+    "content": "### SOW #1 Completion — Structured Data Layer: **100%**\n- All coaches have all 9 structured fields populated\n- No hard-coded content — all profiles render from DB\n- CoachProfile.tsx updated with coaching_style, primary_pillar, engagement_format\n- DB validation for proof_points JSONB applied\n\n### SOW #2 Completion — Product Layer: **75%**\n- DONE: Admin product management, coach-facing product CRUD (CoachProductsManager), coach profile editor\n- **Outstanding:**\n  1. Seed default products for all a",
+    "summary": "Part 2: Phase 2 Remaining (SOW #1 completion, #2 completion, #3, #4, #5) — ~65%",
+    "namespace": "project_galoras_sow_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_sow_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109484
+  },
+  {
+    "id": "mem-project_galoras_sow_status-budget-reference",
+    "key": "budget-reference",
+    "content": "- Sprint: 60 dev hrs / $4,193 net (CO 2.0 credit applied)\n- Phase 2 Remaining: 208.5 hrs / $21,723 net\n- Total Phase 2: 268.5 hrs / $25,916 net\n- SOW files: Google Drive > Galoras Project Files > Phase 2",
+    "summary": "Budget Reference",
+    "namespace": "project_galoras_sow_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_galoras_sow_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109485
+  },
+  {
+    "id": "mem-project_gtm_engine----",
+    "key": "-",
+    "content": "name: Autonomous GTM Engine\ndescription: Daily operating rhythm system at ~/daily-rhythm/ — autonomous cron blocks, PR/market signal targeting, Supabase backend, Netlify dashboard\ntype: project\noriginSessionId: d36d7873-eecd-4319-82c7-3963d64cc191\n---\nBuilt an autonomous GTM engine that runs via Claude Code cron jobs (6 blocks, Mon-Fri).\n\n**System location:** ~/daily-rhythm/\n**Dashboard:** https://gtm-engine-dashboard.netlify.app\n**Netlify site ID:** 79731762-da6f-4e6a-8e1a-7848dee02579\n**Supaba",
+    "summary": "---",
+    "namespace": "project_gtm_engine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_gtm_engine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109486
+  },
+  {
+    "id": "mem-project_mitesh_design_template----",
+    "key": "-",
+    "content": "name: Mitesh Landing Page — Design Template & Branding\ndescription: Compact coach landing page layout with Galoras branding, gradient text effects, and tight spacing\ntype: project\noriginSessionId: 51c2d241-85cb-45de-80f3-54fb6f167eb0\n---",
+    "summary": "---",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-layout-pattern",
+    "key": "layout-pattern",
+    "content": "**Hero Section (Compact):**\n- Padding: `py-4 sm:py-6` (minimal top/bottom spacing)\n- Grid: `md:grid-cols-2 gap-8` (left content / right image)\n- Internal spacing: `space-y-4` (tight vertical gaps between elements)\n- Items center-aligned in flex layout\n\n**Section Structure:**\n- Header: sticky, semi-transparent backdrop with gradient brand text\n- Hero: compact grid with coach profile + positioning statement\n- Trust bar: \"As seen with\" organizations (borders, compact)\n- Three pillar cards: `py-16` ",
+    "summary": "Layout Pattern",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-branding",
+    "key": "branding",
+    "content": "**Colors (from index.css):**\n- Primary Blue: `#59A4E5` (Galoras blue) / `--primary: 210 72% 62%`\n- Yellow Accent: `#FFD447` (Galoras yellow) / `--accent: 45 100% 64%`\n- Dark Background: `#0E0E0E` (near black)\n- Card Background: `#1a1a1a`\n- Border: `#2a2a2a`\n\n**Gradient Text Effect:**\n- CSS class: `.gradient-text-blue-yellow`\n- Definition: `display: inline-block; background: linear-gradient(to right, #60a5fa, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; backgroun",
+    "summary": "Branding",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-key-spacing-decisions",
+    "key": "key-spacing-decisions",
+    "content": "| Element | Padding/Gap | Rationale |\n|---------|-------------|-----------|\n| Hero section (top/bottom) | `py-4 sm:py-6` | Minimal dead space, content starts near header |\n| Hero grid columns | `gap-8` | Tight horizontal spacing for compact layout |\n| Hero internal content | `space-y-4` | Tight vertical spacing between title/subtitle/description |\n| Other sections | `py-16` | Standard padding for non-hero sections |\n| Trust bar | `py-8` | Compact organizational bar |\n| Section title spacing | `m",
+    "summary": "Key Spacing Decisions",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-component-patterns",
+    "key": "component-patterns",
+    "content": "**Product Cards:**\n- Type badge (colored), format label, enterprise tag\n- Title, outcome statement, target audience\n- Duration (with clock icon) + CTA button\n- Dynamic from Supabase `coach_products` table\n\n**Stat Bar (Hero):**\n- Three cards with top border (blue/yellow)\n- `1,000+ Leaders Coached`, `12+ Years Experience`, `Fortune 500 Client Calibre`\n\n**Three Pillar Cards:**\n- Numbered (1, 2, 3) with blue backgrounds\n- Service models: 1:1 Executive Coaching, Team & Culture Programs, Strategic Int",
+    "summary": "Component Patterns",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-content-philosophy",
+    "key": "content-philosophy",
+    "content": "- **Positioning**: \"Lead With Consciousness\" (Mitesh's authentic brand, not Galoras generic)\n- **Audience**: Executives, C-Suite, high-impact leaders\n- **Outcome Focus**: Speed, results, efficiency through conscious leadership\n- **Service Mix**: 1:1 coaching, team programs, strategic intensives, speaking",
+    "summary": "Content Philosophy",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-netlify-deployment",
+    "key": "netlify-deployment",
+    "content": "- Build: `npm run build`\n- Publish directory: `dist`\n- Cache headers: Long-term for `/assets/*`, no-cache for `/index.html`",
+    "summary": "Netlify Deployment",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_mitesh_design_template-browser-compatibility-notes",
+    "key": "browser-compatibility-notes",
+    "content": "- Gradient text requires `-webkit-` prefixes for Safari/Chrome support\n- Use CSS class approach (`.gradient-text-blue-yellow`) rather than inline styles for reliability\n- All animations defined in tailwind.config.ts (fade-in, fade-out, scale-in, slide-in-right, float, pulse-glow)",
+    "summary": "Browser Compatibility Notes",
+    "namespace": "project_mitesh_design_template",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_mitesh_design_template.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake----",
+    "key": "-",
+    "content": "name: WayLift AI Voice Intake\ndescription: ElevenLabs Conversational AI agent for roadside intake via Twilio phone number, with GPS capture and SMS dispatch flow\ntype: project\n---",
+    "summary": "---",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-architecture",
+    "key": "architecture",
+    "content": "**Voice:** ElevenLabs Conversational AI agent → connected to Twilio +1 647 697 3959\n**Job creation:** ElevenLabs calls `create_job` webhook tool → `intake-create-job` edge function\n**Location:** `capture-location` edge function (public, no-verify-jwt) → browser GPS → job update → price SMS\n**SMS replies:** `twilio-webhook` handles GPS text replies + APPROVE/CANCEL keywords",
+    "summary": "Architecture",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-elevenlabs-agent-config",
+    "key": "elevenlabs-agent-config",
+    "content": "- **Agent name:** WayLift Roadside Intake\n- **Voice:** Aria (multilingual) — user wants to change to Sarah (calm American English)\n- **System tools enabled:** End conversation, Detect language\n- **Custom tool:** `create_job` → POST `https://zyoszbmahxnfcokuzkuv.supabase.co/functions/v1/intake-create-job`\n- **Tool headers:** Authorization (Secret type, Bearer + Supabase anon key), Content-Type: application/json\n- **Body parameters:** caller_phone, caller_name, incident_type, vehicle_make, vehicle",
+    "summary": "ElevenLabs Agent Config",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-",
+    "key": "voice-intake-flow-9-steps-",
+    "content": "1. Language detection — \"Say English / Français / 廣東話\"\n2. Phone number — caller says it, agent repeats back\n3. Name — agent says \"Thank you, [name]\"\n4. Incident type — battery / flat tire / tow / lockout / accident\n5. Highway check — 400-series (401, 403, 404, 407, 410, 427, QEW, DVP, Gardiner)\n6. Blocking traffic — yes/no (urgent priority flag)\n7. Vehicle make/model\n8. Summary confirmation — agent reads back all details\n9. `create_job` tool called → job created → GPS link SMS sent",
+    "summary": "Voice Intake Flow (9 steps)",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-sms---gps-flow--post-call-",
+    "key": "sms-gps-flow-post-call-",
+    "content": "1. `intake-create-job` creates job (status: `pending_customer_confirmation`)\n2. SMS sent: \"Your request is confirmed. Tap link to share GPS: [capture-location URL]\"\n3. Customer taps link → `capture-location` page loads → one-tap GPS share\n4. GPS received → job updated → `calculate_job_price()` runs → price SMS sent\n5. SMS: \"Your confirmed cost is $X. Reply APPROVE to dispatch.\"\n6. Customer replies APPROVE → `twilio-webhook` → `payment_authorization_required`\n7. Dispatch begins",
+    "summary": "SMS + GPS Flow (post-call)",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
+    "key": "key-files-modified-2026-04-09-10-",
+    "content": "- `supabase/functions/intake-create-job/index.ts` — accepts caller_phone/caller_name aliases, highway/blocking fields, inline Twilio SMS\n- `supabase/functions/capture-location/index.ts` — NEW: public GPS capture page + coordinate receiver\n- `supabase/functions/twilio-webhook/index.ts` — added GPS/location reply detection (isLocationReply), originalBody passed to customer handler\n- `supabase/functions/send-customer-confirmation/index.ts` — updated SMS body (GPS instructions)",
+    "summary": "Key Files Modified (2026-04-09/10)",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-known-issues---pending",
+    "key": "known-issues-pending",
+    "content": "- ElevenLabs quota ran out (2026-04-10) — needs top-up on Starter plan ($5/mo) to resume testing\n- Voice label should be changed to `sarah` for calm American English\n- `capture-location` page renders as .txt download on some browsers — may need a custom domain for clean URL\n- SMS GPS address reply detection works but Google Maps URL detection needs testing\n- WhatsApp location sharing not yet implemented (future)\n- `APP_BASE_URL` Supabase secret not yet set (needed for payment link in SMS)",
+    "summary": "Known Issues / Pending",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_ai_voice_intake-daily-status-report",
+    "key": "daily-status-report",
+    "content": "Scheduled trigger: `trig_015vHr9TtQLfM5jqFuhdcr2a`\n- Runs daily at 5am ET (9am UTC)\n- Queries job_anomalies, stale jobs, detect_stale_jobs(), 24h activity, voice sessions, business rules, git log\n- Creates Gmail draft to barnes@thestrategypitch.com\n\n**Why:** ElevenLabs replaced Twilio TTS/STT due to accuracy and latency issues with the original voice-test function.\n**How to apply:** When debugging voice issues, check ElevenLabs Analysis tab first (quota, errors), then Supabase edge function logs",
+    "summary": "Daily Status Report",
+    "namespace": "project_rin_ai_voice_intake",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_ai_voice_intake.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109487
+  },
+  {
+    "id": "mem-project_rin_antifraud----",
+    "key": "-",
+    "content": "name: WayLift Anti-Fraud & Legal Protection\ndescription: GPS verification, price confirmation, and audit trail to prevent location manipulation and ensure legal compliance\ntype: project\n---\n\n**User concern (2026-04-09):** Callers could give a fake nearby location to get a cheaper quote, then actually be far away.",
+    "summary": "---",
+    "namespace": "project_rin_antifraud",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_antifraud.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109488
+  },
+  {
+    "id": "mem-project_rin_antifraud-required-protections",
+    "key": "required-protections",
+    "content": "1. **Voice estimate is NOT binding** — all SMS/app must say \"estimated cost\" or \"approximate\"\n2. **GPS confirmation required** — WhatsApp location share or SMS GPS link before dispatch\n3. **GPS vs spoken location check** — if mismatch > 2km, flag and recalculate price\n4. **Customer must APPROVE final price** — after GPS-confirmed recalculation, explicit APPROVE\n5. **Credit card authorized BEFORE dispatch** — no service without payment authorization\n6. **Driver confirms arrival** — photo of vehic",
+    "summary": "Required Protections",
+    "namespace": "project_rin_antifraud",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_antifraud.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109488
+  },
+  {
+    "id": "mem-project_rin_antifraud-price-flow--legally-sound-",
+    "key": "price-flow-legally-sound-",
+    "content": "1. Voice call → \"estimated cost approximately $X\" (non-binding)\n2. SMS/WhatsApp → \"Share your GPS location to confirm\"\n3. GPS received → real distance calculated → final price\n4. SMS → \"Your confirmed cost is $Y. Reply APPROVE to authorize.\"\n5. Customer APPROVE → credit card hold → dispatch",
+    "summary": "Price Flow (Legally Sound)",
+    "namespace": "project_rin_antifraud",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_antifraud.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109488
+  },
+  {
+    "id": "mem-project_rin_antifraud-data-retained-for-liability",
+    "key": "data-retained-for-liability",
+    "content": "- Voice call recording (Twilio)\n- Speech transcript (voice_call_sessions.incident_description)\n- GPS coordinates (jobs.gps_lat/gps_long)\n- All SMS messages (job_events with Twilio SIDs)\n- Price approval SMS (job_events: customer_approve_sms)\n- Credit card authorization (jobs.stripe_payment_intent_id)\n- Business rules at time of pricing (business_rules_audit)\n\n**How to apply:** Every price communicated before GPS confirmation must say \"estimate/approximate\". Final price only after GPS + customer ",
+    "summary": "Data Retained for Liability",
+    "namespace": "project_rin_antifraud",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_antifraud.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109488
+  },
+  {
+    "id": "mem-project_rin_beta----",
+    "key": "-",
+    "content": "name: RIN Beta — Project Overview\ndescription: RIN roadside dispatch platform — architecture, workflow, and key decisions\ntype: project\n---\n\nProject is at `/Users/b.lamoutlook.com/Downloads/rin-beta` (Vite + React + TypeScript + Supabase).\nDev server runs on `http://localhost:8080` (not 5173).\nSupabase project ID: `zyoszbmahxnfcokuzkuv`\nGitHub Repo: `https://github.com/barneslam/rin-beta`\nAudit log: `CLAUDE_AUDIT_LOG.md` in project root\n\n**Why:** Building a dispatcher-facing roadside incident ma",
+    "summary": "---",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_beta-correct-workflow--fully-implem",
+    "key": "correct-workflow-fully-implemented-as-of-2026-03-2",
+    "content": "1. `/intake` — Dispatcher creates job → customer SMS with vehicle, location, issue, can_vehicle_roll, and `/confirm/:jobId` link\n2. Customer confirms via SMS (YES) or web link → `pending_pricing`\n3. `/validation` → `/pricing` — Dispatcher sets price → SMS to customer \"reply APPROVE\"\n4. Customer replies APPROVE → Stripe auth → `payment_authorization_required` → `ready_for_dispatch`\n5. `/matching` — Driver Matching (open for `ready_for_dispatch` OR `payment_authorized`)\n6. `/offer` — Driver offer ",
+    "summary": "Correct workflow (fully implemented as of 2026-03-29)",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_beta-amendment-flow--new--2026-03-2",
+    "key": "amendment-flow-new-2026-03-29-",
+    "content": "- Dispatcher clicks \"Amend Job\" in Step 7 → sets revised price + reason → `customer_reapproval_pending`\n- `send-amendment-sms` fires automatically → customer receives YES/NO SMS for revised charge\n- Dispatcher simulates response via \"Customer Approved / Declined\" buttons",
+    "summary": "Amendment flow (new, 2026-03-29)",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_beta-driver-cancel-at-scene-flow--n",
+    "key": "driver-cancel-at-scene-flow-new-2026-03-29-",
+    "content": "- Dispatcher clicks \"Driver Unable to Complete\" OR driver texts CANCEL\n- → `driver_cancelled_at_scene`, driver unassigned, no compensation, customer notified",
+    "summary": "Driver cancel at scene flow (new, 2026-03-29)",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_beta-key-db-facts",
+    "key": "key-db-facts",
+    "content": "- `job_status` enum includes: `pending_completion_approval`, `driver_cancelled_at_scene`\n- `completed_at TIMESTAMPTZ` column exists on jobs table (added 2026-03-29)\n- Payment bypass: sets `stripe_payment_intent_id = bypass_test_{timestamp}` — `complete-job` detects prefix and skips Stripe",
+    "summary": "Key DB facts",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_beta-test-data",
+    "key": "test-data",
+    "content": "- Customer: Peter, user_id=a5f0d336-8575-4117-b223-ebf5110b15ed, phone=+16472847417\n- Driver: Test Tow Driver (Mike Chen / FastTow Toronto), driver_id=0ecf6a1e-6109-494c-aff8-66451ea63f41, phone=+16474731338\n- Truck: Standard Flatbed (truck_type_id: 65e4cdc1-0b83-41ec-aa99-a28ae990eaa3), status available\n- Incident types Tow/Accident/Winch/Stuck Vehicle require Standard Flatbed; Battery/Flat Tire/Fuel/Lockout accept all trucks",
+    "summary": "Test data",
+    "namespace": "project_rin_beta",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_beta.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109489
+  },
+  {
+    "id": "mem-project_rin_business_rules----",
+    "key": "-",
+    "content": "name: RIN Business Rules & Pricing Design\ndescription: Dispatch rules, standard pricing, workflow timeouts, and special vehicle handling from Design Criteria doc (2026-04-09)\ntype: project\n---\n\nSource: Design criteria.pdf (Google Drive)",
+    "summary": "---",
+    "namespace": "project_rin_business_rules",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_business_rules.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_business_rules-dispatch-rules",
+    "key": "dispatch-rules",
+    "content": "- Max radius: 50km, ideal 15-20km (nearest first)\n- Offer timeout: 2 minutes (currently 10min for testing)\n- Max dispatch attempts before manual escalation: 3\n- Min reliability score: 3 stars\n- Priority: nearest first → highest rated → fairness rotation (Uber-like model)",
+    "summary": "Dispatch Rules",
+    "namespace": "project_rin_business_rules",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_business_rules.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_business_rules-standard-pricing",
+    "key": "standard-pricing",
+    "content": "- Combination of: incident type + distance\n- No surcharge for can_vehicle_roll=false\n- Minimum job fee / cancellation fee: 50% of total job cost\n- Peak hour pricing: rush hour + night pricing\n- Weekends: same as weekdays\n- Auto-calculated by system; dispatcher can manually override on escalation",
+    "summary": "Standard Pricing",
+    "namespace": "project_rin_business_rules",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_business_rules.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_business_rules-workflow-timeouts",
+    "key": "workflow-timeouts",
+    "content": "- Customer confirmation: 5 minutes\n- Customer price approval: 2-3 minutes\n- Unpaid job auto-cancel: 5-7 minutes\n- Card auto-charged when driver clicks complete\n- Auto-dispatch after payment (no dispatcher click needed)",
+    "summary": "Workflow Timeouts",
+    "namespace": "project_rin_business_rules",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_business_rules.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_business_rules-special-vehicles",
+    "key": "special-vehicles",
+    "content": "- Definition: exceeding weight, luxury, missing wheels, modifications, unique situations (ditch, underground parking, curb, parallel parked no neutral/keys)\n- Examples: heavy trucks, motorcycles, EVs, classic cars, oversized\n- Always require special truck with right equipment\n- Surcharge for: higher-end vehicle, curb weight, extra equipment\n\n**How to apply:** Build pricing_config table with per-incident-type base rates, distance multipliers, time-of-day multipliers, and special vehicle surcharge",
+    "summary": "Special Vehicles",
+    "namespace": "project_rin_business_rules",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_business_rules.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_caller_id----",
+    "key": "-",
+    "content": "name: WayLift Caller ID Capture\ndescription: Auto-capture phone from call display; prompt for entry if blocked/private\ntype: project\n---\n\n**Current:** Already saving `From` field from Twilio as `caller_phone` in `voice_call_sessions`.\n\n**Enhancement needed:** If caller ID is blocked/anonymous, add an IVR step asking caller to enter their 10-digit phone number via keypad (DTMF).\n\n**Flow:**\n1. Call comes in → check `From` field\n2. If valid phone number → proceed to greeting\n3. If `anonymous`, `Res",
+    "summary": "---",
+    "namespace": "project_rin_caller_id",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_caller_id.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109491
+  },
+  {
+    "id": "mem-project_rin_customer_app----",
+    "key": "-",
+    "content": "name: RIN Customer Mobile App\ndescription: Expo/React Native customer-facing app with SMS fallback, real-time tracking, and Supabase integration\ntype: project\n---\n\nCustomer app lives at `/Users/b.lamoutlook.com/Downloads/rin-beta/rin-customer/` (Expo + TypeScript).\n\n**Why:** Replace SMS-only customer interactions with a mobile app while keeping SMS as automatic fallback for soft launch.\n\n**How to apply:** All customer-facing screens use the same Supabase edge functions and DB tables as the dispa",
+    "summary": "---",
+    "namespace": "project_rin_customer_app",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_customer_app.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109493
+  },
+  {
+    "id": "mem-project_rin_customer_app-architecture",
+    "key": "architecture",
+    "content": "- Expo SDK 54, React Native, TypeScript\n- Same Supabase backend as dispatcher web (project `zyoszbmahxnfcokuzkuv`)\n- Deep link: `rin-customer://job/:jobId` (from SMS links)\n- Real-time updates via Supabase `postgres_changes` subscription\n- SMS fallback: all edge functions still send SMS regardless of app state",
+    "summary": "Architecture",
+    "namespace": "project_rin_customer_app",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_customer_app.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109493
+  },
+  {
+    "id": "mem-project_rin_customer_app-screens--status-based-routing-",
+    "key": "screens-status-based-routing-",
+    "content": "1. `JobConfirmScreen` — confirm vehicle/location details (replaces SMS YES)\n2. `PriceApprovalScreen` — approve quote or amendment (replaces SMS APPROVE)\n3. `TrackingScreen` — real-time driver tracking with progress steps\n4. `CompletionScreen` — confirm service done (replaces SMS CONFIRM) → calls complete-job Phase 2\n5. `ReceiptScreen` — final receipt after completion",
+    "summary": "Screens (status-based routing)",
+    "namespace": "project_rin_customer_app",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_customer_app.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109493
+  },
+  {
+    "id": "mem-project_rin_customer_app-db-additions--2026-04-08-",
+    "key": "db-additions-2026-04-08-",
+    "content": "- `users.notification_channel` (default 'sms', options: 'sms', 'app', 'both')\n- `users.push_token`, `users.push_token_platform`, `users.app_installed_at`\n- `notification_log` table — tracks delivery + fallback attempts\n- `job_anomalies` table — production monitoring (trigger on job_events)\n- `validate_job_state()` trigger — real-time state machine validation\n- `detect_stale_jobs()` pg_cron — runs every 5 minutes",
+    "summary": "DB additions (2026-04-08)",
+    "namespace": "project_rin_customer_app",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_customer_app.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109493
+  },
+  {
+    "id": "mem-project_rin_customer_app-todo",
+    "key": "todo",
+    "content": "- Stripe payment sheet integration (currently bypass)\n- Push notification registration (expo-notifications)\n- Phone-based auth (OTP via Twilio)\n- Driver mobile app (separate project)",
+    "summary": "TODO",
+    "namespace": "project_rin_customer_app",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_customer_app.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109493
+  },
+  {
+    "id": "mem-project_rin_edge_functions----",
+    "key": "-",
+    "content": "name: RIN Beta — Edge Functions Reference\ndescription: All deployed Supabase edge functions, their purpose, and current version as of 2026-04-03\ntype: project\n---\n\nAll functions deployed to project `zyoszbmahxnfcokuzkuv`. All use direct Twilio (btoa Basic auth), NOT the Lovable gateway.\n\n| Function | Version | Purpose |\n|---|---|---|\n| `intake-create-job` | v9 | Creates job + user, sends confirmation SMS to customer |\n| `send-customer-confirmation` | v18 | Sends job summary SMS with `/confirm/:j",
+    "summary": "---",
+    "namespace": "project_rin_edge_functions",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_edge_functions.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109494
+  },
+  {
+    "id": "mem-project_rin_gps_location----",
+    "key": "-",
+    "content": "name: RIN/WayLift GPS Location via SMS Link\ndescription: After voice call, send SMS with GPS sharing link for accurate location capture\ntype: project\n---\n\n**Idea from user (2026-04-09):** Instead of relying on speech-to-text for addresses, send the caller an SMS with a GPS location-sharing link after the voice call captures name/incident/vehicle.\n\n**Why:** Street names spoken in non-English languages get mangled by STT (e.g., \"Yonge and Dundas\" in Cantonese → \"Young and Dungeon\"). GPS coordinate",
+    "summary": "---",
+    "namespace": "project_rin_gps_location",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_gps_location.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109495
+  },
+  {
+    "id": "mem-project_rin_margin----",
+    "key": "-",
+    "content": "name: RIN Platform Margin\ndescription: 20% margin on all customer-facing prices to support platform operations\ntype: project\noriginSessionId: 464da765-e550-4af0-8172-5ebd4dfec018\n---\nRIN takes 20% commission from the customer-facing price. The customer price is NOT marked up — it IS the calculated rate. RIN's cut comes from the driver side.\n\n**Why:** Barnes directive (2026-04-10). Hakim confirmed industry norm is 25% max commission; agencies charging 40-50% are considered scams. RIN's 20% is com",
+    "summary": "---",
+    "namespace": "project_rin_margin",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_margin.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109496
+  },
+  {
+    "id": "mem-project_rin_monitoring----",
+    "key": "-",
+    "content": "name: RIN Production Monitoring\ndescription: Real-time state validation trigger, stale job detection, and anomaly tracking deployed 2026-04-08\ntype: project\n---",
+    "summary": "---",
+    "namespace": "project_rin_monitoring",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_monitoring.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109498
+  },
+  {
+    "id": "mem-project_rin_monitoring-components",
+    "key": "components",
+    "content": "1. **`validate_job_state()`** — PL/pgSQL trigger on `job_events` (AFTER INSERT)\n   - Validates state transitions against allowed map\n   - Checks required fields at key stages (incident_type_id before dispatch, customer_phone before completion)\n   - Logs to `job_anomalies` table with severity (info/warning/critical)\n\n2. **`detect_stale_jobs()`** — PL/pgSQL function, scheduled via pg_cron every 5 minutes\n   - Finds jobs in non-terminal status older than 30 minutes\n   - Escalates severity: 30-60min",
+    "summary": "Components",
+    "namespace": "project_rin_monitoring",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_monitoring.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109498
+  },
+  {
+    "id": "mem-project_rin_monitoring-known-limitation",
+    "key": "known-limitation",
+    "content": "- The trigger fires on `job_events` inserts, not direct `jobs` table updates. If code updates `jobs.job_status` without inserting a `job_events` row, the transition won't be validated.",
+    "summary": "Known Limitation",
+    "namespace": "project_rin_monitoring",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_monitoring.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109498
+  },
+  {
+    "id": "mem-project_rin_price_approval_flow----",
+    "key": "-",
+    "content": "name: RIN Price Approval Flow — Required Change\ndescription: Driver price adjustments must require customer approval before work continues, with driver acknowledgment\ntype: project\n---\n\n**Current behavior (broken):** When driver adjusts price on scene via `driver-adjust-amount`, the price updates silently and work continues. Customer is not required to approve. Driver doesn't get confirmation.\n\n**Required behavior:**\n1. Driver adjusts price → job status changes to `customer_reapproval_pending` (",
+    "summary": "---",
+    "namespace": "project_rin_price_approval_flow",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_price_approval_flow.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109498
+  },
+  {
+    "id": "mem-project_rin_pricing_agent----",
+    "key": "-",
+    "content": "name: RIN Agentic Pricing System\ndescription: Two-tier AI pricing agent (simple + tool-use), quote tool at rintowquote.online, 35-scenario test results with 5 bugs found\ntype: project\noriginSessionId: 464da765-e550-4af0-8172-5ebd4dfec018\n---",
+    "summary": "---",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_pricing_agent-architecture",
+    "key": "architecture",
+    "content": "- **pricing-agent** (router) → detects complexity → routes to simple or tools tier\n- **pricing-agent-simple** (Option A) — single-call Claude, fetches all data upfront, ~2-3s\n- **pricing-agent-tools** (Option B) — agentic tool-use with 7 DB lookup tools, multi-step reasoning, ~5-10s\n- Auto-escalation on: multiple surcharges, >50km, complex incidents, special notes, low confidence",
+    "summary": "Architecture",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_pricing_agent-quote-tool",
+    "key": "quote-tool",
+    "content": "- URL: https://rintowquote.online\n- Repo: github.com/barneslam/rin-price-quote (separate from rin-beta)\n- Hosting: Netlify (auto-deploy from main)\n- Auth: quote_users table with login/register/forgot password\n- Legal: Disclaimer v2.0 with PIPEDA, AI disclosure, confidentiality, GPS consent (13 sections)\n- Logging: quote_users, quote_disclaimer_agreements, quote_usage_log, pricing_agent_log, quote_history",
+    "summary": "Quote Tool",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_pricing_agent-test-results--2026-04-10----35",
+    "key": "test-results-2026-04-10-35-scenarios",
+    "content": "- 40% pass rate (4 match + 10 close, 21 divergent)\n- 5 critical bugs: simple tier price field wrong, undefined var crash, long-distance override too aggressive, night multiplier too high, lbs/kg confusion\n- Worst: Medium Duty (+72% over Hakim), Exotic vehicles underpriced 29-44%\n- Report: /Users/b.lamoutlook.com/Downloads/rin_pricing_test_report.html",
+    "summary": "Test Results (2026-04-10) — 35 scenarios",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim",
+    "key": "key-pricing-gaps-vs-hakim",
+    "content": "- Tow base should be $175 not $150\n- Battery Boost should be $75-95 not $50\n- Flat Tire should be $100-150 not $75\n- Underground should be $250 not $125\n- Heavy Duty ($350 base) missing entirely\n- Enclosed flatbed surcharge ($150-300) missing\n- Night should be flat premium not 1.4x multiplier",
+    "summary": "Key Pricing Gaps vs Hakim",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_pricing_agent-next-steps",
+    "key": "next-steps",
+    "content": "- Fix P1 bugs (code), P2 base rates, P3 night/distance pricing\n- Add: Heavy Duty, enclosed flatbed, AWD dollies, per-parking-level, highway shoulder surcharges\n- Driver PWA app (not native — no code sharing with external contractors)\n- GPS capture + transaction logging in quote tool\n\n**Why:** Hakim's real-world rates from his \"Note to Barnes\" document are the ground truth. System must match his operational experience.",
+    "summary": "Next Steps",
+    "namespace": "project_rin_pricing_agent",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_pricing_agent.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109499
+  },
+  {
+    "id": "mem-project_rin_test_routine----",
+    "key": "-",
+    "content": "name: RIN Test Routine & Skill\ndescription: Autonomous test routine for RIN dispatch — /rin-test skill, test methodology, findings from 2026-04-08 session\ntype: project\n---",
+    "summary": "---",
+    "namespace": "project_rin_test_routine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_test_routine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109500
+  },
+  {
+    "id": "mem-project_rin_test_routine--rin-test-skill",
+    "key": "-rin-test-skill",
+    "content": "Located at `~/.claude/skills/rin-test/SKILL.md`. Invoked with `/rin-test full|happy|exceptions`.\n\n**Why:** Codifies the entire manual test process into a repeatable, autonomous Claude Code skill. All edge function calls via curl, SMS simulations via direct DB updates, assertions via SQL queries.\n\n**How to apply:** When running RIN tests, always use `/rin-test` rather than manual steps. The skill has the correct field names, test data IDs, and assertion queries.",
+    "summary": "/rin-test Skill",
+    "namespace": "project_rin_test_routine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_test_routine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109500
+  },
+  {
+    "id": "mem-project_rin_test_routine-key-testing-facts--2026-04-08-",
+    "key": "key-testing-facts-2026-04-08-",
+    "content": "- `intake-create-job` requires **camelCase** field names (vehicleMake, not vehicle_make) — v10 now accepts both\n- `incidentTypeId` UUID must be provided OR `incidentType` name string (v10 resolves names)\n- `accept-driver-offer` and `twilio-webhook` require JWT auth — simulate via direct DB for testing\n- Payment bypass: `stripe_payment_intent_id = 'bypass_test_{timestamp}'`\n- `complete-job` Phase 1 requires `driverId` param; Phase 2 only needs `jobId` + `confirmed: true`\n- `create-dispatch-offer`",
+    "summary": "Key Testing Facts (2026-04-08)",
+    "namespace": "project_rin_test_routine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_test_routine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109500
+  },
+  {
+    "id": "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08",
+    "key": "bugs-found-fixed-2026-04-08-",
+    "content": "1. intake-create-job: snake_case fields silently ignored → added dual-format support\n2. intake-create-job: no incident type name resolution → added ilike lookup\n3. intake-create-job: duplicate customer_phone key → removed duplicate",
+    "summary": "Bugs Found & Fixed (2026-04-08)",
+    "namespace": "project_rin_test_routine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_test_routine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109500
+  },
+  {
+    "id": "mem-project_rin_test_routine-production-monitor--deployed-2",
+    "key": "production-monitor-deployed-2026-04-08-",
+    "content": "- `validate_job_state()` trigger on `job_events` — checks transitions + required fields\n- `detect_stale_jobs()` via pg_cron every 5 minutes\n- `job_anomalies` table stores all findings\n- First run caught 42 stale jobs + 2 real production gaps",
+    "summary": "Production Monitor (deployed 2026-04-08)",
+    "namespace": "project_rin_test_routine",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_test_routine.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109500
+  },
+  {
+    "id": "mem-project_rin_voice_gaps----",
+    "key": "-",
+    "content": "name: RIN Voice IVR — Critical Data Gaps\ndescription: DTMF IVR works but doesn't capture location, name, vehicle info. Need speech-based intake with ElevenLabs.\ntype: project\n---",
+    "summary": "---",
+    "namespace": "project_rin_voice_gaps",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_gaps.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic",
+    "key": "current-state-dtmf-ivr-voice-test-function-",
+    "content": "Works but only captures:\n- Incident type (1-6)\n- Location type (highway/street/parking)\n- Can vehicle roll (yes/no)",
+    "summary": "Current State (DTMF IVR — voice-test function)",
+    "namespace": "project_rin_voice_gaps",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_gaps.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_gaps-missing-critical-data",
+    "key": "missing-critical-data",
+    "content": "- Caller name\n- Exact location (address, intersection, highway marker/km)\n- Vehicle make, model, year\n- Vehicle condition/situation details\n- Number of passengers\n- Special circumstances (underground parking, curb, ditch, etc.)\n\n**Why this matters:** Dispatcher cannot assess cost, match right truck, or give driver accurate directions without this info.",
+    "summary": "Missing Critical Data",
+    "namespace": "project_rin_voice_gaps",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_gaps.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_gaps-solution--speech-based-intake",
+    "key": "solution-speech-based-intake",
+    "content": "Use the existing `twilio-voice-intake` → `extract-intake-turn` pipeline with:\n1. **ElevenLabs** for natural multilingual TTS (user already has account)\n2. **Twilio speech recognition** for STT (paid account now active)\n3. **Claude Haiku** for structured extraction (already built in extract-intake-turn)\n\nThe full pipeline already exists and was tested on Apr 3 — just needs ElevenLabs wired in for TTS and the speech Gather re-enabled.",
+    "summary": "Solution: Speech-Based Intake",
+    "namespace": "project_rin_voice_gaps",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_gaps.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_gaps-architecture",
+    "key": "architecture",
+    "content": "```\nCustomer speaks → Twilio STT → raw transcript\n  → Claude Haiku extracts: name, location, vehicle, incident, condition\n  → Confidence scoring (0.85 high, 0.65 medium)\n  → Missing fields? → ElevenLabs generates follow-up question audio\n  → Twilio plays audio → customer speaks again → loop\n  → All fields collected → finalize-intake-to-job → real job created\n```\n\n**How to apply:** Next session, wire ElevenLabs for TTS output + re-enable Twilio speech input. The extraction pipeline (extract-intak",
+    "summary": "Architecture",
+    "namespace": "project_rin_voice_gaps",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_gaps.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_v2_design----",
+    "key": "-",
+    "content": "name: WayLift Voice IVR v2 — Guided Questions\ndescription: Structured step-by-step voice intake replacing open-ended approach. One question at a time, confirm each answer.\ntype: project\n---\n\n**Current approach (v1):** One open-ended question \"how can I help you?\" → caller says everything at once → STT may miss details → follow-up needed.\n\n**New approach (v2):** Guided questions, one at a time, in caller's language. Confirm each answer before moving on.",
+    "summary": "---",
+    "namespace": "project_rin_voice_v2_design",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_v2_design.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_v2_design-question-flow",
+    "key": "question-flow",
+    "content": "1. **Language selection** (DTMF: 1=English, 2=French, 3=Cantonese)\n2. **Phone number check** → \"I have your number as 647-473-1338, is that correct?\" → if blocked, ask to enter\n3. **\"May I have your name?\"** → capture name → repeat back \"Thank you, [name]\"\n4. **\"What's wrong with your vehicle?\"** → prompt examples: \"Battery, flat tire, tow, lockout, or accident?\" → confirm\n5. **\"Are you on a major highway, like the 400 series?\"** → yes/no → if yes \"which highway?\"\n6. **\"Are you blocking traffic?",
+    "summary": "Question Flow",
+    "namespace": "project_rin_voice_v2_design",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_v2_design.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_v2_design-key-design-principles",
+    "key": "key-design-principles",
+    "content": "- One question at a time — short answers, easier for STT\n- Repeat each answer back for confirmation\n- Detect language once, speak that language throughout\n- \"Blocking traffic\" = higher dispatch priority\n- 400-series highways (401, 403, 404, 407, 410, 427, QEW) = highway surcharge rules\n- GPS from WhatsApp or SMS link — never rely on spoken addresses",
+    "summary": "Key Design Principles",
+    "namespace": "project_rin_voice_v2_design",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_v2_design.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_voice_v2_design-toronto-specific",
+    "key": "toronto-specific",
+    "content": "- 400-series highways: 401, 403, 404, 407, 410, 427, QEW, DVP, Gardiner\n- Common areas: downtown core, Scarborough, North York, Mississauga, Brampton\n- Rush hour: 7-9am, 4-7pm weekdays (pricing multiplier)\n\n**How to apply:** Rebuild voice-test function with step-by-step flow. Each step = separate ivr_step in voice_call_sessions. ElevenLabs for TTS quality, Twilio STT for speech capture.",
+    "summary": "Toronto-Specific",
+    "namespace": "project_rin_voice_v2_design",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_voice_v2_design.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-project_rin_whatsapp_location----",
+    "key": "-",
+    "content": "name: WayLift WhatsApp + GPS Location Strategy\ndescription: WhatsApp callers share location natively; regular callers get SMS with GPS link as fallback\ntype: project\n---\n\n**Strategy (from user, 2026-04-09):**\n- WhatsApp users → request location share directly in WhatsApp (built-in feature, instant GPS)\n- Regular phone callers → send SMS with GPS button/link after voice call\n- If GPS disabled → fall back to address from speech\n\n**Why:** Most people have WhatsApp. WhatsApp location sharing is fric",
+    "summary": "---",
+    "namespace": "project_rin_whatsapp_location",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/project_rin_whatsapp_location.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109501
+  },
+  {
+    "id": "mem-reference_calendly_links----",
+    "key": "-",
+    "content": "name: Calendly booking links for GTM\ndescription: Barnes Lam's Calendly links used in the autonomous GTM engine for outreach and content CTAs\ntype: reference\noriginSessionId: d36d7873-eecd-4319-82c7-3963d64cc191\n---\n**Calendly account:** Barnes Lam (The Strategy Pitch) — info@thestrategypitch.com\n\n**GTM pipeline links:**\n- **Execution Readiness Check (15 min):** https://calendly.com/barnes-lam/free-consultation-24-hour-business-sprint — first touch CTA, content posts, offer doc\n- **GTM Execution",
+    "summary": "---",
+    "namespace": "reference_calendly_links",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/reference_calendly_links.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109502
+  },
+  {
+    "id": "mem-security_audit_xss_auth----",
+    "key": "-",
+    "content": "name: Security Audit — XSS, Auth, Input Validation\ndescription: Critical vulnerabilities found: DOM-based XSS in Galoras, unauthenticated RIN dispatch API, no input validation\ntype: project\n---",
+    "summary": "---",
+    "namespace": "security_audit_xss_auth",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/security_audit_xss_auth.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109503
+  },
+  {
+    "id": "mem-security_audit_xss_auth-critical-vulnerabilities--2026",
+    "key": "critical-vulnerabilities-2026-03-30-",
+    "content": "### 1. DOM-based XSS in Galoras MVP App\n**File:** `Downloads/Galoras_MVP_Netlify_Demo_v3_Admin/assets/js/app.js:35`\n**Risk:** HIGH — localStorage data (name, photo, id) flows directly to innerHTML without HTML escaping\n**Fix:** Replace innerHTML with textContent, or sanitize with DOMPurify before DOM insertion\n**Why:** Malicious data in localStorage (via compromised source or MITM) executes arbitrary JavaScript\n\n### 2. Missing Authentication on RIN Dispatch Bridge\n**File:** `Downloads/bridge.js:",
+    "summary": "Critical Vulnerabilities (2026-03-30)",
+    "namespace": "security_audit_xss_auth",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/security_audit_xss_auth.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109503
+  },
+  {
+    "id": "mem-security_audit_xss_auth-action-items",
+    "key": "action-items",
+    "content": "1. ✅ Run comprehensive security audit (completed 2026-03-30)\n2. ⏳ Implement input validation on dispatch endpoints (priority: immediate)\n3. ⏳ Add authentication to dispatch API (priority: immediate)\n4. ⏳ Refactor DOM rendering to use safe methods (priority: high)\n5. ⏳ Replace execSync patterns with execFile or remove (priority: medium)",
+    "summary": "Action Items",
+    "namespace": "security_audit_xss_auth",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com/memory/security_audit_xss_auth.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109503
+  },
+  {
+    "id": "mem-MEMORY-galoras-dev---memory-index",
+    "key": "galoras-dev-memory-index",
+    "content": "- [Product System Rebuild](product_system_rebuild.md) — SOW rebuild on 2026-04-08: schema, types, tags, Stripe, directory UX, auto-tagging. HAS REVERT TODOs ($1 test prices)\n- [Supabase Setup](supabase_setup.md) — Project IDs, URLs, keys, migration state\n- [User Profile](user_profile.md) — Barnes Lam coach profile and preferences\n- [Project Workflow](project_workflow.md) — Lovable disconnected; Claude Code + GitHub is the workflow\n- [Featured Coaches Tuning](featured_coaches_tuning.md) — Approve",
+    "summary": "Galoras Dev — Memory Index",
+    "namespace": "core",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/MEMORY.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109504
+  },
+  {
+    "id": "mem-domain_migration_plan----",
+    "key": "-",
+    "content": "name: Domain Migration Plan (uat-galoras.site → galoras.com)\ndescription: Pre-migration checklist for galoras.com cutover — DNS, Netlify, Supabase, Resend, Stripe, M365 mail\ntype: project\noriginSessionId: a1ea2840-7606-409c-81b2-8af2f454626e\n---",
+    "summary": "---",
+    "namespace": "domain_migration_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/domain_migration_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109505
+  },
+  {
+    "id": "mem-domain_migration_plan-current-setup",
+    "key": "current-setup",
+    "content": "- galoras.com website is currently hosted on **Wix**\n- galoras.com email is on **Microsoft 365**\n- DNS is likely managed by Wix (need to confirm — could be external registrar)\n- Wix manages both the website AND DNS — migrating away means either:\n  - (A) Transfer DNS to an external provider (Cloudflare, Netlify DNS, registrar) OR\n  - (B) Point Wix DNS records to Netlify (if Wix allows custom A/CNAME on their DNS)",
+    "summary": "Current Setup",
+    "namespace": "domain_migration_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/domain_migration_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109505
+  },
+  {
+    "id": "mem-domain_migration_plan-key-fact--mail-is-microsoft-36",
+    "key": "key-fact-mail-is-microsoft-365",
+    "content": "- MX records must stay pointing to Microsoft 365\n- Resend is for transactional/notification emails only (via API, not SMTP)\n- When adding Resend DNS records (SPF/DKIM), must merge with existing M365 SPF record — do NOT overwrite",
+    "summary": "Key Fact: Mail is Microsoft 365",
+    "namespace": "domain_migration_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/domain_migration_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109505
+  },
+  {
+    "id": "mem-domain_migration_plan-dns-records-needed--galoras-co",
+    "key": "dns-records-needed-galoras-com-",
+    "content": "- MX → Microsoft 365 (keep existing, do not touch)\n- SPF → must include BOTH `include:spf.protection.outlook.com` AND Resend's include\n- CNAME for DKIM → Resend will provide\n- A/ALIAS → Netlify load balancer (for website — replaces Wix)\n- CNAME www → netlify site\n- Autodiscover CNAME → M365 (if currently set, preserve it)",
+    "summary": "DNS Records Needed (galoras.com)",
+    "namespace": "domain_migration_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/domain_migration_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109505
+  },
+  {
+    "id": "mem-domain_migration_plan-systems-to-update",
+    "key": "systems-to-update",
+    "content": "1. **Domain registrar** — A/ALIAS + www CNAME for Netlify (keep MX for M365)\n2. **Netlify** — add galoras.com as primary domain, HTTPS\n3. **Supabase auth** — site_url + redirect_urls in dashboard\n4. **Supabase edge functions** — 7 functions with hardcoded uat-galoras.site\n5. **Supabase email templates** — magic_link.html\n6. **Resend** — verify galoras.com domain (careful with SPF merge)\n7. **Stripe** — webhook URL, success/cancel URLs\n8. **supabase/config.toml** — site_url, redirect_urls\n\n**Why:",
+    "summary": "Systems to Update",
+    "namespace": "domain_migration_plan",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/domain_migration_plan.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109505
+  },
+  {
+    "id": "mem-featured_coaches_tuning----",
+    "key": "-",
+    "content": "name: Featured Coaches Final Tuning\ndescription: Approved scale/margin values for the 3 featured coaches on the homepage\ntype: project\n---\n\nFinal approved state (commit c02e5b0):\n\n- **Barnes Lam** — `scale(0.88)`, `transformOrigin: top center`, `marginLeft: -96px`\n- **Conor McGowan Smyth** — `scale(1.0)`, reference coach, `marginLeft: -96px`\n- **Mitesh Kapadia** — `scale(1.05)`, `transformOrigin: top center`, `marginLeft: -170px` (closer to Conor)\n\nAll use: `h-[420px] object-cover object-top`\n\n*",
+    "summary": "---",
+    "namespace": "featured_coaches_tuning",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/featured_coaches_tuning.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109506
+  },
+  {
+    "id": "mem-product_system_rebuild----",
+    "key": "-",
+    "content": "name: Product System SOW Rebuild (2026-04-08)\ndescription: Complete product system rebuild per SOW spec — schema, types, tags, Stripe, directory UX, auto-tagging, 3 booking paths, admin alerts\ntype: project\n---",
+    "summary": "---",
+    "namespace": "product_system_rebuild",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/product_system_rebuild.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109506
+  },
+  {
+    "id": "mem-product_system_rebuild-what-was-done--2026-04-08-",
+    "key": "what-was-done-2026-04-08-",
+    "content": "### Schema Rebuild (migration: 20260408100000_product_system_sow_rebuild)\n- Aligned `coach_products` to SOW spec\n- Renamed: `who_its_for` → `target_audience` (text[]), `format` → `delivery_format`, `price_cents` → `price_amount`\n- Dropped: `summary`, `what_you_get`, `pricing_band`, `price_display`, `cta_label`, `cta_url`, `duration_label`\n- Check constraints on: `booking_mode` (enquiry|stripe), `price_type` (fixed|range|enquiry), `delivery_format`, `visibility_scope`, `product_type`\n\n### Product",
+    "summary": "What Was Done (2026-04-08)",
+    "namespace": "product_system_rebuild",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/product_system_rebuild.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109506
+  },
+  {
+    "id": "mem-product_system_rebuild-revert-before-go-live",
+    "key": "revert-before-go-live",
+    "content": "- Discovery Session: $1 (100) → $250 (25000) in CoachProfile.tsx AND create-payment-intent\n- Barnes' GTM Sprint: $1 → real price or remove\n- Verify STRIPE_WEBHOOK_SECRET is set in Supabase secrets\n\n**Why:** Full product system was rebuilt from SOW spec. Three booking paths implemented per commercial workflow. Admin alerts ensure no application or request goes unnoticed.\n\n**How to apply:** Reference for any future product/tag/directory/notification work. Check revert TODOs before go-live.",
+    "summary": "REVERT Before Go-Live",
+    "namespace": "product_system_rebuild",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/product_system_rebuild.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109506
+  },
+  {
+    "id": "mem-project_status----",
+    "key": "-",
+    "content": "name: Project Status\ndescription: Validation Sprint and Phase 2 SOW completion status, what's done and what's next\ntype: project\n---",
+    "summary": "---",
+    "namespace": "project_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/project_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109507
+  },
+  {
+    "id": "mem-project_status-sow-completion-as-of-2026-04-0",
+    "key": "sow-completion-as-of-2026-04-07",
+    "content": "| SOW | Area | Status |\n|-----|------|--------|\n| #1 | Structured Data Layer | ~85% |\n| #2 | Product Layer | ~40% |\n| #3 | Workflow & Admin | ~80% |\n| #4 | Public Layer | ~70% |\n| #5 | Agent-Ready Infrastructure | ~50% |\n| #6 | Payment & Commercial Loop | ~85% (blocked on Stripe key) |\n\n---\n\n### What's been built (cumulative)\n\n**SOW #1**\n- coaches table: all core structured fields, slug, lifecycle_status, tier, audience\n- 7 audit timestamps + reviewer fields added via migration (fc00428):\n  subm",
+    "summary": "SOW Completion as of 2026-04-07",
+    "namespace": "project_status",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/project_status.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109508
+  },
+  {
+    "id": "mem-project_workflow----",
+    "key": "-",
+    "content": "name: Project Workflow\ndescription: How galoras-dev is built and deployed — Lovable disconnected, Claude Code is primary\ntype: project\n---\n\nLovable has been intentionally disconnected as of 2026-04-05. Do not suggest pasting files into Lovable or using Lovable's AI features.\n\n**Source of truth:** GitHub repo `barneslam/galoras-dev`\n**Primary tool:** Claude Code (this tool)\n**Deployment:** To be confirmed — Lovable was previously handling deployment to uat-galoras.site\n\n**Why:** Lovable kept reve",
+    "summary": "---",
+    "namespace": "project_workflow",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/project_workflow.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109509
+  },
+  {
+    "id": "mem-skills_created----",
+    "key": "-",
+    "content": "name: Skills Created (2026-04-08)\ndescription: Three Galoras automation skills created for coach pipeline, customer workflow, and platform ops\ntype: project\n---",
+    "summary": "---",
+    "namespace": "skills_created",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/skills_created.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109509
+  },
+  {
+    "id": "mem-skills_created-galoras-skills--created-2026-0",
+    "key": "galoras-skills-created-2026-04-08-",
+    "content": "| Skill | Invocation | Purpose |\n|---|---|---|\n| Coach Pipeline | `/coach-pipeline` | Review, approve, onboard, tag, publish coaches |\n| Customer Workflow | `/customer-flow` | Match, bookings, requests, metrics, follow-up |\n| Platform Ops | `/galoras-ops` | Deployments, migrations, Stripe, tags, doc generation |\n\n**Why:** Barnes wants operational automation so coach onboarding and customer journey can be managed via slash commands instead of manual DB queries.\n\n**How to apply:** Use these skills",
+    "summary": "Galoras Skills (created 2026-04-08)",
+    "namespace": "skills_created",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/skills_created.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109509
+  },
+  {
+    "id": "mem-supabase_setup----",
+    "key": "-",
+    "content": "name: Supabase Setup\ndescription: Supabase project IDs, URLs, keys, and migration state for Galoras\ntype: project\n---",
+    "summary": "---",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-active-project--uat-galoras",
+    "key": "active-project-uat-galoras",
+    "content": "- **Project ID:** `qbjuomsmnrclsjhdsjcz`\n- **URL:** `https://qbjuomsmnrclsjhdsjcz.supabase.co`\n- **Anon key:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFianVvbXNtbnJjbHNqaGRzamN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzU3NzEsImV4cCI6MjA4NzU1MTc3MX0.oFw5D8DsnwbObCfZq6hn7TPLE5Wx9fS0-8WablLT2RA`\n- **Live site:** `uat-galoras.site` (Lovable hosted)\n- **config.toml:** points to `qbjuomsmnrclsjhdsjcz` ✓",
+    "summary": "Active Project: UAT-Galoras",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-other-projects",
+    "key": "other-projects",
+    "content": "- **Galoras MVP:** `skvoecotchtllclczlab` — empty, not in use\n- **Old/deleted project:** `dajlrvyqcyvgdzkzbjwk` — do not use, doesn't exist",
+    "summary": "Other Projects",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-tables-in-uat-galoras",
+    "key": "tables-in-uat-galoras",
+    "content": "bookings, coach_applications, coach_availability, coach_products, coaches, messages, session_bookings, user_roles",
+    "summary": "Tables in UAT-Galoras",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-migrations-applied--uat-",
+    "key": "migrations-applied-uat-",
+    "content": "- migration_004_reconcile_live_schema\n- migration_005_seed_mitesh\n- migration_006_seed_mitesh_products\n- messages_table (2026-04-04)\n- session_bookings_and_availability (2026-04-04)",
+    "summary": "Migrations Applied (UAT)",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-edge-functions-deployed",
+    "key": "edge-functions-deployed",
+    "content": "- send-message-notification ✓ (uses RESEND_API_KEY)",
+    "summary": "Edge Functions Deployed",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-supabase_setup-secrets-set",
+    "key": "secrets-set",
+    "content": "- RESEND_API_KEY: re_LHf6qS9S_7G9yZJbAjAGpHMVY5XJ82bEZ (rotate if compromised)\n- EMAIL_FROM: \"Galoras <onboarding@resend.dev>\" (temporary until galoras.com domain verified in Resend)\n\n**Why:** Old project was deleted. UAT-Galoras is the working production environment for the Validation Sprint.\n**How to apply:** Always target `qbjuomsmnrclsjhdsjcz` for CLI commands and MCP tools.",
+    "summary": "Secrets Set",
+    "namespace": "supabase_setup",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/supabase_setup.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-user_profile----",
+    "key": "-",
+    "content": "name: User Profile\ndescription: Barnes Lam's role, preferences, and coach profile details\ntype: user\n---",
+    "summary": "---",
+    "namespace": "user_profile",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/user_profile.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-user_profile-role",
+    "key": "role",
+    "content": "Owner/operator of Galoras platform. Founder at barneslam.co, thestrategypitch.com, axischamber.org.\nWorking with developer vendor (The Strategy Pitch) under a Validation Sprint SOW.",
+    "summary": "Role",
+    "namespace": "user_profile",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/user_profile.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-user_profile-coach-profile--in-uat-galoras-",
+    "key": "coach-profile-in-uat-galoras-",
+    "content": "- **ID:** `1d2772d1-6ba1-4812-9d1e-18b5115eaec4`\n- **Slug:** `barnes-lam`\n- **Email:** `barnes@barneslam.co`\n- **LinkedIn:** `https://linkedin.com/in/barneslam`\n- **Website:** `https://barneslam.co`\n- **Photo:** `https://barneslam.co/assets/images/barnes-headshot.jpg`\n- **Booking:** `https://calendly.com/barnes-lam/galoras-initial-session-call`\n- **Tier:** elite",
+    "summary": "Coach Profile (in UAT-Galoras)",
+    "namespace": "user_profile",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/user_profile.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-user_profile-preferences",
+    "key": "preferences",
+    "content": "- Prefers visual confirmation (screenshots) before assuming things work\n- Works across Lovable (UI), GitHub, Supabase simultaneously\n- Not deeply familiar with git internals — explain when doing rebases/stashes\n- **Model:** Prefers Claude Haiku 4.5 (`claude-haiku-4-5-20251001`) for all sessions unless otherwise instructed",
+    "summary": "Preferences",
+    "namespace": "user_profile",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/user_profile.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109510
+  },
+  {
+    "id": "mem-work_style----",
+    "key": "-",
+    "content": "name: Work Style\ndescription: User's preferred working setup and context\ntype: user\n---\n\nLikes to work with the Coaching Exchange app (galoras-dev) open alongside other browser tabs. The memory directory path (`~/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/`) is a useful reference point he keeps in view.",
+    "summary": "---",
+    "namespace": "work_style",
+    "type": "semantic",
+    "metadata": {
+      "sourceFile": "/Users/b.lamoutlook.com/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/work_style.md",
+      "bootstrapped": true
+    },
+    "createdAt": 1776098109511
+  },
+  {
+    "id": "insight-1776116220437-3746",
+    "key": "frequent-edit-unknown",
+    "content": "File unknown was edited 46 times this session — likely a hot path worth monitoring.",
+    "summary": "Frequently edited: unknown (46x)",
+    "namespace": "insights",
+    "type": "procedural",
+    "metadata": {
+      "sourceFile": "unknown",
+      "editCount": 46,
+      "autoGenerated": true
+    },
+    "createdAt": 1776116220437
+  }
+]

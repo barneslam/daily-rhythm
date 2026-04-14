@@ -1,0 +1,59 @@
+{
+  "channels": {
+    "linkedin_personal": {
+      "accountId": "17347",
+      "platform": "linkedin",
+      "name": "Barnes LAM (Personal)",
+      "use_for": ["daily_content", "peer_posts", "reflections"]
+    },
+    "biz_dev_titans": {
+      "accountId": "17347",
+      "platform": "linkedin",
+      "pageId": "106445950",
+      "name": "Biz Dev Titans",
+      "use_for": ["daily_content", "tactics", "case_studies"]
+    },
+    "growth_gurus": {
+      "accountId": "17347",
+      "platform": "linkedin",
+      "pageId": "107153914",
+      "name": "Growth Gurus",
+      "use_for": ["daily_content", "growth_insights"]
+    },
+    "strategy_pitch": {
+      "accountId": "17347",
+      "platform": "linkedin",
+      "pageId": "103704197",
+      "name": "The Strategy Pitch",
+      "use_for": ["offer_doc", "strategic_content", "frameworks"]
+    },
+    "axis_chamber": {
+      "accountId": "17347",
+      "platform": "linkedin",
+      "pageId": "112398033",
+      "name": "AXIS Chamber Performance",
+      "use_for": ["daily_content", "performance_content"]
+    },
+    "instagram": {
+      "accountId": "40098",
+      "platform": "instagram",
+      "name": "@bizdevtitans",
+      "use_for": ["visual_content", "carousels", "reels"]
+    }
+  },
+  "posting_rules": [
+    "Never post identical content to all channels — adapt voice and angle per channel",
+    "LinkedIn Personal: first person, operator voice, raw and honest",
+    "Biz Dev Titans: tactical, actionable, 'here's how' voice",
+    "Growth Gurus: growth insights, data-driven, market observations",
+    "The Strategy Pitch: frameworks, strategic thinking, offer positioning",
+    "AXIS Chamber Performance: performance systems, accountability, execution",
+    "Instagram @bizdevtitans: visual-first, carousel or reel, short punchy copy"
+  ],
+  "offer_doc_channel": {
+    "accountId": "17347",
+    "platform": "linkedin",
+    "pageId": "103704197",
+    "name": "The Strategy Pitch"
+  }
+}
