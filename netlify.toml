@@ -20,8 +20,13 @@
 # Scheduled Functions
 [[scheduled_functions]]
   function = "publish-scheduler"
-  # Every day at 09:00 UTC (Mon-Fri publishing window)
-  cron = "0 9 * * *"
+  # Every weekday at 09:00 UTC
+  cron = "0 9 * * 1-5"
+
+[[scheduled_functions]]
+  function = "content-curator"
+  # Every Sunday at 03:00 UTC (Sunday 10pm EST)
+  cron = "0 3 * * 0"
 
 # Edge functions for real-time data
 [functions]
