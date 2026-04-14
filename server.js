@@ -4,7 +4,20 @@ const path = require('path');
 const { startContentScheduler } = require('./content-scheduler');
 
 const app = express();
-const PORT = 3001;
+const DEFAULT_PORT = 3001;
+
+function findAvailablePort(startPort) {
+  const net = require('net');
+  return new Promise((resolve) => {
+    const server = net.createServer();
+    server.once('error', () => resolve(findAvailablePort(startPort + 1)));
+    server.once('listening', () => {
+      const port = server.address().port;
+      server.close(() => resolve(port));
+    });
+    server.listen(startPort);
+  });
+}
 const BASE = '/Users/b.lamoutlook.com/daily-rhythm';
 
 app.use(express.json());
@@ -146,9 +159,11 @@ app.get('/api/offer-doc', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.listen(PORT, () => {
-  console.log(`GTM Dashboard running at http://localhost:${PORT}`);
+findAvailablePort(DEFAULT_PORT).then((PORT) => {
+  app.listen(PORT, () => {
+    console.log(`GTM Content Scheduler running at http://localhost:${PORT}`);
 
-  // Start content scheduler
-  startContentScheduler();
+    // Start content scheduler
+    startContentScheduler();
+  });
 });

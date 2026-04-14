@@ -121,6 +121,62 @@
       "template": "I've been where you are — good offer, real skills, but the daily machine isn't running. Built a system that fixed it for me and now I run it for others. Not a course, not coaching — a 90-minute breakdown that gives you the operating rhythm. Interested?"
     }
   ],
+  "outreach_sequence": {
+    "description": "4-stage sequence before any meeting ask. Never skip stages.",
+    "stages": {
+      "connect": {
+        "label": "Connect",
+        "goal": "Open a thread. Show you noticed something specific about them. No pitch, no ask.",
+        "tone": "Peer observation. Direct. No flattery.",
+        "rules": [
+          "Reference one specific, visible signal — a post, announcement, job listing, interview",
+          "Under 60 words",
+          "End with a statement, not a question — let curiosity do the work",
+          "Zero mention of your offer or services"
+        ],
+        "example": "Saw your post about rebuilding the sales motion after the Series A. That inflection point — enough funding to move, not enough structure to move fast — is one of the most expensive gaps in B2B. Interesting spot to be in."
+      },
+      "warm": {
+        "label": "Warm",
+        "goal": "Establish credibility and authority. Give something useful with no strings attached.",
+        "tone": "Operator sharing a real observation. Confident, not salesy.",
+        "rules": [
+          "Share a specific insight, breakdown, or pattern you've seen",
+          "Make it directly relevant to their visible situation",
+          "Under 100 words",
+          "Optional soft question at the end — but not a meeting ask",
+          "No links unless it's a genuinely useful resource"
+        ],
+        "example": "Following on from my last note — the pattern I see most often at your stage: the pipeline looks fine on paper but the daily execution rhythm is broken. Deals stall because no one owns the follow-through cadence. Not a GTM strategy problem. An operating rhythm problem. Worth knowing before you hire your next AE."
+      },
+      "discover": {
+        "label": "Discover",
+        "goal": "Understand their actual situation before proposing anything.",
+        "tone": "Curious. Diagnostic. Not leading them toward your offer.",
+        "rules": [
+          "Ask one specific, open-ended question about their current situation",
+          "Question should be based on their signals — not generic",
+          "Under 60 words",
+          "No mention of your offer",
+          "This stage only happens if they've engaged or responded to Warm"
+        ],
+        "example": "Quick question based on what you shared — when you look at your pipeline right now, is the problem generating enough conversations, or converting the ones you have? I find the answer changes everything about what to fix first."
+      },
+      "ask": {
+        "label": "Ask",
+        "goal": "Request a 15-min call now that you know their situation and they know your credibility.",
+        "tone": "Direct and specific. Not a generic 'would love to connect'.",
+        "rules": [
+          "Reference what you've learned about their situation",
+          "Make the ask specific to the problem you've identified",
+          "Use the Execution Readiness Check link (15 min) — low commitment",
+          "Under 80 words",
+          "One ask only — no alternatives or multiple CTAs"
+        ],
+        "example": "Based on what you described — pipeline's there but conversion's broken — that's exactly the 90-minute breakdown I run. Not a strategy session, not a pitch. We'd identify the two or three constraints killing your conversion rate and you'd leave with a daily operating plan. 15 minutes to see if it's worth your time: https://calendly.com/barnes-lam/free-consultation-24-hour-business-sprint"
+      }
+    }
+  },
   "message_rules": [
     "Never use templates verbatim — personalize every message to the specific person and their visible tension",
     "Lead with what you observed, not what you sell",
