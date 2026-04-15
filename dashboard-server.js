@@ -5,8 +5,7 @@ const path = require('path');
 const http = require('http');
 const cron = require('node-cron');
 const { runDiscovery } = require('./lead-discovery');
-const { db } = require('./supabase-client');
-const { publishToBlatato } = require('./functions/content-curator');
+const { db, supabase } = require('./supabase-client');
 
 const PORT = 3001;
 const BASE_DIR = __dirname;
@@ -68,21 +67,20 @@ const routes = {
 
   '/api/drafts': () => {
     const drafts = [];
-    const draftsDir = path.join(BASE_DIR, 'drafts');
+    const assetsDir = path.join(BASE_DIR, 'assets');
 
-    if (fs.existsSync(draftsDir)) {
-      fs.readdirSync(draftsDir)
-        .filter(f => f.endsWith('.md'))
-        .sort()
-        .reverse()
-        .forEach(file => {
-          const content = readFile(path.join(draftsDir, file));
+    if (fs.existsSync(assetsDir)) {
+      fs.readdirSync(assetsDir).forEach(file => {
+        if (file.endsWith('.md')) {
+          // Mark outreach messages as pending
+          const status = file.includes('outreach') ? 'pending' : 'approved';
           drafts.push({
             filename: file,
-            status: content.includes('PENDING') ? 'pending' : 'approved',
-            content: content,
+            status: status,
+            content: readFile(path.join(assetsDir, file)).substring(0, 500),
           });
-        });
+        }
+      });
     }
 
     return drafts;
@@ -116,6 +114,38 @@ const routes = {
     } catch (e) {
       console.error('Outreach API error:', e.message);
       return { outreach: [] };
+    }
+  },
+
+  '/api/dm-outreach': async () => {
+    try {
+      const { data, error } = await supabase
+        .from('dm_outreach')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) {
+        console.error('Error fetching dm_outreach:', error);
+        return { dmOutreach: [], error: error.message };
+      }
+      return { dmOutreach: data || [] };
+    } catch (e) {
+      console.error('DM Outreach API error:', e.message);
+      return { dmOutreach: [], error: e.message };
+    }
+  },
+
+  '/api/send-dm-response': async (body) => {
+    try {
+      const { handler } = require('./functions/send-dm-response');
+      const mockEvent = {
+        httpMethod: 'POST',
+        body: JSON.stringify(body)
+      };
+      const response = await handler(mockEvent);
+      return JSON.parse(response.body);
+    } catch (e) {
+      console.error('Send DM response error:', e.message);
+      return { error: e.message };
     }
   },
 
@@ -168,6 +198,66 @@ const routes = {
       return { status: 'pending', error: e.message };
     }
   },
+
+  '/api/dms': async () => {
+    try {
+      const { handler } = require('./functions/dms');
+      const mockEvent = {
+        httpMethod: 'GET',
+        queryStringParameters: { limit: '50', days: '7', status: 'all' }
+      };
+      const response = await handler(mockEvent);
+      return JSON.parse(response.body);
+    } catch (e) {
+      console.error('DMs API error:', e.message);
+      return { error: e.message };
+    }
+  },
+
+  '/api/linkedin-webhook-handler': async (body) => {
+    // This will be called via POST handler below
+    try {
+      const { handler } = require('./functions/linkedin-webhook');
+      const mockEvent = {
+        httpMethod: 'POST',
+        body: JSON.stringify(body),
+        headers: { 'x-blotato-signature': 'test-signature' }
+      };
+      const response = await handler(mockEvent);
+      return JSON.parse(response.body);
+    } catch (e) {
+      console.error('LinkedIn webhook error:', e.message);
+      return { error: e.message };
+    }
+  },
+
+  '/api/test-dm-pipeline': async () => {
+    try {
+      const { handler } = require('./functions/test-dm-pipeline');
+      const mockEvent = {
+        httpMethod: 'POST',
+      };
+      const response = await handler(mockEvent);
+      return JSON.parse(response.body);
+    } catch (e) {
+      console.error('Test DM pipeline error:', e.message);
+      return { error: e.message };
+    }
+  },
+
+  '/api/blotato-dm-poller': async () => {
+    try {
+      const { handler } = require('./functions/blotato-dm-poller');
+      const mockEvent = {
+        httpMethod: 'POST',
+      };
+      const response = await handler(mockEvent);
+      return JSON.parse(response.body);
+    } catch (e) {
+      console.error('Blotato DM poller error:', e.message);
+      return { error: e.message };
+    }
+  },
 };
 
 // Serve log file
@@ -216,60 +306,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 async function handleRequest(req, res, body) {
-  // Handle /api/drafts/:filename/approve (POST)
-  if (req.url.startsWith('/api/drafts/') && req.url.endsWith('/approve') && req.method === 'POST') {
-    try {
-      const filename = req.url.replace('/api/drafts/', '').replace('/approve', '');
-      const filePath = path.join(BASE_DIR, 'drafts', filename);
-
-      if (!fs.existsSync(filePath)) {
-        res.writeHead(404);
-        res.end(JSON.stringify({ error: 'Draft not found' }));
-        return;
-      }
-
-      let content = readFile(filePath);
-      content = content.replace('PENDING APPROVAL', 'APPROVED');
-      content = content.replace(/☐ Approve/g, '☑ Approved');
-
-      fs.writeFileSync(filePath, content);
-
-      res.writeHead(200);
-      res.end(JSON.stringify({ status: 'approved', filename }));
-    } catch (e) {
-      console.error('Draft approval error:', e.message);
-      res.writeHead(500);
-      res.end(JSON.stringify({ error: e.message }));
-    }
-    return;
-  }
-
-  // Handle /api/drafts/:filename/publish (POST)
-  if (req.url.startsWith('/api/drafts/') && req.url.endsWith('/publish') && req.method === 'POST') {
-    try {
-      const filename = req.url.replace('/api/drafts/', '').replace('/publish', '');
-      const baseName = filename.replace('.md', '');
-      const jsonPath = path.join(BASE_DIR, 'drafts', `${baseName}.json`);
-
-      if (!fs.existsSync(jsonPath)) {
-        res.writeHead(404);
-        res.end(JSON.stringify({ error: 'Draft JSON not found' }));
-        return;
-      }
-
-      const jsonContent = readJSON(jsonPath);
-      await publishToBlatato(jsonContent);
-
-      res.writeHead(200);
-      res.end(JSON.stringify({ status: 'published', filename, posts: jsonContent.posts.length }));
-    } catch (e) {
-      console.error('Draft publish error:', e.message);
-      res.writeHead(500);
-      res.end(JSON.stringify({ error: e.message }));
-    }
-    return;
-  }
-
   // Handle /api/log/:date
   if (req.url.startsWith('/api/log/')) {
     const date = req.url.replace('/api/log/', '');
@@ -277,6 +313,34 @@ async function handleRequest(req, res, body) {
       res.writeHead(200);
       res.end(JSON.stringify(data));
     });
+    return;
+  }
+
+  // Handle /api/linkedin-webhook (POST)
+  if (req.url === '/api/linkedin-webhook' && req.method === 'POST') {
+    try {
+      const result = await routes['/api/linkedin-webhook-handler'](body);
+      res.writeHead(200);
+      res.end(JSON.stringify(result));
+    } catch (e) {
+      console.error('LinkedIn webhook error:', e.message);
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // Handle /api/send-dm-response (POST)
+  if (req.url === '/api/send-dm-response' && req.method === 'POST') {
+    try {
+      const result = await routes['/api/send-dm-response'](body);
+      res.writeHead(200);
+      res.end(JSON.stringify(result));
+    } catch (e) {
+      console.error('Send DM response error:', e.message);
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: e.message }));
+    }
     return;
   }
 
@@ -314,9 +378,10 @@ async function handleRequest(req, res, body) {
   }
 
   // Handle other API routes
-  if (routes[req.url]) {
+  const basePath = req.url.split('?')[0];
+  if (routes[basePath]) {
     try {
-      const data = await routes[req.url]();
+      const data = await routes[basePath]();
       res.writeHead(200);
       res.end(JSON.stringify(data));
     } catch (e) {

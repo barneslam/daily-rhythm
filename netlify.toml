@@ -28,6 +28,16 @@
   # Every Sunday at 03:00 UTC (Sunday 10pm EST)
   cron = "0 3 * * 0"
 
+[[scheduled_functions]]
+  function = "outreach-scheduler"
+  # Every 30 minutes to process scheduled DM responses
+  cron = "*/30 * * * *"
+
+[[scheduled_functions]]
+  function = "blotato-dm-poller"
+  # Every 30 minutes to poll Blotato API for inbound LinkedIn DMs
+  cron = "*/30 * * * *"
+
 # Edge functions for real-time data
 [functions]
   directory = "functions"
