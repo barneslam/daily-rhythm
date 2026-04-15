@@ -1,110 +1,155 @@
 /**
- * DM to Outreach — Convert qualified DMs to warm outreach pipeline
- * Triggered by qualify-dm.js after DM is scored as qualified
- * Creates entry in outreach_messages and schedules warm response
+ * Phase 4: DM-to-Outreach Converter
+ * Converts qualified LinkedIn DMs into the outreach pipeline
+ * Triggered by linkedin-webhook.js after DM is stored
  */
 
 const { createClient } = require("@supabase/supabase-js");
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 /**
- * Generate a warm response message for qualified DM
- * Context: sender has already shown interest via DM, so tone is warm/conversational
+ * Fetch full DM record from linkedin_dms table
  */
-function generateWarmResponse(dmData) {
-  const senderName = dmData.sender_name?.split(" ")[0] || "there"; // First name only
-  const theme = dmData.source_post_theme || "GTM";
-  const company = dmData.sender_company ? ` at ${dmData.sender_company}` : "";
+async function fetchDMRecord(dmId) {
+  const { data, error } = await supabase
+    .from("linkedin_dms")
+    .select(
+      "id, sender_name, sender_company, message_text, source_post_theme, auto_qualified, qualification_score"
+    )
+    .eq("id", dmId)
+    .single();
 
-  // Template-based warm response (can be enhanced with Claude API for personalization)
-  const response = `Hi ${senderName},
-
-Thanks for reaching out about our ${theme.toLowerCase()} post${company}.
-
-I'd love to understand what specific challenge you're navigating right now. Is it around positioning, pricing, or go-to-market timing?
-
-Let's jump on a quick call this week so I can see if there's a fit. What works for you?
-
-Best,
-Barnes`;
-
-  return response;
+  if (error) {
+    throw new Error(`Failed to fetch DM record: ${error.message}`);
+  }
+  return data;
 }
 
 /**
- * Create an outreach entry from a qualified DM
+ * Check if dm_outreach already exists for this dm_id
  */
-async function convertDMtoOutreach(dmData) {
+async function checkExistingOutreach(dmId) {
+  const { data, error } = await supabase
+    .from("dm_outreach")
+    .select("id")
+    .eq("dm_id", dmId)
+    .single();
+
+  if (error && error.code !== "PGRST116") {
+    // PGRST116 means no rows found, which is expected
+    throw new Error(`Failed to check existing outreach: ${error.message}`);
+  }
+
+  return data ? data.id : null;
+}
+
+/**
+ * Generate warm response message via regen-message.js
+ */
+async function generateWarmResponse(dmRecord) {
   try {
-    console.log(`🔄 Converting qualified DM from ${dmData.sender_name} to outreach...`);
+    const response = await fetch(
+      "https://daily-lead-gen-track.netlify.app/.netlify/functions/regen-message",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: {
+            _stage: "warm",
+            name: dmRecord.sender_name,
+            business: dmRecord.sender_company || "their company",
+            subject: `Re: ${dmRecord.source_post_theme || "Your message"}`,
+            full_body: dmRecord.message_text,
+          },
+        }),
+      }
+    );
 
-    // Generate warm response message
-    const warmMessage = generateWarmResponse(dmData);
-
-    // Calculate send date: 2 hours from now
-    const sendDate = new Date();
-    sendDate.setHours(sendDate.getHours() + 2);
-    const sendDateStr = sendDate.toISOString().split("T")[0];
-
-    // Create dm_outreach entry
-    const { data, error } = await supabase
-      .from("dm_outreach")
-      .insert([
-        {
-          dm_id: dmData.id,
-          sender_name: dmData.sender_name,
-          sender_company: dmData.sender_company || "Unknown",
-          subject: `Re: ${dmData.source_post_theme || "Your Post"}`,
-          body: warmMessage,
-          send_date: sendDateStr,
-          status: "scheduled",
-        },
-      ])
-      .select()
-      .single();
-
-    if (error) {
-      console.error("❌ Failed to create outreach entry:", error.message);
-      throw new Error(`Outreach creation failed: ${error.message}`);
+    if (!response.ok) {
+      throw new Error(`regen-message returned ${response.status}`);
     }
 
-    console.log(`✓ Created outreach entry ${data.id} for ${dmData.sender_name}`);
-    console.log(`   Scheduled to send: ${sendDateStr}`);
-    console.log(`   Message preview: ${warmMessage.substring(0, 50)}...`);
-
-    // Update the linkedin_dms record to reference the outreach entry
-    const { error: updateError } = await supabase
-      .from("linkedin_dms")
-      .update({
-        lead_status: "contacted",
-        next_action: "await_response",
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", dmData.id);
-
-    if (updateError) {
-      console.warn("⚠️  Could not update DM status:", updateError.message);
-    }
-
+    const result = await response.json();
     return {
-      success: true,
-      outreachId: data.id,
-      messagePreview: warmMessage.substring(0, 100),
+      subject: result.subject,
+      body: result.body,
     };
   } catch (error) {
-    console.error("❌ DM-to-outreach error:", error.message);
-    throw error;
+    throw new Error(`Failed to generate warm response: ${error.message}`);
   }
 }
 
 /**
- * Netlify Function Handler (for manual trigger via API)
+ * Create dm_outreach record
  */
-exports.handler = async (event, context) => {
-  console.log("🔄 Received DM-to-outreach request");
+async function createOutreachRecord(dmRecord, message) {
+  const { data, error } = await supabase
+    .from("dm_outreach")
+    .insert([
+      {
+        dm_id: dmRecord.id,
+        sender_name: dmRecord.sender_name,
+        sender_company: dmRecord.sender_company,
+        subject: message.subject,
+        body: message.body,
+        send_date: new Date().toISOString().split("T")[0],
+        status: "scheduled",
+      },
+    ])
+    .select();
+
+  if (error) {
+    throw new Error(`Failed to create outreach record: ${error.message}`);
+  }
+
+  return data[0];
+}
+
+/**
+ * Update DM status to "contacted"
+ */
+async function updateDMStatus(dmId) {
+  const { error } = await supabase
+    .from("linkedin_dms")
+    .update({
+      lead_status: "contacted",
+      next_action: "warm_response_sent",
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", dmId);
+
+  if (error) {
+    throw new Error(`Failed to update DM status: ${error.message}`);
+  }
+}
+
+/**
+ * Mark non-qualified DM as low_intent
+ */
+async function markAsLowIntent(dmId) {
+  const { error } = await supabase
+    .from("linkedin_dms")
+    .update({
+      lead_status: "low_intent",
+      next_action: "no_response",
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", dmId);
+
+  if (error) {
+    throw new Error(`Failed to mark as low_intent: ${error.message}`);
+  }
+}
+
+/**
+ * Main handler: Convert DM to outreach
+ */
+exports.handler = async (event) => {
+  console.log("📧 DM-to-Outreach converter started");
 
   if (event.httpMethod !== "POST") {
     return {
@@ -114,37 +159,87 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    let body;
-    try {
-      body = JSON.parse(event.body);
-    } catch (e) {
+    const body = JSON.parse(event.body);
+    const { dm_id, auto_qualified, qualification_score } = body;
+
+    if (!dm_id) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Invalid JSON payload" }),
+        body: JSON.stringify({ error: "Missing dm_id" }),
       };
     }
 
-    if (!body.dmData || !body.dmData.id) {
+    // Fetch full DM record
+    const dmRecord = await fetchDMRecord(dm_id);
+    if (!dmRecord) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Missing dmData with id" }),
+        body: JSON.stringify({ error: "DM not found" }),
       };
     }
 
-    const result = await convertDMtoOutreach(body.dmData);
+    // Check for existing outreach
+    const existingId = await checkExistingOutreach(dm_id);
+    if (existingId) {
+      console.log(
+        `ℹ️  Outreach already exists for dm_id ${dm_id}: ${existingId}`
+      );
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          created: false,
+          reason: "response_already_scheduled",
+          existing_id: existingId,
+        }),
+      };
+    }
+
+    // Handle non-qualified DMs
+    if (!auto_qualified || qualification_score < 0.6) {
+      console.log(`ℹ️  DM ${dm_id} non-qualified (score: ${qualification_score})`);
+      await markAsLowIntent(dm_id);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          created: false,
+          reason: "non_qualified",
+          qualification_score,
+        }),
+      };
+    }
+
+    // Generate warm response
+    console.log(`📝 Generating warm response for ${dmRecord.sender_name}`);
+    const message = await generateWarmResponse(dmRecord);
+
+    // Create outreach record
+    const outreach = await createOutreachRecord(dmRecord, message);
+    console.log(`✓ Created outreach record: ${outreach.id}`);
+
+    // Update DM status
+    await updateDMStatus(dm_id);
+    console.log(`✓ Updated DM ${dm_id} status to 'contacted'`);
 
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({
+        created: true,
+        dm_outreach_id: outreach.id,
+        message: {
+          subject: message.subject,
+          body: message.body,
+        },
+        scheduled_for: new Date().toISOString(),
+      }),
     };
   } catch (error) {
-    console.error("❌ Handler error:", error.message);
+    console.error("❌ DM-to-Outreach error:", error.message);
     return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      statusCode: 200, // Return 200 to prevent retry
+      body: JSON.stringify({
+        created: false,
+        error: error.message,
+      }),
     };
   }
 };
-
-// Export for use by other functions
-exports.convertDMtoOutreach = convertDMtoOutreach;

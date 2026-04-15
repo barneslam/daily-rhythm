@@ -109,18 +109,6 @@
 
   .outreach-btn { padding: 6px 12px; background: var(--light-blue); border: 1px solid #b3e5fc; color: #0369a1; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; }
   .outreach-btn:hover { background: #b3e5fc; }
-  .regen-btn { padding: 6px 12px; background: #f5f0e8; border: 1px solid var(--accent); color: var(--accent-dark); border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; }
-  .regen-btn:hover { background: var(--accent); color: #fffdf7; }
-  .regen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-  .regen-textarea { width: 100%; min-height: 80px; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 13px; background: #fffdf7; color: var(--text); resize: vertical; margin-bottom: 12px; }
-  .regen-textarea:focus { outline: none; border-color: var(--accent); }
-  .regen-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: block; }
-  .regen-spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .stage-btn { padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: var(--surface); transition: all 0.15s; }
-  .stage-btn:hover { border-color: var(--accent); background: var(--surface2); }
-  .stage-btn.selected { border-color: var(--accent); background: var(--accent); color: #fffdf7; }
-  .stage-btn.selected div { color: #fffdf7 !important; }
 
   @media (max-width: 768px) {
     .target-row { grid-template-columns: 1fr; gap: 4px; }
@@ -142,6 +130,7 @@
   <div class="tabs">
     <div class="tab active" data-panel="dashboard">Dashboard</div>
     <div class="tab" data-panel="schedule">Schedule</div>
+    <div class="tab" data-panel="dms">DM Pipeline</div>
     <div class="tab" data-panel="targets">Targets (20)</div>
     <div class="tab" data-panel="drafts">Drafts</div>
     <div class="tab" data-panel="content">Content</div>
@@ -165,6 +154,29 @@
     <div class="card">
       <h2>DAILY BLOCKS</h2>
       <div id="schedule-blocks"></div>
+    </div>
+  </div>
+
+  <!-- DM PIPELINE -->
+  <div class="panel" id="dms">
+    <div class="card">
+      <h2>QUALIFICATION METRICS</h2>
+      <div class="metric-grid" id="dms-qual-metrics"></div>
+    </div>
+    <div class="card">
+      <h2>STATUS BREAKDOWN</h2>
+      <div class="metric-grid" id="dms-status-metrics"></div>
+    </div>
+    <div class="card">
+      <h2>CHANNEL BREAKDOWN</h2>
+      <div class="metric-grid" id="dms-channel-metrics"></div>
+    </div>
+    <div class="card">
+      <h2>RECENT DMS (LAST 7 DAYS)</h2>
+      <div class="target-row target-header">
+        <div>Sender</div><div>Company</div><div>Score</div><div>Status</div><div>Channel</div><div></div>
+      </div>
+      <div id="dms-feed"></div>
     </div>
   </div>
 
@@ -216,47 +228,6 @@
   </div>
 </div>
 
-<!-- REGEN MODAL -->
-<div class="modal" id="regenModal">
-  <div class="modal-content" style="max-width: 520px;">
-    <div class="modal-header">
-      <div class="modal-title" id="regenModalTitle">Regenerate Message</div>
-      <button class="modal-close" onclick="closeRegenModal()">&times;</button>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-      Select the sequence stage, then optionally add context before regenerating.
-    </p>
-
-    <label class="regen-label">Sequence stage</label>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;" id="stageSelector">
-      <div class="stage-btn" data-stage="connect" onclick="selectStage('connect')">
-        <div style="font-weight:600;font-size:12px;">1. Connect</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">Open a thread</div>
-      </div>
-      <div class="stage-btn" data-stage="warm" onclick="selectStage('warm')">
-        <div style="font-weight:600;font-size:12px;">2. Warm</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">Credibility</div>
-      </div>
-      <div class="stage-btn" data-stage="discover" onclick="selectStage('discover')">
-        <div style="font-weight:600;font-size:12px;">3. Discover</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">Understand them</div>
-      </div>
-      <div class="stage-btn" data-stage="ask" onclick="selectStage('ask')">
-        <div style="font-weight:600;font-size:12px;">4. Ask</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">Meeting request</div>
-      </div>
-    </div>
-    <div id="stageGoal" style="font-size:12px;color:var(--accent-dark);background:var(--surface2);border-radius:5px;padding:8px 12px;margin-bottom:12px;display:none;"></div>
-
-    <label class="regen-label">Additional context (optional)</label>
-    <textarea class="regen-textarea" id="regenContext" placeholder="e.g. Reference their Series B announcement. They mentioned struggling with AE ramp time."></textarea>
-    <div style="display:flex;gap:8px;justify-content:flex-end;">
-      <button class="btn" onclick="closeRegenModal()">Cancel</button>
-      <button class="regen-btn" id="regenSubmitBtn" onclick="submitRegen()">Regenerate</button>
-    </div>
-  </div>
-</div>
-
 <!-- MESSAGE MODAL -->
 <div class="modal" id="messageModal">
   <div class="modal-content">
@@ -266,9 +237,6 @@
     </div>
     <div class="modal-subject" id="modalSubject"></div>
     <div class="modal-body" id="modalBody"></div>
-    <div id="modalSaveRow" style="display:none; margin-top:12px; text-align:right;">
-      <button class="regen-btn" id="modalSaveBtn" onclick="saveRegenMessage()">Save to record</button>
-    </div>
   </div>
 </div>
 
@@ -306,7 +274,7 @@ function renderMd(text) {
 }
 
 async function load() {
-  const [todayRes, configRes, trackerRes, targetsRes, draftsRes, logsRes, offerRes, programRes, outreachRes] = await Promise.all([
+  const [todayRes, configRes, trackerRes, targetsRes, draftsRes, logsRes, offerRes, programRes, outreachRes, dmsRes] = await Promise.all([
     fetch('/api/today').then(r => r.json()),
     fetch('/api/config').then(r => r.json()),
     fetch('/api/tracker').then(r => r.json()),
@@ -316,6 +284,7 @@ async function load() {
     fetch('/api/offer-doc').then(r => r.json()),
     fetch('/api/program').then(r => r.json()),
     fetch('/api/outreach').then(r => r.json()),
+    fetch('/api/dms?limit=50&days=7&status=all').then(r => r.json()).catch(() => ({ dms: [], qualification_metrics: {}, status_metrics: {}, channel_metrics: {} })),
   ]);
 
   // Header
@@ -373,10 +342,7 @@ async function load() {
       <div><strong>${o.name}</strong><br><span style="color:var(--muted);font-size:11px">${o.business}</span></div>
       <div class="target-signal">${o.signal}</div>
       <div><span class="target-status status-scheduled">Scheduled ${o.send_date}</span></div>
-      <div style="display:flex;gap:6px;">
-        <button class="outreach-btn" onclick="showMessage(${idx})">View</button>
-        <button class="regen-btn" onclick="openRegen(${idx})">Regen</button>
-      </div>
+      <div><button class="outreach-btn" onclick="showMessage(${idx})">View</button></div>
     </div>`;
   }).join('');
 
@@ -443,6 +409,51 @@ async function load() {
       <p style="font-size:12px;color:var(--green)">Checkpoint: ${w.checkpoint}</p>
     </div>`;
   }).join('');
+
+  // DM Pipeline
+  const qualMetrics = dmsRes.qualification_metrics || {};
+  const statusMetrics = dmsRes.status_metrics || {};
+  const channelMetrics = dmsRes.channel_metrics || {};
+  const dms = dmsRes.dms || [];
+
+  // Qualification metrics
+  document.getElementById('dms-qual-metrics').innerHTML = `
+    <div class="metric"><div class="metric-value">${qualMetrics.total || 0}</div><div class="metric-label">Total DMs</div></div>
+    <div class="metric"><div class="metric-value">${qualMetrics.qualified || 0}</div><div class="metric-label">Qualified</div></div>
+    <div class="metric"><div class="metric-value">${qualMetrics.notQualified || 0}</div><div class="metric-label">Not Qualified</div></div>
+    <div class="metric"><div class="metric-value">${(qualMetrics.percentQualified || 0).toFixed(1)}%</div><div class="metric-label">Qualification Rate</div></div>
+    <div class="metric"><div class="metric-value">${(qualMetrics.avgScore || 0).toFixed(2)}</div><div class="metric-label">Avg Score</div></div>
+  `;
+
+  // Status metrics
+  document.getElementById('dms-status-metrics').innerHTML = `
+    <div class="metric"><div class="metric-value">${statusMetrics.new || 0}</div><div class="metric-label">New</div></div>
+    <div class="metric"><div class="metric-value">${statusMetrics.contacted || 0}</div><div class="metric-label">Contacted</div></div>
+    <div class="metric"><div class="metric-value">${statusMetrics.responded || 0}</div><div class="metric-label">Responded</div></div>
+    <div class="metric"><div class="metric-value">${statusMetrics.qualified || 0}</div><div class="metric-label">Qualified</div></div>
+  `;
+
+  // Channel metrics
+  document.getElementById('dms-channel-metrics').innerHTML = Object.entries(channelMetrics || {}).map(([channel, count]) =>
+    `<div class="metric"><div class="metric-value">${count}</div><div class="metric-label">${channel.replace(/_/g, ' ')}</div></div>`
+  ).join('') || '<div style="color:var(--muted);font-size:12px">No DM data yet</div>';
+
+  // DM feed
+  window.dmsData = dms;
+  document.getElementById('dms-feed').innerHTML = dms.length === 0
+    ? '<div style="color:var(--muted);font-size:12px;padding:12px">No DMs in last 7 days</div>'
+    : dms.map((dm, idx) => {
+      const qualClass = (dm.qualification_score || 0) > 0.6 ? 'high' : 'medium';
+      const statusClass = (dm.lead_status || 'new').replace(/_/g, '-');
+      return `<div class="target-row" style="grid-template-columns: 1fr 1fr 80px 100px 100px auto; gap: 12px; align-items: center;">
+        <div><strong>${dm.sender_name || 'Unknown'}</strong></div>
+        <div class="target-signal">${dm.sender_company || 'N/A'}</div>
+        <div><span style="font-weight:600;color:var(--${qualClass === 'high' ? 'green' : 'accent'})">${(dm.qualification_score || 0).toFixed(2)}</span></div>
+        <div><span class="target-status status-${statusClass}">${dm.lead_status || 'new'}</span></div>
+        <div class="target-signal">${dm.source_channel || 'unknown'}</div>
+        <div><button class="outreach-btn" onclick="showDM(${idx})">View</button></div>
+      </div>`;
+    }).join('');
 }
 
 async function approveDraft(filename) {
@@ -455,61 +466,38 @@ async function loadLog(date) {
   document.getElementById('log-content').textContent = res.content;
 }
 
-let currentMessageIdx = null;
-
 function showMessage(idx) {
-  currentMessageIdx = idx;
   const msg = window.outreachMessages[idx];
-  const stageLabels = { connect: '1 · Connect', warm: '2 · Warm', discover: '3 · Discover', ask: '4 · Ask' };
-  const stageBadge = msg._stage ? ` <span style="font-size:11px;background:var(--surface2);color:var(--accent-dark);padding:2px 8px;border-radius:4px;vertical-align:middle;border:1px solid var(--border);">${stageLabels[msg._stage] || msg._stage}</span>` : '';
-  const regenBadge = msg._regenerated ? ' <span style="font-size:11px;background:#4a7c5920;color:var(--green);padding:2px 8px;border-radius:4px;vertical-align:middle;">REGENERATED</span>' : '';
-  document.getElementById('modalTitle').innerHTML = `Message to ${msg.name}${stageBadge}${regenBadge}`;
+  document.getElementById('modalTitle').textContent = `Message to ${msg.name}`;
   document.getElementById('modalSubject').textContent = msg.subject;
   document.getElementById('modalBody').textContent = msg.full_body;
-
-  // Show Save button only for regenerated messages that haven't been saved yet
-  const saveRow = document.getElementById('modalSaveRow');
-  const saveBtn = document.getElementById('modalSaveBtn');
-  if (msg._regenerated && !msg._saved) {
-    saveRow.style.display = 'block';
-    saveBtn.disabled = false;
-    saveBtn.innerHTML = 'Save to record';
-  } else if (msg._saved) {
-    saveRow.style.display = 'block';
-    saveBtn.disabled = true;
-    saveBtn.innerHTML = '✓ Saved';
-  } else {
-    saveRow.style.display = 'none';
-  }
-
   document.getElementById('messageModal').classList.add('active');
 }
 
-async function saveRegenMessage() {
-  if (currentMessageIdx === null) return;
-  const msg = window.outreachMessages[currentMessageIdx];
-  const btn = document.getElementById('modalSaveBtn');
+function showDM(idx) {
+  const dm = window.dmsData[idx];
+  const qualScore = (dm.qualification_score || 0).toFixed(2);
+  const qualStatus = dm.auto_qualified ? '✓ Qualified' : '✗ Not qualified';
 
-  btn.disabled = true;
-  btn.innerHTML = '<span class="regen-spinner"></span>Saving...';
+  document.getElementById('modalTitle').textContent = `DM from ${dm.sender_name || 'Unknown'}`;
+  document.getElementById('modalSubject').textContent = `${dm.source_post_theme || 'Contact'} — Score: ${qualScore} (${qualStatus})`;
 
-  try {
-    const res = await fetch('/api/regen-message', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msg, save: true }),
-    });
+  const bodyText = `From: ${dm.sender_name || 'Unknown'}
+Title: ${dm.sender_title || 'N/A'}
+Company: ${dm.sender_company || 'N/A'}
+Channel: ${dm.source_channel || 'unknown'}
+Status: ${dm.lead_status || 'new'}
 
-    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+---
 
-    window.outreachMessages[currentMessageIdx]._saved = true;
-    btn.innerHTML = '✓ Saved';
+${dm.message_text || '[No message text]'}
 
-  } catch (err) {
-    btn.disabled = false;
-    btn.innerHTML = 'Save to record';
-    alert('Save failed: ' + err.message);
-  }
+---
+
+Qualification Notes: ${dm.qualification_notes || 'Auto-qualified based on profile signals'}`;
+
+  document.getElementById('modalBody').textContent = bodyText;
+  document.getElementById('messageModal').classList.add('active');
 }
 
 function closeModal() {
@@ -518,102 +506,6 @@ function closeModal() {
 
 document.getElementById('messageModal').addEventListener('click', (e) => {
   if (e.target.id === 'messageModal') closeModal();
-});
-
-// Regen logic
-let regenTargetIdx = null;
-let selectedStage = null;
-
-const STAGE_GOALS = {
-  connect: 'Open a thread. Show you noticed something specific. No pitch, no ask — under 60 words.',
-  warm: 'Establish credibility. Give a useful insight directly relevant to their situation. No meeting ask.',
-  discover: 'Ask one specific diagnostic question to understand their actual situation before proposing anything.',
-  ask: 'Request the 15-min call. Reference what you now know about their situation. One ask only.'
-};
-
-function selectStage(stage) {
-  selectedStage = stage;
-  document.querySelectorAll('.stage-btn').forEach(b => {
-    b.classList.toggle('selected', b.dataset.stage === stage);
-  });
-  const goalEl = document.getElementById('stageGoal');
-  goalEl.style.display = 'block';
-  goalEl.textContent = STAGE_GOALS[stage];
-}
-
-function openRegen(idx) {
-  regenTargetIdx = idx;
-  selectedStage = null;
-  const msg = window.outreachMessages[idx];
-  document.getElementById('regenModalTitle').textContent = `Regenerate — ${msg.name}`;
-  document.getElementById('regenContext').value = '';
-  document.getElementById('regenSubmitBtn').disabled = false;
-  document.getElementById('regenSubmitBtn').innerHTML = 'Regenerate';
-  document.getElementById('stageGoal').style.display = 'none';
-  document.querySelectorAll('.stage-btn').forEach(b => b.classList.remove('selected'));
-
-  // Pre-select stage based on target's current stage if available
-  const currentStage = msg._stage || msg.stage || 'connect';
-  selectStage(currentStage);
-
-  document.getElementById('regenModal').classList.add('active');
-}
-
-function closeRegenModal() {
-  document.getElementById('regenModal').classList.remove('active');
-  regenTargetIdx = null;
-}
-
-async function submitRegen() {
-  if (regenTargetIdx === null) return;
-  const msg = window.outreachMessages[regenTargetIdx];
-  const context = document.getElementById('regenContext').value.trim();
-  const btn = document.getElementById('regenSubmitBtn');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="regen-spinner"></span>Regenerating...';
-
-  try {
-    if (!selectedStage) {
-      btn.disabled = false;
-      btn.innerHTML = 'Regenerate';
-      alert('Please select a sequence stage first.');
-      return;
-    }
-
-    const res = await fetch('/api/regen-message', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msg, context, stage: selectedStage }),
-    });
-
-    if (!res.ok) throw new Error(`Server error: ${res.status}`);
-    const data = await res.json();
-
-    // Update in-memory message with regenerated version
-    window.outreachMessages[regenTargetIdx] = {
-      ...msg,
-      subject: data.subject || msg.subject,
-      full_body: data.body || msg.full_body,
-      _regenerated: true,
-      _stage: selectedStage,
-      _saved: false,
-    };
-
-    closeRegenModal();
-
-    // Show updated message immediately
-    showMessage(regenTargetIdx);
-
-  } catch (err) {
-    btn.disabled = false;
-    btn.innerHTML = 'Regenerate';
-    alert('Regeneration failed: ' + err.message);
-  }
-}
-
-document.getElementById('regenModal').addEventListener('click', (e) => {
-  if (e.target.id === 'regenModal') closeRegenModal();
 });
 
 load();
