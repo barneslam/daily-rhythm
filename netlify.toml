@@ -1,6 +1,6 @@
 [build]
-  command = "echo 'Dashboard ready for deployment'"
-  publish = "netlify"
+  command = "echo 'GTM Engine Dashboard ready for deployment'"
+  publish = "."
   functions = "functions"
   environment = { SECRETS_SCAN_ENABLED = "false" }
 
@@ -14,8 +14,14 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+# Redirect root to dashboard
+[[redirects]]
+  from = "/"
+  to = "/dashboard.html"
+  status = 200
+
 # Environment variables - Set in Netlify UI under Settings → Build & deploy → Environment
-# SUPABASE_URL and SUPABASE_ANON_KEY must be configured in Netlify dashboard
+# SUPABASE_URL, SUPABASE_ANON_KEY, BLOTATO_API_KEY, LINKEDIN_WEBHOOK_SECRET must be configured in Netlify dashboard
 
 # Scheduled Functions
 [[scheduled_functions]]
@@ -38,6 +44,11 @@
   # Every 30 minutes to poll Blotato API for inbound LinkedIn DMs
   cron = "*/30 * * * *"
 
-# Edge functions for real-time data
-[functions]
-  directory = "functions"
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
