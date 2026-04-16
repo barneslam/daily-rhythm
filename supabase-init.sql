@@ -1,5 +1,8 @@
 -- Daily Rhythm GTM Engine Tables
 -- Run this in Supabase SQL Editor: https://supabase.com/dashboard/project/[YOUR-PROJECT]/sql/new
+--
+-- IMPORTANT: Also run gtm-schema.sql to create the dashboard tables:
+--   gtm_targets, gtm_drafts, gtm_config, gtm_tracker, gtm_daily_logs
 
 -- 1. Outreach Messages Table
 CREATE TABLE IF NOT EXISTS outreach_messages (
