@@ -490,7 +490,7 @@ async function load() {
     </select>`;
 
     return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
-      <div style="font-weight:600;color:var(--muted);font-size:12px;">${t.id}</div>
+      <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
       <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
       <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
