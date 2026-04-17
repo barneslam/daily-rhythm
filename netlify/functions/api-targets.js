@@ -30,7 +30,10 @@ exports.handler = async (event, context) => {
       status: target.status || 'identified',
       confidence: target.confidence || 'MEDIUM',
       linkedin_url: target.linkedin_url,
-      qualified: target.qualified
+      qualified: target.qualified,
+      draft_message: target.draft_message,
+      needs_regen: target.needs_regen,
+      follow_ups: target.follow_ups
     }));
 
     return {
