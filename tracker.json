@@ -38,8 +38,8 @@
       },
       "lead_discovery": {
         "status": "completed",
-        "leads_discovered": 6,
-        "timestamp": "2026-04-13T21:30:37.269Z",
+        "leads_discovered": 5,
+        "timestamp": "2026-04-13T19:11:31.098Z",
         "next_step": "send_connection_requests"
       }
     },
@@ -57,8 +57,8 @@
       ],
       "lead_discovery": {
         "status": "completed",
-        "leads_discovered": 7,
-        "timestamp": "2026-04-14T01:30:13.588Z",
+        "leads_discovered": 6,
+        "timestamp": "2026-04-14T23:45:51.213Z",
         "next_step": "send_connection_requests"
       }
     },
@@ -73,7 +73,13 @@
         "Send all 7 outreach messages",
         "Update tracking-template.csv",
         "Monitor delivery health"
-      ]
+      ],
+      "lead_discovery": {
+        "status": "completed",
+        "leads_discovered": 5,
+        "timestamp": "2026-04-15T11:00:00.219Z",
+        "next_step": "send_connection_requests"
+      }
     },
     "2026-04-17": {
       "day_of_week": "Wednesday",
@@ -85,7 +91,13 @@
         "Handle responses (if any arrive)",
         "Draft pre-call research briefs",
         "Schedule calls"
-      ]
+      ],
+      "lead_discovery": {
+        "status": "completed",
+        "leads_discovered": 6,
+        "timestamp": "2026-04-17T11:00:00.247Z",
+        "next_step": "send_connection_requests"
+      }
     },
     "2026-04-18": {
       "day_of_week": "Thursday",

@@ -368,15 +368,15 @@ function renderMd(text) {
 
 async function load() {
   const [todayRes, configRes, trackerRes, targetsRes, draftsRes, logsRes, offerRes, programRes, outreachRes, dmsRes] = await Promise.all([
-    fetch('/api/today').then(r => r.json()),
-    fetch('/api/config').then(r => r.json()),
-    fetch('/api/tracker').then(r => r.json()),
-    fetch('/api/targets').then(r => r.json()),
-    fetch('/api/drafts').then(r => r.json()),
-    fetch('/api/logs').then(r => r.json()),
-    fetch('/api/offer-doc').then(r => r.json()),
-    fetch('/api/program').then(r => r.json()),
-    fetch('/api/outreach').then(r => r.json()),
+    fetch('/api/today').then(r => r.json()).catch(() => ({ day: 'Unknown', date: new Date().toISOString().split('T')[0] })),
+    fetch('/api/config').then(r => r.json()).catch(() => ({ week: 1, weekly_targets: {}, blocks: [] })),
+    fetch('/api/tracker').then(r => r.json()).catch(() => ({ current_week: 1, days: {} })),
+    fetch('/api/targets').then(r => r.json()).catch(() => ({ targets: [] })),
+    fetch('/api/drafts').then(r => r.json()).catch(() => []),
+    fetch('/api/logs').then(r => r.json()).catch(() => ({ logs: [] })),
+    fetch('/api/offer-doc').then(r => r.json()).catch(() => ({ content: '' })),
+    fetch('/api/program').then(r => r.json()).catch(() => ({ program: [] })),
+    fetch('/api/outreach').then(r => r.json()).catch(() => ({ outreach: [] })),
     fetch('/api/dms?limit=50&days=7&status=all').then(r => r.json()).catch(() => ({ dms: [], qualification_metrics: {}, status_metrics: {}, channel_metrics: {} })),
   ]);
 
