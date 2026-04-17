@@ -7,7 +7,7 @@ const cron = require('node-cron');
 const { runDiscovery } = require('./lead-discovery');
 const { db, supabase } = require('./supabase-client');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const BASE_DIR = __dirname;
 
 // Helper to read JSON files
