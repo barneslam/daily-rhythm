@@ -489,9 +489,12 @@ async function load() {
       ${statusOptions.map(opt => `<option value="${opt}" ${opt === (t.status || 'identified') ? 'selected' : ''}>${opt.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}</option>`).join('')}
     </select>`;
 
+    const linkedinLink = t.linkedin_url ? `<a href="${t.linkedin_url}" target="_blank" style="color:var(--blue);text-decoration:none;font-size:10px;">🔗 LinkedIn</a>` : '';
+    const channelBadge = t.channel ? `<span style="background:#5a789820;color:var(--blue);padding:1px 4px;border-radius:2px;font-size:9px;margin-left:4px;">${t.channel}</span>` : '';
+
     return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
       <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
-      <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
+      <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:10px;">${linkedinLink} ${channelBadge}</span></div>
       <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
         <div>${statusSelect}</div>
