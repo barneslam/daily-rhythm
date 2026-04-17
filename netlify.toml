@@ -2,6 +2,11 @@
 publish = "."
 functions = "netlify/functions"
 
+# Scheduled functions
+[[scheduled_functions]]
+function = "schedule-discovery"
+cron = "0 7 * * *"
+
 # API routing - redirect /api/* to Netlify functions
 [[redirects]]
 from = "/api/*"
