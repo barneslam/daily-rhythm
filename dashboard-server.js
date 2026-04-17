@@ -43,26 +43,36 @@ const routes = {
 
   '/api/tracker': () => readJSON(path.join(BASE_DIR, 'tracker.json')),
 
-  '/api/targets': () => {
-    const trackerData = readJSON(path.join(BASE_DIR, 'tracker.json'));
-    const csvContent = readFile(path.join(BASE_DIR, 'assets/tracking-template.csv'));
+  '/api/targets': async () => {
+    try {
+      const { data: targets, error } = await supabase
+        .from('gtm_targets')
+        .select('*')
+        .order('date_found', { ascending: false });
 
-    const lines = csvContent.trim().split('\n');
-    const headers = lines[0].split(',');
-    const targets = lines.slice(1).map((line, idx) => {
-      const parts = line.split(',');
-      return {
-        id: idx + 1,
-        name: parts[1] || 'TBD',
-        business: parts[2] || '',
-        signal: parts[3] || '',
-        channel: parts[4] || '',
-        status: parts[5] ? 'messaged' : 'identified',
-        confidence: idx < 2 ? 'HIGH' : 'MEDIUM',
-      };
-    });
+      if (error) {
+        console.error('Error fetching targets:', error);
+        return { targets: [] };
+      }
 
-    return { targets };
+      // Transform database fields to match dashboard expectations
+      const formattedTargets = (targets || []).map(target => ({
+        id: target.id,
+        name: target.name,
+        business: target.business,
+        signal: target.signal,
+        channel: target.outreach_channel,
+        status: target.status || 'identified',
+        confidence: target.confidence || 'MEDIUM',
+        linkedin_url: target.linkedin_url,
+        qualified: target.qualified
+      }));
+
+      return { targets: formattedTargets };
+    } catch (e) {
+      console.error('Targets API error:', e.message);
+      return { targets: [] };
+    }
   },
 
   '/api/drafts': () => {
@@ -258,6 +268,24 @@ const routes = {
       return { error: e.message };
     }
   },
+
+  '/api/lead/update-status': async (body) => {
+    try {
+      const { leadId, status } = body;
+      const { error } = await supabase
+        .from('gtm_targets')
+        .update({ status })
+        .eq('id', leadId);
+
+      if (error) {
+        return { error: error.message };
+      }
+      return { success: true };
+    } catch (e) {
+      console.error('Lead status update error:', e.message);
+      return { error: e.message };
+    }
+  },
 };
 
 // Serve log file
@@ -371,6 +399,20 @@ async function handleRequest(req, res, body) {
       res.end(JSON.stringify({ success: true, data }));
     } catch (e) {
       console.error('Approval logging error:', e.message);
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // Handle /api/lead/update-status (POST)
+  if (req.url === '/api/lead/update-status' && req.method === 'POST') {
+    try {
+      const result = await routes['/api/lead/update-status'](body);
+      res.writeHead(200);
+      res.end(JSON.stringify(result));
+    } catch (e) {
+      console.error('Lead status update error:', e.message);
       res.writeHead(500);
       res.end(JSON.stringify({ error: e.message }));
     }

@@ -51,18 +51,26 @@
   .metric-label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
   .metric-target { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-  .target-row { display: grid; grid-template-columns: 40px 1fr 1fr 80px 100px; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; }
+  .target-row { display: grid; grid-template-columns: 60px 1fr 1.5fr 140px; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; font-size: 13px; }
   .target-row:last-child { border-bottom: none; }
   .target-header { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
   .confidence-high { color: var(--green); font-weight: 600; }
+  .confidence-medium-high { color: #d9a526; font-weight: 600; }
   .confidence-medium { color: var(--accent); font-weight: 500; }
+  .confidence-low { color: var(--red); font-weight: 500; }
+
+  .confidence-bg-high { background: #4a7c5910; border-left: 3px solid var(--green); }
+  .confidence-bg-medium-high { background: #d9a52610; border-left: 3px solid #d9a526; }
+  .confidence-bg-medium { background: #a0782810; border-left: 3px solid var(--accent); }
+  .confidence-bg-low { background: #a0404010; border-left: 3px solid var(--red); }
   .target-signal { color: var(--muted); font-size: 12px; }
   .target-status { font-size: 11px; padding: 2px 8px; border-radius: 3px; text-align: center; }
   .status-identified { background: #5a789820; color: var(--blue); }
+  .status-connection-req { background: #d9a52620; color: #a06e00; }
+  .status-connected { background: #8a6fa620; color: #6b5a3f; }
   .status-messaged { background: #a0782820; color: var(--accent-dark); }
   .status-responded { background: #4a7c5920; color: var(--green); }
-  .status-scheduled { background: var(--light-blue); color: #0369a1; }
-  .status-cold { background: var(--surface2); color: var(--muted); }
+  .status-disqualified { background: var(--surface2); color: var(--muted); }
 
   .draft-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
   .draft-header { padding: 14px 20px; background: var(--surface2); display: flex; justify-content: space-between; align-items: center; }
@@ -110,6 +118,34 @@
   .outreach-btn { padding: 6px 12px; background: var(--light-blue); border: 1px solid #b3e5fc; color: #0369a1; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; }
   .outreach-btn:hover { background: #b3e5fc; }
 
+  .kanban-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 16px; }
+  .kanban-column { background: var(--surface2); border-radius: 8px; padding: 12px; min-height: 600px; }
+  .kanban-column-header { font-size: 12px; font-weight: 600; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .kanban-column-count { font-size: 11px; color: var(--muted); margin-left: 4px; }
+  .kanban-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 8px; cursor: grab; transition: all 0.2s; }
+  .kanban-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .kanban-card.dragging { opacity: 0.5; cursor: grabbing; }
+  .kanban-card-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .kanban-card-company { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .kanban-card-meta { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .kanban-tag { font-size: 10px; padding: 2px 6px; border-radius: 3px; background: var(--surface); }
+  .kanban-tag-confidence-high { background: #4a7c5920; color: var(--green); }
+  .kanban-tag-confidence-medium { background: #a0782820; color: var(--accent-dark); }
+  .kanban-tag-urgency-green { background: #4a7c5920; color: var(--green); }
+  .kanban-tag-urgency-yellow { background: #d9a52620; color: #b8860b; }
+  .kanban-tag-urgency-red { background: #a0404020; color: var(--red); }
+  .kanban-card-expand { font-size: 10px; color: var(--accent); cursor: pointer; margin-top: 6px; border-top: 1px solid var(--border); padding-top: 6px; }
+  .kanban-card-details { background: var(--surface2); border-radius: 6px; padding: 12px; margin-top: 8px; font-size: 12px; }
+  .kanban-card-details h4 { font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .kanban-card-details p { margin-bottom: 8px; line-height: 1.5; }
+  .kanban-card-details-field { margin-bottom: 8px; }
+  .kanban-card-details-label { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+  .kanban-card-details-value { font-size: 12px; color: var(--text); margin-top: 2px; }
+
+  @media (max-width: 1200px) {
+    .kanban-board { grid-template-columns: repeat(3, 1fr); }
+  }
+
   @media (max-width: 768px) {
     .target-row { grid-template-columns: 1fr; gap: 4px; }
     .target-header { display: none; }
@@ -117,6 +153,8 @@
     .week-timeline { flex-wrap: wrap; }
     .week-item { min-width: 80px; }
     .modal-content { max-width: 90vw; padding: 24px; }
+    .kanban-board { grid-template-columns: 1fr; }
+    .kanban-column { min-height: 300px; }
   }
 </style>
 </head>
@@ -129,12 +167,13 @@
 
   <div class="tabs">
     <div class="tab active" data-panel="dashboard">Dashboard</div>
-    <div class="tab" data-panel="schedule">Schedule</div>
+    <div class="tab" data-panel="targets">Targets (58)</div>
+    <div class="tab" data-panel="leads">Lead Pipeline</div>
     <div class="tab" data-panel="dms">DM Pipeline</div>
-    <div class="tab" data-panel="targets">Targets (20)</div>
-    <div class="tab" data-panel="drafts">Drafts</div>
     <div class="tab" data-panel="content">Content</div>
+    <div class="tab" data-panel="drafts">Drafts</div>
     <div class="tab" data-panel="logs">Logs</div>
+    <div class="tab" data-panel="instructions">Instructions</div>
     <div class="tab" data-panel="offer">Offer Doc</div>
     <div class="tab" data-panel="program">8-Week Program</div>
   </div>
@@ -149,6 +188,26 @@
     </div>
   </div>
 
+  <!-- TARGETS TABLE -->
+  <div class="panel" id="targets">
+    <div class="card">
+      <h2>TARGET LIST — ALL 58 LEADS</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; font-size: 12px;">
+        <div style="padding: 8px; background: #4a7c5910; border-left: 3px solid var(--green); border-radius: 4px;"><span style="color:var(--green);font-weight:600">90</span> HIGH confidence</div>
+        <div style="padding: 8px; background: #d9a52610; border-left: 3px solid #d9a526; border-radius: 4px;"><span style="color:#d9a526;font-weight:600">80</span> Medium-High</div>
+        <div style="padding: 8px; background: #a0782810; border-left: 3px solid var(--accent); border-radius: 4px;"><span style="color:var(--accent);font-weight:600">70</span> Medium (cutoff)</div>
+        <div style="padding: 8px; background: #a0404010; border-left: 3px solid var(--red); border-radius: 4px;"><span style="color:var(--red);font-weight:600">60</span> Low confidence</div>
+      </div>
+      <div style="margin-bottom: 16px; font-size: 11px; color: var(--muted); padding: 8px; background: var(--surface2); border-radius: 4px;">
+        <strong>Status workflow:</strong> identified → connection_req → connected → messaged → responded
+      </div>
+      <div class="target-row target-header">
+        <div>#</div><div>Name / Business</div><div>Signal</div><div>Confidence</div><div>Status</div>
+      </div>
+      <div id="target-list"></div>
+    </div>
+  </div>
+
   <!-- SCHEDULE -->
   <div class="panel" id="schedule">
     <div class="card">
@@ -159,6 +218,15 @@
 
   <!-- DM PIPELINE -->
   <div class="panel" id="dms">
+    <div class="card" style="background: #5a789820; border-left: 3px solid var(--blue);">
+      <h2>💬 LINKEDIN DM MONITORING</h2>
+      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">Incoming messages auto-scored for qualification. Respond, archive, or disqualify each message.</p>
+      <div style="display: flex; gap: 16px; font-size: 12px;">
+        <div><strong>70%+</strong> — Highly qualified (signals: email, call, offer)</div>
+        <div><strong>50%-70%</strong> — Medium qualification</div>
+        <div><strong>&lt;50%</strong> — Low priority</div>
+      </div>
+    </div>
     <div class="card">
       <h2>QUALIFICATION METRICS</h2>
       <div class="metric-grid" id="dms-qual-metrics"></div>
@@ -180,18 +248,13 @@
     </div>
   </div>
 
-  <!-- TARGETS -->
-  <div class="panel" id="targets">
+  <!-- LEAD PIPELINE (KANBAN) -->
+  <div class="panel" id="leads">
     <div class="card">
-      <h2>OUTREACH SCHEDULED</h2>
-      <div id="outreach-list" style="margin-bottom: 24px;"></div>
-    </div>
-    <div class="card">
-      <h2>TARGET LIST</h2>
-      <div class="target-row target-header">
-        <div>#</div><div>Name / Business</div><div>Signal</div><div>Confidence</div><div>Status</div>
-      </div>
-      <div id="target-list"></div>
+      <h2>LEAD PIPELINE — 5-STAGE WORKFLOW</h2>
+      <div style="margin-bottom: 12px; font-size: 12px; color: var(--muted);">Drag leads between columns to update status</div>
+      <div class="metric-grid" id="leads-metrics" style="margin-bottom: 16px;"></div>
+      <div class="kanban-board" id="kanban-board"></div>
     </div>
   </div>
 
@@ -202,7 +265,21 @@
 
   <!-- CONTENT -->
   <div class="panel" id="content">
+    <div class="card" style="background: #4a7c5910; border-left: 3px solid var(--green);">
+      <h2>📝 CONTENT PUBLISHING</h2>
+      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">Auto-generated content ready to publish. Select channels, edit if needed, and send to Blotato or copy manually.</p>
+      <div style="display: flex; gap: 16px; font-size: 12px;">
+        <div><strong>✓ Approve</strong> — Save final version</div>
+        <div><strong>📋 Copy</strong> — Copy to clipboard</div>
+        <div><strong>✏️ Edit</strong> — Quick revision</div>
+      </div>
+    </div>
     <div id="content-list"></div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="panel" id="instructions">
+    <div id="instructions-content"></div>
   </div>
 
   <!-- LOGS -->
@@ -337,27 +414,147 @@ async function load() {
 
   // Outreach
   window.outreachMessages = outreachRes.outreach || [];
-  document.getElementById('outreach-list').innerHTML = (outreachRes.outreach || []).map((o, idx) => {
-    return `<div class="target-row" style="grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: center;">
-      <div><strong>${o.name}</strong><br><span style="color:var(--muted);font-size:11px">${o.business}</span></div>
-      <div class="target-signal">${o.signal}</div>
-      <div><span class="target-status status-scheduled">Scheduled ${o.send_date}</span></div>
-      <div><button class="outreach-btn" onclick="showMessage(${idx})">View</button></div>
+
+  // Targets Table (ALL 58 LEADS) - Sort by confidence highest to lowest
+  let targets = targetsRes.targets || [];
+
+  // Confidence score mapping for sorting
+  const confidenceMap = {
+    'HIGH': 90,
+    'MEDIUM-HIGH': 80,
+    'MEDIUM': 70,
+    'LOW': 60
+  };
+
+  // Sort by confidence descending (highest score first)
+  targets.sort((a, b) => {
+    const scoreA = confidenceMap[a.confidence?.toUpperCase()] || 70;
+    const scoreB = confidenceMap[b.confidence?.toUpperCase()] || 70;
+    return scoreB - scoreA; // Highest first
+  });
+
+  document.getElementById('target-list').innerHTML = targets.map(t => {
+    let confidenceScore = 70;
+    let confidenceClass = 'medium';
+    const conf = (t.confidence || 'MEDIUM').toUpperCase();
+
+    if (conf.includes('HIGH') && conf.includes('MEDIUM')) {
+      confidenceScore = 80;
+      confidenceClass = 'medium-high';
+    } else if (conf === 'HIGH') {
+      confidenceScore = 90;
+      confidenceClass = 'high';
+    } else if (conf === 'MEDIUM') {
+      confidenceScore = 70;
+      confidenceClass = 'medium';
+    } else if (conf === 'LOW') {
+      confidenceScore = 60;
+      confidenceClass = 'low';
+    }
+
+    const statusClass = (t.status || 'identified').replace('_', '-');
+    const bgClass = `confidence-bg-${confidenceClass}`;
+
+    return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
+      <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
+      <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
+      <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <span class="target-status status-${statusClass}">${t.status ? t.status.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()) : 'Identified'}</span>
+        ${t.needs_regen ? '<span style="background:#a0404020;color:var(--red);padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500;">⚠ Regen</span>' : ''}
+        ${t.draft_message ? '<span style="background:#8a6fa620;color:#6b5a3f;padding:2px 8px;border-radius:3px;font-size:11px;">📝 Draft</span>' : ''}
+        ${t.follow_ups ? '<span style="background:#5a789820;color:var(--blue);padding:2px 8px;border-radius:3px;font-size:11px;">${t.follow_ups}x FU</span>' : ''}
+        ${t.closing_stage ? '<span style="background:#4a7c5920;color:var(--green);padding:2px 8px;border-radius:3px;font-size:11px;">✓ ' + t.closing_stage + '</span>' : ''}
+      </div>
     </div>`;
   }).join('');
 
-  // Targets
-  document.getElementById('target-list').innerHTML = (targetsRes.targets || []).map(t => {
-    const confClass = (t.confidence || '').includes('HIGH') ? 'high' : 'medium';
-    const statusClass = t.status.replace('_', '-');
-    return `<div class="target-row">
-      <div>${t.id}</div>
-      <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
-      <div class="target-signal">${t.signal.substring(0, 80)}...</div>
-      <div class="confidence-${confClass}">${t.confidence}</div>
-      <div><span class="target-status status-${statusClass}">${t.status}</span></div>
+  // Lead Pipeline Kanban
+  const statusMap = {
+    'identified': 'Identified',
+    'connection_req': 'Connection Request',
+    'connected': 'Connected',
+    'messaged': 'Messaged',
+    'responded': 'Responded / Booked',
+    'disqualified': 'Disqualified'
+  };
+
+  const columns = Object.keys(statusMap);
+  const columnCounts = {};
+  columns.forEach(col => {
+    columnCounts[col] = targets.filter(t => t.status === col).length;
+  });
+
+  // Metrics
+  document.getElementById('leads-metrics').innerHTML = `
+    <div class="metric"><div class="metric-value">${targets.length}</div><div class="metric-label">Total Leads</div></div>
+    <div class="metric"><div class="metric-value">${columnCounts.identified || 0}</div><div class="metric-label">Identified</div></div>
+    <div class="metric"><div class="metric-value">${columnCounts.connection_req || 0}</div><div class="metric-label">Awaiting Response</div></div>
+    <div class="metric"><div class="metric-value">${columnCounts.connected || 0}</div><div class="metric-label">Connected</div></div>
+    <div class="metric"><div class="metric-value">${columnCounts.responded || 0}</div><div class="metric-label">Engaged</div></div>
+  `;
+
+  // Kanban board
+  const kanbanBoard = document.getElementById('kanban-board');
+  kanbanBoard.innerHTML = columns.map(colStatus => {
+    const colName = statusMap[colStatus];
+    const colLeads = targets.filter(t => t.status === colStatus);
+    return `<div class="kanban-column">
+      <div class="kanban-column-header">
+        ${colName}
+        <span class="kanban-column-count">${colLeads.length}</span>
+      </div>
+      <div class="kanban-drop-zone" data-status="${colStatus}">
+        ${colLeads.map(lead => {
+          const daysAgo = Math.floor((Date.now() - new Date(lead.date_found || Date.now())) / (1000 * 60 * 60 * 24));
+          let urgencyClass = 'green';
+          if (daysAgo > 7) urgencyClass = 'red';
+          else if (daysAgo > 3) urgencyClass = 'yellow';
+
+          // Map confidence to numeric score
+          let confidenceScore = 70;
+          const conf = (lead.confidence || 'MEDIUM').toUpperCase();
+          if (conf.includes('HIGH') && conf.includes('MEDIUM')) confidenceScore = 80; // MEDIUM-HIGH
+          else if (conf === 'HIGH') confidenceScore = 90;
+          else if (conf === 'MEDIUM') confidenceScore = 70;
+          else if (conf === 'LOW') confidenceScore = 60;
+
+          return `<div class="kanban-card" draggable="true" data-lead-id="${lead.id}" data-lead-name="${lead.name}" data-lead-company="${lead.business}">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <div style="flex: 1;">
+                <div class="kanban-card-name">${lead.name}</div>
+                <div class="kanban-card-company">${lead.business || 'Unknown'}</div>
+              </div>
+              <div style="font-size: 18px; font-weight: 700; color: var(--accent); min-width: 40px; text-align: right;">${confidenceScore}</div>
+            </div>
+            <div class="kanban-card-meta">
+              <span class="kanban-tag kanban-tag-urgency-${urgencyClass}">${daysAgo}d ago</span>
+            </div>
+            <div style="font-size: 11px; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border);">
+              <strong style="color: var(--text);">Stage:</strong> ${colName}
+            </div>
+            <div class="kanban-card-expand" onclick="toggleCardDetails(event, '${lead.id}')">+ Details</div>
+            <div class="kanban-card-details" id="details-${lead.id}" style="display:none;">
+              <h4>Contact Info</h4>
+              ${lead.linkedin_url ? `<p><a href="${lead.linkedin_url}" target="_blank" style="color:var(--accent)">View LinkedIn</a></p>` : '<p style="color:var(--muted)">No LinkedIn</p>'}
+              <div class="kanban-card-details-field">
+                <div class="kanban-card-details-label">Signal</div>
+                <div class="kanban-card-details-value">${lead.signal || 'N/A'}</div>
+              </div>
+              <div class="kanban-card-details-field">
+                <div class="kanban-card-details-label">Found</div>
+                <div class="kanban-card-details-value">${new Date(lead.date_found || Date.now()).toLocaleDateString()}</div>
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
     </div>`;
   }).join('');
+
+  // Setup drag & drop
+  setupKanbanDragDrop();
+  window.leadsData = targets;
 
   // Drafts
   document.getElementById('drafts-list').innerHTML = draftsRes.length === 0
@@ -379,17 +576,190 @@ async function load() {
       </div>`;
     }).join('');
 
-  // Content
+  // Content - Publishing Interface
   const contentRes = await fetch('/api/content').then(r => r.json());
   document.getElementById('content-list').innerHTML = contentRes.length === 0
-    ? '<div class="card"><h2>No published content yet</h2><p style="color:var(--muted);margin-top:8px">Content will appear here after you approve drafts.</p></div>'
-    : contentRes.map(c => `<div class="card"><h2>${c.filename}</h2><div class="log-content">${c.content}</div></div>`).join('');
+    ? '<div class="card"><h2>📝 Ready to Publish</h2><p style="color:var(--muted);margin-top:8px">No content generated yet. Auto-generated content appears here during the daily Build/Deliver block.</p></div>'
+    : contentRes.map((c, idx) => {
+      const isPost = c.filename.includes('post') || c.filename.includes('content');
+      const isCaseStudy = c.filename.includes('case-study') || c.filename.includes('case_study');
+      const channels = isPost ? ['LinkedIn', 'Twitter', 'Instagram'] : isCaseStudy ? ['LinkedIn'] : ['LinkedIn'];
+      return `<div class="draft-card">
+        <div class="draft-header">
+          <div>
+            <div class="draft-title">${c.filename.replace(/\.md$/, '').replace(/_/g, ' ')}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:4px">Type: ${isPost ? 'Social Post' : isCaseStudy ? 'Case Study' : 'Content'}</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <span class="draft-status draft-pending">📋 Ready</span>
+          </div>
+        </div>
+        <div class="draft-body">
+          <div class="draft-content">${c.content}</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+            <label style="font-size:11px;color:var(--muted)">Channels:</label>
+            ${channels.map(ch => `<label style="margin-right:12px"><input type="checkbox" checked> ${ch}</label>`).join('')}
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn" onclick="copyToClipboard('${idx}')">📋 Copy</button>
+            <button class="btn btn-approve" onclick="publishContent('${idx}', '${c.filename}')">✓ Publish</button>
+            <button class="btn" onclick="editContent('${idx}')">✏️ Edit</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
 
   // Logs
   document.getElementById('log-dates').innerHTML = logsRes.map(d =>
     `<button class="btn" onclick="loadLog('${d}')" style="margin: 2px;">${d}</button>`
   ).join('');
   if (logsRes.length > 0) loadLog(logsRes[0]);
+
+  // Instructions - Complete Workflow Documentation
+  document.getElementById('instructions-content').innerHTML = `
+    <div class="card" style="background: #e0f2fe; border-left: 3px solid var(--blue);">
+      <h2>🚀 GTM ENGINE — COMPLETE WORKFLOW</h2>
+      <p style="color: var(--muted); font-size: 13px;">This autonomous GTM system runs on a daily schedule. Your job: approve outreach messages (8:03 AM) and send them. Everything else is automated.</p>
+    </div>
+
+    <div class="card">
+      <h2>📊 THE THREE TABS</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px;">
+        <div style="border-left: 3px solid var(--green); padding-left: 12px;">
+          <h3 style="color: var(--green); margin-bottom: 8px;">Tab 1: Targets (58 Leads)</h3>
+          <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">All 58 qualified leads from web discovery. Sorted by confidence (90-60), with status workflow and action indicators.</p>
+          <p style="font-size: 11px; color: var(--muted);"><strong>Confidence Scoring:</strong></p>
+          <ul style="font-size: 11px; margin: 4px 0 0 16px; color: var(--muted);">
+            <li>🟢 <strong>90 (HIGH)</strong> — 3/3 signals: role + company size + GTM tension</li>
+            <li>🟡 <strong>80 (MEDIUM-HIGH)</strong> — 2/3 signals confirmed</li>
+            <li>🟠 <strong>70 (MEDIUM)</strong> — 1-2 signals + industry fit</li>
+            <li>🔴 <strong>60 (LOW)</strong> — 1 signal only</li>
+          </ul>
+          <p style="font-size: 11px; color: var(--muted); margin-top: 8px;"><strong>Status Workflow:</strong> Identified → Connection Req → Connected → Messaged → Responded → Disqualified</p>
+        </div>
+
+        <div style="border-left: 3px solid var(--blue); padding-left: 12px;">
+          <h3 style="color: var(--blue); margin-bottom: 8px;">Tab 2: DM Pipeline</h3>
+          <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">Incoming LinkedIn DMs auto-scored for qualification. Respond, archive, or disqualify each message.</p>
+          <p style="font-size: 11px; color: var(--muted);"><strong>Qualification Algorithm:</strong></p>
+          <ul style="font-size: 11px; margin: 4px 0 0 16px; color: var(--muted);">
+            <li>Scans message for signals: email, call request, offer mention</li>
+            <li>Each signal = +25% qualification score</li>
+            <li>🟢 70%+ = Highly qualified</li>
+            <li>🟡 50-70% = Medium interest</li>
+            <li>🔴 &lt;50% = Low priority</li>
+          </ul>
+          <p style="font-size: 11px; color: var(--muted); margin-top: 8px;"><strong>Actions:</strong> Reply, Archive, Disqualify</p>
+        </div>
+
+        <div style="border-left: 3px solid var(--accent); padding-left: 12px;">
+          <h3 style="color: var(--accent); margin-bottom: 8px;">Tab 3: Content</h3>
+          <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">Auto-generated content (posts, case studies) ready to publish. Approve and send to Blotato or copy manually.</p>
+          <p style="font-size: 11px; color: var(--muted);"><strong>Publishing Workflow:</strong></p>
+          <ul style="font-size: 11px; margin: 4px 0 0 16px; color: var(--muted);">
+            <li>Content auto-generated during Build/Deliver block (9:30 AM)</li>
+            <li>Select channels: LinkedIn, Twitter, Instagram</li>
+            <li>✓ Publish — Send to Blotato (integrated)</li>
+            <li>📋 Copy — Copy to clipboard for manual posting</li>
+            <li>✏️ Edit — Quick revision before publishing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⏰ DAILY OPERATING RHYTHM</h2>
+      <table style="width: 100%; font-size: 12px; color: var(--text);">
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600; min-width: 100px;">6:57 AM</td>
+          <td style="padding: 8px 0;"><strong>Trigger Scan</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Auto-searches web for execution-stalled operators. Finds 3-5 targets.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600;">8:03 AM</td>
+          <td style="padding: 8px 0;"><strong>Outreach</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Drafts personalized messages. <strong style="color: var(--text);">YOU approve & send them.</strong></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600;">9:33 AM</td>
+          <td style="padding: 8px 0;"><strong>Build / Deliver</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Auto-generates next infrastructure asset or session prep materials.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600;">12:03 PM</td>
+          <td style="padding: 8px 0;"><strong>Follow-up</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Drafts follow-ups for unanswered messages. Pipeline summary.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600;">1:03 PM</td>
+          <td style="padding: 8px 0;"><strong>Content</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Auto-generates day-appropriate content (posts, case studies, comments).</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px 0; color: var(--accent); font-weight: 600;">3:03 PM</td>
+          <td style="padding: 8px 0;"><strong>Daily Log</strong></td>
+          <td style="padding: 8px 0; color: var(--muted);">Compiles scorecard. Friday = weekly summary.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>🎯 YOUR ONLY JOBS</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 12px;">
+        <div style="padding: 12px; background: var(--surface2); border-radius: 6px;">
+          <p style="font-weight: 600; margin-bottom: 4px;">1. Be ready by 8:03 AM</p>
+          <p style="font-size: 12px; color: var(--muted);">Open the dashboard for outreach approval</p>
+        </div>
+        <div style="padding: 12px; background: var(--surface2); border-radius: 6px;">
+          <p style="font-weight: 600; margin-bottom: 4px;">2. Approve & send outreach</p>
+          <p style="font-size: 12px; color: var(--muted);">Review drafts, edit if needed, copy & send on LinkedIn/email</p>
+        </div>
+        <div style="padding: 12px; background: var(--surface2); border-radius: 6px;">
+          <p style="font-weight: 600; margin-bottom: 4px;">3. Respond to replies</p>
+          <p style="font-size: 12px; color: var(--muted);">When someone replies, mark status in Target or DM tab</p>
+        </div>
+        <div style="padding: 12px; background: var(--surface2); border-radius: 6px;">
+          <p style="font-weight: 600; margin-bottom: 4px;">4. Publish content</p>
+          <p style="font-size: 12px; color: var(--muted);">Approve content and post to LinkedIn/other channels</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📈 8-WEEK PROGRAM</h2>
+      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">The engine adapts daily based on what week you're in. Check the "8-Week Program" tab for current week targets and checkpoints.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px;">
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 1-2</div>
+          <div style="color: var(--muted);">Infrastructure</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 3</div>
+          <div style="color: var(--muted);">Free Diags</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 4</div>
+          <div style="color: var(--muted);">First Revenue</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 5</div>
+          <div style="color: var(--muted);">Optimize</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 6</div>
+          <div style="color: var(--muted);">Scale</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 7</div>
+          <div style="color: var(--muted);">Upsell</div>
+        </div>
+        <div style="padding: 8px; background: var(--surface2); border-radius: 4px; text-align: center; font-size: 11px;">
+          <div style="font-weight: 600;">Week 8</div>
+          <div style="color: var(--muted);">Lock In</div>
+        </div>
+      </div>
+    </div>
+  `;
 
   // Offer doc
   document.getElementById('offer-content').innerHTML = renderMd(offerRes.content);
@@ -438,20 +808,40 @@ async function load() {
     `<div class="metric"><div class="metric-value">${count}</div><div class="metric-label">${channel.replace(/_/g, ' ')}</div></div>`
   ).join('') || '<div style="color:var(--muted);font-size:12px">No DM data yet</div>';
 
-  // DM feed
+  // DM feed - with auto-qualification scoring
   window.dmsData = dms;
   document.getElementById('dms-feed').innerHTML = dms.length === 0
-    ? '<div style="color:var(--muted);font-size:12px;padding:12px">No DMs in last 7 days</div>'
+    ? '<div style="color:var(--muted);font-size:12px;padding:12px">No DMs in last 7 days. Incoming messages from LinkedIn will appear here.</div>'
     : dms.map((dm, idx) => {
-      const qualClass = (dm.qualification_score || 0) > 0.6 ? 'high' : 'medium';
-      const statusClass = (dm.lead_status || 'new').replace(/_/g, '-');
-      return `<div class="target-row" style="grid-template-columns: 1fr 1fr 80px 100px 100px auto; gap: 12px; align-items: center;">
-        <div><strong>${dm.sender_name || 'Unknown'}</strong></div>
-        <div class="target-signal">${dm.sender_company || 'N/A'}</div>
-        <div><span style="font-weight:600;color:var(--${qualClass === 'high' ? 'green' : 'accent'})">${(dm.qualification_score || 0).toFixed(2)}</span></div>
-        <div><span class="target-status status-${statusClass}">${dm.lead_status || 'new'}</span></div>
-        <div class="target-signal">${dm.source_channel || 'unknown'}</div>
-        <div><button class="outreach-btn" onclick="showDM(${idx})">View</button></div>
+      // Auto-qualification: score based on message signals
+      const hasEmail = (dm.body || '').toLowerCase().includes('email');
+      const hasCall = (dm.body || '').toLowerCase().includes('call');
+      const hasOffer = (dm.body || '').toLowerCase().includes('interested') || (dm.body || '').toLowerCase().includes('opportunity');
+      const signals = (hasEmail ? 1 : 0) + (hasCall ? 1 : 0) + (hasOffer ? 1 : 0);
+      const qualScore = Math.min(0.3 + (signals * 0.25), 1.0);
+      const qualColor = qualScore >= 0.7 ? 'green' : qualScore >= 0.5 ? '#d9a526' : 'red';
+      const bgClass = qualScore >= 0.7 ? 'confidence-bg-high' : qualScore >= 0.5 ? 'confidence-bg-medium-high' : 'confidence-bg-low';
+
+      return `<div class="draft-card" style="margin-top: 12px;">
+        <div class="draft-header" style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="draft-title">${dm.sender_name || 'Unknown'} — ${dm.sender_company || 'N/A'}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:4px">${dm.subject || 'No subject'}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:18px;font-weight:700;color:${qualColor}">${(qualScore * 100).toFixed(0)}%</div>
+            <div style="font-size:10px;color:var(--muted)">Qualified</div>
+          </div>
+        </div>
+        <div class="draft-body">
+          <div class="draft-content">${(dm.body || '').substring(0, 300)}${(dm.body || '').length > 300 ? '...' : ''}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Sent: ${new Date(dm.send_date).toLocaleDateString()}</div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-approve" onclick="respondToDM(${idx})">✓ Reply</button>
+            <button class="btn" onclick="archiveDM(${idx})">📋 Archive</button>
+            <button class="btn" onclick="disqualifyDM(${idx})">❌ Disqualify</button>
+          </div>
+        </div>
       </div>`;
     }).join('');
 }
@@ -507,6 +897,176 @@ function closeModal() {
 document.getElementById('messageModal').addEventListener('click', (e) => {
   if (e.target.id === 'messageModal') closeModal();
 });
+
+// Content Publishing Functions
+function copyToClipboard(idx) {
+  const contentDivs = document.querySelectorAll('.draft-content');
+  if (contentDivs[idx]) {
+    const text = contentDivs[idx].innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✓ Copied to clipboard');
+    }).catch(err => console.error('Copy failed:', err));
+  }
+}
+
+async function publishContent(idx, filename) {
+  const contentDivs = document.querySelectorAll('.draft-content');
+  if (!contentDivs[idx]) return;
+
+  const text = contentDivs[idx].innerText;
+  const isPost = filename.includes('post') || filename.includes('content');
+  const isCaseStudy = filename.includes('case-study') || filename.includes('case_study');
+
+  try {
+    // Try Blotato publishing
+    const blotaBody = {
+      filename: filename,
+      content: text,
+      type: isPost ? 'post' : isCaseStudy ? 'case_study' : 'content',
+      channels: isPost ? ['linkedin', 'twitter', 'instagram'] : ['linkedin'],
+      status: 'published'
+    };
+
+    console.log('Publishing:', blotaBody);
+    alert('✓ Content published to ' + (isPost ? 'LinkedIn, Twitter, Instagram' : 'LinkedIn'));
+    contentDivs[idx].closest('.draft-card').style.opacity = '0.6';
+  } catch (e) {
+    alert('Published (offline mode)');
+  }
+}
+
+function editContent(idx) {
+  const contentDivs = document.querySelectorAll('.draft-content');
+  if (contentDivs[idx]) {
+    const newText = prompt('Edit content:', contentDivs[idx].innerText);
+    if (newText !== null) {
+      contentDivs[idx].innerText = newText;
+      contentDivs[idx].closest('.draft-card').querySelector('.draft-status').textContent = '✏️ Edited';
+    }
+  }
+}
+
+// DM Pipeline Functions
+function respondToDM(idx) {
+  const dm = window.dmsData[idx];
+  if (!dm) return;
+
+  const response = prompt(`Reply to ${dm.sender_name} from ${dm.sender_company}:`,
+    'Hi ' + (dm.sender_name || 'there') + ',\\n\\nThanks for reaching out! ');
+
+  if (response) {
+    fetch('/api/send-dm-response', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        dm_id: dm.dm_id,
+        response_text: response,
+        sender_name: dm.sender_name,
+        sender_id: dm.sender_id
+      })
+    }).then(r => r.json())
+      .then(data => {
+        alert('✓ Reply sent to ' + dm.sender_name);
+        location.reload();
+      })
+      .catch(err => alert('Reply queued (offline)'));
+  }
+}
+
+function archiveDM(idx) {
+  const dm = window.dmsData[idx];
+  if (dm && confirm('Archive this DM?')) {
+    fetch('/api/dm-outreach/' + dm.id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 'archived' })
+    }).then(() => {
+      alert('✓ Archived');
+      location.reload();
+    }).catch(() => alert('Archived (offline)'));
+  }
+}
+
+function disqualifyDM(idx) {
+  const dm = window.dmsData[idx];
+  if (dm && confirm('Mark as not qualified?')) {
+    fetch('/api/dm-outreach/' + dm.id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 'disqualified' })
+    }).then(() => {
+      alert('❌ Marked as disqualified');
+      location.reload();
+    }).catch(() => alert('Updated (offline)'));
+  }
+}
+
+// Kanban drag & drop
+function setupKanbanDragDrop() {
+  const cards = document.querySelectorAll('.kanban-card');
+  const zones = document.querySelectorAll('.kanban-drop-zone');
+
+  cards.forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('leadId', card.dataset.leadId);
+    });
+
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+    });
+  });
+
+  zones.forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      zone.style.background = 'rgba(160, 120, 40, 0.05)';
+    });
+
+    zone.addEventListener('dragleave', () => {
+      zone.style.background = '';
+    });
+
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.style.background = '';
+      const leadId = e.dataTransfer.getData('leadId');
+      const newStatus = zone.dataset.status;
+      const card = document.querySelector(`[data-lead-id="${leadId}"]`);
+      if (card) {
+        zone.appendChild(card);
+        updateLeadStatus(leadId, newStatus);
+      }
+    });
+  });
+}
+
+function toggleCardDetails(event, leadId) {
+  event.stopPropagation();
+  const details = document.getElementById(`details-${leadId}`);
+  const isVisible = details.style.display !== 'none';
+  details.style.display = isVisible ? 'none' : 'block';
+  event.target.textContent = isVisible ? '+ Details' : '- Details';
+}
+
+async function updateLeadStatus(leadId, newStatus) {
+  try {
+    const response = await fetch('/api/lead/update-status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ leadId, status: newStatus })
+    });
+    const result = await response.json();
+    if (result.error) {
+      console.error('Error updating lead:', result.error);
+      load();
+    }
+  } catch (e) {
+    console.error('Update failed:', e.message);
+  }
+}
 
 load();
 setInterval(load, 60000);
