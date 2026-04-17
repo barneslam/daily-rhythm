@@ -493,12 +493,10 @@ async function load() {
       <div style="font-weight:600;color:var(--muted);font-size:12px;">${t.id}</div>
       <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
       <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
-      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
         <div>${statusSelect}</div>
-        ${t.needs_regen ? '<span style="background:#a0404020;color:var(--red);padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500;">⚠ Regen</span>' : ''}
-        ${t.draft_message ? '<span style="background:#8a6fa620;color:#6b5a3f;padding:2px 8px;border-radius:3px;font-size:11px;">📝 Draft</span>' : ''}
-        ${t.follow_ups ? '<span style="background:#5a789820;color:var(--blue);padding:2px 8px;border-radius:3px;font-size:11px;">${t.follow_ups}x FU</span>' : ''}
-        ${t.closing_stage ? '<span style="background:#4a7c5920;color:var(--green);padding:2px 8px;border-radius:3px;font-size:11px;">✓ ' + t.closing_stage + '</span>' : ''}
+        <button onclick="openMessageModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', ${t.follow_ups || 0})" style="padding:4px 8px;background:var(--blue);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📨 View & Message</button>
+        <button onclick="openRegenModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', '${(t.needs_regen ? 'Needs regen' : '').replace(/'/g, "\\'")}')" style="padding:4px 8px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen ${t.needs_regen ? '(⚠)' : ''}</button>
       </div>
     </div>`;
   }).join('');
@@ -1082,6 +1080,86 @@ function openStatusModal(leadId, currentStatus, leadName) {
 
 function closeStatusModal() {
   document.getElementById('statusModal').style.display = 'none';
+}
+
+function openMessageModal(leadId, leadName, draftMessage, followUps) {
+  const modal = document.getElementById('messageModal') || createModal('messageModal', `
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;max-width:600px;width:90%;max-height:80vh;overflow:auto;z-index:1000;">
+      <h3 style="margin-top:0;">Message for ${leadName}</h3>
+      <div style="background:var(--surface2);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--blue);">
+        <strong>Current Draft:</strong><br><pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;max-height:200px;overflow:auto;">${draftMessage || 'No draft yet'}</pre>
+      </div>
+      <textarea id="messageContent" style="width:100%;min-height:150px;padding:8px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:monospace;margin-bottom:12px;" placeholder="Edit or paste the message here..."></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="this.parentElement.parentElement.style.display='none'" style="padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Close</button>
+        <button onclick="sendMessage('${leadId}', '${leadName}', document.getElementById('messageContent').value)" style="padding:8px 12px;background:var(--blue);color:white;border:none;border-radius:4px;cursor:pointer;font-weight:500;">Send Message</button>
+      </div>
+    </div>
+  `);
+  document.getElementById('messageContent').value = draftMessage;
+  modal.style.display = 'block';
+}
+
+function openRegenModal(leadId, leadName, currentMessage, regenNotes) {
+  const modal = document.getElementById('regenModal') || createModal('regenModal', `
+    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;max-width:600px;width:90%;max-height:80vh;overflow:auto;z-index:1000;">
+      <h3 style="margin-top:0;">Regenerate Message for ${leadName}</h3>
+      <div style="background:var(--surface2);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--accent);">
+        <strong>Current Message:</strong><br><pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;max-height:150px;overflow:auto;">${currentMessage || 'No message'}</pre>
+      </div>
+      <label style="display:block;margin-bottom:8px;"><strong>What needs to be regenerated?</strong></label>
+      <textarea id="regenNotes" style="width:100%;min-height:80px;padding:8px;border:1px solid var(--border);border-radius:4px;font-size:12px;margin-bottom:12px;" placeholder="Describe what you want changed (e.g., Make it shorter, Add more urgency, Include specific metric)..."></textarea>
+      <label style="display:block;margin-bottom:8px;"><strong>Their response (if any):</strong></label>
+      <textarea id="theirResponse" style="width:100%;min-height:80px;padding:8px;border:1px solid var(--border);border-radius:4px;font-size:12px;margin-bottom:12px;" placeholder="Paste what they said in response (optional)..."></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button onclick="this.parentElement.parentElement.style.display='none'" style="padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Close</button>
+        <button onclick="regenerateMessage('${leadId}', '${leadName}', document.getElementById('regenNotes').value, document.getElementById('theirResponse').value)" style="padding:8px 12px;background:var(--accent);color:white;border:none;border-radius:4px;cursor:pointer;font-weight:500;">Regenerate</button>
+      </div>
+    </div>
+  `);
+  document.getElementById('regenNotes').value = regenNotes;
+  modal.style.display = 'block';
+}
+
+function createModal(id, html) {
+  const modal = document.createElement('div');
+  modal.id = id;
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.background = 'rgba(0,0,0,0.5)';
+  modal.style.display = 'none';
+  modal.style.alignItems = 'center';
+  modal.style.justifyContent = 'center';
+  modal.style.zIndex = '999';
+  modal.innerHTML = html;
+  modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function sendMessage(leadId, leadName, messageText) {
+  if (!messageText.trim()) {
+    alert('Please enter a message');
+    return;
+  }
+  console.log(`Sending message to ${leadName} (ID: ${leadId}):`, messageText);
+  alert('Message sent! (This would integrate with your messaging service)');
+  document.getElementById('messageModal').style.display = 'none';
+}
+
+function regenerateMessage(leadId, leadName, regenNotes, theirResponse) {
+  if (!regenNotes.trim()) {
+    alert('Please describe what needs to be regenerated');
+    return;
+  }
+  console.log(`Regenerating message for ${leadName} (ID: ${leadId})`);
+  console.log('Notes:', regenNotes);
+  console.log('Their response:', theirResponse);
+  alert('Message regenerated! (This would integrate with your AI generation service)');
+  document.getElementById('regenModal').style.display = 'none';
 }
 
 function updateLeadStatus(leadId, newStatus) {
