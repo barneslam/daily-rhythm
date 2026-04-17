@@ -455,54 +455,60 @@ async function load() {
     'LOW': 60
   };
 
-  // Sort by confidence descending (highest score first)
-  targets.sort((a, b) => {
-    const scoreA = confidenceMap[a.confidence?.toUpperCase()] || 70;
-    const scoreB = confidenceMap[b.confidence?.toUpperCase()] || 70;
-    return scoreB - scoreA; // Highest first
+  // Group and sort by confidence descending
+  const grouped = { 90: [], 80: [], 70: [], 60: [] };
+  targets.forEach(t => {
+    const scoreKey = confidenceMap[t.confidence?.toUpperCase()] || 70;
+    grouped[scoreKey].push(t);
   });
 
-  document.getElementById('target-list').innerHTML = targets.map(t => {
-    let confidenceScore = 70;
-    let confidenceClass = 'medium';
-    const conf = (t.confidence || 'MEDIUM').toUpperCase();
+  const confidenceLevels = [
+    { score: 90, label: 'High Confidence', class: 'high' },
+    { score: 80, label: 'Medium-High Confidence', class: 'medium-high' },
+    { score: 70, label: 'Medium Confidence', class: 'medium' },
+    { score: 60, label: 'Low Confidence', class: 'low' }
+  ];
 
-    if (conf.includes('HIGH') && conf.includes('MEDIUM')) {
-      confidenceScore = 80;
-      confidenceClass = 'medium-high';
-    } else if (conf === 'HIGH') {
-      confidenceScore = 90;
-      confidenceClass = 'high';
-    } else if (conf === 'MEDIUM') {
-      confidenceScore = 70;
-      confidenceClass = 'medium';
-    } else if (conf === 'LOW') {
-      confidenceScore = 60;
-      confidenceClass = 'low';
-    }
+  const targetListHTML = confidenceLevels.map(level => {
+    const levelTargets = grouped[level.score] || [];
+    if (levelTargets.length === 0) return '';
 
-    const statusClass = (t.status || 'identified').replace('_', '-');
-    const bgClass = `confidence-bg-${confidenceClass}`;
+    const rows = levelTargets.map(t => {
+      const confidenceScore = level.score;
+      const confidenceClass = level.class;
+      const bgClass = `confidence-bg-${confidenceClass}`;
 
-    const statusOptions = ['identified', 'connection_req', 'connected', 'messaged', 'responded'];
-    const statusSelect = `<select style="padding:4px 6px;border:1px solid var(--border);border-radius:3px;background:var(--surface);color:var(--text);font-size:12px;" onchange="updateTargetStatus('${t.id}', this.value)">
-      ${statusOptions.map(opt => `<option value="${opt}" ${opt === (t.status || 'identified') ? 'selected' : ''}>${opt.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}</option>`).join('')}
-    </select>`;
+      const statusOptions = ['identified', 'connection_req', 'connected', 'messaged', 'responded'];
+      const statusSelect = `<select style="padding:4px 6px;border:1px solid var(--border);border-radius:3px;background:var(--surface);color:var(--text);font-size:12px;" onchange="updateTargetStatus('${t.id}', this.value)">
+        ${statusOptions.map(opt => `<option value="${opt}" ${opt === (t.status || 'identified') ? 'selected' : ''}>${opt.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}</option>`).join('')}
+      </select>`;
 
-    const linkedinLink = t.linkedin_url ? `<a href="${t.linkedin_url}" target="_blank" style="color:var(--blue);text-decoration:none;font-size:10px;">🔗 LinkedIn</a>` : '';
-    const channelBadge = t.channel ? `<span style="background:#5a789820;color:var(--blue);padding:1px 4px;border-radius:2px;font-size:9px;margin-left:4px;">${t.channel}</span>` : '';
+      const linkedinLink = t.linkedin_url ? `<a href="${t.linkedin_url}" target="_blank" style="color:var(--blue);text-decoration:none;font-size:10px;">🔗 LinkedIn</a>` : '';
+      const channelBadge = t.channel ? `<span style="background:#5a789820;color:var(--blue);padding:1px 4px;border-radius:2px;font-size:9px;margin-left:4px;">${t.channel}</span>` : '';
 
-    return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
-      <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
-      <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:10px;">${linkedinLink} ${channelBadge}</span></div>
-      <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <div>${statusSelect}</div>
-        <button onclick="openMessageModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', ${t.follow_ups || 0})" style="padding:4px 8px;background:var(--blue);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📨 View & Message</button>
-        <button onclick="openRegenModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', '${(t.needs_regen ? 'Needs regen' : '').replace(/'/g, "\\'")}')" style="padding:4px 8px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen ${t.needs_regen ? '(⚠)' : ''}</button>
+      return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
+        <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
+        <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:10px;">${linkedinLink} ${channelBadge}</span></div>
+        <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <div>${statusSelect}</div>
+          <button onclick="openMessageModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', ${t.follow_ups || 0})" style="padding:4px 8px;background:var(--blue);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📨 View & Message</button>
+          <button onclick="openRegenModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', '${(t.needs_regen ? 'Needs regen' : '').replace(/'/g, "\\'")}')" style="padding:4px 8px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen ${t.needs_regen ? '(⚠)' : ''}</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div style="margin-bottom:32px;">
+      <h3 style="font-size:14px;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border);">
+        ${level.score} — ${level.label} (${levelTargets.length})
+      </h3>
+      <div style="margin-top:0;">
+        ${rows}
       </div>
     </div>`;
   }).join('');
+
+  document.getElementById('target-list').innerHTML = targetListHTML;
 
   // Lead Pipeline Kanban
   const statusMap = {
