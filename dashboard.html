@@ -484,12 +484,17 @@ async function load() {
     const statusClass = (t.status || 'identified').replace('_', '-');
     const bgClass = `confidence-bg-${confidenceClass}`;
 
+    const statusOptions = ['identified', 'connection_req', 'connected', 'messaged', 'responded'];
+    const statusSelect = `<select style="padding:4px 6px;border:1px solid var(--border);border-radius:3px;background:var(--surface);color:var(--text);font-size:12px;" onchange="updateTargetStatus('${t.id}', this.value)">
+      ${statusOptions.map(opt => `<option value="${opt}" ${opt === (t.status || 'identified') ? 'selected' : ''}>${opt.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}</option>`).join('')}
+    </select>`;
+
     return `<div class="target-row ${bgClass}" style="padding-left: 12px;">
       <div class="confidence-${confidenceClass}" style="font-size:20px;font-weight:700;text-align:center;">${confidenceScore}</div>
       <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
       <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-        <span class="target-status status-${statusClass}" style="cursor:pointer;" onclick="openStatusModal('${t.id}', '${t.status || 'identified'}', '${t.name}')">${t.status ? t.status.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()) : 'Identified'}</span>
+        <div>${statusSelect}</div>
         ${t.needs_regen ? '<span style="background:#a0404020;color:var(--red);padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500;">⚠ Regen</span>' : ''}
         ${t.draft_message ? '<span style="background:#8a6fa620;color:#6b5a3f;padding:2px 8px;border-radius:3px;font-size:11px;">📝 Draft</span>' : ''}
         ${t.follow_ups ? '<span style="background:#5a789820;color:var(--blue);padding:2px 8px;border-radius:3px;font-size:11px;">${t.follow_ups}x FU</span>' : ''}
@@ -1039,6 +1044,23 @@ const statusTransitions = {
   'responded': ['disqualified'],
   'disqualified': ['identified']
 };
+
+function updateTargetStatus(targetId, newStatus) {
+  fetch('/api/lead/update-status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ leadId: targetId, status: newStatus })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.success) {
+      load();
+    } else {
+      alert('Failed to update status: ' + (data.error || 'Unknown error'));
+    }
+  })
+  .catch(err => alert('Error: ' + err.message));
+}
 
 function openStatusModal(leadId, currentStatus, leadName) {
   const modal = document.getElementById('statusModal');
