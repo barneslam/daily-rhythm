@@ -1,9 +1,15 @@
 [build]
 publish = "."
-command = "echo 'Dashboard ready for deployment'"
+command = "npm install"
+functions = "netlify/functions"
 
 [[redirects]]
 from = "/"
 to = "/dashboard.html"
 status = 200
 force = true
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api-:splat"
+status = 200
