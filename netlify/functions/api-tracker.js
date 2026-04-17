@@ -1,16 +1,24 @@
+const fs = require('fs');
+const path = require('path');
+
 exports.handler = async (event, context) => {
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      days: {
-        "2026-04-17": {
-          messages_sent: 0,
-          responses_received: 0,
-          calls_booked: 0,
-          revenue: 0
-        }
-      }
-    })
-  };
+  try {
+    const trackerPath = path.join(__dirname, '../..', 'tracker.json');
+    const trackerData = JSON.parse(fs.readFileSync(trackerPath, 'utf8'));
+
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trackerData)
+    };
+  } catch (e) {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        current_week: 1,
+        days: {}
+      })
+    };
+  }
 };
