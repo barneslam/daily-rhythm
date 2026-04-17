@@ -392,37 +392,42 @@ function scrollToSection(sectionId) {
 
 function filterLeads(searchTerm) {
   const query = searchTerm.toLowerCase().trim();
-  const leadRows = document.querySelectorAll('.target-row:not(.target-header)');
-  const sectionContainers = document.querySelectorAll('[id^="section-"]');
-
+  const allSections = document.querySelectorAll('[id^="section-"]');
   let hasVisibleLeads = false;
 
-  sectionContainers.forEach(section => {
+  allSections.forEach(section => {
     let sectionHasMatch = false;
-    const rows = section.querySelectorAll('.target-row:not(.target-header)');
+    const rows = section.querySelectorAll('.target-row');
 
     rows.forEach(row => {
-      const name = row.textContent.toLowerCase();
-      const matches = query === '' || name.includes(query);
+      if (row.classList.contains('target-header')) return;
+
+      const rowText = row.textContent.toLowerCase();
+      const matches = query === '' || rowText.includes(query);
+
       row.style.display = matches ? 'grid' : 'none';
       if (matches) sectionHasMatch = true;
     });
 
-    section.style.display = sectionHasMatch ? 'block' : 'none';
+    // Show/hide entire section
+    section.parentElement.style.display = sectionHasMatch ? 'block' : 'none';
     if (sectionHasMatch) hasVisibleLeads = true;
   });
 
-  // Show search results message if no matches
-  const searchInfo = document.getElementById('searchInfo');
+  // Show/hide search message
+  let searchInfo = document.getElementById('searchInfo');
   if (!query) {
     if (searchInfo) searchInfo.remove();
   } else if (!hasVisibleLeads) {
     if (!searchInfo) {
-      const msg = document.createElement('div');
-      msg.id = 'searchInfo';
-      msg.style.cssText = 'padding:12px;background:var(--surface2);border-radius:4px;color:var(--muted);font-size:13px;margin-bottom:12px;';
-      msg.textContent = `No leads match "${query}"`;
-      document.getElementById('target-list')?.parentElement?.insertBefore(msg, document.getElementById('target-list'));
+      searchInfo = document.createElement('div');
+      searchInfo.id = 'searchInfo';
+      searchInfo.style.cssText = 'padding:12px;background:#a0404010;border-left:3px solid var(--red);border-radius:4px;color:var(--red);font-size:13px;margin-bottom:12px;font-weight:500;';
+      searchInfo.textContent = `No leads match "${query}" — try searching by name or company`;
+      const targetList = document.getElementById('target-list');
+      if (targetList) {
+        targetList.parentElement.insertBefore(searchInfo, targetList);
+      }
     }
   } else if (searchInfo) {
     searchInfo.remove();

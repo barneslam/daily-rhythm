@@ -1,74 +1,58 @@
 exports.handler = async (event, context) => {
-  const program = [
-    {
-      week: 1,
-      status: 'in_progress',
+  const weeks = {
+    1: {
       theme: 'Foundation & Research',
-      targets: 20,
-      goals: ['Identify ICP', 'Research 20 targets', 'Build lead list'],
-      completed: true
+      goal: 'Identify and research ICP target accounts',
+      targets: { discovered: 20, qualified: 15 },
+      checkpoint: 'Complete lead list with 20 targets'
     },
-    {
-      week: 2,
-      status: 'in_progress',
+    2: {
       theme: 'Initial Outreach',
-      targets: 20,
-      goals: ['Send 20 connection requests', 'Establish rapport', 'Build credibility'],
-      completed: false
+      goal: 'Send personalized connection requests to all targets',
+      targets: { connections_sent: 20, accepted: 8 },
+      checkpoint: 'Maintain 3+ warm conversations'
     },
-    {
-      week: 3,
-      status: 'pending',
+    3: {
       theme: 'Engagement & Qualification',
-      targets: 15,
-      goals: ['Follow up on connections', 'Qualify interest', 'Schedule discovery calls'],
-      completed: false
+      goal: 'Qualify interest and identify decision makers',
+      targets: { responded: 12, qualified: 8 },
+      checkpoint: 'Schedule 3-5 discovery calls'
     },
-    {
-      week: 4,
-      status: 'pending',
+    4: {
       theme: 'Discovery Calls',
-      targets: 10,
-      goals: ['Conduct discovery calls', 'Identify pain points', 'Determine fit'],
-      completed: false
+      goal: 'Conduct discovery calls to understand needs',
+      targets: { calls_completed: 5, fit_confirmed: 4 },
+      checkpoint: 'Document 4 qualified opportunities'
     },
-    {
-      week: 5,
-      status: 'pending',
+    5: {
       theme: 'Proposal Development',
-      targets: 8,
-      goals: ['Create custom proposals', 'Address objections', 'Build case studies'],
-      completed: false
+      goal: 'Create custom proposals addressing pain points',
+      targets: { proposals_sent: 4, pending_review: 4 },
+      checkpoint: '4 proposals in customer review cycle'
     },
-    {
-      week: 6,
-      status: 'pending',
+    6: {
       theme: 'Negotiation & Closing',
-      targets: 5,
-      goals: ['Negotiate terms', 'Handle objections', 'Secure signatures'],
-      completed: false
+      goal: 'Negotiate terms and secure commitments',
+      targets: { in_negotiation: 3, closed: 1 },
+      checkpoint: 'First revenue deal closed'
     },
-    {
-      week: 7,
-      status: 'pending',
+    7: {
       theme: 'Onboarding Preparation',
-      targets: 3,
-      goals: ['Prepare onboarding', 'Set success metrics', 'Schedule kickoff'],
-      completed: false
+      goal: 'Prepare customers for successful onboarding',
+      targets: { onboarded: 1, scheduled: 2 },
+      checkpoint: 'Customer success plan documented'
     },
-    {
-      week: 8,
-      status: 'pending',
+    8: {
       theme: 'Scale & Optimize',
-      targets: 20,
-      goals: ['Replicate winning formula', 'Optimize messaging', 'Scale outreach'],
-      completed: false
+      goal: 'Replicate winning formula and optimize process',
+      targets: { new_targets: 20, process_documented: 1 },
+      checkpoint: 'Standardized playbook ready for scaling'
     }
-  ];
+  };
 
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ program })
+    body: JSON.stringify({ weeks })
   };
 };
