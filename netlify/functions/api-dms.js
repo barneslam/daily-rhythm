@@ -13,11 +13,16 @@ exports.handler = async (event, context) => {
     const days = parseInt(queryParams.days || '7');
     const statusFilter = queryParams.status || 'all';
 
+    // Calculate date range
+    const now = new Date();
+    const startDate = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
+    const startDateStr = startDate.toISOString();
+
     // Fetch DMs from linkedin_dms table
     let query = supabase
       .from('linkedin_dms')
       .select('id, sender_name, sender_title, sender_company, sender_linkedin_url, message_text, auto_qualified, qualification_score, qualification_notes, lead_status, source_channel, received_at, updated_at', { count: 'exact' })
-      .gte('received_at', `now()-${days} days`)
+      .gte('received_at', startDateStr)
       .order('received_at', { ascending: false })
       .limit(limit);
 
@@ -41,7 +46,7 @@ exports.handler = async (event, context) => {
     const { data: allDms, error: metricsError } = await supabase
       .from('linkedin_dms')
       .select('lead_status, source_channel, auto_qualified, qualification_score')
-      .gte('received_at', `now()-${days} days`);
+      .gte('received_at', startDateStr);
 
     if (metricsError) {
       console.error('Error fetching metrics:', metricsError);
