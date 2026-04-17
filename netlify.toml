@@ -2,5 +2,8 @@
 publish = "."
 command = "echo 'Dashboard ready for deployment'"
 
-[functions]
-node_bundler = "esbuild"
+[[redirects]]
+from = "/"
+to = "/dashboard.html"
+status = 200
+force = true
