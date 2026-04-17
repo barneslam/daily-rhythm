@@ -391,47 +391,83 @@ function scrollToSection(sectionId) {
 }
 
 function filterLeads(searchTerm) {
-  const query = searchTerm.toLowerCase().trim();
-  const allSections = document.querySelectorAll('[id^="section-"]');
-  let hasVisibleLeads = false;
+  const query = (searchTerm || '').toLowerCase().trim();
+  console.log('🔍 filterLeads called, query:', query);
 
-  allSections.forEach(section => {
-    let sectionHasMatch = false;
-    const rows = section.querySelectorAll('.target-row');
+  const targetList = document.getElementById('target-list');
+  if (!targetList) {
+    console.log('❌ target-list element not found');
+    return;
+  }
 
-    rows.forEach(row => {
-      if (row.classList.contains('target-header')) return;
+  // Get all rows from the target list
+  const allRows = targetList.querySelectorAll('.target-row');
+  console.log('📄 Total rows found:', allRows.length);
 
-      const rowText = row.textContent.toLowerCase();
-      const matches = query === '' || rowText.includes(query);
+  let visibleCount = 0;
+  const visibleSections = new Set();
 
-      row.style.display = matches ? 'grid' : 'none';
-      if (matches) sectionHasMatch = true;
+  // If no query, show everything
+  if (query === '') {
+    allRows.forEach(row => {
+      row.style.display = 'grid';
     });
+    // Show all section wrappers
+    document.querySelectorAll('[id^="section-"]').forEach(section => {
+      const wrapper = section.parentElement;
+      if (wrapper) wrapper.style.display = 'block';
+    });
+    // Remove search message
+    const searchInfo = document.getElementById('searchInfo');
+    if (searchInfo) searchInfo.remove();
+    return;
+  }
 
-    // Show/hide entire section
-    section.parentElement.style.display = sectionHasMatch ? 'block' : 'none';
-    if (sectionHasMatch) hasVisibleLeads = true;
+  // Filter rows based on search query
+  allRows.forEach(row => {
+    if (row.classList.contains('target-header')) return;
+
+    const rowText = row.textContent.toLowerCase();
+    const matches = rowText.includes(query);
+
+    if (matches) {
+      row.style.display = 'grid';
+      visibleCount++;
+      // Track which section this row belongs to
+      let parent = row.parentElement;
+      while (parent && !parent.id.startsWith('section-')) {
+        parent = parent.parentElement;
+      }
+      if (parent) visibleSections.add(parent);
+    } else {
+      row.style.display = 'none';
+    }
   });
 
-  // Show/hide search message
+  // Hide/show sections based on visible rows
+  document.querySelectorAll('[id^="section-"]').forEach(section => {
+    const wrapper = section.parentElement;
+    const hasVisibleRows = visibleSections.has(section);
+    if (wrapper) {
+      wrapper.style.display = hasVisibleRows ? 'block' : 'none';
+    }
+  });
+
+  // Show/hide search info message
   let searchInfo = document.getElementById('searchInfo');
-  if (!query) {
-    if (searchInfo) searchInfo.remove();
-  } else if (!hasVisibleLeads) {
+  if (visibleCount === 0) {
     if (!searchInfo) {
       searchInfo = document.createElement('div');
       searchInfo.id = 'searchInfo';
       searchInfo.style.cssText = 'padding:12px;background:#a0404010;border-left:3px solid var(--red);border-radius:4px;color:var(--red);font-size:13px;margin-bottom:12px;font-weight:500;';
       searchInfo.textContent = `No leads match "${query}" — try searching by name or company`;
-      const targetList = document.getElementById('target-list');
-      if (targetList) {
-        targetList.parentElement.insertBefore(searchInfo, targetList);
-      }
+      targetList.parentElement.insertBefore(searchInfo, targetList);
     }
-  } else if (searchInfo) {
-    searchInfo.remove();
+  } else {
+    if (searchInfo) searchInfo.remove();
   }
+
+  console.log(`✓ Filtered: ${visibleCount}/${allRows.length} rows visible`);
 }
 
 // Determine current schedule block
