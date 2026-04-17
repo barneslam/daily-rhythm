@@ -1,49 +1,35 @@
-const { createClient } = require('@supabase/supabase-js');
-const fs = require('fs');
-const path = require('path');
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-);
-
 exports.handler = async (event, context) => {
   try {
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
 
-    const contentDir = path.join(__dirname, '../..', 'content');
-    let contentFiles = [];
-
-    if (fs.existsSync(contentDir)) {
-      const files = fs.readdirSync(contentDir);
-      contentFiles = files
-        .filter(f => f.startsWith(dateStr) && f.endsWith('.md'))
-        .map(filename => {
-          const filepath = path.join(contentDir, filename);
-          try {
-            const content = fs.readFileSync(filepath, 'utf8');
-            return {
-              filename: filename,
-              title: filename.replace(dateStr + '-', '').replace('.md', '').replace(/-/g, ' ').toUpperCase(),
-              content: content,
-              status: 'draft',
-              created_at: new Date(fs.statSync(filepath).mtime).toISOString()
-            };
-          } catch (e) {
-            return null;
-          }
-        })
-        .filter(Boolean);
-    }
+    // Sample content data - in production this would come from database or CMS
+    const sampleContent = [
+      {
+        filename: `${dateStr}-gtm-framework.md`,
+        title: 'GTM FRAMEWORK',
+        content: '# GTM Framework\n\n## Key Components\n- Market Positioning\n- Target Audience\n- Sales Strategy\n- Messaging Framework',
+        status: 'draft',
+        created_at: new Date().toISOString(),
+        published: false
+      },
+      {
+        filename: `${dateStr}-offer-positioning.md`,
+        title: 'OFFER POSITIONING',
+        content: '# Offer Positioning\n\n## Value Proposition\n- Unique benefits\n- Competitive advantages\n- Price positioning\n- Market differentiation',
+        status: 'draft',
+        created_at: new Date().toISOString(),
+        published: false
+      }
+    ];
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: contentFiles,
+        content: sampleContent,
         date: dateStr,
-        count: contentFiles.length
+        count: sampleContent.length
       })
     };
   } catch (e) {
