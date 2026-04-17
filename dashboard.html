@@ -348,9 +348,11 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // Determine current schedule block
 function getCurrentBlock(blocks) {
+  if (!blocks || !Array.isArray(blocks) || blocks.length === 0) return null;
   const now = new Date();
   const mins = now.getHours() * 60 + now.getMinutes();
   for (let i = blocks.length - 1; i >= 0; i--) {
+    if (!blocks[i] || !blocks[i].time) continue;
     const [h, m] = blocks[i].time.split(':').map(Number);
     if (mins >= h * 60 + m) return blocks[i].id;
   }
