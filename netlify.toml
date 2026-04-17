@@ -1,8 +1,6 @@
 [build]
 publish = "."
-command = "npm install --production"
 functions = "netlify/functions"
-environment = { NODE_VERSION = "18" }
 
 # API routing - redirect /api/* to Netlify functions
 [[redirects]]
