@@ -348,15 +348,23 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // Determine current schedule block
 function getCurrentBlock(blocks) {
-  if (!blocks || !Array.isArray(blocks) || blocks.length === 0) return null;
-  const now = new Date();
-  const mins = now.getHours() * 60 + now.getMinutes();
-  for (let i = blocks.length - 1; i >= 0; i--) {
-    if (!blocks[i] || !blocks[i].time) continue;
-    const [h, m] = blocks[i].time.split(':').map(Number);
-    if (mins >= h * 60 + m) return blocks[i].id;
+  try {
+    if (!blocks || !Array.isArray(blocks) || blocks.length === 0) return null;
+    const now = new Date();
+    const mins = now.getHours() * 60 + now.getMinutes();
+    for (let i = blocks.length - 1; i >= 0; i--) {
+      const block = blocks[i];
+      if (!block || !block.time || typeof block.time !== 'string') continue;
+      const parts = block.time.split(':');
+      if (!parts || parts.length < 2) continue;
+      const [h, m] = parts.map(Number);
+      if (mins >= h * 60 + m) return block.id;
+    }
+    return null;
+  } catch (e) {
+    console.error('getCurrentBlock error:', e, 'blocks:', blocks);
+    return null;
   }
-  return null;
 }
 
 // Simple markdown-ish rendering
@@ -418,8 +426,10 @@ async function load() {
   document.getElementById('today-log').textContent = todayLog.content;
 
   // Schedule
+  console.log('configRes:', configRes);
+  console.log('configRes.blocks:', configRes.blocks);
   const currentBlock = getCurrentBlock(configRes.blocks);
-  document.getElementById('schedule-blocks').innerHTML = configRes.blocks.map(b => {
+  document.getElementById('schedule-blocks').innerHTML = (configRes.blocks || []).map(b => {
     const status = b.id === currentBlock ? 'active' : 'pending';
     const statusLabel = b.id === currentBlock ? 'NOW' : b.time;
     return `<div class="schedule-block">
@@ -1156,8 +1166,11 @@ async function updateLeadStatus(leadId, newStatus) {
   }
 }
 
-load();
-setInterval(load, 60000);
+load().catch(err => {
+  console.error('Dashboard load error:', err);
+  console.error('Stack:', err.stack);
+});
+setInterval(() => load().catch(err => console.error('Load error:', err)), 60000);
 </script>
 </body>
 </html>
