@@ -1086,21 +1086,49 @@ function closeStatusModal() {
 }
 
 function openMessageModal(leadId, leadName, draftMessage, followUps) {
-  const modal = document.getElementById('messageModal') || createModal('messageModal', `
-    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;max-width:600px;width:90%;max-height:80vh;overflow:auto;z-index:1000;">
-      <h3 style="margin-top:0;">Message for ${leadName}</h3>
-      <div style="background:var(--surface2);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--blue);">
-        <strong>Current Draft:</strong><br><pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;max-height:200px;overflow:auto;">${draftMessage || 'No draft yet'}</pre>
-      </div>
-      <textarea id="messageContent" style="width:100%;min-height:150px;padding:8px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:monospace;margin-bottom:12px;" placeholder="Edit or paste the message here..."></textarea>
-      <div style="display:flex;gap:8px;justify-content:flex-end;">
-        <button onclick="this.parentElement.parentElement.style.display='none'" style="padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Close</button>
-        <button onclick="sendMessage('${leadId}', '${leadName}', document.getElementById('messageContent').value)" style="padding:8px 12px;background:var(--blue);color:white;border:none;border-radius:4px;cursor:pointer;font-weight:500;">Send Message</button>
-      </div>
-    </div>
-  `);
-  document.getElementById('messageContent').value = draftMessage;
-  modal.style.display = 'block';
+  const hasMessage = draftMessage && draftMessage.trim();
+  const content = hasMessage
+    ? `<div style="background:var(--surface2);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--green);">
+         <strong>✓ AI Generated Message:</strong><br>
+         <pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;">${draftMessage}</pre>
+       </div>
+       <div style="display:flex;gap:8px;">
+         <button onclick="copyToClipboard(\`${draftMessage.replace(/`/g, '\\`')}\`)" style="flex:1;padding:10px;background:var(--green);color:white;border:none;border-radius:4px;cursor:pointer;font-weight:500;">📋 Copy Message</button>
+         <button onclick="closeMessageModal()" style="flex:1;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Close</button>
+       </div>`
+    : `<div style="background:var(--surface2);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--red);">
+         <strong>❌ No AI message yet</strong><br>
+         <span style="color:var(--muted);font-size:12px;">Click "Regen" to generate an AI-driven message</span>
+       </div>
+       <button onclick="closeMessageModal()" style="width:100%;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;cursor:pointer;">Close</button>`;
+
+  let modal = document.getElementById('messageModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'messageModal';
+    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1000;';
+    modal.onclick = (e) => { if (e.target === modal) closeMessageModal(); };
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;max-width:500px;width:90%;max-height:80vh;overflow:auto;">
+    <h3 style="margin-top:0;">Message for <strong>${leadName}</strong></h3>
+    ${content}
+  </div>`;
+  modal.style.display = 'flex';
+}
+
+function closeMessageModal() {
+  const modal = document.getElementById('messageModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Message copied to clipboard! 📋');
+  }).catch(() => {
+    alert('Failed to copy. Please try again.');
+  });
 }
 
 function openRegenModal(leadId, leadName, currentMessage, regenNotes) {

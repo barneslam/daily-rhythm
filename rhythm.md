@@ -38,7 +38,7 @@ daily-rhythm/
 ├── rhythm.md            — this file
 ├── logs/                — daily logs (YYYY-MM-DD.md)
 ├── content/             — generated content drafts
-├── assets/              — offer doc, Conor brief, templates
+├── assets/              — offer doc, templates
 └── templates/           — autonomous block instructions
 ```
 

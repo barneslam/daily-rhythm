@@ -15,11 +15,10 @@
         "wed_thu": [
           "Trigger scan: find first 10 targets",
           "Draft and present first 10 outreach messages",
-          "Outreach channel: email, Twitter DM, or community reply (NOT LinkedIn DM)"
+          "Outreach channel: email, Twitter DM, or community reply"
         ],
         "fri": [
-          "Auto-generate Conor briefing doc (assets/conor-brief.md)",
-          "Prompt operator to schedule 30-min call with Conor"
+          "Week 1 summary and planning"
         ]
       },
       "targets": {
@@ -28,7 +27,7 @@
         "calls_booked": 0,
         "revenue": 0
       },
-      "checkpoint": "Offer doc exists. 20 messages sent. Conor briefed.",
+      "checkpoint": "Offer doc exists. 20 messages sent.",
       "failure_response": "If <10 messages sent, the system is working but you're not sending. The bottleneck is you, not the engine."
     },
     "2": {
@@ -37,8 +36,7 @@
       "auto_tasks": {
         "daily": [
           "Trigger scan + outreach continues (5-8 messages/day)",
-          "Follow-up drafts for week 1 messages",
-          "Collect Conor's 5 warm intros — draft intro request email for him"
+          "Follow-up drafts for week 1 messages"
         ],
         "wed": [
           "Auto-generate diagnostic conversation script (assets/diagnostic-script.md)",
@@ -50,206 +48,153 @@
         ]
       },
       "targets": {
-        "messages_sent": 40,
-        "responses": "5-10",
+        "messages_sent": 35,
+        "responses": "5-8",
         "calls_booked": 2,
         "revenue": 0
       },
-      "checkpoint": "Pipeline has 3-5 warm conversations. Diagnostic script is ready.",
-      "failure_response": "If 0 calls booked: the offer doc needs rewriting. System will auto-draft 3 alternative positioning angles for testing."
+      "checkpoint": "Pipeline shows movement. At least 2 diagnostic calls booked."
     },
     "3": {
-      "theme": "Run free diagnostics, prove the value",
-      "goal": "Deliver 2-3 free diagnostic conversations that demonstrate GTM Breakdown Session value",
+      "theme": "Free diagnostics (no revenue yet)",
+      "goal": "Run discovery conversations. Identify what buyers actually need vs. what you think they need.",
       "auto_tasks": {
         "daily": [
-          "Outreach continues (5-8 messages/day)",
-          "Pre-call research briefs for each diagnostic (auto-generated)",
-          "Post-call summary templates (auto-generated after each call)"
+          "Continue trigger scan + outreach (5-8 messages/day)",
+          "Auto-generate pre-call diagnostic prep sheet for each scheduled call"
         ],
-        "mid_week": [
-          "Auto-generate case study draft from first diagnostic (anonymized)",
-          "Auto-draft follow-up email for each diagnostic: here's what a paid session covers"
+        "tue": [
+          "Auto-generate diagnostic call script and debrief template"
         ],
         "fri": [
-          "Conversion analysis: which diagnostics are warm for paid session?",
-          "Auto-generate proposal template (assets/proposal-template.md)"
+          "Debrief 3+ calls. Identify pattern in what's blocking them.",
+          "Update offer doc if insights change positioning"
         ]
       },
       "targets": {
-        "messages_sent": 60,
-        "responses": "8-15",
+        "messages_sent": 35,
+        "responses": "5-8",
         "calls_booked": 4,
-        "diagnostics_delivered": 2,
         "revenue": 0
       },
-      "checkpoint": "2+ free diagnostics delivered. At least 1 warm lead for paid session.",
-      "failure_response": "If 0 diagnostics delivered: volume isn't the problem, conversion is. System will analyze all outreach messages vs responses to find what angle is working."
+      "checkpoint": "Ran 3+ free diagnostics. Clear pattern of buyer problems."
     },
     "4": {
-      "theme": "First paid session — make-or-break",
-      "goal": "Convert at least 1 diagnostic into a $750-$1,500 paid GTM Breakdown Session",
+      "theme": "First paid conversation",
+      "goal": "Close the first paid commitment. Money validates offer.",
       "auto_tasks": {
-        "mon": [
-          "Auto-rank warm leads by conversion probability",
-          "Draft close email for top 2 leads — specific, references their diagnostic",
-          "Prepare Conor deployment: auto-generate his talking points for close call"
-        ],
         "daily": [
-          "Outreach continues but reduced to 3-5/day — focus shifts to closing",
-          "Session prep materials auto-generated for any booked paid sessions"
+          "Continue prospecting + follow-up (5-8 messages/day)",
+          "Auto-generate personalized close scripts for warm leads"
         ],
-        "post_session": [
-          "Auto-generate post-session deliverable template",
-          "Auto-draft testimonial request",
-          "Auto-draft case study from session (with permission prompt)"
-        ],
-        "fri": [
-          "MAKE-OR-BREAK checkpoint: Did a paid session happen?",
-          "If YES: celebrate, extract what worked, scale it",
-          "If NO: auto-diagnose — pricing? positioning? pipeline? — and recommend specific fix"
-        ]
-      },
-      "targets": {
-        "messages_sent": 75,
-        "responses": "12-20",
-        "calls_booked": 6,
-        "paid_sessions": 1,
-        "revenue": "$750-$1,500"
-      },
-      "checkpoint": "First revenue. Conor deployed on at least 1 close call.",
-      "failure_response": "If $0 revenue: DO NOT increase volume. Auto-generate 3 hypotheses for why conversion failed (pricing, positioning, audience) and A/B test angles in week 5.",
-      "conor_deployment": {
-        "trigger": "Warm lead agrees to 'learn more about the full session'",
-        "his_role": "Executive peer credibility on the close call — not selling, validating",
-        "prep": "Auto-generated talking points based on the specific lead's situation"
-      }
-    },
-    "5": {
-      "theme": "Systematize what worked",
-      "goal": "Turn week 4 learnings into a repeatable process",
-      "auto_tasks": {
         "mon": [
-          "Auto-analyze weeks 1-4: which outreach angles converted, which didn't",
-          "Auto-update gtm-profile.json with winning angles, retire losing ones",
-          "Auto-generate 'what's working' report"
-        ],
-        "daily": [
-          "Outreach resumes at full volume with optimized angles only",
-          "Follow-up sequences auto-drafted using proven patterns"
+          "Auto-generate pricing & package summary for warm leads"
         ],
         "wed": [
-          "Auto-generate content from case study / first session results",
-          "Auto-draft 'social proof' outreach angle using real results"
+          "Auto-generate objection handler based on Week 3 diagnostic notes"
         ],
         "fri": [
-          "Pipeline review: how many sessions in next 2 weeks?",
-          "Revenue forecast for weeks 6-8"
+          "Week 4 revenue close. If $0: troubleshoot positioning or pricing."
         ]
       },
       "targets": {
-        "messages_sent": 95,
-        "responses": "15-25",
-        "calls_booked": 8,
-        "paid_sessions": 2,
-        "revenue": "$1,500-$3,000"
+        "messages_sent": 35,
+        "responses": "5-8",
+        "calls_booked": 4,
+        "revenue": 750
       },
-      "checkpoint": "System is self-correcting — winning angles amplified, losing angles dropped."
+      "checkpoint": "First paid engagement closed or in pipeline."
+    },
+    "5": {
+      "theme": "Systematize",
+      "goal": "Turn Week 1-4 chaos into a repeatable operating rhythm.",
+      "auto_tasks": {
+        "mon": [
+          "Auto-generate weekly operating system (daily cadence, checkpoints, metrics)"
+        ],
+        "wed": [
+          "Document: what worked in Weeks 1-4, what didn't, why",
+          "Build prospecting checklist (must-dos every day)"
+        ],
+        "fri": [
+          "Auto-generate weekly scorecard template",
+          "If revenue lapsed: debug why, adjust offer or positioning"
+        ]
+      },
+      "targets": {
+        "messages_sent": 40,
+        "responses": "6-10",
+        "calls_booked": 4,
+        "revenue": 1500
+      },
+      "checkpoint": "Weekly operating system in place. You can run it every week without thinking."
     },
     "6": {
-      "theme": "Scale the session pipeline",
-      "goal": "2 paid sessions this week. Start building waitlist energy.",
+      "theme": "Scale pipeline",
+      "goal": "Move from 'individual deal' to 'pipeline of deals.' 3+ opportunities in motion at all times.",
       "auto_tasks": {
         "daily": [
-          "Outreach at full volume with optimized messaging",
-          "Session prep auto-generated for all booked sessions",
-          "Post-session follow-up automated"
+          "Run daily operating system from Week 5 (no ad-hoc changes)",
+          "Continue prospecting (5-8 messages/day, same cadence)"
         ],
-        "mid_week": [
-          "Auto-generate digital asset from accumulated sessions (playbook, checklist, or framework)",
-          "Auto-draft 'limited availability' messaging if pipeline is strong"
+        "tue": [
+          "Auto-generate pipeline stage analysis: how many at each stage?"
         ],
         "fri": [
-          "6-week trajectory report: revenue curve, pipeline health, angle performance",
-          "Conor check-in agenda auto-generated"
+          "Auto-generate 'velocity report' — average days to close, conversion rates",
+          "If pipeline <3 deals: increase outreach or improve positioning"
         ]
       },
       "targets": {
-        "messages_sent": 115,
-        "responses": "20-30",
-        "paid_sessions": 4,
-        "revenue": "$3,000-$6,000"
+        "messages_sent": 40,
+        "responses": "6-10",
+        "calls_booked": 5,
+        "revenue": 2250
       },
-      "checkpoint": "Consistent session delivery. Revenue is recurring weekly."
+      "checkpoint": "3+ engagements in pipeline. Closing cadence = 1/week."
     },
     "7": {
-      "theme": "Build the upsell",
-      "goal": "Design the next offer tier — retainer, package, or group format",
+      "theme": "Build upsell",
+      "goal": "First customer is closed. Now: what's the next offer after the first one?",
       "auto_tasks": {
         "mon": [
-          "Auto-analyze all session clients: what do they need AFTER the breakdown?",
-          "Auto-draft 3 upsell offer concepts (retainer, 4-session package, group)",
-          "Present options for operator decision"
+          "Auto-generate upsell / follow-on offer doc",
+          "Define: retention check-in frequency, expansion hooks, next revenue moment"
         ],
-        "daily": [
-          "Outreach + sessions continue as normal",
-          "Auto-draft upsell proposal for past clients"
+        "wed": [
+          "Map: which diagnostics hint at longer-term needs or retainers?"
         ],
         "fri": [
-          "Test upsell offer with 2-3 past clients",
-          "Revenue and pipeline report"
+          "If 2+ customers active: draft follow-on offer and test with 1 customer"
         ]
       },
       "targets": {
-        "messages_sent": 135,
-        "responses": "25-35",
-        "paid_sessions": 6,
-        "revenue": "$4,500-$9,000",
-        "upsell_conversations": 2
+        "messages_sent": 40,
+        "responses": "6-10",
+        "calls_booked": 5,
+        "revenue": 2250
       },
-      "checkpoint": "Upsell offer defined and tested with real clients."
+      "checkpoint": "First customer retained. Upsell offer designed (even if not yet deployed)."
     },
     "8": {
-      "theme": "Lock in the operating rhythm permanently",
-      "goal": "System runs on autopilot. Revenue is predictable. Operator focuses on delivery.",
+      "theme": "Lock in rhythm",
+      "goal": "Build the self-running machine. You execute, the system handles the rest.",
       "auto_tasks": {
-        "mon": [
-          "Auto-generate full 8-week retrospective",
-          "Auto-calculate: cost per acquisition, average deal size, conversion rates at each stage",
-          "Auto-recommend: what to keep, what to drop, what to change for months 3-4"
-        ],
         "daily": [
-          "Full system continues — scan, outreach, follow-up, content, log",
-          "Begin auto-scheduling outreach in batches (shift from daily to batch processing)"
+          "Run the operating system. Make no ad-hoc changes."
         ],
         "fri": [
-          "FINAL 8-WEEK REPORT",
-          "Revenue total, pipeline value, sessions delivered, conversion rates",
-          "System health: is the engine self-sustaining?",
-          "Recommendation: hire, scale, or optimize?"
+          "Auto-generate 8-week retrospective",
+          "Document: what's repeatable, what's not, what's next"
         ]
       },
       "targets": {
-        "messages_sent": 155,
-        "responses": "30-40",
-        "paid_sessions": 8,
-        "revenue": "$6,000-$12,000",
-        "upsell_revenue": "$2,000-$4,000"
+        "messages_sent": 40,
+        "responses": "6-10",
+        "calls_booked": 5,
+        "revenue": 3000
       },
-      "checkpoint": "Engine is self-sustaining. Weekly revenue is predictable. Operator can focus on delivery, not prospecting.",
-      "graduation": "If revenue target hit: you've built a business, not a side project. The daily rhythm IS the business."
+      "checkpoint": "Operating rhythm is locked in. You can scale by just executing the same system more."
     }
-  },
-
-  "auto_progression": {
-    "enabled": true,
-    "rule": "System auto-advances week number in config.json every Monday at 6:50 AM",
-    "behavior_shift": "Each week, the Build/Deliver block and outreach templates automatically adapt to the current week's theme and tasks"
-  },
-
-  "failure_protocol": {
-    "week_4_no_revenue": "Pause outreach volume. Auto-diagnose: run analysis on all messages sent vs responses received. Identify top 3 converting angles. Rewrite offer doc. Test new positioning for 1 week before resuming volume.",
-    "week_6_no_momentum": "Auto-generate pivot options: different ICP, different offer format, different price point. Present to operator with data backing each option.",
-    "any_week_zero_messages": "System flags this immediately in the daily log. The engine works — the operator isn't using it."
   }
 }

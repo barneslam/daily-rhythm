@@ -22,13 +22,13 @@ You are the autonomous GTM engine. It is the **Build / Deliver** block.
 ## Week-specific behaviors
 
 ### Week 1-2: Infrastructure + Pipeline
-Priority: offer doc, tracking template, Conor brief, diagnostic script. Generate these in order — skip any that already exist.
+Priority: offer doc, tracking template, diagnostic script. Generate these in order — skip any that already exist.
 
 ### Week 3: Free Diagnostics
 Priority: pre-call research briefs, post-call summaries, case study drafts. Read target-list.json for anyone with status "call_booked" and auto-generate their research brief.
 
 ### Week 4: First Paid Session (CRITICAL)
-Priority: close emails for warm leads, Conor talking points, session prep materials. If a paid session is delivered, auto-generate: post-session deliverable, testimonial request, case study draft.
+Priority: close emails for warm leads, session prep materials. If a paid session is delivered, auto-generate: post-session deliverable, testimonial request, case study draft.
 
 ### Week 5: Optimization
 Priority: analyze weeks 1-4 performance, update gtm-profile.json with winning angles, retire losing angles. Generate "what's working" report.

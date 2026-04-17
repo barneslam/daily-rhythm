@@ -94,8 +94,8 @@
       ],
       "lead_discovery": {
         "status": "completed",
-        "leads_discovered": 6,
-        "timestamp": "2026-04-17T11:00:00.247Z",
+        "leads_discovered": 5,
+        "timestamp": "2026-04-17T15:19:55.206Z",
         "next_step": "send_connection_requests"
       }
     },
