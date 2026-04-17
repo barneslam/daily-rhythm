@@ -317,6 +317,22 @@
   </div>
 </div>
 
+<!-- Status Change Modal -->
+<div id="statusModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1001;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:8px;padding:20px;max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="margin:0;font-size:16px;font-weight:600;">Change Status: <span id="statusLeadName"></span></h3>
+      <button onclick="closeStatusModal()" style="background:none;border:none;font-size:20px;cursor:pointer;">&times;</button>
+    </div>
+    <div style="margin-bottom:16px;padding:12px;background:#f5f0e8;border-radius:4px;font-size:12px;">
+      <strong>Current:</strong> <span id="statusCurrent"></span><br>
+      <strong>Available transitions:</strong> <span id="statusAvailable"></span>
+    </div>
+    <div id="statusOptions" style="display:flex;flex-direction:column;gap:8px;"></div>
+    <button onclick="closeStatusModal()" style="width:100%;padding:8px;margin-top:12px;border:1px solid var(--border);background:white;border-radius:4px;cursor:pointer;">Cancel</button>
+  </div>
+</div>
+
 <script>
 const API = '';
 
@@ -415,8 +431,9 @@ async function load() {
   // Outreach
   window.outreachMessages = outreachRes.outreach || [];
 
-  // Targets Table (ALL 58 LEADS) - Sort by confidence highest to lowest
+  // Targets Table (DYNAMIC COUNT - UPDATES AS NEW LEADS FOUND) - Sort by confidence highest to lowest
   let targets = targetsRes.targets || [];
+  window.lastLeadCount = targets.length;
 
   // Confidence score mapping for sorting
   const confidenceMap = {
@@ -460,7 +477,7 @@ async function load() {
       <div><strong>${t.name}</strong><br><span style="color:var(--muted);font-size:11px">${t.business || ''}</span></div>
       <div class="target-signal">${(t.signal || '').substring(0, 100)}${(t.signal || '').length > 100 ? '...' : ''}</div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-        <span class="target-status status-${statusClass}">${t.status ? t.status.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()) : 'Identified'}</span>
+        <span class="target-status status-${statusClass}" style="cursor:pointer;" onclick="openStatusModal('${t.id}', '${t.status || 'identified'}', '${t.name}')">${t.status ? t.status.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase()) : 'Identified'}</span>
         ${t.needs_regen ? '<span style="background:#a0404020;color:var(--red);padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500;">⚠ Regen</span>' : ''}
         ${t.draft_message ? '<span style="background:#8a6fa620;color:#6b5a3f;padding:2px 8px;border-radius:3px;font-size:11px;">📝 Draft</span>' : ''}
         ${t.follow_ups ? '<span style="background:#5a789820;color:var(--blue);padding:2px 8px;border-radius:3px;font-size:11px;">${t.follow_ups}x FU</span>' : ''}
@@ -1000,6 +1017,75 @@ function disqualifyDM(idx) {
     }).catch(() => alert('Updated (offline)'));
   }
 }
+
+// Status transition rules
+const statusTransitions = {
+  'identified': ['connection_req', 'disqualified'],
+  'connection_req': ['connected', 'identified', 'disqualified'],
+  'connected': ['messaged', 'identified', 'disqualified'],
+  'messaged': ['responded', 'connected', 'disqualified'],
+  'responded': ['disqualified'],
+  'disqualified': ['identified']
+};
+
+function openStatusModal(leadId, currentStatus, leadName) {
+  const modal = document.getElementById('statusModal');
+  document.getElementById('statusLeadName').textContent = leadName;
+  document.getElementById('statusCurrent').textContent = currentStatus.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase());
+
+  const availableStatuses = statusTransitions[currentStatus] || [];
+  document.getElementById('statusAvailable').textContent = availableStatuses.map(s => s.replace(/_/g, ' ')).join(', ') || 'None';
+
+  const optionsHtml = availableStatuses.map(status => `
+    <button onclick="updateLeadStatus('${leadId}', '${status}')" style="padding:10px;background:var(--accent-light);border:none;border-radius:4px;cursor:pointer;font-weight:500;">
+      ${status.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase())}
+    </button>
+  `).join('');
+
+  document.getElementById('statusOptions').innerHTML = optionsHtml || '<p style="color:var(--muted);">No available transitions</p>';
+  modal.style.display = 'flex';
+}
+
+function closeStatusModal() {
+  document.getElementById('statusModal').style.display = 'none';
+}
+
+function updateLeadStatus(leadId, newStatus) {
+  fetch('/api/lead/update-status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ leadId, status: newStatus })
+  }).then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        alert(`✓ Status updated to ${newStatus.replace(/_/g, ' ')}`);
+        closeStatusModal();
+        location.reload();
+      } else {
+        alert('Error: ' + (data.error || 'Unknown error'));
+      }
+    })
+    .catch(err => alert('Update queued (offline)'));
+}
+
+// Auto-refresh targets count (checks for new leads every 60 seconds)
+setInterval(() => {
+  fetch('/api/targets')
+    .then(r => r.json())
+    .then(data => {
+      const newCount = data.targets?.length || 0;
+      if (newCount !== window.lastLeadCount) {
+        const metricsEl = document.getElementById('leads-metrics');
+        if (metricsEl && metricsEl.textContent.includes('Total Leads')) {
+          console.log(`🆕 New leads found! Updated from ${window.lastLeadCount} → ${newCount}`);
+          window.lastLeadCount = newCount;
+          // Reload to show new leads
+          setTimeout(() => location.reload(), 1000);
+        }
+      }
+    })
+    .catch(() => {});
+}, 60000); // Check every 60 seconds
 
 // Kanban drag & drop
 function setupKanbanDragDrop() {
