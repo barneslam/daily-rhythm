@@ -1,15 +1,23 @@
 [build]
 publish = "."
-command = "npm install"
+command = "npm install --production"
 functions = "netlify/functions"
+environment = { NODE_VERSION = "18" }
 
+# API routing - redirect /api/* to Netlify functions
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api-:splat"
+status = 200
+
+# Dashboard routing
 [[redirects]]
 from = "/"
 to = "/dashboard.html"
 status = 200
-force = true
 
+# Fallback for missing routes
 [[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/api-:splat"
+from = "/*"
+to = "/dashboard.html"
 status = 200
