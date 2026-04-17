@@ -469,9 +469,13 @@ async function load() {
     { score: 60, label: 'Low Confidence', class: 'low' }
   ];
 
-  const targetListHTML = confidenceLevels.map(level => {
+  const targetListHTML = confidenceLevels.map((level, idx) => {
     const levelTargets = grouped[level.score] || [];
     if (levelTargets.length === 0) return '';
+
+    const sectionId = `section-${level.score}`;
+    const isFirst = idx === 0;
+    const isOpen = isFirst; // Open HIGH confidence by default
 
     const rows = levelTargets.map(t => {
       const confidenceScore = level.score;
@@ -499,16 +503,32 @@ async function load() {
     }).join('');
 
     return `<div style="margin-bottom:32px;">
-      <h3 style="font-size:14px;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border);">
-        ${level.score} — ${level.label} (${levelTargets.length})
-      </h3>
-      <div style="margin-top:0;">
+      <div onclick="toggleSection('${sectionId}')" style="display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;padding:8px;border-radius:4px;background:var(--surface2);margin-bottom:12px;border-left:3px solid ${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">
+        <span style="font-weight:700;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">▶</span>
+        <h3 style="font-size:14px;color:var(--text);margin:0;flex:1;">
+          ${level.score} — ${level.label} <span style="background:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a52640' : 'var(--accent)40'};padding:2px 8px;border-radius:3px;font-weight:600;font-size:12px;">${levelTargets.length}</span>
+        </h3>
+      </div>
+      <div id="${sectionId}" style="display:${isOpen ? 'block' : 'none'};margin-top:0;">
         ${rows}
       </div>
     </div>`;
   }).join('');
 
   document.getElementById('target-list').innerHTML = targetListHTML;
+
+  // Toggle function for sections
+  window.toggleSection = function(sectionId) {
+    const section = document.getElementById(sectionId);
+    const chevron = section.previousElementSibling.querySelector('span');
+    if (section.style.display === 'none') {
+      section.style.display = 'block';
+      chevron.textContent = '▼';
+    } else {
+      section.style.display = 'none';
+      chevron.textContent = '▶';
+    }
+  };
 
   // Lead Pipeline Kanban
   const statusMap = {
