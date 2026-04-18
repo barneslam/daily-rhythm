@@ -244,8 +244,8 @@
   <!-- DM PIPELINE -->
   <div class="panel" id="dms">
     <div class="card" style="background: #5a789820; border-left: 3px solid var(--blue);">
-      <h2>💬 LINKEDIN DM MONITORING</h2>
-      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">Incoming messages auto-scored for qualification. Respond, archive, or disqualify each message.</p>
+      <h2>💬 INBOUND MESSAGE MONITORING</h2>
+      <p style="color: var(--muted); font-size: 13px; margin-bottom: 12px;">Incoming messages from LinkedIn, email, website forms, and Calendly bookings. Auto-scored for qualification. Respond, qualify, or archive each message.</p>
       <div style="display: flex; gap: 16px; font-size: 12px;">
         <div><strong>70%+</strong> — Highly qualified (signals: email, call, offer)</div>
         <div><strong>50%-70%</strong> — Medium qualification</div>
@@ -576,7 +576,7 @@ async function load() {
     fetch('/api/offer-doc').then(r => r.json()).catch(() => ({ content: '' })),
     fetch('/api/program').then(r => r.json()).catch(() => ({ program: [] })),
     fetch('/api/outreach').then(r => r.json()).catch(() => ({ outreach: [] })),
-    fetch('/api/dms?limit=50&days=7&status=all').then(r => r.json()).catch(() => ({ dms: [], qualification_metrics: {}, status_metrics: {}, channel_metrics: {} })),
+    fetch('/api/inbound?limit=50&days=7&status=all&channel=all').then(r => r.json()).catch(() => ({ messages: [], qualification_metrics: {}, status_metrics: {}, channel_metrics: {} })),
   ]);
 
   // Header
@@ -1110,11 +1110,11 @@ async function load() {
   const qualMetrics = dmsRes.qualification_metrics || {};
   const statusMetrics = dmsRes.status_metrics || {};
   const channelMetrics = dmsRes.channel_metrics || {};
-  const dms = dmsRes.dms || [];
+  const messages = dmsRes.messages || [];
 
   // Qualification metrics
   document.getElementById('dms-qual-metrics').innerHTML = `
-    <div class="metric"><div class="metric-value">${qualMetrics.total || 0}</div><div class="metric-label">Total DMs</div></div>
+    <div class="metric"><div class="metric-value">${qualMetrics.total || 0}</div><div class="metric-label">Total Messages</div></div>
     <div class="metric"><div class="metric-value">${qualMetrics.qualified || 0}</div><div class="metric-label">Qualified</div></div>
     <div class="metric"><div class="metric-value">${qualMetrics.notQualified || 0}</div><div class="metric-label">Not Qualified</div></div>
     <div class="metric"><div class="metric-value">${(qualMetrics.percentQualified || 0).toFixed(1)}%</div><div class="metric-label">Qualification Rate</div></div>
@@ -1129,43 +1129,47 @@ async function load() {
     <div class="metric"><div class="metric-value">${statusMetrics.qualified || 0}</div><div class="metric-label">Qualified</div></div>
   `;
 
-  // Channel metrics
-  document.getElementById('dms-channel-metrics').innerHTML = Object.entries(channelMetrics || {}).map(([channel, count]) =>
-    `<div class="metric"><div class="metric-value">${count}</div><div class="metric-label">${channel.replace(/_/g, ' ')}</div></div>`
-  ).join('') || '<div style="color:var(--muted);font-size:12px">No DM data yet</div>';
+  // Channel metrics - shows distribution across email, LinkedIn, website, Calendly
+  document.getElementById('dms-channel-metrics').innerHTML = Object.entries(channelMetrics || {}).map(([channel, count]) => {
+    const channelEmoji = { linkedin: '💼', email: '📧', website: '🌐', calendly: '📅' }[channel] || '💬';
+    return `<div class="metric"><div class="metric-value">${count}</div><div class="metric-label">${channelEmoji} ${channel}</div></div>`;
+  }).join('') || '<div style="color:var(--muted);font-size:12px">No inbound messages yet</div>';
 
-  // DM feed - with auto-qualification scoring
-  window.dmsData = dms;
-  document.getElementById('dms-feed').innerHTML = dms.length === 0
-    ? '<div style="color:var(--muted);font-size:12px;padding:12px">No DMs in last 7 days. Incoming messages from LinkedIn will appear here.</div>'
-    : dms.map((dm, idx) => {
-      // Auto-qualification: score based on message signals
-      const hasEmail = (dm.body || '').toLowerCase().includes('email');
-      const hasCall = (dm.body || '').toLowerCase().includes('call');
-      const hasOffer = (dm.body || '').toLowerCase().includes('interested') || (dm.body || '').toLowerCase().includes('opportunity');
-      const signals = (hasEmail ? 1 : 0) + (hasCall ? 1 : 0) + (hasOffer ? 1 : 0);
-      const qualScore = Math.min(0.3 + (signals * 0.25), 1.0);
-      const qualColor = qualScore >= 0.7 ? 'green' : qualScore >= 0.5 ? '#d9a526' : 'red';
-      const bgClass = qualScore >= 0.7 ? 'confidence-bg-high' : qualScore >= 0.5 ? 'confidence-bg-medium-high' : 'confidence-bg-low';
+  // Message feed - unified multi-channel monitoring
+  window.dmsData = messages;
+  document.getElementById('dms-feed').innerHTML = messages.length === 0
+    ? '<div style="color:var(--muted);font-size:12px;padding:12px">No inbound messages in last 7 days. Messages from LinkedIn, email, website forms, and Calendly bookings will appear here.</div>'
+    : messages.map((msg, idx) => {
+      const qualScore = msg.qualification_score || 0;
+      const qualColor = qualScore >= 75 ? '#22c55e' : qualScore >= 60 ? '#eab308' : '#ef4444';
+      const channelEmoji = { linkedin: '💼', email: '📧', website: '🌐', calendly: '📅' }[msg.channel] || '💬';
+      const statusBadge = msg.lead_status === 'qualified' ? '✓ QUALIFIED' : msg.lead_status === 'booked' ? '📅 BOOKED' : 'NEW';
+      const statusColor = msg.lead_status === 'qualified' ? '#22c55e' : msg.lead_status === 'booked' ? '#06b6d4' : '#f59e0b';
 
       return `<div class="draft-card" style="margin-top: 12px;">
-        <div class="draft-header" style="display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div class="draft-title">${dm.sender_name || 'Unknown'} — ${dm.sender_company || 'N/A'}</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:4px">${dm.subject || 'No subject'}</div>
+        <div class="draft-header" style="display:flex;justify-content:space-between;align-items:start">
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+              <span style="font-size:18px">${channelEmoji}</span>
+              <div style="font-weight:600">${msg.sender_name || 'Unknown'}</div>
+              <span style="background:${statusColor};color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600">${statusBadge}</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted)">${msg.sender_title || 'N/A'} at ${msg.sender_company || 'N/A'}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px">${msg.message_subject || 'No subject'}</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:18px;font-weight:700;color:${qualColor}">${(qualScore * 100).toFixed(0)}%</div>
-            <div style="font-size:10px;color:var(--muted)">Qualified</div>
+            <div style="font-size:22px;font-weight:700;color:${qualColor}">${qualScore}</div>
+            <div style="font-size:10px;color:var(--muted)">Score</div>
           </div>
         </div>
         <div class="draft-body">
-          <div class="draft-content">${(dm.body || '').substring(0, 300)}${(dm.body || '').length > 300 ? '...' : ''}</div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Sent: ${new Date(dm.send_date).toLocaleDateString()}</div>
+          <div class="draft-content" style="background:var(--bg-secondary);padding:8px;border-radius:4px;margin-bottom:8px">${(msg.message_text || '').substring(0, 250)}${(msg.message_text || '').length > 250 ? '...' : ''}</div>
+          ${msg.qualification_notes ? `<div style="font-size:11px;color:var(--muted);margin-bottom:8px">Note: ${msg.qualification_notes}</div>` : ''}
+          <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Received: ${new Date(msg.received_at).toLocaleDateString()}</div>
           <div style="display:flex;gap:8px">
-            <button class="btn btn-approve" onclick="respondToDM(${idx})">✓ Reply</button>
-            <button class="btn" onclick="archiveDM(${idx})">📋 Archive</button>
-            <button class="btn" onclick="disqualifyDM(${idx})">❌ Disqualify</button>
+            <button class="btn btn-approve" onclick="respondToMessage(${idx})">✓ Reply</button>
+            <button class="btn" onclick="archiveMessage(${idx})">📋 Archive</button>
+            <button class="btn" onclick="updateMessageStatus(${idx}, 'qualified')">⭐ Qualify</button>
           </div>
         </div>
       </div>`;
