@@ -538,8 +538,8 @@
     "mem-project_galoras_intelligence_dashboard----": {
       "id": "mem-project_galoras_intelligence_dashboard----",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.44999999999999996,
+      "accessCount": 1,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_intelligence_dashboard-purpose": {
@@ -573,8 +573,8 @@
     "mem-project_galoras_intelligence_dashboard-how-to-apply": {
       "id": "mem-project_galoras_intelligence_dashboard-how-to-apply",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.57,
-      "accessCount": 3,
+      "confidence": 0.63,
+      "accessCount": 5,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_sow_status----": {
@@ -601,15 +601,15 @@
     "mem-project_galoras_sow_status-budget-reference": {
       "id": "mem-project_galoras_sow_status-budget-reference",
       "category": "project_galoras_sow_status",
-      "confidence": 0.57,
-      "accessCount": 3,
+      "confidence": 0.6,
+      "accessCount": 4,
       "createdAt": 1776129911028
     },
     "mem-project_gtm_engine----": {
       "id": "mem-project_gtm_engine----",
       "category": "project_gtm_engine",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.44999999999999996,
+      "accessCount": 1,
       "createdAt": 1776129911028
     },
     "mem-project_mitesh_design_template----": {
@@ -818,8 +818,8 @@
     "mem-project_rin_business_rules-workflow-timeouts": {
       "id": "mem-project_rin_business_rules-workflow-timeouts",
       "category": "project_rin_business_rules",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.44999999999999996,
+      "accessCount": 1,
       "createdAt": 1776129911037
     },
     "mem-project_rin_business_rules-special-vehicles": {
@@ -1126,15 +1126,15 @@
     "mem-domain_migration_plan-dns-records-needed--galoras-co": {
       "id": "mem-domain_migration_plan-dns-records-needed--galoras-co",
       "category": "domain_migration_plan",
-      "confidence": 0.57,
-      "accessCount": 3,
+      "confidence": 0.6,
+      "accessCount": 4,
       "createdAt": 1776129911054
     },
     "mem-domain_migration_plan-systems-to-update": {
       "id": "mem-domain_migration_plan-systems-to-update",
       "category": "domain_migration_plan",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.44999999999999996,
+      "accessCount": 1,
       "createdAt": 1776129911054
     },
     "mem-featured_coaches_tuning----": {
@@ -1252,8 +1252,8 @@
     "mem-user_profile----": {
       "id": "mem-user_profile----",
       "category": "user_profile",
-      "confidence": 0.57,
-      "accessCount": 3,
+      "confidence": 0.6,
+      "accessCount": 4,
       "createdAt": 1776129911060
     },
     "mem-user_profile-role": {

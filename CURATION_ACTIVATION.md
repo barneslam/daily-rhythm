@@ -68,7 +68,7 @@ tail -f logs/curation-*.log
 #### 1. Register DM Webhook with Blotato
 ```bash
 # Blotato webhook endpoint:
-POST https://gtm-engine-dashboard.netlify.app/api/dm-handler
+POST https://daily-lead-gen-track.netlify.app/api/dm-handler
 
 # Webhook payload template:
 {
@@ -80,6 +80,7 @@ POST https://gtm-engine-dashboard.netlify.app/api/dm-handler
 }
 
 # Contact Blotato support to register this webhook
+# OR test locally: curl -X POST http://localhost:3001/api/dm-handler -d '{...}'
 ```
 
 #### 2. Verify Content Pieces in Supabase

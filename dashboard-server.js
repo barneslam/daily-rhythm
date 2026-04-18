@@ -635,6 +635,30 @@ const routes = {
     }
   },
 
+  '/api/dm-handler': async (body) => {
+    try {
+      const { handleDMAndCreateLead } = require('./curation-skill');
+      const dmData = {
+        sender_name: body.sender_name || 'Unknown',
+        sender_email: body.sender_email || '',
+        message_text: body.message_text || body.text || '',
+        source_content_id: body.source_content_id || body.piece_title || 'unknown'
+      };
+
+      const lead = await handleDMAndCreateLead(dmData);
+
+      if (lead) {
+        console.log(`✅ DM handler: Created lead for ${dmData.sender_name}`);
+        return { success: true, lead_id: lead.id, message: `Lead created for ${dmData.sender_name}` };
+      } else {
+        return { error: 'Failed to create lead from DM' };
+      }
+    } catch (e) {
+      console.error('DM handler error:', e.message);
+      return { error: e.message };
+    }
+  },
+
   '/api/lead/update-status': async (body) => {
     try {
       const { leadId, status } = body;
