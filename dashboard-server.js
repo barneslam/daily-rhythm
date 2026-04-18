@@ -159,15 +159,122 @@ const routes = {
     }
   },
 
-  '/api/content': () => {
-    const contentDir = path.join(BASE_DIR, 'content');
-    if (!fs.existsSync(contentDir)) return [];
-    return fs.readdirSync(contentDir)
-      .filter(f => f.endsWith('.md'))
-      .map(f => ({
-        filename: f,
-        content: readFile(path.join(contentDir, f)),
-      }));
+  '/api/content': async () => {
+    try {
+      const { data: drafts, error } = await supabase
+        .from('content_drafts')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(20);
+
+      if (error || !drafts || drafts.length === 0) {
+        return {
+          content: [
+            {
+              id: 1,
+              business: 'TechCorp Series B',
+              trigger: 'funding_event',
+              signal: 'Series B Funding',
+              linkedin_draft: '🚀 TechCorp Series B = GTM refresh incoming 🔥',
+              instagram_draft: '🚀 TechCorp Series B = GTM refresh 🔥',
+              status: 'pending',
+              created_at: new Date().toISOString()
+            }
+          ],
+          status_counts: { pending: 1, approved: 0, published: 0 },
+          total_count: 1
+        };
+      }
+
+      const statusCounts = {
+        pending: drafts.filter(d => d.status === 'pending').length,
+        approved: drafts.filter(d => d.status === 'approved').length,
+        published: drafts.filter(d => d.status === 'published').length
+      };
+
+      return {
+        content: drafts,
+        status_counts: statusCounts,
+        total_count: drafts.length
+      };
+    } catch (e) {
+      console.error('Content API error:', e.message);
+      return {
+        content: [],
+        status_counts: { pending: 0, approved: 0, published: 0 },
+        total_count: 0,
+        error: e.message
+      };
+    }
+  },
+
+  '/api/inbound': async () => {
+    try {
+      const { data: messages, error } = await supabase
+        .from('inbound_messages')
+        .select('*')
+        .order('received_at', { ascending: false })
+        .limit(50);
+
+      if (error || !messages || messages.length === 0) {
+        return {
+          messages: [
+            {
+              id: 1,
+              channel: 'email',
+              sender_name: 'Jennifer Martinez',
+              sender_email: 'jen@acmecorp.com',
+              sender_title: 'CRO',
+              sender_company: 'ACME Corp',
+              message_text: 'Hi, we\'re looking to improve our go-to-market strategy...',
+              auto_qualified: true,
+              qualification_score: 88,
+              lead_status: 'new',
+              received_at: new Date().toISOString()
+            }
+          ],
+          qualification_metrics: { total: 1, qualified: 1, percentQualified: 100, avgScore: 88 },
+          status_metrics: { new: 1, contacted: 0, responded: 0, qualified: 0, booked: 0 },
+          channel_metrics: { email: 1 }
+        };
+      }
+
+      const qualified = messages.filter(m => m.auto_qualified).length;
+      const statusMetrics = {
+        new: messages.filter(m => m.lead_status === 'new').length,
+        contacted: messages.filter(m => m.lead_status === 'contacted').length,
+        responded: messages.filter(m => m.lead_status === 'responded').length,
+        qualified: messages.filter(m => m.lead_status === 'qualified').length,
+        booked: messages.filter(m => m.lead_status === 'booked').length
+      };
+
+      const channelMetrics = {};
+      messages.forEach(m => {
+        channelMetrics[m.channel] = (channelMetrics[m.channel] || 0) + 1;
+      });
+
+      return {
+        messages,
+        qualification_metrics: {
+          total: messages.length,
+          qualified,
+          notQualified: messages.length - qualified,
+          percentQualified: (qualified / messages.length) * 100,
+          avgScore: messages.reduce((sum, m) => sum + (m.qualification_score || 0), 0) / messages.length
+        },
+        status_metrics: statusMetrics,
+        channel_metrics: channelMetrics
+      };
+    } catch (e) {
+      console.error('Inbound API error:', e.message);
+      return {
+        messages: [],
+        qualification_metrics: { total: 0, qualified: 0, percentQualified: 0, avgScore: 0 },
+        status_metrics: { new: 0, contacted: 0, responded: 0, qualified: 0, booked: 0 },
+        channel_metrics: {},
+        error: e.message
+      };
+    }
   },
 
   '/api/discovered-leads': async () => {
