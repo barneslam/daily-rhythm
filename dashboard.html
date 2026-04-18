@@ -1972,20 +1972,16 @@ async function regenConnectionMessage() {
 
     const data = await res.json();
     if (data.success) {
-      // Show the regenerated message in the modal
-      const resultDiv = document.getElementById('regenConnectResult') ||
-        (() => {
-          const div = document.createElement('div');
-          div.id = 'regenConnectResult';
-          document.getElementById('regenConnectModal').appendChild(div);
-          return div;
-        })();
-
-      resultDiv.innerHTML = `<div style="background:var(--green);color:white;padding:12px;border-radius:4px;margin-bottom:12px;">
+      // Show the regenerated message in the modal - insert after the textarea
+      const resultDiv = document.createElement('div');
+      resultDiv.innerHTML = `<div style="background:var(--green);color:white;padding:12px;border-radius:4px;margin:12px 0;">
         <strong>✓ New Message Generated:</strong><br>
-        <pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;color:white;">${data.connection_message}</pre>
+        <pre style="margin:8px 0 0 0;font-size:12px;white-space:pre-wrap;word-wrap:break-word;color:white;max-height:200px;overflow-y:auto;">${data.connection_message}</pre>
         <button onclick="copyConnectionMessage(\`${data.connection_message.replace(/`/g, '\\`')}\`)" style="margin-top:8px;padding:6px 12px;background:white;color:var(--green);border:none;border-radius:3px;cursor:pointer;font-weight:500;">📋 Copy New Message</button>
       </div>`;
+
+      const promptDiv = promptEl.closest('[style*="margin-bottom"]');
+      promptDiv.after(resultDiv);
 
       promptEl.value = '';
       promptEl.placeholder = 'Enter another change or close modal...';
