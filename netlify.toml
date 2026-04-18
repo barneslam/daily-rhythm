@@ -7,6 +7,14 @@ functions = "netlify/functions"
 function = "schedule-discovery"
 cron = "0 7 * * *"
 
+[[scheduled_functions]]
+function = "content-generator"
+cron = "0 8 * * 1"
+
+[[scheduled_functions]]
+function = "content-publisher"
+cron = "0 9 * * 1"
+
 # API routing - redirect /api/* to Netlify functions
 [[redirects]]
 from = "/api/*"

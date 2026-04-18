@@ -218,10 +218,10 @@
     <div class="card">
       <h2>TARGET LIST — ALL 58 LEADS</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; font-size: 12px;">
-        <div style="padding: 8px; background: #4a7c5910; border-left: 3px solid var(--green); border-radius: 4px;"><span style="color:var(--green);font-weight:600">90</span> HIGH confidence</div>
-        <div style="padding: 8px; background: #d9a52610; border-left: 3px solid #d9a526; border-radius: 4px;"><span style="color:#d9a526;font-weight:600">80</span> Medium-High</div>
-        <div style="padding: 8px; background: #a0782810; border-left: 3px solid var(--accent); border-radius: 4px;"><span style="color:var(--accent);font-weight:600">70</span> Medium (cutoff)</div>
-        <div style="padding: 8px; background: #a0404010; border-left: 3px solid var(--red); border-radius: 4px;"><span style="color:var(--red);font-weight:600">60</span> Low confidence</div>
+        <div onclick="filterByConfidence(90)" style="padding: 8px; background: #4a7c5910; border-left: 3px solid var(--green); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#4a7c5920'" onmouseout="this.style.background='#4a7c5910'"><span style="color:var(--green);font-weight:600">90</span> HIGH confidence</div>
+        <div onclick="filterByConfidence(80)" style="padding: 8px; background: #d9a52610; border-left: 3px solid #d9a526; border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#d9a52620'" onmouseout="this.style.background='#d9a52610'"><span style="color:#d9a526;font-weight:600">80</span> Medium-High</div>
+        <div onclick="filterByConfidence(70)" style="padding: 8px; background: #a0782810; border-left: 3px solid var(--accent); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#a0782820'" onmouseout="this.style.background='#a0782810'"><span style="color:var(--accent);font-weight:600">70</span> Medium (cutoff)</div>
+        <div onclick="filterByConfidence(60)" style="padding: 8px; background: #a0404010; border-left: 3px solid var(--red); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#a0404020'" onmouseout="this.style.background='#a0404010'"><span style="color:var(--red);font-weight:600">60</span> Low confidence</div>
       </div>
       <div style="margin-bottom: 16px; font-size: 11px; color: var(--muted); padding: 8px; background: var(--surface2); border-radius: 4px;">
         <strong>Status workflow:</strong> identified → connection_req → connected → messaged → responded
@@ -468,6 +468,71 @@ function filterLeads(searchTerm) {
   }
 
   console.log(`✓ Filtered: ${visibleCount}/${allRows.length} rows visible`);
+}
+
+// Filter leads by confidence level
+function filterByConfidence(minConfidence) {
+  const targetList = document.getElementById('target-list');
+  if (!targetList) return;
+
+  // Get current filter state
+  const currentFilter = window.currentConfidenceFilter;
+
+  // Toggle: if clicking same confidence again, show all
+  if (currentFilter === minConfidence) {
+    window.currentConfidenceFilter = null;
+    // Show all rows and sections
+    document.querySelectorAll('#target-list .target-row').forEach(row => {
+      row.style.display = row.classList.contains('target-header') ? 'grid' : 'grid';
+    });
+    document.querySelectorAll('[id^="section-"]').forEach(section => {
+      section.style.display = 'block';
+      section.previousElementSibling.style.display = 'flex'; // Show section header
+    });
+    document.getElementById('searchInput').value = '';
+    console.log('🔓 Confidence filter cleared — showing all leads');
+    return;
+  }
+
+  // Set new filter
+  window.currentConfidenceFilter = minConfidence;
+  let visibleCount = 0;
+
+  // Hide/show rows based on confidence threshold
+  document.querySelectorAll('#target-list .target-row').forEach(row => {
+    if (row.classList.contains('target-header')) return;
+
+    let rowConfidence = 0;
+    if (row.classList.contains('confidence-bg-high')) rowConfidence = 90;
+    else if (row.classList.contains('confidence-bg-medium-high')) rowConfidence = 80;
+    else if (row.classList.contains('confidence-bg-medium')) rowConfidence = 70;
+    else if (row.classList.contains('confidence-bg-low')) rowConfidence = 60;
+
+    if (rowConfidence >= minConfidence) {
+      row.style.display = 'grid';
+      visibleCount++;
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  // Show/hide sections based on whether they have visible rows
+  document.querySelectorAll('[id^="section-"]').forEach(section => {
+    const visibleRows = Array.from(section.querySelectorAll('.target-row')).filter(
+      row => !row.classList.contains('target-header') && row.style.display !== 'none'
+    );
+
+    if (visibleRows.length > 0) {
+      section.style.display = 'block';
+      section.previousElementSibling.style.display = 'flex'; // Show section header
+    } else {
+      section.style.display = 'none';
+      section.previousElementSibling.style.display = 'none'; // Hide section header too
+    }
+  });
+
+  document.getElementById('searchInput').value = '';
+  console.log(`📊 Confidence filter: ${minConfidence}+ (${visibleCount} leads)`);
 }
 
 // Determine current schedule block
