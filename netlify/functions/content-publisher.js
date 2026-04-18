@@ -10,11 +10,11 @@ const supabase = createClient(
 function callBlotato(method, path, body = null) {
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: 'api.blotato.com',
-      path: `/v1${path}`,
+      hostname: 'backend.blotato.com',
+      path: path,
       method: method,
       headers: {
-        'Authorization': `Bearer ${process.env.BLOTATO_API_KEY}`,
+        'blotato-api-key': process.env.BLOTATO_API_KEY,
         'Content-Type': 'application/json'
       }
     };
@@ -61,6 +61,8 @@ async function scheduleToBlotato(content, platform, scheduledTime) {
     };
 
     const result = await callBlotato('POST', '/posts', payload);
+
+    console.log(`Blotato POST response: ${result.statusCode}`, result.data);
 
     if (result.statusCode >= 200 && result.statusCode < 300) {
       return { success: true, postId: result.data.id };

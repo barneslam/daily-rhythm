@@ -10,11 +10,11 @@ const supabase = createClient(
 function callBlotato(method, path, body = null) {
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: 'api.blotato.com',
-      path: `/v1${path}`,
+      hostname: 'backend.blotato.com',
+      path: path,
       method: method,
       headers: {
-        'Authorization': `Bearer ${process.env.BLOTATO_API_KEY || 'mock-key'}`,
+        'blotato-api-key': process.env.BLOTATO_API_KEY || 'mock-key',
         'Content-Type': 'application/json'
       }
     };
