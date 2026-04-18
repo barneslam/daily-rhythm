@@ -748,7 +748,8 @@ async function load() {
         <td style="padding:8px;text-align:right;white-space:nowrap;">
           <button onclick="openMessageModal('${t.id}', '${t.name}', '${messageText}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
           <button onclick="openRegenConnectModal('${t.id}', '${t.name}', '${t.business.replace(/'/g, "\\'")}', '${messageText.replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
-          <button onclick="disqualifyLead('${t.id}', '${t.name}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;" title="Disqualify lead">✕</button>
+          <button onclick="disqualifyLead('${t.id}', '${t.name}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Disqualify lead">✕</button>
+          <button onclick="updateTargetStatus('${t.id}', 'connection_req')" style="padding:4px 8px;background:${t.status === 'connection_req' ? 'var(--green)' : 'var(--muted)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;font-weight:600;" title="Mark as connection request sent">${t.status === 'connection_req' ? '✓ Sent' : '→ Send'}</button>
         </td>
       </tr>`;
     }).join('');
