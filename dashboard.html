@@ -826,38 +826,114 @@ async function load() {
       </div>`;
     }).join('');
 
-  // Content - Publishing Interface
+  // Content - Approval & Publishing Workflow
   const contentRes = await fetch('/api/content').then(r => r.json());
-  document.getElementById('content-list').innerHTML = contentRes.length === 0
-    ? '<div class="card"><h2>📝 Ready to Publish</h2><p style="color:var(--muted);margin-top:8px">No content generated yet. Auto-generated content appears here during the daily Build/Deliver block.</p></div>'
-    : contentRes.map((c, idx) => {
-      const isPost = c.filename.includes('post') || c.filename.includes('content');
-      const isCaseStudy = c.filename.includes('case-study') || c.filename.includes('case_study');
-      const channels = isPost ? ['LinkedIn', 'Twitter', 'Instagram'] : isCaseStudy ? ['LinkedIn'] : ['LinkedIn'];
-      return `<div class="draft-card">
-        <div class="draft-header">
+  const contentData = contentRes.content || contentRes;
+  const statusCounts = contentRes.status_counts || {};
+
+  let contentHTML = `
+    <div class="card" style="background: #f0f9ff; border-left: 3px solid var(--blue); margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0; color: var(--blue);">APPROVAL STATUS</h3>
+          <p style="margin: 4px 0 0 0; font-size: 13px; color: var(--muted);">Weekly content batch workflow</p>
+        </div>
+        <div style="display: flex; gap: 24px; text-align: center;">
           <div>
-            <div class="draft-title">${c.filename.replace(/\.md$/, '').replace(/_/g, ' ')}</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:4px">Type: ${isPost ? 'Social Post' : isCaseStudy ? 'Case Study' : 'Content'}</div>
+            <div style="font-size: 20px; font-weight: bold; color: var(--orange);">${statusCounts.pending || 0}</div>
+            <div style="font-size: 11px; color: var(--muted);">Pending Review</div>
           </div>
-          <div style="display:flex;gap:8px">
-            <span class="draft-status draft-pending">📋 Ready</span>
+          <div>
+            <div style="font-size: 20px; font-weight: bold; color: var(--yellow);">${statusCounts.approved || 0}</div>
+            <div style="font-size: 11px; color: var(--muted);">Approved</div>
           </div>
-        </div>
-        <div class="draft-body">
-          <div class="draft-content">${c.content}</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-            <label style="font-size:11px;color:var(--muted)">Channels:</label>
-            ${channels.map(ch => `<label style="margin-right:12px"><input type="checkbox" checked> ${ch}</label>`).join('')}
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn" onclick="copyToClipboard('${idx}')">📋 Copy</button>
-            <button class="btn btn-approve" onclick="publishContent('${idx}', '${c.filename}')">✓ Publish</button>
-            <button class="btn" onclick="editContent('${idx}')">✏️ Edit</button>
+          <div>
+            <div style="font-size: 20px; font-weight: bold; color: var(--green);">${statusCounts.published || 0}</div>
+            <div style="font-size: 11px; color: var(--muted);">Published</div>
           </div>
         </div>
+      </div>
+    </div>
+  `;
+
+  if (!contentData || contentData.length === 0) {
+    contentHTML += '<div class="card"><h2>📝 No Content Yet</h2><p style="color:var(--muted);margin-top:8px">Content generated weekly Monday 8 AM UTC. Check back then or trigger manually.</p></div>';
+  } else {
+    const pending = contentData.filter(c => c.status === 'pending');
+    const approved = contentData.filter(c => c.status === 'approved');
+    const published = contentData.filter(c => c.status === 'published');
+
+    // Pending section
+    if (pending.length > 0) {
+      contentHTML += `<div class="card" style="border-left: 3px solid var(--orange); margin-bottom: 16px;">
+        <h3 style="margin-top: 0; color: var(--orange);">⏳ PENDING REVIEW (${pending.length})</h3>
+        ${pending.map(c => `
+          <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+              <div>
+                <div style="font-weight: 600; margin-bottom: 2px;">${c.business}</div>
+                <div style="font-size: 12px; color: var(--muted);">Trigger: ${c.trigger} | Confidence: ${c.qualification_metrics?.qualified ? '✓ High' : 'Medium'}</div>
+              </div>
+              <div style="text-align: right; font-size: 12px; color: var(--muted);">
+                Created: ${new Date(c.created_at).toLocaleDateString()}
+              </div>
+            </div>
+            <div style="background: var(--bg-secondary); padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 13px; line-height: 1.5;">
+              <strong>LinkedIn:</strong> ${(c.linkedin_draft || '').substring(0, 100)}...<br>
+              <strong>Instagram:</strong> ${(c.instagram_draft || '').substring(0, 80)}...
+            </div>
+            <div style="display: flex; gap: 8px; font-size: 12px;">
+              <button class="btn btn-approve" onclick="approveContentDraft(${c.id})">✓ Approve</button>
+              <button class="btn" onclick="rejectContentDraft(${c.id})">✗ Reject</button>
+              <button class="btn" onclick="editContentDraft(${c.id})">✏️ Edit</button>
+            </div>
+          </div>
+        `).join('')}
       </div>`;
-    }).join('');
+    }
+
+    // Approved section
+    if (approved.length > 0) {
+      contentHTML += `<div class="card" style="border-left: 3px solid var(--yellow); margin-bottom: 16px;">
+        <h3 style="margin-top: 0; color: var(--yellow);">✓ APPROVED & SCHEDULED (${approved.length})</h3>
+        ${approved.map(c => `
+          <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px; background: var(--bg-secondary);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+              <div>
+                <div style="font-weight: 600; margin-bottom: 2px;">${c.business}</div>
+                <div style="font-size: 12px; color: var(--muted);">Scheduled: ${new Date(c.scheduled_for).toLocaleDateString()} at ${new Date(c.scheduled_for).toLocaleTimeString()}</div>
+              </div>
+              <span style="background: var(--yellow); color: #000; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">QUEUED</span>
+            </div>
+            <div style="font-size: 13px; line-height: 1.5; color: var(--muted);">
+              Ready to auto-publish to LinkedIn & Instagram via Blotato
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    // Published section
+    if (published.length > 0) {
+      contentHTML += `<div class="card" style="border-left: 3px solid var(--green);">
+        <h3 style="margin-top: 0; color: var(--green);">✓ PUBLISHED (${published.length})</h3>
+        ${published.map(c => `
+          <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+              <div>
+                <div style="font-weight: 600; margin-bottom: 2px;">${c.business}</div>
+                <div style="font-size: 12px; color: var(--muted);">Published to ${c.published_to || 'LinkedIn, Instagram'} on ${new Date(c.published_at).toLocaleDateString()}</div>
+              </div>
+              <span style="background: var(--green); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">LIVE</span>
+            </div>
+            ${c.blotato_post_id ? `<div style="font-size: 12px; color: var(--muted); margin-top: 4px;">Post ID: ${c.blotato_post_id}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>`;
+    }
+  }
+
+  document.getElementById('content-list').innerHTML = contentHTML;
 
   // Logs
   document.getElementById('log-dates').innerHTML = logsRes.map(d =>
@@ -1099,6 +1175,67 @@ async function load() {
 async function approveDraft(filename) {
   await fetch(`/api/drafts/${filename}/approve`, { method: 'POST' });
   load();
+}
+
+async function approveContentDraft(contentId) {
+  const confirmed = confirm('Approve this content for scheduled publishing?');
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch(`/api/content/${contentId}/approve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    if (res.ok) {
+      alert('Content approved! Will be auto-published on schedule.');
+      load();
+    } else {
+      alert('Failed to approve content.');
+    }
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function rejectContentDraft(contentId) {
+  const confirmed = confirm('Reject this content draft? It will be deleted.');
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch(`/api/content/${contentId}/reject`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    if (res.ok) {
+      alert('Content rejected and removed.');
+      load();
+    } else {
+      alert('Failed to reject content.');
+    }
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+}
+
+async function editContentDraft(contentId) {
+  const newContent = prompt('Edit LinkedIn draft (first 280 chars):');
+  if (!newContent) return;
+
+  try {
+    const res = await fetch(`/api/content/${contentId}/edit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ linkedin_draft: newContent })
+    });
+    if (res.ok) {
+      alert('Content updated.');
+      load();
+    } else {
+      alert('Failed to update content.');
+    }
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
 }
 
 async function loadLog(date) {
