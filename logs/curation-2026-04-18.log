@@ -22,3 +22,18 @@
 [2026-04-18T18:36:10.830Z] 🛑 Stop: Press Ctrl+C
 
 [2026-04-18T18:36:10.831Z] ⚠️  Health server skipped (express not available)
+[2026-04-18T18:42:44.999Z] 🚀 Content Curation Daemon starting...
+[2026-04-18T18:42:45.004Z]    Schedule: Mon-Fri 9am ET (America/New_York timezone)
+[2026-04-18T18:42:45.004Z]    Duration: 12 months (April 2026 - March 2027)
+[2026-04-18T18:42:45.038Z] ✅ Daemon active. Scheduled tasks:
+[2026-04-18T18:42:45.039Z]    • Curation: Mon-Fri 9am ET
+[2026-04-18T18:42:45.039Z]    • Weekly report: Monday 8am ET
+[2026-04-18T18:42:45.040Z]    • Healthcheck: Every hour
+[2026-04-18T18:42:45.040Z] 
+📊 Monitor: tail -f logs/curation-*.log
+[2026-04-18T18:42:45.040Z] 🛑 Stop: Press Ctrl+C
+
+[2026-04-18T18:42:45.042Z] ⚠️  Health server skipped (express not available)
+[2026-04-18T19:00:00.082Z] ✓ Daemon alive — 4/18/2026, 3:00:00 PM ET
+[2026-04-18T19:00:00.376Z] ✓ Daemon alive — 4/18/2026, 3:00:00 PM ET
+[2026-04-18T19:00:00.376Z] ✓ Daemon alive — 4/18/2026, 3:00:00 PM ET

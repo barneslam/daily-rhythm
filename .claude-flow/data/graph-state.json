@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": 1776535670231,
+  "updatedAt": 1776537663178,
   "nodeCount": 184,
   "nodes": {
     "mem-MEMORY-memory-index": {
       "id": "mem-MEMORY-memory-index",
       "category": "core",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911009
     },
     "mem-design_galoras_branding----": {
       "id": "mem-design_galoras_branding----",
       "category": "design_galoras_branding",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911010
     },
@@ -27,28 +27,28 @@
     "mem-design_galoras_branding-typography": {
       "id": "mem-design_galoras_branding-typography",
       "category": "design_galoras_branding",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911010
     },
     "mem-design_galoras_branding-layout-structure": {
       "id": "mem-design_galoras_branding-layout-structure",
       "category": "design_galoras_branding",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911010
     },
     "mem-design_galoras_branding-component-patterns": {
       "id": "mem-design_galoras_branding-component-patterns",
       "category": "design_galoras_branding",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911010
     },
     "mem-design_galoras_branding-styling-approach": {
       "id": "mem-design_galoras_branding-styling-approach",
       "category": "design_galoras_branding",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911010
     },
@@ -69,21 +69,21 @@
     "mem-design_mitesh_layout_template----": {
       "id": "mem-design_mitesh_layout_template----",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911011
     },
     "mem-design_mitesh_layout_template-color-palette": {
       "id": "mem-design_mitesh_layout_template-color-palette",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911011
     },
     "mem-design_mitesh_layout_template-layout-sections--11-sections-i": {
       "id": "mem-design_mitesh_layout_template-layout-sections--11-sections-i",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911011
     },
@@ -97,7 +97,7 @@
     "mem-design_mitesh_layout_template-data-integration": {
       "id": "mem-design_mitesh_layout_template-data-integration",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911012
     },
@@ -111,56 +111,56 @@
     "mem-design_mitesh_layout_template-styling-approach": {
       "id": "mem-design_mitesh_layout_template-styling-approach",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911012
     },
     "mem-design_mitesh_layout_template-design-philosophy": {
       "id": "mem-design_mitesh_layout_template-design-philosophy",
       "category": "design_mitesh_layout_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911012
     },
     "mem-feedback_daily_sow_report----": {
       "id": "mem-feedback_daily_sow_report----",
       "category": "feedback_daily_sow_report",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911013
     },
     "mem-feedback_elevenlabs----": {
       "id": "mem-feedback_elevenlabs----",
       "category": "feedback_elevenlabs",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911014
     },
     "mem-feedback_lovable_disconnect----": {
       "id": "mem-feedback_lovable_disconnect----",
       "category": "feedback_lovable_disconnect",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911016
     },
     "mem-feedback_no_linkedin----": {
       "id": "mem-feedback_no_linkedin----",
       "category": "feedback_no_linkedin",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911017
     },
     "mem-feedback_rin_dev----": {
       "id": "mem-feedback_rin_dev----",
       "category": "feedback_rin_dev",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
     "mem-galoras_conor_talking_points----": {
       "id": "mem-galoras_conor_talking_points----",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
@@ -174,14 +174,14 @@
     "mem-galoras_conor_talking_points-the-coach-scaling-question": {
       "id": "mem-galoras_conor_talking_points-the-coach-scaling-question",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
     "mem-galoras_conor_talking_points-the-freemium-conversion-rate": {
       "id": "mem-galoras_conor_talking_points-the-freemium-conversion-rate",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
@@ -195,7 +195,7 @@
     "mem-galoras_conor_talking_points-the-churn-assumption": {
       "id": "mem-galoras_conor_talking_points-the-churn-assumption",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
@@ -209,63 +209,63 @@
     "mem-galoras_conor_talking_points-how-to-present-this-to-investo": {
       "id": "mem-galoras_conor_talking_points-how-to-present-this-to-investo",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
     "mem-galoras_conor_talking_points-one-last-thing": {
       "id": "mem-galoras_conor_talking_points-one-last-thing",
       "category": "galoras_conor_talking_points",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911018
     },
     "mem-galoras_investor_one_pager----": {
       "id": "mem-galoras_investor_one_pager----",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-the-opportunity": {
       "id": "mem-galoras_investor_one_pager-the-opportunity",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-fy26-financial-picture": {
       "id": "mem-galoras_investor_one_pager-fy26-financial-picture",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-revenue-streams": {
       "id": "mem-galoras_investor_one_pager-revenue-streams",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc": {
       "id": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-competitive-position": {
       "id": "mem-galoras_investor_one_pager-competitive-position",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-year-2--path": {
       "id": "mem-galoras_investor_one_pager-year-2--path",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911019
     },
@@ -279,14 +279,14 @@
     "mem-project_barnes_offerings----": {
       "id": "mem-project_barnes_offerings----",
       "category": "project_barnes_offerings",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911020
     },
     "mem-project_barnes_offerings-barnes-lam-coach-profile": {
       "id": "mem-project_barnes_offerings-barnes-lam-coach-profile",
       "category": "project_barnes_offerings",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911020
     },
@@ -314,42 +314,42 @@
     "mem-project_barnes_offerings-how-to-apply": {
       "id": "mem-project_barnes_offerings-how-to-apply",
       "category": "project_barnes_offerings",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911020
     },
     "mem-project_blotato_channels----": {
       "id": "mem-project_blotato_channels----",
       "category": "project_blotato_channels",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911021
     },
     "mem-project_galoras_161k_gtm_plan----": {
       "id": "mem-project_galoras_161k_gtm_plan----",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
     "mem-project_galoras_161k_gtm_plan-the-daily-number": {
       "id": "mem-project_galoras_161k_gtm_plan-the-daily-number",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
     "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali": {
       "id": "mem-project_galoras_161k_gtm_plan-three-lever-revenue-mix--reali",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
     "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be": {
       "id": "mem-project_galoras_161k_gtm_plan-may-1-gates--non-negotiable-be",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
@@ -363,7 +363,7 @@
     "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun": {
       "id": "mem-project_galoras_161k_gtm_plan-daily-non-negotiables--may-jun",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
@@ -377,35 +377,35 @@
     "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m": {
       "id": "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911022
     },
     "mem-project_galoras_161k_gtm_plan-how-to-apply": {
       "id": "mem-project_galoras_161k_gtm_plan-how-to-apply",
       "category": "project_galoras_161k_gtm_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911022
     },
     "mem-project_galoras_auth_otp----": {
       "id": "mem-project_galoras_auth_otp----",
       "category": "project_galoras_auth_otp",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911023
     },
     "mem-project_galoras_auth_otp-custom-otp-system--deployed-20": {
       "id": "mem-project_galoras_auth_otp-custom-otp-system--deployed-20",
       "category": "project_galoras_auth_otp",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911023
     },
     "mem-project_galoras_b2b_pivot----": {
       "id": "mem-project_galoras_b2b_pivot----",
       "category": "project_galoras_b2b_pivot",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
@@ -419,7 +419,7 @@
     "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi": {
       "id": "mem-project_galoras_b2b_pivot-the-three-lever-model--post-pi",
       "category": "project_galoras_b2b_pivot",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
@@ -433,63 +433,63 @@
     "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase": {
       "id": "mem-project_galoras_b2b_pivot-critical-fake-data-in-codebase",
       "category": "project_galoras_b2b_pivot",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi": {
       "id": "mem-project_galoras_b2b_pivot-what-needs-to-change--identifi",
       "category": "project_galoras_b2b_pivot",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_b2b_pivot-how-to-apply": {
       "id": "mem-project_galoras_b2b_pivot-how-to-apply",
       "category": "project_galoras_b2b_pivot",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check----": {
       "id": "mem-project_galoras_business_case_reality_check----",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check-fy26-forecast": {
       "id": "mem-project_galoras_business_case_reality_check-fy26-forecast",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold": {
       "id": "mem-project_galoras_business_case_reality_check-assumptions-that-don-t-hold",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check-assumptions-that-hold": {
       "id": "mem-project_galoras_business_case_reality_check-assumptions-that-hold",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review": {
       "id": "mem-project_galoras_business_case_reality_check-assumptions-flagged-for-review",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
     "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality": {
       "id": "mem-project_galoras_business_case_reality_check-revised-fy26-forecast--reality",
       "category": "project_galoras_business_case_reality_check",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911024
     },
@@ -503,14 +503,14 @@
     "mem-project_galoras_hot_and_revenue_model----": {
       "id": "mem-project_galoras_hot_and_revenue_model----",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-": {
       "id": "mem-project_galoras_hot_and_revenue_model-heads-of-terms---signed-april-",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
@@ -524,14 +524,14 @@
     "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef": {
       "id": "mem-project_galoras_hot_and_revenue_model-known-document-errors--fix-bef",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-": {
       "id": "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
@@ -552,14 +552,14 @@
     "mem-project_galoras_intelligence_dashboard-design-system": {
       "id": "mem-project_galoras_intelligence_dashboard-design-system",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_intelligence_dashboard-tech-stack": {
       "id": "mem-project_galoras_intelligence_dashboard-tech-stack",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911025
     },
@@ -580,21 +580,21 @@
     "mem-project_galoras_sow_status----": {
       "id": "mem-project_galoras_sow_status----",
       "category": "project_galoras_sow_status",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911026
     },
     "mem-project_galoras_sow_status-part-1--validation-sprint--sow": {
       "id": "mem-project_galoras_sow_status-part-1--validation-sprint--sow",
       "category": "project_galoras_sow_status",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911026
     },
     "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow": {
       "id": "mem-project_galoras_sow_status-part-2--phase-2-remaining--sow",
       "category": "project_galoras_sow_status",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911028
     },
@@ -615,7 +615,7 @@
     "mem-project_mitesh_design_template----": {
       "id": "mem-project_mitesh_design_template----",
       "category": "project_mitesh_design_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911030
     },
@@ -629,7 +629,7 @@
     "mem-project_mitesh_design_template-branding": {
       "id": "mem-project_mitesh_design_template-branding",
       "category": "project_mitesh_design_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911030
     },
@@ -643,7 +643,7 @@
     "mem-project_mitesh_design_template-component-patterns": {
       "id": "mem-project_mitesh_design_template-component-patterns",
       "category": "project_mitesh_design_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911030
     },
@@ -657,42 +657,42 @@
     "mem-project_mitesh_design_template-netlify-deployment": {
       "id": "mem-project_mitesh_design_template-netlify-deployment",
       "category": "project_mitesh_design_template",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.47999999999999987,
+      "accessCount": 2,
       "createdAt": 1776129911030
     },
     "mem-project_mitesh_design_template-browser-compatibility-notes": {
       "id": "mem-project_mitesh_design_template-browser-compatibility-notes",
       "category": "project_mitesh_design_template",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911030
     },
     "mem-project_rin_ai_voice_intake----": {
       "id": "mem-project_rin_ai_voice_intake----",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-architecture": {
       "id": "mem-project_rin_ai_voice_intake-architecture",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.47999999999999987,
+      "accessCount": 2,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-elevenlabs-agent-config": {
       "id": "mem-project_rin_ai_voice_intake-elevenlabs-agent-config",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.47999999999999987,
+      "accessCount": 2,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-": {
       "id": "mem-project_rin_ai_voice_intake-voice-intake-flow--9-steps-",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911032
     },
@@ -706,112 +706,112 @@
     "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09": {
       "id": "mem-project_rin_ai_voice_intake-key-files-modified--2026-04-09",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-known-issues---pending": {
       "id": "mem-project_rin_ai_voice_intake-known-issues---pending",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-daily-status-report": {
       "id": "mem-project_rin_ai_voice_intake-daily-status-report",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911032
     },
     "mem-project_rin_antifraud----": {
       "id": "mem-project_rin_antifraud----",
       "category": "project_rin_antifraud",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911033
     },
     "mem-project_rin_antifraud-required-protections": {
       "id": "mem-project_rin_antifraud-required-protections",
       "category": "project_rin_antifraud",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911033
     },
     "mem-project_rin_antifraud-price-flow--legally-sound-": {
       "id": "mem-project_rin_antifraud-price-flow--legally-sound-",
       "category": "project_rin_antifraud",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911033
     },
     "mem-project_rin_antifraud-data-retained-for-liability": {
       "id": "mem-project_rin_antifraud-data-retained-for-liability",
       "category": "project_rin_antifraud",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911033
     },
     "mem-project_rin_beta----": {
       "id": "mem-project_rin_beta----",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.47999999999999987,
+      "accessCount": 2,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-correct-workflow--fully-implem": {
       "id": "mem-project_rin_beta-correct-workflow--fully-implem",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-amendment-flow--new--2026-03-2": {
       "id": "mem-project_rin_beta-amendment-flow--new--2026-03-2",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-driver-cancel-at-scene-flow--n": {
       "id": "mem-project_rin_beta-driver-cancel-at-scene-flow--n",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-key-db-facts": {
       "id": "mem-project_rin_beta-key-db-facts",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-test-data": {
       "id": "mem-project_rin_beta-test-data",
       "category": "project_rin_beta",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911034
     },
     "mem-project_rin_business_rules----": {
       "id": "mem-project_rin_business_rules----",
       "category": "project_rin_business_rules",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911037
     },
     "mem-project_rin_business_rules-dispatch-rules": {
       "id": "mem-project_rin_business_rules-dispatch-rules",
       "category": "project_rin_business_rules",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911037
     },
     "mem-project_rin_business_rules-standard-pricing": {
       "id": "mem-project_rin_business_rules-standard-pricing",
       "category": "project_rin_business_rules",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911037
     },
@@ -825,91 +825,91 @@
     "mem-project_rin_business_rules-special-vehicles": {
       "id": "mem-project_rin_business_rules-special-vehicles",
       "category": "project_rin_business_rules",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911037
     },
     "mem-project_rin_caller_id----": {
       "id": "mem-project_rin_caller_id----",
       "category": "project_rin_caller_id",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911038
     },
     "mem-project_rin_customer_app----": {
       "id": "mem-project_rin_customer_app----",
       "category": "project_rin_customer_app",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911039
     },
     "mem-project_rin_customer_app-architecture": {
       "id": "mem-project_rin_customer_app-architecture",
       "category": "project_rin_customer_app",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911039
     },
     "mem-project_rin_customer_app-screens--status-based-routing-": {
       "id": "mem-project_rin_customer_app-screens--status-based-routing-",
       "category": "project_rin_customer_app",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911039
     },
     "mem-project_rin_customer_app-db-additions--2026-04-08-": {
       "id": "mem-project_rin_customer_app-db-additions--2026-04-08-",
       "category": "project_rin_customer_app",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911039
     },
     "mem-project_rin_customer_app-todo": {
       "id": "mem-project_rin_customer_app-todo",
       "category": "project_rin_customer_app",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911039
     },
     "mem-project_rin_edge_functions----": {
       "id": "mem-project_rin_edge_functions----",
       "category": "project_rin_edge_functions",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911040
     },
     "mem-project_rin_gps_location----": {
       "id": "mem-project_rin_gps_location----",
       "category": "project_rin_gps_location",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911041
     },
     "mem-project_rin_margin----": {
       "id": "mem-project_rin_margin----",
       "category": "project_rin_margin",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911043
     },
     "mem-project_rin_monitoring----": {
       "id": "mem-project_rin_monitoring----",
       "category": "project_rin_monitoring",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911044
     },
     "mem-project_rin_monitoring-components": {
       "id": "mem-project_rin_monitoring-components",
       "category": "project_rin_monitoring",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911044
     },
     "mem-project_rin_monitoring-known-limitation": {
       "id": "mem-project_rin_monitoring-known-limitation",
       "category": "project_rin_monitoring",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911044
     },
@@ -923,140 +923,140 @@
     "mem-project_rin_pricing_agent----": {
       "id": "mem-project_rin_pricing_agent----",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_pricing_agent-architecture": {
       "id": "mem-project_rin_pricing_agent-architecture",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_pricing_agent-quote-tool": {
       "id": "mem-project_rin_pricing_agent-quote-tool",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_pricing_agent-test-results--2026-04-10----35": {
       "id": "mem-project_rin_pricing_agent-test-results--2026-04-10----35",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim": {
       "id": "mem-project_rin_pricing_agent-key-pricing-gaps-vs-hakim",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_pricing_agent-next-steps": {
       "id": "mem-project_rin_pricing_agent-next-steps",
       "category": "project_rin_pricing_agent",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_test_routine----": {
       "id": "mem-project_rin_test_routine----",
       "category": "project_rin_test_routine",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_test_routine--rin-test-skill": {
       "id": "mem-project_rin_test_routine--rin-test-skill",
       "category": "project_rin_test_routine",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911046
     },
     "mem-project_rin_test_routine-key-testing-facts--2026-04-08-": {
       "id": "mem-project_rin_test_routine-key-testing-facts--2026-04-08-",
       "category": "project_rin_test_routine",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08": {
       "id": "mem-project_rin_test_routine-bugs-found---fixed--2026-04-08",
       "category": "project_rin_test_routine",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_test_routine-production-monitor--deployed-2": {
       "id": "mem-project_rin_test_routine-production-monitor--deployed-2",
       "category": "project_rin_test_routine",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911046
     },
     "mem-project_rin_voice_gaps----": {
       "id": "mem-project_rin_voice_gaps----",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic": {
       "id": "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_gaps-missing-critical-data": {
       "id": "mem-project_rin_voice_gaps-missing-critical-data",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_gaps-solution--speech-based-intake": {
       "id": "mem-project_rin_voice_gaps-solution--speech-based-intake",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_gaps-architecture": {
       "id": "mem-project_rin_voice_gaps-architecture",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_v2_design----": {
       "id": "mem-project_rin_voice_v2_design----",
       "category": "project_rin_voice_v2_design",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911048
     },
     "mem-project_rin_voice_v2_design-question-flow": {
       "id": "mem-project_rin_voice_v2_design-question-flow",
       "category": "project_rin_voice_v2_design",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911048
     },
     "mem-project_rin_voice_v2_design-key-design-principles": {
       "id": "mem-project_rin_voice_v2_design-key-design-principles",
       "category": "project_rin_voice_v2_design",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911048
     },
     "mem-project_rin_voice_v2_design-toronto-specific": {
       "id": "mem-project_rin_voice_v2_design-toronto-specific",
       "category": "project_rin_voice_v2_design",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911048
     },
@@ -1070,57 +1070,57 @@
     "mem-reference_calendly_links----": {
       "id": "mem-reference_calendly_links----",
       "category": "reference_calendly_links",
-      "confidence": 0.44999999999999996,
-      "accessCount": 1,
+      "confidence": 0.5299999999999999,
+      "accessCount": 3,
       "createdAt": 1776129911049
     },
     "mem-security_audit_xss_auth----": {
       "id": "mem-security_audit_xss_auth----",
       "category": "security_audit_xss_auth",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911050
     },
     "mem-security_audit_xss_auth-critical-vulnerabilities--2026": {
       "id": "mem-security_audit_xss_auth-critical-vulnerabilities--2026",
       "category": "security_audit_xss_auth",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911050
     },
     "mem-security_audit_xss_auth-action-items": {
       "id": "mem-security_audit_xss_auth-action-items",
       "category": "security_audit_xss_auth",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911050
     },
     "mem-MEMORY-galoras-dev---memory-index": {
       "id": "mem-MEMORY-galoras-dev---memory-index",
       "category": "core",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911053
     },
     "mem-domain_migration_plan----": {
       "id": "mem-domain_migration_plan----",
       "category": "domain_migration_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911054
     },
     "mem-domain_migration_plan-current-setup": {
       "id": "mem-domain_migration_plan-current-setup",
       "category": "domain_migration_plan",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911054
     },
     "mem-domain_migration_plan-key-fact--mail-is-microsoft-36": {
       "id": "mem-domain_migration_plan-key-fact--mail-is-microsoft-36",
       "category": "domain_migration_plan",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911054
     },
     "mem-domain_migration_plan-dns-records-needed--galoras-co": {
@@ -1140,112 +1140,112 @@
     "mem-featured_coaches_tuning----": {
       "id": "mem-featured_coaches_tuning----",
       "category": "featured_coaches_tuning",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911055
     },
     "mem-product_system_rebuild----": {
       "id": "mem-product_system_rebuild----",
       "category": "product_system_rebuild",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911055
     },
     "mem-product_system_rebuild-what-was-done--2026-04-08-": {
       "id": "mem-product_system_rebuild-what-was-done--2026-04-08-",
       "category": "product_system_rebuild",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911055
     },
     "mem-product_system_rebuild-revert-before-go-live": {
       "id": "mem-product_system_rebuild-revert-before-go-live",
       "category": "product_system_rebuild",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911055
     },
     "mem-project_status----": {
       "id": "mem-project_status----",
       "category": "project_status",
-      "confidence": 0.6700000000000002,
-      "accessCount": 5,
+      "confidence": 0.7000000000000002,
+      "accessCount": 6,
       "createdAt": 1776129911056
     },
     "mem-project_status-sow-completion-as-of-2026-04-0": {
       "id": "mem-project_status-sow-completion-as-of-2026-04-0",
       "category": "project_status",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911056
     },
     "mem-project_workflow----": {
       "id": "mem-project_workflow----",
       "category": "project_workflow",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911057
     },
     "mem-skills_created----": {
       "id": "mem-skills_created----",
       "category": "skills_created",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911058
     },
     "mem-skills_created-galoras-skills--created-2026-0": {
       "id": "mem-skills_created-galoras-skills--created-2026-0",
       "category": "skills_created",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911058
     },
     "mem-supabase_setup----": {
       "id": "mem-supabase_setup----",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-active-project--uat-galoras": {
       "id": "mem-supabase_setup-active-project--uat-galoras",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-other-projects": {
       "id": "mem-supabase_setup-other-projects",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-tables-in-uat-galoras": {
       "id": "mem-supabase_setup-tables-in-uat-galoras",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
-      "accessCount": 0,
+      "confidence": 0.42999999999999994,
+      "accessCount": 1,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-migrations-applied--uat-": {
       "id": "mem-supabase_setup-migrations-applied--uat-",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-edge-functions-deployed": {
       "id": "mem-supabase_setup-edge-functions-deployed",
       "category": "supabase_setup",
-      "confidence": 0.57,
-      "accessCount": 3,
+      "confidence": 0.68,
+      "accessCount": 6,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-secrets-set": {
       "id": "mem-supabase_setup-secrets-set",
       "category": "supabase_setup",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911059
     },
@@ -1266,28 +1266,28 @@
     "mem-user_profile-coach-profile--in-uat-galoras-": {
       "id": "mem-user_profile-coach-profile--in-uat-galoras-",
       "category": "user_profile",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911060
     },
     "mem-user_profile-preferences": {
       "id": "mem-user_profile-preferences",
       "category": "user_profile",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911060
     },
     "mem-work_style----": {
       "id": "mem-work_style----",
       "category": "work_style",
-      "confidence": 0.41999999999999993,
+      "confidence": 0.3999999999999999,
       "accessCount": 0,
       "createdAt": 1776129911061
     },
     "insight-1776241250022-qrrc": {
       "id": "insight-1776241250022-qrrc",
       "category": "insights",
-      "confidence": 0.43999999999999995,
+      "confidence": 0.42499999999999993,
       "accessCount": 0,
       "createdAt": 1776241250022
     }

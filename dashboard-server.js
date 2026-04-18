@@ -846,6 +846,20 @@ async function handleRequest(req, res, body) {
     return;
   }
 
+  // Handle /api/dm-handler (POST) - Blotato webhook
+  if (req.url === '/api/dm-handler' && req.method === 'POST') {
+    try {
+      const result = await routes['/api/dm-handler'](body);
+      res.writeHead(200);
+      res.end(JSON.stringify(result));
+    } catch (e) {
+      console.error('DM handler error:', e.message);
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
   // Handle /api/approval/log (POST)
   if (req.url === '/api/approval/log' && req.method === 'POST') {
     try {

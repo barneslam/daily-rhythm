@@ -15,6 +15,16 @@ cron = "0 8 * * 1"
 function = "content-publisher"
 cron = "0 9 * * 1"
 
+# Blotato DM Polling - Every 30 minutes
+[[scheduled_functions]]
+function = "blotato-dm-poller"
+cron = "*/30 * * * *"
+
+# DM to Lead Converter - Every 60 minutes
+[[scheduled_functions]]
+function = "dm-to-lead-converter"
+cron = "0 * * * *"
+
 # Special test run - April 18 at 8 AM UTC
 [[scheduled_functions]]
 function = "test-full-pipeline"
