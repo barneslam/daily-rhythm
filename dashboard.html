@@ -693,7 +693,7 @@ async function load() {
   let targets = targetsRes.targets || [];
   window.lastLeadCount = targets.length;
 
-  // Populate Connection Queue (top 10 identified leads by confidence)
+  // Populate Connection Queue (leads you've sent connection requests to)
   await populateConnectionQueue(targets);
 
   // Populate Direction of the Month posts
@@ -2233,25 +2233,25 @@ async function populateConnectionQueue(targets) {
   const queueDiv = document.getElementById('connection-queue');
   if (!queueDiv) return;
 
-  // Filter for identified leads, sort by confidence descending
+  // Filter for connection_req leads (sent requests), sort by confidence descending
   const confidenceMap = { 'HIGH': 90, 'MEDIUM-HIGH': 80, 'MEDIUM': 70, 'LOW': 60 };
-  const identified = targets
-    .filter(t => t.status === 'identified')
+  const inProgress = targets
+    .filter(t => t.status === 'connection_req')
     .sort((a, b) => {
       const scoreA = confidenceMap[a.confidence?.toUpperCase()] || 70;
       const scoreB = confidenceMap[b.confidence?.toUpperCase()] || 70;
       return scoreB - scoreA;
     })
-    .slice(0, 10); // Show top 10
+    .slice(0, 20); // Show top 20
 
-  if (identified.length === 0) {
-    queueDiv.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:12px;">No identified leads today. Check back after discovery.</p>';
+  if (inProgress.length === 0) {
+    queueDiv.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:12px;">No connection requests sent yet. Send requests from the leads table above.</p>';
     return;
   }
 
   // Generate queue items
   const items = [];
-  for (const target of identified) {
+  for (const target of inProgress) {
     try {
       // Skip if no ID
       if (!target.id) {
