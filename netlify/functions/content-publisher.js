@@ -9,14 +9,22 @@ const supabase = createClient(
 // Blotato API helper
 function callBlotato(method, path, body = null) {
   return new Promise((resolve, reject) => {
+    let bodyStr = null;
+    const headers = {
+      'blotato-api-key': process.env.BLOTATO_API_KEY,
+      'Content-Type': 'application/json'
+    };
+
+    if (body) {
+      bodyStr = JSON.stringify(body);
+      headers['Content-Length'] = Buffer.byteLength(bodyStr, 'utf8');
+    }
+
     const options = {
       hostname: 'backend.blotato.com',
       path: path,
       method: method,
-      headers: {
-        'blotato-api-key': process.env.BLOTATO_API_KEY,
-        'Content-Type': 'application/json'
-      }
+      headers
     };
 
     const req = https.request(options, (res) => {
@@ -33,7 +41,7 @@ function callBlotato(method, path, body = null) {
     });
 
     req.on('error', reject);
-    if (body) req.write(JSON.stringify(body));
+    if (bodyStr) req.write(bodyStr);
     req.end();
   });
 }
