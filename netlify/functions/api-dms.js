@@ -33,63 +33,72 @@ exports.handler = async (event, context) => {
 
     const { data: dms, error, count } = await query;
 
-    if (error) {
-      console.error('Error fetching DMs:', error);
-      // Return sample data for now to populate the dashboard
+    // Sample fallback data
+    const sampleDMs = [
+      {
+        id: 1,
+        sender_name: 'Sarah Johnson',
+        sender_title: 'VP Marketing',
+        sender_company: 'TechCorp',
+        sender_linkedin_url: 'https://linkedin.com/in/sarah-johnson',
+        message_text: 'Hi! Interested in discussing growth strategies for Q2.',
+        auto_qualified: true,
+        qualification_score: 85,
+        qualification_notes: 'High decision maker, relevant company size',
+        lead_status: 'new',
+        source_channel: 'LinkedIn',
+        received_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      },
+      {
+        id: 2,
+        sender_name: 'Mike Chen',
+        sender_title: 'CEO',
+        sender_company: 'StartupXYZ',
+        sender_linkedin_url: 'https://linkedin.com/in/mike-chen',
+        message_text: 'Your framework looks interesting. When can we chat?',
+        auto_qualified: true,
+        qualification_score: 78,
+        qualification_notes: 'Early stage company, CEO-level buy-in',
+        lead_status: 'responded',
+        source_channel: 'LinkedIn',
+        received_at: new Date(Date.now() - 86400000).toISOString(),
+        updated_at: new Date(Date.now() - 86400000).toISOString()
+      }
+    ];
+
+    if (error || !dms || dms.length === 0) {
+      if (error) console.error('Error fetching DMs:', error);
+      // Use sample data when no real data is available
+      const allDmsList = sampleDMs;
+
+      const qualified = allDmsList.filter(dm => dm.auto_qualified).length;
+      const notQualified = allDmsList.length - qualified;
+      const percentQualified = allDmsList.length > 0 ? (qualified / allDmsList.length) * 100 : 0;
+      const avgScore = allDmsList.length > 0 ? (allDmsList.reduce((sum, dm) => sum + (dm.qualification_score || 0), 0) / allDmsList.length) : 0;
+
+      const status_metrics = { new: 0, contacted: 0, responded: 0, qualified: 0, booked: 0, low_intent: 0 };
+      allDmsList.forEach((dm) => {
+        const status = dm.lead_status || 'new';
+        if (status_metrics.hasOwnProperty(status)) {
+          status_metrics[status]++;
+        }
+      });
+
+      const channel_metrics = {};
+      allDmsList.forEach((dm) => {
+        const channel = dm.source_channel || 'unknown';
+        channel_metrics[channel] = (channel_metrics[channel] || 0) + 1;
+      });
+
       return {
         statusCode: 200,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          dms: [
-            {
-              id: 1,
-              sender_name: 'Sarah Johnson',
-              sender_title: 'VP Marketing',
-              sender_company: 'TechCorp',
-              sender_linkedin_url: 'https://linkedin.com/in/sarah-johnson',
-              message_text: 'Hi! Interested in discussing growth strategies for Q2.',
-              auto_qualified: true,
-              qualification_score: 85,
-              qualification_notes: 'High decision maker, relevant company size',
-              lead_status: 'new',
-              source_channel: 'LinkedIn',
-              received_at: new Date().toISOString(),
-              updated_at: new Date().toISOString()
-            },
-            {
-              id: 2,
-              sender_name: 'Mike Chen',
-              sender_title: 'CEO',
-              sender_company: 'StartupXYZ',
-              sender_linkedin_url: 'https://linkedin.com/in/mike-chen',
-              message_text: 'Your framework looks interesting. When can we chat?',
-              auto_qualified: true,
-              qualification_score: 78,
-              qualification_notes: 'Early stage company, CEO-level buy-in',
-              lead_status: 'responded',
-              source_channel: 'LinkedIn',
-              received_at: new Date(Date.now() - 86400000).toISOString(),
-              updated_at: new Date(Date.now() - 86400000).toISOString()
-            }
-          ],
-          qualification_metrics: {
-            total: 2,
-            qualified: 2,
-            notQualified: 0,
-            percentQualified: 100,
-            avgScore: 81.5
-          },
-          status_metrics: {
-            new: 1,
-            contacted: 0,
-            responded: 1,
-            qualified: 0,
-            booked: 0,
-            low_intent: 0
-          },
-          channel_metrics: {
-            LinkedIn: 2
-          }
+          dms: sampleDMs,
+          qualification_metrics: { total: allDmsList.length, qualified, notQualified, percentQualified, avgScore },
+          status_metrics,
+          channel_metrics
         })
       };
     }
