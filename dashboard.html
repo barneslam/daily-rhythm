@@ -738,6 +738,7 @@ async function load() {
 
       const linkedinLink = t.linkedin_url ? `<a href="${t.linkedin_url}" target="_blank" style="color:var(--blue);text-decoration:none;font-size:10px;">🔗</a>` : '—';
       const channelDisplay = t.channel ? `${t.channel}` : '—';
+      const messageText = (t.draft_message || (t.draft_content && t.draft_content.linkedin_draft) || '').replace(/'/g, "\\'");
 
       return `<tr class="target-row" style="border-bottom:1px solid var(--border);">
         <td style="padding:8px;text-align:center;font-weight:600;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">${confidenceScore}</td>
@@ -745,8 +746,8 @@ async function load() {
         <td style="padding:8px;color:var(--muted);font-size:11px;max-width:400px;white-space:normal;line-height:1.4;">${(t.signal || 'No metrics available').substring(0, 200)}</td>
         <td style="padding:8px;text-align:center;">${statusSelect}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap;">
-          <button onclick="openMessageModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
-          <button onclick="openRegenModal('${t.id}', '${t.name}', '${(t.draft_message || '').replace(/'/g, "\\'")}', '${(t.needs_regen ? 'Needs regen' : '').replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
+          <button onclick="openMessageModal('${t.id}', '${t.name}', '${messageText}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
+          <button onclick="openRegenConnectModal('${t.id}', '${t.name}', '${t.business.replace(/'/g, "\\'")}', '${messageText.replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
           <button onclick="disqualifyLead('${t.id}', '${t.name}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;" title="Disqualify lead">✕</button>
         </td>
       </tr>`;
