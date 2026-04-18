@@ -162,7 +162,7 @@ const routes = {
   '/api/content': async () => {
     try {
       const { data: drafts, error } = await supabase
-        .from('content_drafts')
+        .from('gtm_drafts')
         .select('*')
         .order('created_at', { ascending: false })
         .limit(20);
@@ -418,7 +418,7 @@ const routes = {
         const instagramDraft = `Meet ${lead.name}: ${lead.signal}. Leading GTM at scale. 📈`;
 
         const { data: draft } = await supabase
-          .from('content_drafts')
+          .from('gtm_drafts')
           .insert({
             business: lead.business,
             trigger: lead.signal,
@@ -442,7 +442,7 @@ const routes = {
       let approvedCount = 0;
       for (const draftId of draftIds) {
         const { error } = await supabase
-          .from('content_drafts')
+          .from('gtm_drafts')
           .update({ status: 'approved', updated_at: new Date().toISOString() })
           .eq('id', draftId);
         if (!error) approvedCount++;
@@ -452,7 +452,7 @@ const routes = {
       let publishedCount = 0;
       for (const draftId of draftIds) {
         const { error } = await supabase
-          .from('content_drafts')
+          .from('gtm_drafts')
           .update({
             status: 'published',
             published_at: new Date().toISOString(),

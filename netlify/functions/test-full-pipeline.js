@@ -70,7 +70,7 @@ async function generateContent() {
     const instagramDraft = `Meet ${lead.name}: ${lead.signal}. Leading GTM at scale. Let's talk revenue growth strategies.`;
 
     const { data: draft, error } = await supabase
-      .from('content_drafts')
+      .from('gtm_drafts')
       .insert({
         business: lead.business,
         trigger: lead.signal,
@@ -101,7 +101,7 @@ async function approveContent(draftIds) {
 
   for (const draftId of draftIds) {
     const { error } = await supabase
-      .from('content_drafts')
+      .from('gtm_drafts')
       .update({ 
         status: 'approved',
         updated_at: new Date().toISOString()
@@ -119,7 +119,7 @@ async function publishContent(draftIds) {
   console.log('🚀 Step 3: Publishing to Blotato...');
   
   const { data: approvedContent } = await supabase
-    .from('content_drafts')
+    .from('gtm_drafts')
     .select('id, linkedin_draft, instagram_draft')
     .in('id', draftIds)
     .eq('status', 'approved');
@@ -153,7 +153,7 @@ async function publishContent(draftIds) {
     if (liResult.statusCode >= 200 && liResult.statusCode < 300) {
       // Mark as published
       await supabase
-        .from('content_drafts')
+        .from('gtm_drafts')
         .update({
           status: 'published',
           published_at: new Date().toISOString(),

@@ -87,7 +87,7 @@ async function scheduleToBlotato(content, platform, scheduledTime) {
 async function getApprovedContent() {
   try {
     const { data, error } = await supabase
-      .from('content_drafts')
+      .from('gtm_drafts')
       .select('*')
       .eq('status', 'approved')
       .is('published_at', null)
@@ -109,7 +109,7 @@ async function getApprovedContent() {
 async function markPublished(contentId, platform, postId) {
   try {
     const { error } = await supabase
-      .from('content_drafts')
+      .from('gtm_drafts')
       .update({
         status: 'published',
         published_at: new Date().toISOString(),
