@@ -5,7 +5,10 @@
   "main": "dashboard-server.js",
   "scripts": {
     "start": "node dashboard-server.js",
-    "dev": "node dashboard-server.js"
+    "dev": "node dashboard-server.js",
+    "curation:start": "node curation-daemon.js",
+    "curation:test": "node curation-skill.js curate",
+    "curation:report": "node curation-skill.js report"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.38.0",

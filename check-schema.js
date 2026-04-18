@@ -1,30 +1,28 @@
+const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
-const { createClient } = require("@supabase/supabase-js");
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
-async function checkSchema() {
-  console.log("📋 Checking outreach_messages table schema...\n");
+async function check() {
+  const { data, error } = await supabase
+    .from('gtm_drafts')
+    .select('*')
+    .limit(1);
   
-  try {
-    // Try to select from the table to trigger schema cache refresh
-    const { data, error } = await supabase
-      .from("outreach_messages")
-      .select("*")
-      .limit(0);
-    
-    if (error) {
-      console.error("❌ Error querying table:", error.message);
-      console.error("Full error:", error);
-    } else {
-      console.log("✓ Table exists and is queryable");
-      console.log("Schema columns should be available");
-    }
-  } catch (e) {
-    console.error("Exception:", e.message);
+  if (error) {
+    console.log('Error:', error.message);
+  } else if (data && data.length > 0) {
+    console.log('Columns:', Object.keys(data[0]));
+  } else {
+    console.log('Table exists but empty. Checking info...');
+    const { data: info } = await supabase
+      .rpc('get_table_columns', { table_name: 'gtm_drafts' })
+      .catch(() => ({ data: null }));
+    console.log('Info:', info);
   }
 }
 
-checkSchema();
+check();

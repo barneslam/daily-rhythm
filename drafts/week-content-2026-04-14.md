@@ -28,6 +28,8 @@ Every deal you lose late-stage is a sequencing failure you made early.
 
 If your qualified pipeline is healthy but your close rate is stuck — DM me "SEQUENCE" and I'll walk you through the diagnostic we used.
 
+**Learn more:** thestrategypitch.com/closing-sequence
+
 ## Tuesday — barneslam_co
 I lost a $180K deal in 2021 because I was afraid to say one sentence.
 
@@ -53,6 +55,8 @@ Polite passivity kills more deals than bad pitches ever will.
 
 Ever lost a deal you should've won because you pulled your punch? DM me "LOST DEAL" — I'll share the exact reframe that fixed my approach.
 
+**Read more:** barneslam.co/closing-confidence
+
 ## Wednesday — axis_chamber
 Your sales team doesn't need more motivation.
 They need a closing system they can execute on autopilot.
@@ -74,6 +78,8 @@ Every rep on your team should be able to answer: "What's my exact next action on
 If they can't, the system is broken.
 
 DM me "CADENCE" and I'll send you our closing sequence template — plug and play.
+
+**Implement this:** barneslam.co/closing-cadence
 
 ## Thursday — the_strategy_pitch
 The highest-converting close I've ever seen wasn't a close at all.
@@ -104,6 +110,8 @@ Your pipeline should be a funnel, not a net.
 
 If you're closing under 25% on qualified opportunities and want to pressure-test your approach — DM me "FILTER" and let's talk.
 
+**Diagnosis available:** thestrategypitch.com/closing-audit
+
 ## Friday — barneslam_co
 Friday truth bomb from the trenches:
 
@@ -128,4 +136,6 @@ Simple doesn't mean easy. It means disciplined.
 What's your one non-negotiable rule in your sales process? Drop it below.
 
 Or if you don't have one yet — DM me "RULES" and I'll share the 5 we never break.
+
+**Get the template:** barneslam.co/sales-rules
 
