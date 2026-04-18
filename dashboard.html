@@ -753,10 +753,10 @@ async function load() {
     }).join('');
 
     return `<div style="margin-bottom:32px;">
-      <div onclick="toggleSection('${sectionId}')" style="display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;padding:8px;border-radius:4px;background:var(--surface2);margin-bottom:12px;border-left:3px solid ${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">
-        <span style="font-weight:700;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">▶</span>
-        <h3 style="font-size:14px;color:var(--text);margin:0;flex:1;">
-          ${level.label} <span style="background:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a52640' : 'var(--accent)40'};padding:2px 8px;border-radius:3px;font-weight:600;font-size:12px;">${levelTargets.length}</span>
+      <div onclick="toggleSection('${sectionId}')" style="display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;padding:12px 16px;border-radius:6px;background:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};margin-bottom:12px;transition:all 0.2s ease;box-shadow:0 2px 4px rgba(0,0,0,0.1);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)'">
+        <span style="font-weight:700;color:white;font-size:16px;">▶</span>
+        <h3 style="font-size:15px;color:white;margin:0;flex:1;font-weight:600;">
+          ${level.score} ${level.label} <span style="background:rgba(255,255,255,0.3);padding:4px 10px;border-radius:3px;font-weight:600;font-size:13px;margin-left:8px;">${levelTargets.length} leads</span>
         </h3>
       </div>
       <div id="${sectionId}" style="display:${isOpen ? 'block' : 'none'};margin-top:0;">
@@ -783,15 +783,25 @@ async function load() {
   // Toggle function for sections
   window.toggleSection = function(sectionId) {
     const section = document.getElementById(sectionId);
-    const chevron = section.previousElementSibling.querySelector('span');
+    const header = section.previousElementSibling;
+    const chevron = header.querySelector('span');
     if (section.style.display === 'none') {
       section.style.display = 'block';
-      chevron.textContent = '▼';
+      chevron.style.transform = 'rotate(90deg)';
+      chevron.style.transition = 'transform 0.2s ease';
     } else {
       section.style.display = 'none';
-      chevron.textContent = '▶';
+      chevron.style.transform = 'rotate(0deg)';
+      chevron.style.transition = 'transform 0.2s ease';
     }
   };
+
+  // Initialize chevron rotation for open sections
+  const highConfSection = document.getElementById('section-90');
+  if (highConfSection && highConfSection.style.display !== 'none') {
+    const chevron = highConfSection.previousElementSibling.querySelector('span');
+    if (chevron) chevron.style.transform = 'rotate(90deg)';
+  }
 
   // Lead Pipeline Kanban
   const statusMap = {
