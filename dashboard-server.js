@@ -216,15 +216,16 @@ const routes = {
 
       if (error || !target) return { error: 'Target not found' };
 
+      const firstName = target.name.split(' ')[0];
       let message;
       if (customPrompt) {
         // Generate customized message based on prompt
         const variations = {
-          'shorter': `Hi ${target.name}, impressed by your work at ${target.business.split(' — ')[0]}. Let's connect on GTM scaling.`,
-          'longer': `Hi ${target.name},\n\nI've been following your work at ${target.business.split(' — ')[0]} and I'm genuinely impressed by your approach to ${(target.signal || '').split('.')[0].toLowerCase()}.\n\nI specialize in GTM strategy and revenue scaling for B2B companies. I think there could be a compelling conversation around how your team can accelerate growth through better market positioning and sales execution.\n\nWould love to connect and explore this further.\n\nBest regards`,
-          'technical': `Hi ${target.name}, your GTM execution at ${target.business.split(' — ')[0]} caught my attention. Let's discuss scaling revenue through systematic processes and data-driven strategies.`,
-          'casual': `Hey ${target.name}, your work at ${target.business.split(' — ')[0]} is impressive. Would love to connect and chat about GTM scaling trends.`,
-          'urgency': `Hi ${target.name}, your team at ${target.business.split(' — ')[0]} is at an inflection point. I help companies like yours accelerate GTM. Let's connect.`
+          'shorter': `Hi ${firstName}, impressed by your work at ${target.business.split(' — ')[0]}. Let's connect on GTM scaling.`,
+          'longer': `Hi ${firstName},\n\nI've been following your work at ${target.business.split(' — ')[0]} and I'm genuinely impressed by your approach to ${(target.signal || '').split('.')[0].toLowerCase()}.\n\nI specialize in GTM strategy and revenue scaling for B2B companies. I think there could be a compelling conversation around how your team can accelerate growth through better market positioning and sales execution.\n\nWould love to connect and explore this further.\n\nBest regards`,
+          'technical': `Hi ${firstName}, your GTM execution at ${target.business.split(' — ')[0]} caught my attention. Let's discuss scaling revenue through systematic processes and data-driven strategies.`,
+          'casual': `Hey ${firstName}, your work at ${target.business.split(' — ')[0]} is impressive. Would love to connect and chat about GTM scaling trends.`,
+          'urgency': `Hi ${firstName}, your team at ${target.business.split(' — ')[0]} is at an inflection point. I help companies like yours accelerate GTM. Let's connect.`
         };
 
         // Try to match prompt intent
@@ -238,7 +239,7 @@ const routes = {
         message = variations[baseVariation] || variations['longer'];
       } else {
         // Default message
-        message = `Hi ${target.name}, I've been impressed by your work at ${target.business.split(' — ')[0]}—particularly your focus on ${(target.signal || '').split('.')[0].toLowerCase()}. I'd love to connect and share insights on GTM scaling. Looking forward to it!`;
+        message = `Hi ${firstName}, I've been impressed by your work at ${target.business.split(' — ')[0]}—particularly your focus on ${(target.signal || '').split('.')[0].toLowerCase()}. I'd love to connect and share insights on GTM scaling. Looking forward to it!`;
       }
 
       return {
