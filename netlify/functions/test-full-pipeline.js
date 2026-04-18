@@ -133,20 +133,34 @@ async function publishContent(draftIds) {
 
   for (const content of approvedContent) {
     // Publish to LinkedIn
-    const liResult = await callBlotato('POST', '/posts', {
-      accountId: process.env.BLOTATO_LINKEDIN_ACCOUNT_ID || 'acct_test_li',
-      platform: 'linkedin',
-      text: content.linkedin_draft,
-      mediaUrls: [],
+    const liResult = await callBlotato('POST', '/v2/posts', {
+      post: {
+        accountId: process.env.BLOTATO_LINKEDIN_ACCOUNT_ID || 'acct_test_li',
+        content: {
+          text: content.linkedin_draft,
+          mediaUrls: [],
+          platform: 'linkedin'
+        },
+        target: {
+          targetType: 'linkedin'
+        }
+      },
       scheduledTime: new Date(Date.now() + 24 * 3600000).toISOString()
     });
 
     // Publish to Instagram
-    const igResult = await callBlotato('POST', '/posts', {
-      accountId: process.env.BLOTATO_INSTAGRAM_ACCOUNT_ID || 'acct_test_ig',
-      platform: 'instagram',
-      text: content.instagram_draft,
-      mediaUrls: [],
+    const igResult = await callBlotato('POST', '/v2/posts', {
+      post: {
+        accountId: process.env.BLOTATO_INSTAGRAM_ACCOUNT_ID || 'acct_test_ig',
+        content: {
+          text: content.instagram_draft,
+          mediaUrls: [],
+          platform: 'instagram'
+        },
+        target: {
+          targetType: 'instagram'
+        }
+      },
       scheduledTime: new Date(Date.now() + 24 * 3600000).toISOString()
     });
 
@@ -158,7 +172,7 @@ async function publishContent(draftIds) {
           status: 'published',
           published_at: new Date().toISOString(),
           published_to: 'linkedin,instagram',
-          blotato_post_id: liResult.data.id || `test_${Date.now()}`
+          blotato_post_id: liResult.data.postSubmissionId || `test_${Date.now()}`
         })
         .eq('id', content.id);
 

@@ -61,19 +61,26 @@ async function scheduleToBlotato(content, platform, scheduledTime) {
     }
 
     const payload = {
-      accountId,
-      platform,
-      text: content,
-      mediaUrls: [],
-      scheduledTime: scheduledTime // ISO 8601 format
+      post: {
+        accountId,
+        content: {
+          text: content,
+          mediaUrls: [],
+          platform
+        },
+        target: {
+          targetType: platform
+        }
+      },
+      scheduledTime: scheduledTime
     };
 
-    const result = await callBlotato('POST', '/posts', payload);
+    const result = await callBlotato('POST', '/v2/posts', payload);
 
     console.log(`Blotato POST response: ${result.statusCode}`, result.data);
 
     if (result.statusCode >= 200 && result.statusCode < 300) {
-      return { success: true, postId: result.data.id };
+      return { success: true, postId: result.data.postSubmissionId };
     } else {
       return { success: false, error: result.data.message || 'Blotato API error' };
     }
