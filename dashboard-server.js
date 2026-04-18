@@ -393,6 +393,90 @@ const routes = {
       return { error: e.message };
     }
   },
+
+  '/api/test-full-pipeline': async () => {
+    try {
+      console.log('🧪 Running full pipeline test...');
+
+      // Step 1: Get top 20 leads
+      const { data: topLeads } = await supabase
+        .from('gtm_targets')
+        .select('id, name, business, signal')
+        .eq('status', 'connection_req')
+        .limit(20);
+
+      if (!topLeads || topLeads.length === 0) {
+        return { error: 'No leads found for content generation' };
+      }
+
+      let createdCount = 0;
+      const draftIds = [];
+
+      // Step 2: Generate content
+      for (const lead of topLeads) {
+        const linkedinDraft = `🚀 ${lead.name} at ${lead.business.split(',')[0]} - ${lead.signal}. Expert on GTM scaling & revenue acceleration. Open to strategic conversations.`;
+        const instagramDraft = `Meet ${lead.name}: ${lead.signal}. Leading GTM at scale. 📈`;
+
+        const { data: draft } = await supabase
+          .from('content_drafts')
+          .insert({
+            business: lead.business,
+            trigger: lead.signal,
+            signal: lead.signal,
+            linkedin_draft: linkedinDraft,
+            instagram_draft: instagramDraft,
+            status: 'pending',
+            created_at: new Date().toISOString(),
+            scheduled_for: new Date(Date.now() + 24 * 3600000).toISOString()
+          })
+          .select('id')
+          .single();
+
+        if (draft) {
+          createdCount++;
+          draftIds.push(draft.id);
+        }
+      }
+
+      // Step 3: Auto-approve all drafts
+      let approvedCount = 0;
+      for (const draftId of draftIds) {
+        const { error } = await supabase
+          .from('content_drafts')
+          .update({ status: 'approved', updated_at: new Date().toISOString() })
+          .eq('id', draftId);
+        if (!error) approvedCount++;
+      }
+
+      // Step 4: Mark as published (mock Blotato)
+      let publishedCount = 0;
+      for (const draftId of draftIds) {
+        const { error } = await supabase
+          .from('content_drafts')
+          .update({
+            status: 'published',
+            published_at: new Date().toISOString(),
+            published_to: 'linkedin,instagram',
+            blotato_post_id: `test_${Date.now()}`
+          })
+          .eq('id', draftId);
+        if (!error) publishedCount++;
+      }
+
+      return {
+        status: 'success',
+        message: 'Full pipeline test completed',
+        generated: createdCount,
+        approved: approvedCount,
+        published: publishedCount,
+        leadsSampled: topLeads.length,
+        timestamp: new Date().toISOString()
+      };
+    } catch (e) {
+      console.error('Pipeline test error:', e.message);
+      return { error: e.message };
+    }
+  },
 };
 
 // Serve log file

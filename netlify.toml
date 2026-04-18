@@ -15,6 +15,11 @@ cron = "0 8 * * 1"
 function = "content-publisher"
 cron = "0 9 * * 1"
 
+# Special test run - April 18 at 8 AM UTC
+[[scheduled_functions]]
+function = "test-full-pipeline"
+cron = "0 8 18 4 *"
+
 # API routing - redirect /api/* to Netlify functions
 [[redirects]]
 from = "/api/*"
