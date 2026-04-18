@@ -94,8 +94,8 @@
       ],
       "lead_discovery": {
         "status": "completed",
-        "leads_discovered": 5,
-        "timestamp": "2026-04-17T15:19:55.206Z",
+        "leads_discovered": 6,
+        "timestamp": "2026-04-17T15:36:47.211Z",
         "next_step": "send_connection_requests"
       }
     },
@@ -109,7 +109,13 @@
         "Confirm call bookings",
         "Prepare 1-page briefs",
         "Plan Friday follow-ups if needed"
-      ]
+      ],
+      "lead_discovery": {
+        "status": "completed",
+        "leads_discovered": 7,
+        "timestamp": "2026-04-18T03:29:57.740Z",
+        "next_step": "send_connection_requests"
+      }
     },
     "2026-04-19": {
       "day_of_week": "Friday",
