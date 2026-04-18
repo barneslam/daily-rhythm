@@ -250,13 +250,12 @@ async function createLeadFromDM(dmData) {
       .from('gtm_targets')
       .insert([{
         name: dmData.name,
-        email: dmData.email,
         status: 'dm_engaged',
-        source: dmData.source,
-        interested_in: dmData.interested_in,
-        content_source_id: dmData.content_source_id,
-        discovered_at: new Date().toISOString(),
-        date_found: new Date().toISOString().split('T')[0]
+        source: dmData.source || 'dm',
+        linkedin_url: dmData.linkedin_url || '',
+        date_found: new Date().toISOString().split('T')[0],
+        notes: `DM message: "${dmData.interested_in}" | Source: ${dmData.content_source_id}`,
+        connection_note: dmData.interested_in
       }])
       .select()
       .limit(1)
