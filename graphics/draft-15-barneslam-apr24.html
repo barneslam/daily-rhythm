@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barnes Lam — Apr 24 Graphic</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #111; font-family: system-ui, sans-serif; }
+    svg { display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .controls { margin-top: 16px; }
+    button { background: #c9a84c; color: #0d0f1a; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+    <rect width="1200" height="628" fill="#0d0f1a"/>
+    <rect width="1200" height="6" fill="#c9a84c"/>
+    <rect x="0" y="0" width="5" height="628" fill="#c9a84c"/>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
+    </pattern>
+    <rect width="1200" height="628" fill="url(#grid)"/>
+    <rect x="80" y="72" width="180" height="30" rx="4" fill="#c9a84c" opacity="0.15"/>
+    <text x="92" y="92" font-size="12" font-weight="700" fill="#c9a84c" font-family="system-ui" letter-spacing="3">AUTHORITY</text>
+    <text x="80" y="190" font-size="58" font-weight="900" fill="#ffffff" font-family="Georgia, serif">B2B revenue in 2026</text>
+    <text x="80" y="265" font-size="58" font-weight="900" fill="#ffffff" font-family="Georgia, serif">is not a sales problem.</text>
+    <text x="80" y="360" font-size="52" font-weight="700" fill="#c9a84c" font-family="Georgia, serif">It is a signal problem.</text>
+    <line x1="80" y1="400" x2="560" y2="400" stroke="#c9a84c" stroke-width="2" opacity="0.4"/>
+    <text x="80" y="440" font-size="20" fill="#9a9aaa" font-family="system-ui">Buyers decide before the first call.</text>
+    <text x="80" y="468" font-size="20" fill="#9a9aaa" font-family="system-ui">The winners are better signal emitters.</text>
+    <circle cx="980" cy="314" r="220" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.12"/>
+    <circle cx="980" cy="314" r="160" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.08"/>
+    <circle cx="980" cy="314" r="100" fill="#c9a84c" opacity="0.04"/>
+    <text x="980" y="300" font-size="80" text-anchor="middle" fill="#c9a84c" opacity="0.25">BL</text>
+    <text x="980" y="360" font-size="14" text-anchor="middle" fill="#c9a84c" opacity="0.4" font-family="system-ui" letter-spacing="3">BARNES LAM</text>
+    <text x="80" y="580" font-size="17" fill="#c9a84c" font-family="system-ui" font-weight="600">barneslam.co/signal-problem</text>
+  </svg>
+  <div class="controls">
+    <button onclick="downloadSVG()">⬇ Download SVG</button>
+  </div>
+  <script>
+    function downloadSVG() {
+      const svg = document.getElementById('graphic');
+      const blob = new Blob([svg.outerHTML], {type: 'image/svg+xml'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'barneslam-apr24-signal.svg'; a.click();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AXIS Chamber — Apr 23 Graphic</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #111; font-family: system-ui, sans-serif; }
+    svg { display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .controls { margin-top: 16px; }
+    button { background: #d4a843; color: #1c1c1e; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+    <!-- Background -->
+    <rect width="1200" height="628" fill="#1c1c1e"/>
+    <!-- Gold accent bar top -->
+    <rect width="1200" height="6" fill="#d4a843"/>
+    <!-- Gold accent bar bottom -->
+    <rect y="622" width="1200" height="6" fill="#d4a843"/>
+    <!-- Left decorative vertical line -->
+    <rect x="60" y="0" width="3" height="628" fill="#d4a843" opacity="0.3"/>
+    <!-- Large quote mark -->
+    <text x="72" y="230" font-size="220" fill="#d4a843" opacity="0.06" font-family="Georgia, serif">"</text>
+    <!-- Label -->
+    <rect x="80" y="72" width="220" height="30" rx="4" fill="#d4a843" opacity="0.12"/>
+    <text x="92" y="92" font-size="12" font-weight="700" fill="#d4a843" font-family="system-ui" letter-spacing="3">PERFORMANCE SYSTEMS</text>
+    <!-- Quote headline -->
+    <text x="80" y="190" font-size="62" font-weight="900" fill="#ffffff" font-family="Georgia, serif">Consistency is not</text>
+    <text x="80" y="268" font-size="62" font-weight="900" fill="#ffffff" font-family="Georgia, serif">a personality trait.</text>
+    <text x="80" y="370" font-size="56" font-weight="700" fill="#d4a843" font-family="Georgia, serif">It is a system.</text>
+    <!-- Divider -->
+    <line x1="80" y1="410" x2="600" y2="410" stroke="#d4a843" stroke-width="1.5" opacity="0.4"/>
+    <!-- Sub-copy -->
+    <text x="80" y="450" font-size="20" fill="#888" font-family="system-ui">High performers plateau when they rely on discipline.</text>
+    <text x="80" y="478" font-size="20" fill="#888" font-family="system-ui">Systems run when discipline doesn't.</text>
+    <!-- Right side: discipline vs system comparison -->
+    <rect x="760" y="100" width="380" height="420" rx="12" fill="#252528"/>
+    <text x="950" y="150" font-size="14" font-weight="700" fill="#d4a843" text-anchor="middle" font-family="system-ui" letter-spacing="2">DISCIPLINE vs SYSTEM</text>
+    <line x1="790" y1="170" x2="1110" y2="170" stroke="#d4a843" stroke-width="1" opacity="0.3"/>
+    <!-- Row 1 -->
+    <text x="800" y="210" font-size="13" fill="#ff6b6b" font-family="system-ui">✗  Fails on low-energy days</text>
+    <text x="800" y="240" font-size="13" fill="#5cb85c" font-family="system-ui">✓  Runs regardless of mood</text>
+    <line x1="790" y1="260" x2="1110" y2="260" stroke="#444" stroke-width="1"/>
+    <!-- Row 2 -->
+    <text x="800" y="300" font-size="13" fill="#ff6b6b" font-family="system-ui">✗  Breaks when week goes sideways</text>
+    <text x="800" y="330" font-size="13" fill="#5cb85c" font-family="system-ui">✓  Fires even on bad Tuesdays</text>
+    <line x1="790" y1="350" x2="1110" y2="350" stroke="#444" stroke-width="1"/>
+    <!-- Row 3 -->
+    <text x="800" y="390" font-size="13" fill="#ff6b6b" font-family="system-ui">✗  Sporadic pipeline</text>
+    <text x="800" y="420" font-size="13" fill="#5cb85c" font-family="system-ui">✓  3–5 qualified convos/week</text>
+    <line x1="790" y1="440" x2="1110" y2="440" stroke="#444" stroke-width="1"/>
+    <text x="950" y="490" font-size="18" font-weight="700" fill="#d4a843" text-anchor="middle" font-family="Georgia, serif">Structure beats willpower.</text>
+    <!-- URL -->
+    <text x="80" y="580" font-size="17" fill="#d4a843" font-family="system-ui" font-weight="600">axischamber.org/consistency-system</text>
+  </svg>
+  <div class="controls">
+    <button onclick="downloadSVG()">⬇ Download SVG</button>
+  </div>
+  <script>
+    function downloadSVG() {
+      const svg = document.getElementById('graphic');
+      const blob = new Blob([svg.outerHTML], {type: 'image/svg+xml'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'axischamber-apr23-consistency.svg'; a.click();
+    }
+  </script>
+</body>
+</html>

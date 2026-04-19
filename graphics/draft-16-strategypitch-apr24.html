@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Strategy Pitch — Apr 24 Graphic</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #111; font-family: system-ui, sans-serif; }
+    svg { display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .controls { margin-top: 16px; }
+    button { background: #0A66C2; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+    <!-- Split background -->
+    <rect width="600" height="628" fill="#0A66C2"/>
+    <rect x="600" width="600" height="628" fill="#f5f7fa"/>
+    <rect width="1200" height="8" fill="#084298"/>
+    <!-- Left: Good Monday -->
+    <text x="300" y="140" font-size="14" font-weight="700" fill="#cce0ff" text-anchor="middle" font-family="system-ui" letter-spacing="3">GOOD MONDAY</text>
+    <text x="300" y="230" font-size="52" font-weight="900" fill="#ffffff" text-anchor="middle" font-family="Georgia, serif">A plan</text>
+    <text x="300" y="300" font-size="52" font-weight="900" fill="#ffffff" text-anchor="middle" font-family="Georgia, serif">works.</text>
+    <rect x="80" y="340" width="440" height="80" rx="8" fill="#ffffff" opacity="0.12"/>
+    <text x="300" y="373" font-size="15" fill="#cce0ff" text-anchor="middle" font-family="system-ui">Fully ramped team</text>
+    <text x="300" y="398" font-size="15" fill="#cce0ff" text-anchor="middle" font-family="system-ui">Healthy pipeline · Clean CRM</text>
+    <text x="300" y="500" font-size="18" fill="#ffffff" opacity="0.6" text-anchor="middle" font-family="system-ui">Ideal conditions last ~2 weeks.</text>
+    <!-- Divider -->
+    <line x1="598" y1="40" x2="598" y2="588" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+    <!-- Right: Bad Tuesday -->
+    <text x="900" y="140" font-size="14" font-weight="700" fill="#0A66C2" text-anchor="middle" font-family="system-ui" letter-spacing="3">BAD TUESDAY</text>
+    <text x="900" y="230" font-size="52" font-weight="900" fill="#1a1a2e" text-anchor="middle" font-family="Georgia, serif">A machine</text>
+    <text x="900" y="300" font-size="52" font-weight="900" fill="#0A66C2" text-anchor="middle" font-family="Georgia, serif">runs.</text>
+    <rect x="680" y="340" width="440" height="80" rx="8" fill="#0A66C2" opacity="0.08"/>
+    <text x="900" y="373" font-size="15" fill="#555" text-anchor="middle" font-family="system-ui">Three things broke · Two people out</text>
+    <text x="900" y="398" font-size="15" fill="#555" text-anchor="middle" font-family="system-ui">Outreach target still at zero</text>
+    <text x="900" y="500" font-size="18" fill="#0A66C2" text-anchor="middle" font-family="system-ui" font-weight="600">Execution Architecture runs anyway.</text>
+    <!-- Bottom bar -->
+    <rect y="592" width="1200" height="36" fill="#0A66C2" opacity="0.08"/>
+    <text x="600" y="616" font-size="14" fill="#0A66C2" text-anchor="middle" font-family="system-ui" font-weight="600">thestrategypitch.com/bad-tuesday-test  ·  #ExecutionArchitecture</text>
+  </svg>
+  <div class="controls">
+    <button onclick="downloadSVG()">⬇ Download SVG</button>
+  </div>
+  <script>
+    function downloadSVG() {
+      const svg = document.getElementById('graphic');
+      const blob = new Blob([svg.outerHTML], {type: 'image/svg+xml'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'strategypitch-apr24-bad-tuesday.svg'; a.click();
+    }
+  </script>
+</body>
+</html>
