@@ -909,6 +909,7 @@ async function load() {
         <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--orange); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
         <div style="display: flex; gap: 8px; font-size: 12px;">
           <button class="btn btn-approve" onclick="approveDraftPost('${d.id}')">✓ Approve</button>
+          <button class="btn" onclick="regenDraft(${d.id})" style="border-color: var(--orange); color: var(--orange);">🔄 Regen</button>
           <button class="btn" onclick="rejectDraftPost('${d.id}')">✗ Reject</button>
         </div>
       </div>`).join('')}
@@ -930,6 +931,7 @@ async function load() {
           <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--green); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button onclick="navigator.clipboard.writeText(${JSON.stringify(d.content || '')})" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy Post</button>
+            <button onclick="regenDraft(${d.id})" style="padding: 6px 10px; background: var(--orange); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🔄 Regen</button>
             <button onclick="alert('Publish to Blotato: ${d.channel}')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
           </div>
         </div>
@@ -1379,6 +1381,31 @@ async function approveDraftPost(draftId) {
     }
   } catch (e) {
     alert('Error: ' + e.message);
+  }
+}
+
+async function regenDraft(draftId) {
+  const btn = event.target;
+  btn.textContent = '⏳ Generating...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/regen-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ draftId })
+    });
+    if (res.ok) {
+      alert('✓ New version generated. Review and approve it.');
+      load();
+    } else {
+      alert('Failed to regenerate. Try again.');
+      btn.textContent = '🔄 Regen';
+      btn.disabled = false;
+    }
+  } catch (e) {
+    alert('Error: ' + e.message);
+    btn.textContent = '🔄 Regen';
+    btn.disabled = false;
   }
 }
 
