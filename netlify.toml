@@ -1,6 +1,6 @@
 [build]
 publish = "."
-functions = "netlify/functions"
+functions = "functions"
 
 # Scheduled functions
 [[scheduled_functions]]
@@ -33,7 +33,7 @@ cron = "0 8 18 4 *"
 # API routing - redirect /api/* to Netlify functions
 [[redirects]]
 from = "/api/*"
-to = "/.netlify/functions/api-:splat"
+to = "/.netlify/functions/:splat"
 status = 200
 
 # Dashboard routing

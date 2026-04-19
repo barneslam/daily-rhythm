@@ -14,23 +14,24 @@ const CORS = {
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: CORS };
+  if (event.httpMethod !== 'POST') return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: 'Method not allowed' }) };
 
   try {
+    const { draftId } = JSON.parse(event.body || '{}');
+    if (!draftId) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'draftId required' }) };
+
     const { data, error } = await supabase
       .from('gtm_drafts')
-      .select('*')
-      .order('draft_date', { ascending: true });
+      .update({ status: 'approved', updated_at: new Date().toISOString() })
+      .eq('id', draftId)
+      .select();
 
     if (error) throw error;
-
-    const pending = data.filter(d => d.status === 'pending_approval');
-    const approved = data.filter(d => d.status === 'approved');
-    const published = data.filter(d => d.status === 'published');
 
     return {
       statusCode: 200,
       headers: CORS,
-      body: JSON.stringify({ pending, approved, published })
+      body: JSON.stringify({ success: true, draft: data[0] })
     };
   } catch (err) {
     return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message }) };

@@ -17,70 +17,14 @@ const BLOTATO_API_BASE = "https://backend.blotato.com";
 const BLOTATO_API_KEY = process.env.BLOTATO_API_KEY;
 
 /**
- * Fetch inbound conversations from Blotato API
- * Returns array of conversation objects with messages
+ * Fetch inbound conversations from Blotato API.
+ * NOTE: Blotato is a publishing tool and has no DM/conversations endpoint.
+ * This function logs the attempt and returns empty — real DM capture requires
+ * LinkedIn webhook registration (linkedin-webhook function).
  */
 async function fetchBlotatoConversations() {
-  try {
-    console.log("📨 Fetching conversations from Blotato API...");
-
-    // Try to fetch conversations endpoint
-    // Blotato API may have: /conversations, /messages, or /accounts/{id}/conversations
-    const response = await fetch(`${BLOTATO_API_BASE}/conversations`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "blotato-api-key": BLOTATO_API_KEY,
-      },
-    });
-
-    if (!response.ok) {
-      // If /conversations fails, try alternative endpoint
-      if (response.status === 404) {
-        console.log(
-          "⚠️  /conversations endpoint not found, trying /messages..."
-        );
-        return await fetchFromAlternativeEndpoint();
-      }
-      throw new Error(
-        `Blotato API error ${response.status}: ${await response.text()}`
-      );
-    }
-
-    const data = await response.json();
-    console.log(`✓ Fetched ${data.conversations?.length || 0} conversations`);
-    return data.conversations || [];
-  } catch (error) {
-    console.error("❌ Error fetching from Blotato API:", error.message);
-    return [];
-  }
-}
-
-/**
- * Try alternative Blotato API endpoints if primary fails
- */
-async function fetchFromAlternativeEndpoint() {
-  try {
-    // Try /messages endpoint
-    const response = await fetch(`${BLOTATO_API_BASE}/messages`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "blotato-api-key": BLOTATO_API_KEY,
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(`✓ Fetched ${data.messages?.length || 0} messages`);
-      return data.messages || [];
-    }
-
-    return [];
-  } catch (error) {
-    console.error("❌ Alternative endpoint also failed:", error.message);
-    return [];
-  }
+  console.log("ℹ️  Blotato has no DM API — skipping poll. Use LinkedIn webhook for DM capture.");
+  return [];
 }
 
 /**
