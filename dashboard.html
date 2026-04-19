@@ -902,12 +902,11 @@ async function load() {
     draftsHTML += `<div class="card" style="border-left: 3px solid var(--orange); margin-bottom: 16px;">
       <h3 style="margin-top: 0; color: var(--orange);">⏳ PENDING APPROVAL (${pendingDrafts.length})</h3>
       ${pendingDrafts.map(d => `<div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
-        <div style="font-weight: 600; margin-bottom: 8px;">${d.business}</div>
-        <div style="background: var(--bg-secondary); padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 13px; line-height: 1.5;">
-          <strong>LinkedIn (${(d.linkedin_draft || '').length} chars):</strong><br>${(d.linkedin_draft || '').substring(0, 150)}...<br>
-          <strong>Instagram (${(d.instagram_draft || '').length} chars):</strong><br>${(d.instagram_draft || '').substring(0, 150)}...
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+          <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
         </div>
-        <div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">Scheduled: ${new Date(d.scheduled_for).toLocaleString()}</div>
+        <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--orange); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
         <div style="display: flex; gap: 8px; font-size: 12px;">
           <button class="btn btn-approve" onclick="approveDraftPost('${d.id}')">✓ Approve</button>
           <button class="btn" onclick="rejectDraftPost('${d.id}')">✗ Reject</button>
@@ -916,28 +915,22 @@ async function load() {
     </div>`;
   }
 
-  if (publishedDrafts.length > 0) {
+  if (approvedDrafts.length > 0) {
     draftsHTML += `<div class="card" style="border-left: 3px solid var(--green); margin-bottom: 16px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
         <h3 style="margin: 0; color: var(--green);">✓ APPROVED & SCHEDULED (${approvedDrafts.length})</h3>
-        ${approvedDrafts.length > 0 ? `<button class="btn" style="background: var(--green);" onclick="publishAllApproved()">📤 Publish All to Blotato (${approvedDrafts.length})</button>` : ''}
+        <button class="btn" style="background: var(--green); color: white;" onclick="publishAllApproved()">📤 Publish All to Blotato (${approvedDrafts.length})</button>
       </div>
       ${approvedDrafts.map(d => `
         <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px; background: var(--bg-secondary);">
-          <div style="font-weight: 600; font-size: 13px; margin-bottom: 12px;">${d.business || 'Untitled'}</div>
-          <div style="margin-bottom: 12px;">
-            <div style="font-size: 11px; font-weight: 600; color: var(--blue); margin-bottom: 6px;">LinkedIn Draft:</div>
-            <div style="font-size: 12px; color: var(--text); padding: 8px; background: white; border-radius: 4px; border-left: 3px solid var(--blue); white-space: pre-wrap; word-break: break-word; max-height: 120px; overflow-y: auto;">${d.linkedin_draft || '(empty)'}</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+            <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
           </div>
-          <div style="margin-bottom: 12px;">
-            <div style="font-size: 11px; font-weight: 600; color: var(--accent); margin-bottom: 6px;">Instagram Draft:</div>
-            <div style="font-size: 12px; color: var(--text); padding: 8px; background: white; border-radius: 4px; border-left: 3px solid var(--accent); white-space: pre-wrap; word-break: break-word; max-height: 120px; overflow-y: auto;">${d.instagram_draft || '(empty)'}</div>
-          </div>
-          <div style="font-size: 11px; color: var(--muted); margin-bottom: 12px;">Scheduled: ${new Date(d.scheduled_for).toLocaleString()}</div>
+          <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--green); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button onclick="copyConnectionMessage(\`${(d.linkedin_draft || '').replace(/`/g, '\\`')}\`)" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy LinkedIn</button>
-            <button onclick="copyConnectionMessage(\`${(d.instagram_draft || '').replace(/`/g, '\\`')}\`)" style="padding: 6px 10px; background: var(--accent); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📷 Copy Instagram</button>
-            <button onclick="alert('Publish to Blotato: LinkedIn & Instagram')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
+            <button onclick="navigator.clipboard.writeText(${JSON.stringify(d.content || '')})" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy Post</button>
+            <button onclick="alert('Publish to Blotato: ${d.channel}')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
           </div>
         </div>
       `).join('')}
@@ -949,9 +942,9 @@ async function load() {
       <h3 style="color: var(--green); margin-top: 0;">✓ PUBLISHED (${publishedDrafts.length})</h3>
       ${publishedDrafts.map(d => `
         <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px; background: var(--bg-secondary);">
-          <div style="font-weight: 600; margin-bottom: 4px;">${d.business || 'Untitled'}</div>
-          <div style="font-size: 11px; color: var(--green); margin-bottom: 8px;">✓ Published to ${d.published_to || 'Blotato'}</div>
-          <div style="font-size: 11px; color: var(--muted);">${new Date(d.scheduled_for).toLocaleString()}</div>
+          <div style="font-weight: 600; margin-bottom: 4px;">${d.title || 'Untitled'}</div>
+          <div style="font-size: 11px; color: var(--green); margin-bottom: 8px;">✓ Published · ${d.channel}</div>
+          <div style="font-size: 11px; color: var(--muted);">${d.draft_date}</div>
         </div>
       `).join('')}
     </div>`;
