@@ -901,18 +901,26 @@ async function load() {
   if (pendingDrafts.length > 0) {
     draftsHTML += `<div class="card" style="border-left: 3px solid var(--orange); margin-bottom: 16px;">
       <h3 style="margin-top: 0; color: var(--orange);">⏳ PENDING APPROVAL (${pendingDrafts.length})</h3>
-      ${pendingDrafts.map(d => `<div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
-          <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
-        </div>
-        <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--orange); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
-        <div style="display: flex; gap: 8px; font-size: 12px;">
-          <button class="btn btn-approve" onclick="approveDraftPost('${d.id}')">✓ Approve</button>
-          <button class="btn" onclick="regenDraft(${d.id})" style="border-color: var(--orange); color: var(--orange);">🔄 Regen</button>
-          <button class="btn" onclick="rejectDraftPost('${d.id}')">✗ Reject</button>
-        </div>
-      </div>`).join('')}
+      ${pendingDrafts.map(d => {
+        const graphicUrl = '/graphics/' + d.channel + '-' + d.draft_date + '.html';
+        return `<div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; display: flex; gap: 0;">
+          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="window.open('${graphicUrl}', '_blank')" title="Click to open full graphic">
+            <iframe src="${graphicUrl}" style="width: 1200px; height: 628px; transform: scale(0.183); transform-origin: top left; pointer-events: none; border: none;" scrolling="no"></iframe>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open</div>
+          </div>
+          <div style="flex: 1; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+              <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
+            </div>
+            <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--orange); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
+            <div style="display: flex; gap: 8px; font-size: 12px;">
+              <button class="btn btn-approve" onclick="approveDraftPost('${d.id}')">✓ Approve</button>
+              <button class="btn" onclick="regenDraft(${d.id})" style="border-color: var(--orange); color: var(--orange);">🔄 Regen</button>
+              <button class="btn" onclick="rejectDraftPost('${d.id}')">✗ Reject</button>
+            </div>
+          </div>
+        </div>`;}).join('')}
     </div>`;
   }
 
@@ -922,20 +930,30 @@ async function load() {
         <h3 style="margin: 0; color: var(--green);">✓ APPROVED & SCHEDULED (${approvedDrafts.length})</h3>
         <button class="btn" style="background: var(--green); color: white;" onclick="publishAllApproved()">📤 Publish All to Blotato (${approvedDrafts.length})</button>
       </div>
-      ${approvedDrafts.map(d => `
-        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px; background: var(--bg-secondary);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
-            <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
+      ${approvedDrafts.map(d => {
+        const graphicUrl = '/graphics/' + d.channel + '-' + d.draft_date + '.html';
+        return `
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: var(--bg-secondary); display: flex; gap: 0;">
+          <!-- Graphic thumbnail -->
+          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="window.open('${graphicUrl}', '_blank')" title="Click to open full graphic">
+            <iframe src="${graphicUrl}" style="width: 1200px; height: 628px; transform: scale(0.183); transform-origin: top left; pointer-events: none; border: none;" scrolling="no"></iframe>
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open · Download inside</div>
           </div>
-          <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--green); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button onclick="navigator.clipboard.writeText(${JSON.stringify(d.content || '')})" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy Post</button>
-            <button onclick="regenDraft(${d.id})" style="padding: 6px 10px; background: var(--orange); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🔄 Regen</button>
-            <button onclick="alert('Publish to Blotato: ${d.channel}')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
+          <!-- Post content -->
+          <div style="flex: 1; padding: 14px; display: flex; flex-direction: column; min-width: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+              <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
+            </div>
+            <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--green); white-space: pre-wrap; word-break: break-word; max-height: 180px; overflow-y: auto; margin-bottom: 10px; flex: 1;">${d.content || '(empty)'}</div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button onclick="navigator.clipboard.writeText(${JSON.stringify(d.content || '')})" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy Post</button>
+              <button onclick="window.open('${graphicUrl}', '_blank')" style="padding: 6px 10px; background: #444; color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🖼 Graphic</button>
+              <button onclick="regenDraft(${d.id})" style="padding: 6px 10px; background: var(--orange); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🔄 Regen</button>
+              <button onclick="alert('Publish to Blotato: ${d.channel}')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
+            </div>
           </div>
-        </div>
-      `).join('')}
+        </div>`}).join('')}
     </div>`;
   }
 
