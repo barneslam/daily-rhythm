@@ -1422,7 +1422,7 @@ async function rejectDraftPost(draftId) {
 }
 
 async function publishAllApproved() {
-  const confirmed = confirm('Publish all approved drafts to Blotato now?');
+  const confirmed = confirm('Schedule all approved drafts to Blotato now?\n\nEach post will be scheduled for 9 AM UTC on its draft date.');
   if (!confirmed) return;
 
   try {
@@ -1430,12 +1430,12 @@ async function publishAllApproved() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     });
-    const result = await res.json();
+    const result = await res.json().catch(() => ({}));
     if (res.ok) {
-      alert(`✓ Published to Blotato!\n${result.message}\n\nTotal posts: ${result.posts_count}`);
+      alert(`✓ Sent to Blotato!\n${result.message}\n\nPosts scheduled: ${result.posts_count}`);
       load();
     } else {
-      alert('Error: ' + (result.error || 'Failed to publish'));
+      alert('Error: ' + (result.error || res.status + ' ' + res.statusText));
     }
   } catch (e) {
     alert('Error: ' + e.message);
