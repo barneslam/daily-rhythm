@@ -34,22 +34,22 @@ exports.handler = async (event) => {
     const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
 
     // 9 AM EST = 14:00 UTC
+    const payload = {
+      accountId: channel.accountId,
+      platform: 'linkedin',
+      text: draft.content,
+      scheduledTime: `${scheduleDate}T14:00:00Z`,
+      mediaUrls: [],
+    };
+    if (channel.pageId) payload.pageId = channel.pageId;
+
     const response = await fetch('https://backend.blotato.com/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'blotato-api-key': blotatoKey,
       },
-      body: JSON.stringify({
-        post: {
-          text: draft.content,
-          target: channel.pageId
-            ? { targetType: 'page', pageId: channel.pageId, platform: 'linkedin' }
-            : { targetType: 'profile', accountId: channel.accountId, platform: 'linkedin' },
-        },
-        schedulingDate: `${scheduleDate}T14:00:00Z`,
-        scheduleNow: false,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {

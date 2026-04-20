@@ -54,23 +54,18 @@ async function publishScheduledContent() {
   for (const draft of drafts) {
     const channel = channelMap[draft.channel] || { accountId: "17347", pageId: null };
 
-    const blotatoPayload = {
-      accountId: channel.accountId,
-      platform: "linkedin",
-      text: draft.content,
-      scheduledTime: `${today}T14:00:00Z`,
-    };
-
-    if (channel.pageId) {
-      blotatoPayload.pageId = channel.pageId;
-    }
-
     try {
-      // Publish via Blotato API
       const blotatoKey = process.env.BLOTATO_API_KEY;
-      if (!blotatoKey) {
-        throw new Error("BLOTATO_API_KEY not set in environment");
-      }
+      if (!blotatoKey) throw new Error("BLOTATO_API_KEY not set in environment");
+
+      const payload = {
+        accountId: channel.accountId,
+        platform: "linkedin",
+        text: draft.content,
+        scheduledTime: `${today}T14:00:00Z`,
+        mediaUrls: [],
+      };
+      if (channel.pageId) payload.pageId = channel.pageId;
 
       const response = await fetch("https://backend.blotato.com/posts", {
         method: "POST",
@@ -78,16 +73,7 @@ async function publishScheduledContent() {
           "Content-Type": "application/json",
           "blotato-api-key": blotatoKey,
         },
-        body: JSON.stringify({
-          post: {
-            text: draft.content,
-            target: channel.pageId
-              ? { targetType: "page", pageId: channel.pageId, platform: "linkedin" }
-              : { targetType: "profile", accountId: channel.accountId, platform: "linkedin" },
-          },
-          schedulingDate: `${today}T14:00:00Z`,
-          scheduleNow: false,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {

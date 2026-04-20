@@ -1459,7 +1459,9 @@ async function publishAllApproved() {
     });
     const result = await res.json().catch(() => ({}));
     if (res.ok) {
-      alert(`✓ Sent to Blotato!\n${result.message}\n\nPosts scheduled: ${result.posts_count}`);
+      const failures = (result.results || []).filter(r => r.status === 'failed');
+      const firstErr = failures[0] ? `\n\nFirst error: ${failures[0].error}` : '';
+      alert(`✓ Sent to Blotato!\n${result.message}\n\nPosts scheduled: ${result.posts_count}${firstErr}`);
       load();
     } else {
       alert('Error: ' + (result.error || res.status + ' ' + res.statusText));
