@@ -950,7 +950,7 @@ async function load() {
               <button onclick="navigator.clipboard.writeText(${JSON.stringify(d.content || '')})" style="padding: 6px 10px; background: var(--blue); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📋 Copy Post</button>
               <button onclick="window.open('${graphicUrl}', '_blank')" style="padding: 6px 10px; background: #444; color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🖼 Graphic</button>
               <button onclick="regenDraft(${d.id})" style="padding: 6px 10px; background: var(--orange); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">🔄 Regen</button>
-              <button onclick="alert('Publish to Blotato: ${d.channel}')" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
+              <button id="pub-btn-${d.id}" onclick="publishOneDraft(${d.id}, this)" style="padding: 6px 10px; background: var(--green); color: white; border: none; border-radius: 3px; font-size: 11px; cursor: pointer; font-weight: 500;">📤 Publish</button>
             </div>
           </div>
         </div>`}).join('')}
@@ -1421,8 +1421,35 @@ async function rejectDraftPost(draftId) {
   }
 }
 
+async function publishOneDraft(draftId, btn) {
+  btn.textContent = '⏳ Publishing...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/publish-one-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ draftId })
+    });
+    const result = await res.json().catch(() => ({}));
+    if (res.ok) {
+      btn.textContent = '✓ Published';
+      btn.style.background = '#2d6a4f';
+      btn.disabled = true;
+      load();
+    } else {
+      alert('Publish failed: ' + (result.error || res.status));
+      btn.textContent = '📤 Publish';
+      btn.disabled = false;
+    }
+  } catch (e) {
+    alert('Error: ' + e.message);
+    btn.textContent = '📤 Publish';
+    btn.disabled = false;
+  }
+}
+
 async function publishAllApproved() {
-  const confirmed = confirm('Schedule all approved drafts to Blotato now?\n\nEach post will be scheduled for 9 AM UTC on its draft date.');
+  const confirmed = confirm('Schedule all approved drafts to Blotato now?\n\nEach post will be scheduled for 9 AM EST on its draft date.');
   if (!confirmed) return;
 
   try {

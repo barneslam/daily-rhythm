@@ -56,7 +56,7 @@ exports.handler = async (event) => {
                 ? { targetType: 'page', pageId: channel.pageId, platform: 'linkedin' }
                 : { targetType: 'profile', accountId: channel.accountId, platform: 'linkedin' },
             },
-            schedulingDate: `${scheduleDate}T09:00:00Z`,
+            schedulingDate: `${scheduleDate}T14:00:00Z`,
             scheduleNow: false,
           }),
         });

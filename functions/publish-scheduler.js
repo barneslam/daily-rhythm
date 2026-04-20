@@ -58,7 +58,7 @@ async function publishScheduledContent() {
       accountId: channel.accountId,
       platform: "linkedin",
       text: draft.content,
-      scheduledTime: `${today}T09:00:00Z`,
+      scheduledTime: `${today}T14:00:00Z`,
     };
 
     if (channel.pageId) {
@@ -85,7 +85,7 @@ async function publishScheduledContent() {
               ? { targetType: "page", pageId: channel.pageId, platform: "linkedin" }
               : { targetType: "profile", accountId: channel.accountId, platform: "linkedin" },
           },
-          schedulingDate: `${today}T09:00:00Z`,
+          schedulingDate: `${today}T14:00:00Z`,
           scheduleNow: false,
         }),
       });
