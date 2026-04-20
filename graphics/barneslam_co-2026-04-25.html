@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Barnes Lam — Apr 25 Graphic</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #111; font-family: system-ui, sans-serif; }
+    svg { display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .controls { margin-top: 16px; display: flex; gap: 12px; }
+    button { background: #c9a84c; color: #0d0f1a; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+    <!-- Background -->
+    <rect width="1200" height="628" fill="#0d0f1a"/>
+    <!-- Gold top bar -->
+    <rect width="1200" height="6" fill="#c9a84c"/>
+    <!-- Subtle grid texture -->
+    <defs>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="628" fill="url(#grid)"/>
+    <!-- Left accent block -->
+    <rect x="0" y="0" width="5" height="628" fill="#c9a84c"/>
+    <!-- Large background word -->
+    <text x="40" y="540" font-size="280" font-weight="900" fill="#ffffff" opacity="0.03" font-family="Georgia, serif">CLAR</text>
+    <!-- Category tag -->
+    <rect x="60" y="80" width="180" height="32" rx="4" fill="#c9a84c" opacity="0.15"/>
+    <text x="72" y="101" font-size="13" font-weight="700" fill="#c9a84c" font-family="system-ui, sans-serif" letter-spacing="2">AUTHORITY</text>
+    <!-- Main headline -->
+    <text x="60" y="200" font-size="62" font-weight="900" fill="#ffffff" font-family="Georgia, serif">Most markets don't</text>
+    <text x="60" y="280" font-size="62" font-weight="900" fill="#ffffff" font-family="Georgia, serif">have a competition</text>
+    <text x="60" y="360" font-size="62" font-weight="900" fill="#ffffff" font-family="Georgia, serif">problem.</text>
+    <!-- Highlighted line -->
+    <text x="60" y="450" font-size="52" font-weight="700" fill="#c9a84c" font-family="Georgia, serif">They have a clarity</text>
+    <text x="60" y="520" font-size="52" font-weight="700" fill="#c9a84c" font-family="Georgia, serif">problem.</text>
+    <!-- Divider -->
+    <line x1="60" y1="548" x2="580" y2="548" stroke="#c9a84c" stroke-width="2" opacity="0.4"/>
+    <!-- URL -->
+    <text x="60" y="585" font-size="18" fill="#c9a84c" font-family="system-ui, sans-serif" font-weight="600">barneslam.co/clarity-as-competitive-advantage</text>
+    <!-- Right decorative element -->
+    <circle cx="1000" cy="314" r="230" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.1"/>
+    <circle cx="1000" cy="314" r="165" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.07"/>
+    <circle cx="1000" cy="314" r="100" fill="#c9a84c" opacity="0.04"/>
+    <!-- Signal icon -->
+    <text x="1000" y="290" font-size="72" text-anchor="middle" fill="#c9a84c" opacity="0.2">◎</text>
+    <text x="1000" y="360" font-size="14" text-anchor="middle" fill="#c9a84c" opacity="0.35" font-family="system-ui" letter-spacing="3">BARNES LAM</text>
+    <text x="1000" y="395" font-size="13" text-anchor="middle" fill="#c9a84c" opacity="0.25" font-family="system-ui">Founders &amp; CEOs · $5M–$50M</text>
+  </svg>
+  <div class="controls">
+    <button onclick="downloadSVG()">⬇ Download SVG</button>
+  </div>
+  <script>
+    function downloadSVG() {
+      const svg = document.getElementById('graphic');
+      const blob = new Blob([svg.outerHTML], {type: 'image/svg+xml'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'barneslam-apr25-clarity-advantage.svg'; a.click();
+    }
+  </script>
+</body>
+</html>
