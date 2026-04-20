@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Strategy Pitch — Apr 21 Graphic</title>
+  <style>
+    body { margin: 0; padding: 20px; background: #111; font-family: system-ui, sans-serif; }
+    svg { display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .controls { margin-top: 16px; }
+    button { background: #0A66C2; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+    <!-- Background -->
+    <rect width="1200" height="628" fill="#ffffff"/>
+    <!-- Blue top bar -->
+    <rect width="1200" height="8" fill="#0A66C2"/>
+    <!-- Left blue panel -->
+    <rect x="0" y="0" width="440" height="628" fill="#0A66C2"/>
+    <!-- Left panel texture -->
+    <circle cx="220" cy="314" r="300" fill="#ffffff" opacity="0.04"/>
+    <circle cx="220" cy="314" r="200" fill="#ffffff" opacity="0.04"/>
+    <!-- Left panel label -->
+    <text x="48" y="110" font-size="13" font-weight="700" fill="#ffffff" opacity="0.7" font-family="system-ui" letter-spacing="3">EXECUTION ARCHITECT</text>
+    <!-- Left panel headline -->
+    <text x="48" y="200" font-size="52" font-weight="900" fill="#ffffff" font-family="Georgia, serif">Execution</text>
+    <text x="48" y="265" font-size="52" font-weight="900" fill="#ffffff" font-family="Georgia, serif">Architecture</text>
+    <text x="48" y="330" font-size="52" font-weight="900" fill="#ffffff" font-family="Georgia, serif">Framework</text>
+    <!-- Divider on left -->
+    <line x1="48" y1="370" x2="340" y2="370" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+    <text x="48" y="400" font-size="16" fill="#ffffff" opacity="0.7" font-family="system-ui">thestrategypitch.com</text>
+    <!-- Right side: 3-step diagram -->
+    <!-- Step 1 -->
+    <rect x="500" y="120" width="260" height="100" rx="8" fill="#f0f4ff" stroke="#0A66C2" stroke-width="2"/>
+    <text x="630" y="162" font-size="14" font-weight="700" fill="#0A66C2" text-anchor="middle" font-family="system-ui">STRATEGIC CLARITY</text>
+    <text x="630" y="188" font-size="12" fill="#555" text-anchor="middle" font-family="system-ui">Know where you're going</text>
+    <!-- Arrow 1 -->
+    <line x1="630" y1="220" x2="630" y2="260" stroke="#0A66C2" stroke-width="3" marker-end="url(#arrow)"/>
+    <!-- Step 2 -->
+    <rect x="500" y="260" width="260" height="100" rx="8" fill="#0A66C2"/>
+    <text x="630" y="302" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="system-ui">EXECUTION ARCHITECTURE</text>
+    <text x="630" y="328" font-size="12" fill="#cce0ff" text-anchor="middle" font-family="system-ui">Daily system that runs it</text>
+    <!-- Arrow 2 -->
+    <line x1="630" y1="360" x2="630" y2="400" stroke="#0A66C2" stroke-width="3" marker-end="url(#arrow)"/>
+    <!-- Step 3 -->
+    <rect x="500" y="400" width="260" height="100" rx="8" fill="#f0f4ff" stroke="#0A66C2" stroke-width="2"/>
+    <text x="630" y="442" font-size="14" font-weight="700" fill="#0A66C2" text-anchor="middle" font-family="system-ui">PREDICTABLE REVENUE</text>
+    <text x="630" y="468" font-size="12" fill="#555" text-anchor="middle" font-family="system-ui">Pipeline that builds itself</text>
+    <!-- Right callout -->
+    <rect x="820" y="140" width="320" height="340" rx="12" fill="#f8faff" stroke="#dce8ff" stroke-width="1.5"/>
+    <text x="980" y="185" font-size="13" font-weight="700" fill="#0A66C2" text-anchor="middle" font-family="system-ui" letter-spacing="1">WITHOUT ARCHITECTURE</text>
+    <text x="980" y="218" font-size="13" fill="#888" text-anchor="middle" font-family="system-ui">Strategy = expensive aspiration</text>
+    <line x1="860" y1="240" x2="1100" y2="240" stroke="#dce8ff" stroke-width="1"/>
+    <text x="980" y="275" font-size="13" font-weight="700" fill="#0A66C2" text-anchor="middle" font-family="system-ui" letter-spacing="1">WITH ARCHITECTURE</text>
+    <text x="980" y="308" font-size="13" fill="#555" text-anchor="middle" font-family="system-ui">Strategy = daily revenue motion</text>
+    <line x1="860" y1="330" x2="1100" y2="330" stroke="#dce8ff" stroke-width="1"/>
+    <text x="980" y="380" font-size="28" font-weight="900" fill="#0A66C2" text-anchor="middle" font-family="Georgia, serif">The gap is</text>
+    <text x="980" y="420" font-size="28" font-weight="900" fill="#0A66C2" text-anchor="middle" font-family="Georgia, serif">the machine.</text>
+    <!-- Arrow marker -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#0A66C2"/>
+      </marker>
+    </defs>
+    <!-- Bottom bar -->
+    <rect x="0" y="590" width="1200" height="38" fill="#0A66C2" opacity="0.08"/>
+    <text x="500" y="615" font-size="14" fill="#0A66C2" font-family="system-ui" font-weight="600">thestrategypitch.com/execution-architecture</text>
+  </svg>
+  <div class="controls">
+    <button onclick="downloadSVG()">⬇ Download SVG</button>
+  </div>
+  <script>
+    function downloadSVG() {
+      const svg = document.getElementById('graphic');
+      const blob = new Blob([svg.outerHTML], {type: 'image/svg+xml'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'strategypitch-apr21-execution-arch.svg'; a.click();
+    }
+  </script>
+</body>
+</html>
