@@ -1331,34 +1331,6 @@ async function approveDraft(filename) {
   load();
 }
 
-async function regenDraft(draftId) {
-  const confirmed = confirm('Regenerate content for this draft? New post copy will be created.');
-  if (!confirmed) return;
-
-  try {
-    const res = await fetch(`/api/drafts/${draftId}/regen`, { method: 'POST' });
-    const result = await res.json();
-    if (res.ok) {
-      // Find and update the draft in local state
-      if (draftsRes && draftsRes.published) {
-        const draft = draftsRes.published.find(d => d.id === draftId);
-        if (draft) {
-          draft.linkedin_draft = result.linkedin_draft;
-          draft.instagram_draft = result.instagram_draft;
-          // Re-render the drafts section
-          renderDrafts();
-          alert(`✓ Content regenerated!\nLinkedIn: ${result.linkedin_chars} chars\nInstagram: ${result.instagram_chars} chars`);
-        }
-      }
-      load();
-    } else {
-      alert('Error: ' + (result.error || 'Failed to regenerate'));
-    }
-  } catch (e) {
-    alert('Error: ' + e.message);
-  }
-}
-
 async function publishToBlotato(draftId) {
   const confirmed = confirm('Publish posts to Blotato? This will schedule 5 posts per week per channel (LinkedIn & Instagram, Mon-Fri) for 4 weeks.');
   if (!confirmed) return;
@@ -1404,6 +1376,7 @@ async function approveDraftPost(draftId) {
 
 async function regenDraft(draftId) {
   const btn = event.target;
+  const orig = btn.textContent;
   btn.textContent = '⏳ Generating...';
   btn.disabled = true;
   try {
@@ -1412,17 +1385,18 @@ async function regenDraft(draftId) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ draftId })
     });
+    const result = await res.json().catch(() => ({}));
     if (res.ok) {
       alert('✓ New version generated. Review and approve it.');
       load();
     } else {
-      alert('Failed to regenerate. Try again.');
-      btn.textContent = '🔄 Regen';
+      alert('Regen failed: ' + (result.error || res.status + ' ' + res.statusText));
+      btn.textContent = orig;
       btn.disabled = false;
     }
   } catch (e) {
     alert('Error: ' + e.message);
-    btn.textContent = '🔄 Regen';
+    btn.textContent = orig;
     btn.disabled = false;
   }
 }
