@@ -33,6 +33,8 @@ exports.handler = async (event) => {
     const brand = brandMap[draft.channel] || 'BarnesLam.co';
     const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
 
+    const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${scheduleDate}`;
+
     const response = await fetch('https://api.blotato.com/v1/posts', {
       method: 'POST',
       headers: {
@@ -40,10 +42,11 @@ exports.handler = async (event) => {
         'Authorization': `Bearer ${blotatoKey}`,
       },
       body: JSON.stringify({
-        platforms: ['linkedin'],
+        platforms: ['linkedin', 'instagram'],
         content: draft.content,
         scheduled_at: `${scheduleDate}T14:00:00Z`,
         brand,
+        media_urls: [graphicUrl],
       }),
     });
 

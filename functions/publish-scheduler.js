@@ -41,6 +41,7 @@ async function publishScheduledContent() {
     }
 
     const brand = brandMap[draft.channel] || "BarnesLam.co";
+    const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${today}`;
 
     try {
       const response = await fetch("https://api.blotato.com/v1/posts", {
@@ -50,10 +51,11 @@ async function publishScheduledContent() {
           "Authorization": `Bearer ${blotatoKey}`,
         },
         body: JSON.stringify({
-          platforms: ["linkedin"],
+          platforms: ["linkedin", "instagram"],
           content: draft.content,
           scheduled_at: `${today}T14:00:00Z`,
           brand,
+          media_urls: [graphicUrl],
         }),
       });
 
