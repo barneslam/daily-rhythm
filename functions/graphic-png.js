@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Invalid file parameter' };
   }
 
-  const htmlPath = path.join(process.cwd(), 'graphics', `${file}.html`);
+  const htmlPath = path.join(__dirname, '..', 'graphics', `${file}.html`);
   if (!fs.existsSync(htmlPath)) {
     return { statusCode: 404, body: 'Graphic not found' };
   }
