@@ -62,6 +62,7 @@ Requirements:
 - Strong opening line (no "I" as first word)
 - End with: ${cfg.hashtags}
 - Do NOT include a subject line or title
+- Do NOT include any URLs or website links
 
 Write the post body only.`,
     }],

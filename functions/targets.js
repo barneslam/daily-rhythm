@@ -1,49 +1,49 @@
-const fs = require('fs');
-const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
 
-function readCSV(filepath) {
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
+
+const CORS = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type'
+};
+
+exports.handler = async (event) => {
+  if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: CORS };
+
   try {
-    const content = fs.readFileSync(filepath, 'utf8');
-    const lines = content.trim().split('\n');
-    const targets = lines.slice(1).map((line, idx) => {
-      const parts = line.split(',');
-      return {
-        id: idx + 1,
-        name: parts[1] || 'TBD',
-        business: parts[2] || '',
-        signal: parts[3] || '',
-        channel: parts[4] || '',
-        status: parts[5] ? 'messaged' : 'identified',
-        confidence: idx < 2 ? 'HIGH' : 'MEDIUM',
-      };
-    });
-    return targets;
-  } catch (e) {
-    return [];
-  }
-}
+    const { data: targets, error } = await supabase
+      .from('gtm_targets')
+      .select('*')
+      .order('confidence', { ascending: false })
+      .order('created_at', { ascending: false });
 
-exports.handler = async (event, context) => {
-  try {
-    const csvPath = path.resolve(__dirname, '../assets/tracking-template.csv');
-    const targets = readCSV(csvPath);
+    if (error) throw error;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ targets }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    };
-  } catch (error) {
-    console.error('Error reading targets:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message, targets: [] }),
-      headers: { 'Content-Type': 'application/json' }
-    };
+    const formatted = (targets || []).map(t => ({
+      id: t.id,
+      name: t.name || t.business,
+      business: t.business,
+      signal: t.signal,
+      channel: t.outreach_channel || 'LinkedIn',
+      status: t.status || 'identified',
+      confidence: t.confidence || 70,
+      linkedin_url: t.linkedin_url,
+      qualified: t.qualified || false,
+      draft_message: t.draft_message,
+      needs_regen: t.needs_regen,
+      follow_ups: t.follow_ups,
+      notes: t.notes,
+      closing_stage: t.closing_stage,
+    }));
+
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ targets: formatted }) };
+  } catch (err) {
+    console.error('Targets API error:', err.message);
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message, targets: [] }) };
   }
 };
