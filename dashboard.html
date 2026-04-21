@@ -742,7 +742,7 @@ async function load() {
       const channelDisplay = t.channel ? `${t.channel}` : '—';
       const messageText = (t.draft_message || (t.draft_content && t.draft_content.linkedin_draft) || '').replace(/'/g, "\\'");
 
-      return `<tr class="target-row" style="border-bottom:1px solid var(--border);display:grid;grid-template-columns:60px 150px 1.5fr 120px 100px;gap:12px;padding:0 12px;align-items:center;">
+      return `<tr class="target-row" style="border-bottom:1px solid var(--border);display:grid;grid-template-columns:50px 140px 1.5fr 130px 170px;gap:8px;padding:0 12px;align-items:center;">
         <td style="padding:8px;text-align:center;font-weight:600;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">${confidenceScore}</td>
         <td style="padding:8px;overflow:hidden;"><strong style="font-size:12px;">${t.name}</strong></td>
         <td style="padding:8px;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${(t.signal || '').replace(/"/g,'&quot;')}">${t.signal ? t.signal.substring(0, 80) + (t.signal.length > 80 ? '…' : '') : '—'}</td>
@@ -766,7 +766,7 @@ async function load() {
       <div id="${sectionId}" style="display:${isOpen ? 'block' : 'none'};margin-top:0;">
         <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);">
           <thead>
-            <tr style="background:var(--surface2);border-bottom:2px solid var(--border); display: grid; grid-template-columns: 50px 140px 1.5fr 130px 170px; gap: 12px; padding: 0 12px; align-items: center;">
+            <tr style="background:var(--surface2);border-bottom:2px solid var(--border); display: grid; grid-template-columns: 50px 140px 1.5fr 130px 170px; gap: 8px; padding: 0 12px; align-items: center;">
               <th style="padding:8px;text-align:center;font-weight:600;">Score</th>
               <th style="padding:8px;text-align:left;font-weight:600;">Name</th>
               <th style="padding:8px;text-align:left;font-weight:600;">Signal</th>
