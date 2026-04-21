@@ -69,7 +69,7 @@ exports.handler = async (event) => {
         await blotatoPost(apiKey, {
           accountId: LINKEDIN_ACCOUNT_ID,
           target: linkedinTarget,
-          content: { text: draft.content, platform: 'linkedin', mediaUrls: [graphicUrl] },
+          content: { text: draft.content, platform: 'linkedin', mediaUrls: [] },
           scheduledTime,
         });
         draftResults.push({ platform: 'linkedin', status: 'scheduled' });
@@ -81,7 +81,7 @@ exports.handler = async (event) => {
         await blotatoPost(apiKey, {
           accountId: INSTAGRAM_ACCOUNT_ID,
           target: { targetType: 'instagram' },
-          content: { text: draft.content, platform: 'instagram', mediaUrls: [graphicUrl] },
+          content: { text: draft.content, platform: 'instagram', mediaUrls: [] },
           scheduledTime,
         });
         draftResults.push({ platform: 'instagram', status: 'scheduled' });
