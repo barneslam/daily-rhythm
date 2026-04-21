@@ -744,7 +744,7 @@ async function load() {
 
       return `<tr class="target-row" style="border-bottom:1px solid var(--border);display:grid;grid-template-columns:50px 140px 1.5fr 130px 170px;gap:8px;padding:0 12px;align-items:center;">
         <td style="padding:8px;text-align:center;font-weight:600;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">${confidenceScore}</td>
-        <td style="padding:8px;overflow:hidden;"><strong style="font-size:12px;">${t.name}</strong></td>
+        <td style="padding:8px;overflow:hidden;">${t.linkedin_url ? `<a href="${t.linkedin_url}" target="_blank" style="color:var(--blue);text-decoration:none;font-size:12px;font-weight:600;" title="Open LinkedIn profile">${t.name}</a>` : `<strong style="font-size:12px;">${t.name}</strong>`}</td>
         <td style="padding:8px;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${(t.signal || '').replace(/"/g,'&quot;')}">${t.signal ? t.signal.substring(0, 80) + (t.signal.length > 80 ? '…' : '') : '—'}</td>
         <td style="padding:8px;text-align:center;">${statusSelect}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap;">
