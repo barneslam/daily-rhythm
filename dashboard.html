@@ -742,10 +742,10 @@ async function load() {
       const channelDisplay = t.channel ? `${t.channel}` : '—';
       const messageText = (t.draft_message || (t.draft_content && t.draft_content.linkedin_draft) || '').replace(/'/g, "\\'");
 
-      return `<tr class="target-row" style="border-bottom:1px solid var(--border);">
+      return `<tr class="target-row" style="border-bottom:1px solid var(--border);display:grid;grid-template-columns:60px 150px 1.5fr 120px 100px;gap:12px;padding:0 12px;align-items:center;">
         <td style="padding:8px;text-align:center;font-weight:600;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">${confidenceScore}</td>
-        <td style="padding:8px;"><strong>${t.name}</strong></td>
-        <td style="padding:8px;color:var(--muted);font-size:11px;max-width:400px;white-space:normal;line-height:1.4;">${(t.signal || 'No metrics available').substring(0, 200)}</td>
+        <td style="padding:8px;overflow:hidden;"><strong style="font-size:12px;">${t.name}</strong></td>
+        <td style="padding:8px;color:var(--muted);font-size:11px;white-space:normal;line-height:1.4;overflow:hidden;">${(t.signal || '—').substring(0, 200)}</td>
         <td style="padding:8px;text-align:center;">${statusSelect}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap;">
           <button onclick="openMessageModal('${t.id}', '${t.name}', '${messageText}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
