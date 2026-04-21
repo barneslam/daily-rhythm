@@ -19,13 +19,7 @@ const GRAPHICS_DIR = path.join(__dirname, '..', 'graphics');
 const DATED_PATTERN = /^(the_strategy_pitch|barneslam_co|axis_chamber)-\d{4}-\d{2}-\d{2}\.html$/;
 
 async function ensureBucket() {
-  const { data: buckets } = await supabase.storage.listBuckets();
-  const exists = buckets?.some(b => b.name === BUCKET);
-  if (!exists) {
-    const { error } = await supabase.storage.createBucket(BUCKET, { public: true });
-    if (error) throw new Error(`Failed to create bucket: ${error.message}`);
-    console.log('✓ Created public bucket: graphics');
-  }
+  // Bucket created manually via Supabase SQL — skip creation, just verify upload works
 }
 
 async function renderAndUpload(htmlFile) {
