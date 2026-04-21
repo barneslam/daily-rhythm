@@ -54,7 +54,6 @@ exports.handler = async (event) => {
     const channel = channelMap[draft.channel] || {};
     const graphicUrl = draft.graphic_url || `${SUPABASE_STORAGE_URL}/${draft.channel}-${scheduleDate}.png`;
     const mediaUrls = [graphicUrl];
-    const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${scheduleDate}`;
 
     const linkedinTarget = { targetType: 'linkedin' };
     if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;
