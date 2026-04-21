@@ -251,7 +251,7 @@
   <!-- TARGETS TABLE -->
   <div class="panel" id="targets">
     <div class="card">
-      <h2>TARGET LIST — ALL 58 LEADS</h2>
+      <h2 id="target-list-heading">TARGET LIST — ALL LEADS</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; font-size: 12px;">
         <div onclick="filterByConfidence(90)" style="padding: 8px; background: #4a7c5910; border-left: 3px solid var(--green); border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#4a7c5920'" onmouseout="this.style.background='#4a7c5910'"><span style="color:var(--green);font-weight:600">90</span> HIGH confidence</div>
         <div onclick="filterByConfidence(80)" style="padding: 8px; background: #d9a52610; border-left: 3px solid #d9a526; border-radius: 4px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#d9a52620'" onmouseout="this.style.background='#d9a52610'"><span style="color:#d9a526;font-weight:600">80</span> Medium-High</div>
@@ -693,6 +693,7 @@ async function load() {
   let targets = targetsRes.targets || [];
   window.lastLeadCount = targets.length;
   document.getElementById('tab-targets').textContent = `Targets (${targets.length})`;
+  document.getElementById('target-list-heading').textContent = `TARGET LIST — ALL ${targets.length} LEADS`;
 
   // Populate Connection Queue (leads you've sent connection requests to)
   await populateConnectionQueue(targets);
@@ -748,7 +749,7 @@ async function load() {
         <td style="padding:8px;text-align:center;">${statusSelect}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap;">
           <button onclick="openMessageModal('${t.id}', '${t.name}', '${messageText}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
-          <button onclick="openRegenConnectModal('${t.id}', '${t.name}', '${t.business.replace(/'/g, "\\'")}', '${messageText.replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
+          <button onclick="openRegenConnectModal('${t.id}', '${t.name}', '${(t.business || '').replace(/'/g, "\\'")}', '${messageText.replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
           <button onclick="disqualifyLead('${t.id}', '${t.name}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Disqualify lead">✕</button>
           <button onclick="updateTargetStatus('${t.id}', 'connection_req')" style="padding:4px 8px;background:${t.status === 'connection_req' ? 'var(--green)' : 'var(--muted)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;font-weight:600;" title="Mark as connection request sent">${t.status === 'connection_req' ? '✓ Sent' : '→ Send'}</button>
         </td>
