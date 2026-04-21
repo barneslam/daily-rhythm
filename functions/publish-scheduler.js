@@ -6,6 +6,7 @@ const { createClient } = require("@supabase/supabase-js");
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
 const BLOTATO_URL = "https://backend.blotato.com/v2/posts";
+const SUPABASE_STORAGE_URL = `${process.env.SUPABASE_URL}/storage/v1/object/public/graphics`;
 
 const channelMap = {
   the_strategy_pitch: { linkedinPageId: "103704197" },
@@ -59,7 +60,8 @@ async function publishScheduledContent() {
   for (const draft of drafts) {
     const scheduledTime = `${today}T14:00:00Z`;
     const channel = channelMap[draft.channel] || {};
-    const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${today}`;
+    const graphicUrl = `${SUPABASE_STORAGE_URL}/${draft.channel}-${today}.png`;
+    const mediaUrls = [graphicUrl];
 
     const linkedinTarget = { targetType: "linkedin" };
     if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;
@@ -70,7 +72,7 @@ async function publishScheduledContent() {
       await blotatoPost(apiKey, {
         accountId: LINKEDIN_ACCOUNT_ID,
         target: linkedinTarget,
-        content: { text: draft.content, platform: "linkedin", mediaUrls: [] },
+        content: { text: draft.content, platform: "linkedin", mediaUrls },
         scheduledTime,
       });
       draftResults.push({ platform: "linkedin", status: "scheduled" });
@@ -82,7 +84,7 @@ async function publishScheduledContent() {
       await blotatoPost(apiKey, {
         accountId: INSTAGRAM_ACCOUNT_ID,
         target: { targetType: "instagram" },
-        content: { text: draft.content, platform: "instagram", mediaUrls: [] },
+        content: { text: draft.content, platform: "instagram", mediaUrls },
         scheduledTime,
       });
       draftResults.push({ platform: "instagram", status: "scheduled" });

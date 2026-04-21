@@ -11,6 +11,7 @@ const CORS = {
 };
 
 const BLOTATO_URL = 'https://backend.blotato.com/v2/posts';
+const SUPABASE_STORAGE_URL = `${process.env.SUPABASE_URL}/storage/v1/object/public/graphics`;
 
 const channelMap = {
   the_strategy_pitch: { linkedinPageId: '103704197' },
@@ -58,7 +59,8 @@ exports.handler = async (event) => {
       const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
       const scheduledTime = `${scheduleDate}T14:00:00Z`;
       const channel = channelMap[draft.channel] || {};
-      const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${scheduleDate}`;
+      const graphicUrl = `${SUPABASE_STORAGE_URL}/${draft.channel}-${scheduleDate}.png`;
+      const mediaUrls = [graphicUrl];
 
       const linkedinTarget = { targetType: 'linkedin' };
       if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;
@@ -69,7 +71,7 @@ exports.handler = async (event) => {
         await blotatoPost(apiKey, {
           accountId: LINKEDIN_ACCOUNT_ID,
           target: linkedinTarget,
-          content: { text: draft.content, platform: 'linkedin', mediaUrls: [] },
+          content: { text: draft.content, platform: 'linkedin', mediaUrls },
           scheduledTime,
         });
         draftResults.push({ platform: 'linkedin', status: 'scheduled' });
@@ -81,7 +83,7 @@ exports.handler = async (event) => {
         await blotatoPost(apiKey, {
           accountId: INSTAGRAM_ACCOUNT_ID,
           target: { targetType: 'instagram' },
-          content: { text: draft.content, platform: 'instagram', mediaUrls: [] },
+          content: { text: draft.content, platform: 'instagram', mediaUrls },
           scheduledTime,
         });
         draftResults.push({ platform: 'instagram', status: 'scheduled' });
