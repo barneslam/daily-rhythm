@@ -52,7 +52,7 @@ exports.handler = async (event) => {
     const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
     const scheduledTime = `${scheduleDate}T14:00:00Z`;
     const channel = channelMap[draft.channel] || {};
-    const graphicUrl = `${SUPABASE_STORAGE_URL}/${draft.channel}-${scheduleDate}.png`;
+    const graphicUrl = draft.graphic_url || `${SUPABASE_STORAGE_URL}/${draft.channel}-${scheduleDate}.png`;
     const mediaUrls = [graphicUrl];
     const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${scheduleDate}`;
 

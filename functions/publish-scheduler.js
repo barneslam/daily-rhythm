@@ -60,7 +60,7 @@ async function publishScheduledContent() {
   for (const draft of drafts) {
     const scheduledTime = `${today}T14:00:00Z`;
     const channel = channelMap[draft.channel] || {};
-    const graphicUrl = `${SUPABASE_STORAGE_URL}/${draft.channel}-${today}.png`;
+    const graphicUrl = draft.graphic_url || `${SUPABASE_STORAGE_URL}/${draft.channel}-${today}.png`;
     const mediaUrls = [graphicUrl];
 
     const linkedinTarget = { targetType: "linkedin" };
