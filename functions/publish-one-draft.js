@@ -10,18 +10,35 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
-const brandMap = {
-  the_strategy_pitch: 'The Strategy Pitch',
-  barneslam_co:       'BarnesLam.co',
-  axis_chamber:       'Axis Chamber',
+const BLOTATO_URL = 'https://backend.blotato.com/v2/posts';
+
+const channelMap = {
+  the_strategy_pitch: { linkedinPageId: '103704197' },
+  barneslam_co:       { linkedinPageId: null },
+  axis_chamber:       { linkedinPageId: '112398033' },
 };
+const LINKEDIN_ACCOUNT_ID = '17347';
+const INSTAGRAM_ACCOUNT_ID = '40098';
+
+async function blotatoPost(apiKey, payload) {
+  const res = await fetch(BLOTATO_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'blotato-api-key': apiKey },
+    body: JSON.stringify({ post: payload }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Blotato ${res.status}: ${err}`);
+  }
+  return res.json();
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: CORS };
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: 'Method not allowed' }) };
 
-  const blotatoKey = process.env.BLOTATO_API_KEY;
-  if (!blotatoKey) return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'BLOTATO_API_KEY not configured' }) };
+  const apiKey = process.env.BLOTATO_API_KEY;
+  if (!apiKey) return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'BLOTATO_API_KEY not configured' }) };
 
   try {
     const { draftId } = JSON.parse(event.body || '{}');
@@ -31,40 +48,54 @@ exports.handler = async (event) => {
       .from('gtm_drafts').select('*').eq('id', draftId).single();
     if (fetchErr || !draft) return { statusCode: 404, headers: CORS, body: JSON.stringify({ error: 'Draft not found' }) };
 
-    const brand = brandMap[draft.channel] || 'BarnesLam.co';
     const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
-
+    const scheduledTime = `${scheduleDate}T14:00:00Z`;
+    const channel = channelMap[draft.channel] || {};
     const graphicUrl = `https://daily-lead-gen-track.netlify.app/api/graphic-png?file=${draft.channel}-${scheduleDate}`;
 
-    const response = await fetch('https://api.blotato.com/v1/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${blotatoKey}`,
-      },
-      body: JSON.stringify({
-        platforms: ['linkedin', 'instagram'],
-        content: draft.content,
-        scheduled_at: `${scheduleDate}T14:00:00Z`,
-        brand,
-        media_urls: [graphicUrl],
-      }),
-    });
+    const linkedinTarget = { targetType: 'linkedin' };
+    if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;
 
-    if (!response.ok) {
-      const errText = await response.text();
-      throw new Error(`Blotato ${response.status}: ${errText}`);
+    const results = [];
+
+    // LinkedIn
+    try {
+      await blotatoPost(apiKey, {
+        accountId: LINKEDIN_ACCOUNT_ID,
+        target: linkedinTarget,
+        content: { text: draft.content, platform: 'linkedin', mediaUrls: [graphicUrl] },
+        scheduledTime,
+      });
+      results.push({ platform: 'linkedin', status: 'scheduled' });
+    } catch (err) {
+      results.push({ platform: 'linkedin', status: 'failed', error: err.message });
     }
 
-    await supabase
-      .from('gtm_drafts')
-      .update({ status: 'published', updated_at: new Date().toISOString() })
-      .eq('id', draft.id);
+    // Instagram
+    try {
+      await blotatoPost(apiKey, {
+        accountId: INSTAGRAM_ACCOUNT_ID,
+        target: { targetType: 'instagram' },
+        content: { text: draft.content, platform: 'instagram', mediaUrls: [graphicUrl] },
+        scheduledTime,
+      });
+      results.push({ platform: 'instagram', status: 'scheduled' });
+    } catch (err) {
+      results.push({ platform: 'instagram', status: 'failed', error: err.message });
+    }
+
+    const anySuccess = results.some(r => r.status === 'scheduled');
+    if (anySuccess) {
+      await supabase
+        .from('gtm_drafts')
+        .update({ status: 'published', updated_at: new Date().toISOString() })
+        .eq('id', draft.id);
+    }
 
     return {
       statusCode: 200,
       headers: CORS,
-      body: JSON.stringify({ success: true, channel: draft.channel, scheduled: `${scheduleDate}T14:00:00Z` })
+      body: JSON.stringify({ success: anySuccess, channel: draft.channel, scheduled: scheduledTime, results })
     };
   } catch (err) {
     return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message }) };
