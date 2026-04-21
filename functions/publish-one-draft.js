@@ -43,7 +43,7 @@ exports.handler = async (event) => {
     };
     if (channel.pageId) payload.pageId = channel.pageId;
 
-    const response = await fetch('https://backend.blotato.com/posts', {
+    const response = await fetch('https://backend.blotato.com/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
