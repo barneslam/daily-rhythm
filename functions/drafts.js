@@ -23,7 +23,7 @@ exports.handler = async (event) => {
 
     if (error) throw error;
 
-    const pending = data.filter(d => d.status === 'pending_approval');
+    const pending = data.filter(d => d.status === 'pending' || d.status === 'pending_approval');
     const approved = data.filter(d => d.status === 'approved');
     const published = data.filter(d => d.status === 'published');
 
