@@ -210,7 +210,7 @@
 
   <div class="tabs">
     <div class="tab active" data-panel="dashboard">Dashboard</div>
-    <div class="tab" data-panel="targets">Targets (58)</div>
+    <div class="tab" data-panel="targets" id="tab-targets">Targets</div>
     <div class="tab" data-panel="leads">Lead Pipeline</div>
     <div class="tab" data-panel="dms">DM Pipeline</div>
     <div class="tab" data-panel="content">Content</div>
@@ -692,6 +692,7 @@ async function load() {
   // Targets Table (DYNAMIC COUNT - UPDATES AS NEW LEADS FOUND) - Sort by confidence highest to lowest
   let targets = targetsRes.targets || [];
   window.lastLeadCount = targets.length;
+  document.getElementById('tab-targets').textContent = `Targets (${targets.length})`;
 
   // Populate Connection Queue (leads you've sent connection requests to)
   await populateConnectionQueue(targets);
@@ -1897,6 +1898,7 @@ setInterval(() => {
         if (metricsEl && metricsEl.textContent.includes('Total Leads')) {
           console.log(`🆕 New leads found! Updated from ${window.lastLeadCount} → ${newCount}`);
           window.lastLeadCount = newCount;
+          document.getElementById('tab-targets').textContent = `Targets (${newCount})`;
           // Reload to show new leads
           setTimeout(() => location.reload(), 1000);
         }
