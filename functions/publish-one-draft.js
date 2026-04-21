@@ -9,10 +9,10 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
-const channelMap = {
-  the_strategy_pitch: { accountId: '17347', pageId: '103704197' },
-  barneslam_co:       { accountId: '17347', pageId: null },
-  axis_chamber:       { accountId: '17347', pageId: '112398033' },
+const brandMap = {
+  the_strategy_pitch: 'The Strategy Pitch',
+  barneslam_co:       'BarnesLam.co',
+  axis_chamber:       'Axis Chamber',
 };
 
 exports.handler = async (event) => {
@@ -30,26 +30,21 @@ exports.handler = async (event) => {
       .from('gtm_drafts').select('*').eq('id', draftId).single();
     if (fetchErr || !draft) return { statusCode: 404, headers: CORS, body: JSON.stringify({ error: 'Draft not found' }) };
 
-    const channel = channelMap[draft.channel] || { accountId: '17347', pageId: null };
+    const brand = brandMap[draft.channel] || 'BarnesLam.co';
     const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
 
-    // 9 AM EST = 14:00 UTC
-    const payload = {
-      accountId: channel.accountId,
-      platform: 'linkedin',
-      text: draft.content,
-      scheduledTime: `${scheduleDate}T14:00:00Z`,
-      mediaUrls: [],
-    };
-    if (channel.pageId) payload.pageId = channel.pageId;
-
-    const response = await fetch('https://backend.blotato.com/api/posts', {
+    const response = await fetch('https://api.blotato.com/v1/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'blotato-api-key': blotatoKey,
+        'Authorization': `Bearer ${blotatoKey}`,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        platforms: ['linkedin'],
+        content: draft.content,
+        scheduled_at: `${scheduleDate}T14:00:00Z`,
+        brand,
+      }),
     });
 
     if (!response.ok) {
