@@ -99,9 +99,11 @@ async function run(weekStart) {
       console.log(`  Generating ${slot.channel} for ${draft_date}...`);
       const content = await generatePost(slot.channel);
 
+      const title = content.split('\n').find(l => l.trim())?.slice(0, 80) || '';
       const { error } = await supabase.from('gtm_drafts').insert({
         channel: slot.channel,
         draft_date,
+        title,
         content,
         status: 'pending',
         created_at: new Date().toISOString(),

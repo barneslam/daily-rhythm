@@ -906,7 +906,10 @@ async function load() {
   let draftsHTML = '';
   if (pendingDrafts.length > 0) {
     draftsHTML += `<div class="card" style="border-left: 3px solid var(--orange); margin-bottom: 16px;">
-      <h3 style="margin-top: 0; color: var(--orange);">⏳ PENDING APPROVAL (${pendingDrafts.length})</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3 style="margin: 0; color: var(--orange);">⏳ PENDING APPROVAL (${pendingDrafts.length})</h3>
+        ${pendingDrafts.some(d => !d.graphic_url) ? `<button onclick="generateAllGraphics()" style="padding:6px 12px;background:var(--accent);color:white;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-weight:600;">⚡ Generate All Graphics</button>` : ''}
+      </div>
       ${pendingDrafts.map(d => {
         const graphicUrl = '/graphics/' + d.channel + '-' + d.draft_date + '.html';
         const graphicThumb = d.graphic_url
@@ -922,7 +925,7 @@ async function load() {
           </div>
           <div style="flex: 1; padding: 14px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+              <div style="font-weight: 600; font-size: 13px;">${d.title || (d.content || '').split('\n').find(l => l.trim()) || 'Untitled'}</div>
               <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
             </div>
             <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--orange); white-space: pre-wrap; word-break: break-word; max-height: 160px; overflow-y: auto; margin-bottom: 10px;">${d.content || '(empty)'}</div>
@@ -960,7 +963,7 @@ async function load() {
           <!-- Post content -->
           <div style="flex: 1; padding: 14px; display: flex; flex-direction: column; min-width: 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div style="font-weight: 600; font-size: 13px;">${d.title || 'Untitled'}</div>
+              <div style="font-weight: 600; font-size: 13px;">${d.title || (d.content || '').split('\n').find(l => l.trim()) || 'Untitled'}</div>
               <div style="font-size: 11px; color: var(--muted);">${d.draft_date} · ${d.channel}</div>
             </div>
             <div style="font-size: 12px; color: var(--text); padding: 10px; background: white; border-radius: 4px; border-left: 3px solid var(--green); white-space: pre-wrap; word-break: break-word; max-height: 180px; overflow-y: auto; margin-bottom: 10px; flex: 1;">${d.content || '(empty)'}</div>
@@ -1512,6 +1515,31 @@ async function rejectDraftPost(draftId) {
   } catch (e) {
     alert('Error: ' + e.message);
   }
+}
+
+async function generateAllGraphics() {
+  const btn = event.target;
+  btn.textContent = '⏳ Generating...';
+  btn.disabled = true;
+  const missingIds = Array.from(document.querySelectorAll('[data-draft-id][data-no-graphic]')).map(el => el.dataset.draftId);
+  // Fallback: re-load pending drafts from API and generate for those without graphic_url
+  const draftsData = await fetch('/api/drafts').then(r => r.json()).catch(() => ({}));
+  const pending = draftsData.pending || [];
+  const toGenerate = pending.filter(d => !d.graphic_url);
+  let done = 0;
+  for (const d of toGenerate) {
+    btn.textContent = `⏳ ${done + 1}/${toGenerate.length}...`;
+    try {
+      await fetch('/api/render-graphic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ draftId: d.id })
+      });
+    } catch (e) { console.error('graphic gen failed for', d.id, e); }
+    done++;
+  }
+  btn.textContent = '✓ Done';
+  setTimeout(() => load(), 800);
 }
 
 async function retryPublish(draftId, btn) {
