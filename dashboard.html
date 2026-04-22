@@ -344,6 +344,10 @@
 
   <!-- LOGS -->
   <div class="panel" id="logs">
+    <div class="card" id="publish-failures-card" style="border-left:3px solid var(--red);margin-bottom:16px;display:none;">
+      <h3 style="margin-top:0;color:var(--red);">✗ PUBLISH FAILURES</h3>
+      <div id="publish-failures-list"></div>
+    </div>
     <div class="card">
       <h2>DAILY LOGS</h2>
       <div id="log-dates" style="margin-bottom: 16px;"></div>
@@ -1099,6 +1103,25 @@ async function load() {
 
   document.getElementById('content-list').innerHTML = contentHTML;
 
+  // Publish failures
+  const failedDrafts = [...(draftsRes.pending||[]), ...(draftsRes.approved||[]), ...(draftsRes.published||[])]
+    .filter(d => d.publish_error);
+  const failCard = document.getElementById('publish-failures-card');
+  const failList = document.getElementById('publish-failures-list');
+  if (failedDrafts.length > 0) {
+    failCard.style.display = 'block';
+    failList.innerHTML = failedDrafts.map(d => `
+      <div style="border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <strong style="font-size:13px;">${d.draft_date} · ${d.channel}</strong>
+          <button onclick="retryPublish(${d.id},this)" style="padding:4px 10px;background:var(--orange);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;">🔄 Retry</button>
+        </div>
+        <div style="font-size:11px;color:var(--red);background:#1a0a0a;padding:8px;border-radius:4px;word-break:break-all;">${d.publish_error}</div>
+      </div>`).join('');
+  } else {
+    failCard.style.display = 'none';
+  }
+
   // Logs
   document.getElementById('log-dates').innerHTML = logsRes.map(d =>
     `<button class="btn" onclick="loadLog('${d}')" style="margin: 2px;">${d}</button>`
@@ -1458,6 +1481,10 @@ async function rejectDraftPost(draftId) {
   } catch (e) {
     alert('Error: ' + e.message);
   }
+}
+
+async function retryPublish(draftId, btn) {
+  await publishOneDraft(draftId, btn);
 }
 
 async function publishOneDraft(draftId, btn) {

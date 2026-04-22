@@ -87,15 +87,25 @@ exports.handler = async (event) => {
     }
 
     const anySuccess = results.some(r => r.status === 'scheduled');
+    const allFailed = results.every(r => r.status === 'failed');
+    const failedPlatforms = results.filter(r => r.status === 'failed').map(r => `${r.platform}: ${r.error}`).join(' | ');
+
+    const updateFields = { updated_at: new Date().toISOString(), publish_attempted_at: new Date().toISOString() };
     if (anySuccess) {
-      await supabase
-        .from('gtm_drafts')
-        .update({ status: 'published', updated_at: new Date().toISOString() })
-        .eq('id', draft.id);
+      updateFields.status = 'published';
+      updateFields.publish_error = null;
+    }
+    if (allFailed) {
+      updateFields.status = 'publish_failed';
+      updateFields.publish_error = failedPlatforms;
+    } else if (failedPlatforms) {
+      updateFields.publish_error = failedPlatforms;
     }
 
+    await supabase.from('gtm_drafts').update(updateFields).eq('id', draft.id);
+
     return {
-      statusCode: 200,
+      statusCode: anySuccess ? 200 : 502,
       headers: CORS,
       body: JSON.stringify({ success: anySuccess, channel: draft.channel, scheduled: scheduledTime, results })
     };
