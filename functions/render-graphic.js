@@ -12,6 +12,28 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
+const TOPIC_KEYWORDS = {
+  the_strategy_pitch: 'business strategy boardroom',
+  barneslam_co: 'leadership executive office',
+  axis_chamber: 'team performance collaboration',
+};
+
+async function getUnsplashPhoto(query) {
+  const key = process.env.UNSPLASH_ACCESS_KEY;
+  if (!key) return null;
+  try {
+    const res = await fetch(
+      `https://api.unsplash.com/photos/random?query=${encodeURIComponent(query)}&orientation=landscape&content_filter=high`,
+      { headers: { Authorization: `Client-ID ${key}` } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.urls?.regular || null;
+  } catch {
+    return null;
+  }
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: CORS };
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers: CORS, body: '{}' };
@@ -28,6 +50,9 @@ exports.handler = async (event) => {
 
     if (error || !draft) throw new Error(error?.message || 'Draft not found');
 
+    const query = TOPIC_KEYWORDS[draft.channel] || 'professional business';
+    const photoUrl = await getUnsplashPhoto(query);
+
     const res = await fetch(
       `${process.env.SUPABASE_URL}/functions/v1/render-graphic`,
       {
@@ -42,6 +67,7 @@ exports.handler = async (event) => {
           channel: draft.channel,
           draft_date: draft.draft_date,
           content: draft.content,
+          photoUrl,
         }),
       }
     );
