@@ -727,13 +727,13 @@ async function load() {
     { score: 60, label: 'Low Confidence', class: 'low' }
   ];
 
+  const firstNonEmptyIdx = confidenceLevels.findIndex(l => (grouped[l.score] || []).length > 0);
   const targetListHTML = confidenceLevels.map((level, idx) => {
     const levelTargets = grouped[level.score] || [];
     if (levelTargets.length === 0) return '';
 
     const sectionId = `section-${level.score}`;
-    const isFirst = idx === 0;
-    const isOpen = isFirst; // Open HIGH confidence by default
+    const isOpen = idx === firstNonEmptyIdx;
 
     const signalTargets = levelTargets.filter(t => t.signal);
     const noSignalCount = levelTargets.length - signalTargets.length;
