@@ -24,17 +24,20 @@ function extractKeyword(content, channel) {
   return top.length > 0 ? top.slice(0, 2).join(' ') : (fallbacks[channel] || 'professional business');
 }
 
-async function getUnsplashPhoto(query) {
+async function getUnsplashPhoto(query, usedIds = []) {
   const key = process.env.UNSPLASH_ACCESS_KEY;
   if (!key) return null;
   try {
     const res = await fetch(
-      `https://api.unsplash.com/photos/random?query=${encodeURIComponent(query)}&orientation=landscape&content_filter=high`,
+      `https://api.unsplash.com/photos/random?query=${encodeURIComponent(query)}&orientation=landscape&content_filter=high&count=10`,
       { headers: { Authorization: `Client-ID ${key}` } }
     );
     if (!res.ok) return null;
-    const data = await res.json();
-    return data.urls?.regular || null;
+    const photos = await res.json();
+    const list = Array.isArray(photos) ? photos : [photos];
+    const pick = list.find(p => !usedIds.includes(p.id)) || list[0];
+    if (!pick) return null;
+    return { url: pick.urls?.regular || null, id: pick.id };
   } catch {
     return null;
   }
@@ -56,8 +59,21 @@ exports.handler = async (event) => {
 
     if (error || !draft) throw new Error(error?.message || 'Draft not found');
 
+    // Fetch all previously used Unsplash photo IDs to avoid duplicates
+    const { data: usedRows } = await supabase
+      .from('gtm_drafts')
+      .select('unsplash_photo_id')
+      .not('unsplash_photo_id', 'is', null);
+    const usedIds = (usedRows || []).map(r => r.unsplash_photo_id).filter(Boolean);
+
     const query = extractKeyword(draft.content || '', draft.channel);
-    const photoUrl = await getUnsplashPhoto(query);
+    const photo = await getUnsplashPhoto(query, usedIds);
+    const photoUrl = photo?.url || null;
+
+    // Save chosen photo ID to the draft before rendering
+    if (photo?.id) {
+      await supabase.from('gtm_drafts').update({ unsplash_photo_id: photo.id }).eq('id', draftId);
+    }
 
     const res = await fetch(
       `${process.env.SUPABASE_URL}/functions/v1/render-graphic`,
