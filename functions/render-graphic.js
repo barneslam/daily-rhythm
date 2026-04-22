@@ -21,7 +21,8 @@ function extractKeyword(content, channel) {
   const freq = {};
   words.forEach(w => freq[w] = (freq[w] || 0) + 1);
   const top = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 3).map(e => e[0]);
-  return top.length > 0 ? top.slice(0, 2).join(' ') : (fallbacks[channel] || 'professional business');
+  const keyword = top.length > 0 ? top.slice(0, 1).join(' ') : (fallbacks[channel] || 'business');
+  return `business professional people ${keyword}`;
 }
 
 async function getUnsplashPhoto(query, usedIds = []) {

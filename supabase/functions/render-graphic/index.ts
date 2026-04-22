@@ -55,9 +55,9 @@ function generateSVG(channel: string, content: string, photoDataUri: string | nu
     return `<svg viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
   <defs>
     <linearGradient id="overlay" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#000000" stop-opacity="0.82"/>
-      <stop offset="55%" stop-color="#000000" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.10"/>
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.72"/>
+      <stop offset="50%" stop-color="#000000" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.05"/>
     </linearGradient>
   </defs>
   <image href="${photoDataUri}" x="0" y="0" width="1200" height="628" preserveAspectRatio="xMidYMid slice"/>
