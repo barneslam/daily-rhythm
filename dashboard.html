@@ -905,10 +905,16 @@ async function load() {
       <h3 style="margin-top: 0; color: var(--orange);">⏳ PENDING APPROVAL (${pendingDrafts.length})</h3>
       ${pendingDrafts.map(d => {
         const graphicUrl = '/graphics/' + d.channel + '-' + d.draft_date + '.html';
+        const graphicThumb = d.graphic_url
+          ? `<img src="${d.graphic_url}" style="width:100%;height:auto;display:block;" />`
+          : `<div style="width:100%;height:114px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#666;font-size:11px;">
+               <div>No graphic yet</div>
+               <button onclick="generateGraphic(${d.id})" style="padding:4px 10px;background:var(--accent);color:white;border:none;border-radius:3px;font-size:10px;cursor:pointer;">⚡ Generate</button>
+             </div>`;
         return `<div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; display: flex; gap: 0;">
-          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="window.open('${graphicUrl}', '_blank')" title="Click to open full graphic">
-            <iframe src="${graphicUrl}" style="width: 1200px; height: 628px; transform: scale(0.183); transform-origin: top left; pointer-events: none; border: none;" scrolling="no"></iframe>
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open</div>
+          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="${d.graphic_url ? `window.open('${d.graphic_url}','_blank')` : ''}" title="Graphic preview">
+            ${graphicThumb}
+            ${d.graphic_url ? `<div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open</div>` : ''}
           </div>
           <div style="flex: 1; padding: 14px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -934,12 +940,18 @@ async function load() {
       </div>
       ${approvedDrafts.map(d => {
         const graphicUrl = '/graphics/' + d.channel + '-' + d.draft_date + '.html';
+        const graphicThumb = d.graphic_url
+          ? `<img src="${d.graphic_url}" style="width:100%;height:auto;display:block;" />`
+          : `<div style="width:100%;height:114px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#666;font-size:11px;">
+               <div>No graphic yet</div>
+               <button onclick="generateGraphic(${d.id})" style="padding:4px 10px;background:var(--accent);color:white;border:none;border-radius:3px;font-size:10px;cursor:pointer;">⚡ Generate</button>
+             </div>`;
         return `
         <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: var(--bg-secondary); display: flex; gap: 0;">
           <!-- Graphic thumbnail -->
-          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="window.open('${graphicUrl}', '_blank')" title="Click to open full graphic">
-            <iframe src="${graphicUrl}" style="width: 1200px; height: 628px; transform: scale(0.183); transform-origin: top left; pointer-events: none; border: none;" scrolling="no"></iframe>
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open · Download inside</div>
+          <div style="width: 220px; min-width: 220px; background: #0d0f1a; position: relative; overflow: hidden; cursor: pointer;" onclick="${d.graphic_url ? `window.open('${d.graphic_url}','_blank')` : ''}" title="Graphic preview">
+            ${graphicThumb}
+            ${d.graphic_url ? `<div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; text-align: center; padding: 4px; font-family: system-ui;">🖼 Click to open · Download inside</div>` : ''}
           </div>
           <!-- Post content -->
           <div style="flex: 1; padding: 14px; display: flex; flex-direction: column; min-width: 0;">
@@ -1373,6 +1385,31 @@ async function approveDraftPost(draftId) {
     }
   } catch (e) {
     alert('Error: ' + e.message);
+  }
+}
+
+async function generateGraphic(draftId) {
+  const btn = event.target;
+  btn.textContent = '⏳ Generating...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/render-graphic', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ draftId })
+    });
+    const result = await res.json();
+    if (res.ok && result.graphic_url) {
+      btn.textContent = '✓ Done';
+      setTimeout(() => load(), 800);
+    } else {
+      btn.textContent = '✗ Failed';
+      btn.disabled = false;
+      console.error('Graphic gen error:', result);
+    }
+  } catch (err) {
+    btn.textContent = '✗ Error';
+    btn.disabled = false;
   }
 }
 
