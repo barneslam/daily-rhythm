@@ -1826,7 +1826,7 @@ const statusTransitions = {
 };
 
 function updateTargetStatus(targetId, newStatus) {
-  fetch('/api/lead/update-status', {
+  fetch('/api/lead-update-status', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ leadId: targetId, status: newStatus })
@@ -1975,7 +1975,7 @@ function regenerateMessage(leadId, leadName, regenNotes, theirResponse) {
 }
 
 function updateLeadStatus(leadId, newStatus) {
-  fetch('/api/lead/update-status', {
+  fetch('/api/lead-update-status', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ leadId, status: newStatus })
@@ -2000,7 +2000,7 @@ function disqualifyLead(leadId, leadName) {
 
 function sendConnectionMessage(leadId, leadName) {
   if (confirm(`Send message to ${leadName}? This will update their status to "Connection Request".`)) {
-    fetch('/api/lead/update-status', {
+    fetch('/api/lead-update-status', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ leadId, status: 'connection_req' })
@@ -2091,7 +2091,7 @@ function toggleCardDetails(event, leadId) {
 
 async function updateLeadStatus(leadId, newStatus) {
   try {
-    const response = await fetch('/api/lead/update-status', {
+    const response = await fetch('/api/lead-update-status', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ leadId, status: newStatus })
