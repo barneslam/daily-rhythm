@@ -12,11 +12,17 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type'
 };
 
-const TOPIC_KEYWORDS = {
-  the_strategy_pitch: 'business strategy boardroom',
-  barneslam_co: 'leadership executive office',
-  axis_chamber: 'team performance collaboration',
-};
+const STOP_WORDS = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','may','might','not','no','so','if','as','it','its','this','that','they','them','their','we','our','you','your','i','my','me','he','she','his','her','who','which','when','where','what','how','all','most','more','very','just','also','than','then','there','here','up','out','about','into','over','after','before','because','while','though','even']);
+
+function extractKeyword(content, channel) {
+  const fallbacks = { the_strategy_pitch: 'business strategy', barneslam_co: 'executive leadership', axis_chamber: 'team performance' };
+  const words = content.toLowerCase().replace(/[^a-z\s]/g, ' ').split(/\s+/)
+    .filter(w => w.length > 4 && !STOP_WORDS.has(w));
+  const freq = {};
+  words.forEach(w => freq[w] = (freq[w] || 0) + 1);
+  const top = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 3).map(e => e[0]);
+  return top.length > 0 ? top.slice(0, 2).join(' ') : (fallbacks[channel] || 'professional business');
+}
 
 async function getUnsplashPhoto(query) {
   const key = process.env.UNSPLASH_ACCESS_KEY;
@@ -50,7 +56,7 @@ exports.handler = async (event) => {
 
     if (error || !draft) throw new Error(error?.message || 'Draft not found');
 
-    const query = TOPIC_KEYWORDS[draft.channel] || 'professional business';
+    const query = extractKeyword(draft.content || '', draft.channel);
     const photoUrl = await getUnsplashPhoto(query);
 
     const res = await fetch(

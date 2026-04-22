@@ -145,7 +145,7 @@ serve(async (req) => {
     });
     const png = resvg.render().asPng();
 
-    const fileName = `${channel}-${draft_date || new Date().toISOString().split('T')[0]}.png`;
+    const fileName = `${channel}-${draft_date || new Date().toISOString().split('T')[0]}-${draftId}.png`;
     const { error: uploadErr } = await supabase.storage
       .from('graphics')
       .upload(fileName, png, { contentType: 'image/png', upsert: true });
