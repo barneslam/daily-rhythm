@@ -42,10 +42,13 @@ exports.handler = async (event) => {
   if (!apiKey) return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'BLOTATO_API_KEY not configured' }) };
 
   try {
+    const today = new Date().toISOString().split('T')[0];
+
     const { data: drafts, error } = await supabase
       .from('gtm_drafts')
       .select('*')
       .eq('status', 'approved')
+      .lte('draft_date', today)
       .order('draft_date', { ascending: true });
 
     if (error) throw error;
