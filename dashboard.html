@@ -976,15 +976,46 @@ async function load() {
   }
 
   if (publishedDrafts.length > 0) {
-    draftsHTML += `<div class="card" style="border-left: 3px solid var(--green); margin-bottom: 16px;">
-      <h3 style="color: var(--green); margin-top: 0;">✓ PUBLISHED (${publishedDrafts.length})</h3>
-      ${publishedDrafts.map(d => `
-        <div style="border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 12px; background: var(--bg-secondary);">
-          <div style="font-weight: 600; margin-bottom: 4px;">${d.title || 'Untitled'}</div>
-          <div style="font-size: 11px; color: var(--green); margin-bottom: 8px;">✓ Published · ${d.channel}</div>
-          <div style="font-size: 11px; color: var(--muted);">${d.draft_date}</div>
-        </div>
-      `).join('')}
+    // Build calendar view grouped by week
+    const byDate = {};
+    publishedDrafts.forEach(d => { byDate[d.draft_date] = byDate[d.draft_date] || []; byDate[d.draft_date].push(d); });
+    const allDates = Object.keys(byDate).sort();
+    const minDate = new Date(allDates[0]);
+    const maxDate = new Date(allDates[allDates.length - 1]);
+    // Find the Monday of the first week and Sunday of last week
+    const startMonday = new Date(minDate);
+    startMonday.setDate(minDate.getDate() - ((minDate.getDay() + 6) % 7));
+    const endSunday = new Date(maxDate);
+    endSunday.setDate(maxDate.getDate() + (7 - maxDate.getDay()) % 7);
+    const channelColors = { the_strategy_pitch: '#2563eb', barneslam_co: '#c9a84c', axis_chamber: '#16a34a' };
+    const channelShort = { the_strategy_pitch: 'SP', barneslam_co: 'BL', axis_chamber: 'AC' };
+    const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    let calRows = '';
+    let cur = new Date(startMonday);
+    while (cur <= endSunday) {
+      let cells = '';
+      for (let i = 0; i < 7; i++) {
+        const key = cur.toISOString().split('T')[0];
+        const posts = byDate[key] || [];
+        const isToday = key === new Date().toISOString().split('T')[0];
+        const isPast = cur < new Date(new Date().toISOString().split('T')[0]);
+        cells += `<td style="border:1px solid var(--border);padding:6px;vertical-align:top;min-height:70px;width:14.28%;background:${isToday ? 'rgba(37,99,235,0.08)' : isPast ? 'var(--surface)' : 'var(--bg)'};border-radius:4px;">
+          <div style="font-size:11px;font-weight:${isToday?'700':'400'};color:${isToday?'var(--blue)':'var(--muted)'};margin-bottom:4px;">${cur.getDate()}</div>
+          ${posts.map(p => `<div style="background:${channelColors[p.channel]||'#666'};color:white;border-radius:3px;padding:2px 5px;font-size:10px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${p.channel}">✓ ${channelShort[p.channel]||p.channel}</div>`).join('')}
+        </td>`;
+        cur.setDate(cur.getDate() + 1);
+      }
+      calRows += `<tr>${cells}</tr>`;
+    }
+    draftsHTML += `<div class="card" style="border-left:3px solid var(--green);margin-bottom:16px;">
+      <h3 style="color:var(--green);margin-top:0;">✓ PUBLISHED (${publishedDrafts.length})</h3>
+      <table style="width:100%;border-collapse:separate;border-spacing:4px;">
+        <thead><tr>${days.map(d=>`<th style="font-size:11px;color:var(--muted);text-align:center;padding:4px;font-weight:600;">${d}</th>`).join('')}</tr></thead>
+        <tbody>${calRows}</tbody>
+      </table>
+      <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;font-size:11px;">
+        ${Object.entries(channelColors).map(([k,c])=>`<span><span style="display:inline-block;width:10px;height:10px;background:${c};border-radius:2px;margin-right:4px;"></span>${channelShort[k]} ${k.replace(/_/g,' ')}</span>`).join('')}
+      </div>
     </div>`;
   }
 
