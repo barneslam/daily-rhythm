@@ -70,8 +70,8 @@ Write the post body only.`,
   return msg.content[0].text.trim();
 }
 
-async function run() {
-  const nextMonday = getNextMonday();
+async function run(weekStart) {
+  const nextMonday = weekStart ? new Date(weekStart) : getNextMonday();
   console.log(`📅 Generating content for week of ${formatDate(nextMonday)}`);
 
   const results = [];
@@ -122,4 +122,7 @@ async function run() {
   return { statusCode: 200, body: JSON.stringify({ week: formatDate(nextMonday), results }) };
 }
 
-exports.handler = async () => run();
+exports.handler = async (event) => {
+  const body = event.body ? JSON.parse(event.body) : {};
+  return run(body.weekStart);
+};
