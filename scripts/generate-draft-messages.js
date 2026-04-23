@@ -154,55 +154,68 @@ function observationParagraph(target) {
   }
 }
 
-// ─── Para 2: What Barnes is building ─────────────────────────────────────────
+// ─── Para 2: What Barnes is working on ───────────────────────────────────────
 
 function buildingParagraph(target) {
   const p2 = para2Type(target.signal || '', target.business || '');
-  const co = companyName(target.business);
   const aud = audienceType(target.signal || '', target.business || '');
+  const signal = (target.signal || '').toLowerCase();
+  const biz = (target.business || '').toLowerCase();
 
   switch (p2) {
     case 'axis_chamber':
-      return `I'm building Axis Chamber — a private forum for board directors and operating partners focused on aligning executive decision-making with real performance outcomes.`;
+      return `I'm working on bringing together board directors and senior operating partners for direct, candid dialogue on where governance actually meets commercial performance — less conference format, more real exchange between people who've been in the seat.`;
 
     case 'strategy_pitch':
       if (aud === 'revenue_leader') {
-        return `I run The Strategy Pitch — a commercial pressure-test for revenue leaders. One structured session that surfaces where the GTM architecture breaks down between strategy and what the team actually executes, and what to do about it.`;
+        return `I'm working with revenue leaders on closing the gap between what the GTM strategy says and what the team actually executes — recently focused on where that breakdown happens in sequencing decisions, pipeline architecture, and how commercial leaders communicate priorities down the org.`;
       }
-      return `I run The Strategy Pitch — a structured commercial review for executives navigating transformation, a new seat, or a growth inflection. One session that identifies the real constraints between strategy and execution, and builds the model to close them.`;
+      if (aud === 'new_exec') {
+        return `I'm working with executives in new seats on building the execution model that makes their strategic direction actually stick — the daily operating rhythm, the GTM architecture, and the decisions that need to be made in the first 90 days before the org adapts around the old way of doing things.`;
+      }
+      return `I'm working with operators on the gap between commercial strategy and what actually gets executed — recently been deep on how GTM architecture breaks down at inflection points and what it takes to rebuild it without losing momentum.`;
 
     case 'barnes_lam':
     default:
-      if (aud === 'founder') {
-        return `At barneslam.co, I work with founders to fix broken GTM and turn strategy into revenue — specifically the point where the commercial model needs to be rebuilt, not just optimized.`;
+      if (/ai|saas|tech|software|platform|agentic|automation/i.test(signal + ' ' + biz)) {
+        return `I'm working with founders on building AI-driven GTM systems — recently been designing execution layers that connect pipeline signals, engagement data, and agentic workflows so the commercial motion actually compounds instead of stalling after initial traction.`;
       }
-      return `At barneslam.co, I help operators fix broken GTM and turn strategy into revenue — specifically the execution gap where positioning, pipeline, and daily rhythm break down despite solid product-market fit.`;
+      if (aud === 'founder') {
+        return `I'm working with founders on rebuilding GTM from the commercial layer up — positioning, pipeline architecture, and the daily rhythm that turns a working offer into predictable revenue rather than a series of one-off wins.`;
+      }
+      return `I'm working with operators on the layer between strategy and revenue — where positioning drifts, pipeline stalls, and the daily machine needs to be rebuilt rather than just optimized. Seeing a consistent gap between what operators know they should do and the system that actually does it.`;
   }
 }
 
-// ─── Para 3: Why connect ──────────────────────────────────────────────────────
+// ─── Para 3: Observation + close ─────────────────────────────────────────────
 
 function connectParagraph(target) {
   const p2 = para2Type(target.signal || '', target.business || '');
   const aud = audienceType(target.signal || '', target.business || '');
+  const signal = (target.signal || '').toLowerCase();
+  const biz = (target.business || '').toLowerCase();
   const co = companyName(target.business);
   const coSafe = (!co || co.length < 3 || co === 'your company') ? 'the company' : co;
 
-  if (p2 === 'axis_chamber') {
-    if (aud === 'board') return `Given your work at that level, I'd value connecting and exchanging perspectives.`;
-    if (aud === 'coach_consultant') return `Given your work developing leaders at that level, I'd value connecting and exchanging perspectives.`;
-    return `Given where you sit, I'd value connecting and comparing notes on what's actually moving the needle.`;
+  // Observation line varies by context
+  let observation;
+  if (/ai|agentic|automation|llm|gpt/i.test(signal + ' ' + biz)) {
+    observation = `Seeing a clear gap between AI tools and real execution systems.`;
+  } else if (p2 === 'axis_chamber') {
+    observation = `The distance between a board conversation and what the team actually executes the next morning is where most strategic decisions get lost.`;
+  } else if (aud === 'new_exec') {
+    observation = `The execution model you inherit is almost never the one that fits where the company needs to go.`;
+  } else if (aud === 'revenue_leader') {
+    observation = `The gap between what a revenue strategy says and what the team actually runs on is rarely where people expect to find it.`;
+  } else if (aud === 'coach_consultant') {
+    observation = `The gap between what good frameworks say and what actually moves operators is something very few people are positioned to bridge.`;
+  } else if (aud === 'founder') {
+    observation = `The commercial layer is almost always where founder-built companies get stuck — not the product, not the market.`;
+  } else {
+    observation = `The gap between strategy and daily execution is rarely where people expect to find it.`;
   }
 
-  if (p2 === 'strategy_pitch') {
-    if (aud === 'new_exec') return `Given where you are in the ${coSafe} transition, I'd value connecting and comparing notes.`;
-    if (aud === 'revenue_leader') return `Given your mandate at ${coSafe}, I think there's a useful conversation to be had.`;
-    return `Given your work at ${coSafe}, I'd value connecting and exchanging perspectives.`;
-  }
-
-  // Barnes Lam
-  if (aud === 'founder') return `Given where you are in building ${coSafe}, I'd value connecting and exchanging what's actually working.`;
-  return `Given your work at ${coSafe}, I'd value connecting and exchanging perspectives.`;
+  return `${observation} Feels like there's real overlap with your work.\n\nWould be great to connect and exchange perspectives.`;
 }
 
 // ─── Assemble ─────────────────────────────────────────────────────────────────
@@ -211,7 +224,7 @@ function buildMessage(target) {
   const name = fullName(target.name);
   const p1 = observationParagraph(target);
   const p2 = buildingParagraph(target);
-  const p3 = connectParagraph(target);
+  const p3 = connectParagraph(target); // includes observation + close
   return `Hi ${name} —\n\n${p1}\n\n${p2}\n\n${p3}\n\n— Barnes`;
 }
 
