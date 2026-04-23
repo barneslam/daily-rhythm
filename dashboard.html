@@ -727,6 +727,10 @@ async function load() {
     { score: 60, label: 'Low Confidence', class: 'low' }
   ];
 
+  // Store messages in a map to avoid newlines/quotes breaking onclick attributes
+  window._targetMessages = {};
+  targets.forEach(t => { window._targetMessages[t.id] = t.draft_message || ''; });
+
   const firstNonEmptyIdx = confidenceLevels.findIndex(l => (grouped[l.score] || []).length > 0);
   const targetListHTML = confidenceLevels.map((level, idx) => {
     const levelTargets = grouped[level.score] || [];
@@ -752,7 +756,9 @@ async function load() {
       const nameStyle = isDisqualified
         ? 'color:var(--muted);text-decoration:line-through;font-size:12px;font-weight:600;'
         : 'color:var(--blue);text-decoration:none;font-size:12px;font-weight:600;';
-      const messageText = (t.draft_message || (t.draft_content && t.draft_content.linkedin_draft) || '').replace(/'/g, "\\'");
+      const safeId = t.id;
+      const safeName = (t.name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      const safeBiz = (t.business || '').replace(/'/g, "\\'");
 
       return `<tr class="target-row" style="border-bottom:1px solid var(--border);display:grid;grid-template-columns:50px 140px 1.5fr 130px 170px;gap:8px;padding:0 12px;align-items:center;${isDisqualified ? 'opacity:0.5;' : ''}">
         <td style="padding:8px;text-align:center;font-weight:600;color:${level.score === 90 ? 'var(--green)' : level.score === 80 ? '#d9a526' : level.score === 70 ? 'var(--accent)' : 'var(--red)'};">${confidenceScore}</td>
@@ -760,10 +766,10 @@ async function load() {
         <td style="padding:8px;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${(t.signal || '').replace(/"/g,'&quot;')}">${t.signal ? t.signal.substring(0, 80) + (t.signal.length > 80 ? '…' : '') : '—'}</td>
         <td style="padding:8px;text-align:center;">${statusSelect}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap;">
-          <button onclick="openMessageModal('${t.id}', '${t.name}', '${messageText}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
-          <button onclick="openRegenConnectModal('${t.id}', '${t.name}', '${(t.business || '').replace(/'/g, "\\'")}', '${messageText.replace(/'/g, "\\'")}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
-          <button onclick="disqualifyLead('${t.id}', '${t.name}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Disqualify lead">✕</button>
-          <button onclick="updateTargetStatus('${t.id}', 'connection_req')" style="padding:4px 8px;background:${t.status === 'connection_req' ? 'var(--green)' : 'var(--muted)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;font-weight:600;" title="Mark as connection request sent">${t.status === 'connection_req' ? '✓ Sent' : '→ Send'}</button>
+          <button onclick="openMessageModalById(${safeId}, '${safeName}', ${t.follow_ups || 0})" style="padding:2px 6px;background:var(--blue);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="View message">📨</button>
+          <button onclick="openRegenConnectModalById(${safeId}, '${safeName}', '${safeBiz}')" style="padding:2px 6px;background:${t.needs_regen ? 'var(--red)' : 'var(--accent)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Regenerate message">🔄</button>
+          <button onclick="disqualifyLead(${safeId}, '${safeName}')" style="padding:2px 6px;background:var(--red);color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;margin-right:4px;" title="Disqualify lead">✕</button>
+          <button onclick="updateTargetStatus(${safeId}, 'connection_req')" style="padding:4px 8px;background:${t.status === 'connection_req' ? 'var(--green)' : 'var(--muted)'};color:white;border:none;border-radius:2px;font-size:10px;cursor:pointer;font-weight:600;" title="Mark as connection request sent">${t.status === 'connection_req' ? '✓ Sent' : '→ Send'}</button>
         </td>
       </tr>`;
     }).join('');
@@ -1862,6 +1868,16 @@ function openStatusModal(leadId, currentStatus, leadName) {
 
 function closeStatusModal() {
   document.getElementById('statusModal').style.display = 'none';
+}
+
+function openMessageModalById(id, name, followUps) {
+  const msg = (window._targetMessages && window._targetMessages[id]) || '';
+  openMessageModal(id, name, msg, followUps);
+}
+
+function openRegenConnectModalById(id, name, company) {
+  const msg = (window._targetMessages && window._targetMessages[id]) || '';
+  openRegenConnectModal(id, name, company, msg);
 }
 
 function openMessageModal(leadId, leadName, draftMessage, followUps) {
