@@ -2416,97 +2416,60 @@ function populateDirectionPosts() {
 }
 
 // Populate Connection Queue in load() function
-async function populateConnectionQueue(targets) {
+function populateConnectionQueue(targets) {
   const queueDiv = document.getElementById('connection-queue');
   if (!queueDiv) return;
 
-  // Filter for connection_req leads (sent requests), sort by confidence descending
   const confidenceMap = { 'HIGH': 90, 'MEDIUM-HIGH': 80, 'MEDIUM': 70, 'LOW': 60 };
   const inProgress = targets
     .filter(t => t.status === 'connection_req')
-    .sort((a, b) => {
-      const scoreA = confidenceMap[a.confidence?.toUpperCase()] || 70;
-      const scoreB = confidenceMap[b.confidence?.toUpperCase()] || 70;
-      return scoreB - scoreA;
-    })
-    .slice(0, 20); // Show top 20
+    .sort((a, b) => (confidenceMap[b.confidence?.toUpperCase()] || 70) - (confidenceMap[a.confidence?.toUpperCase()] || 70))
+    .slice(0, 20);
 
   if (inProgress.length === 0) {
-    queueDiv.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:12px;">No connection requests sent yet. Send requests from the leads table above.</p>';
+    queueDiv.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:12px;">No connection requests sent yet. Use the "→ Send" button on any lead to add them here.</p>';
     return;
   }
 
-  // Generate queue items
-  const items = [];
-  for (const target of inProgress) {
-    try {
-      // Skip if no ID
-      if (!target.id) {
-        console.warn(`Skipping ${target.name} - no ID`);
-        continue;
-      }
+  // Ensure the messages map includes queue targets (already set during target render, but guard here)
+  window._targetMessages = window._targetMessages || {};
+  inProgress.forEach(t => {
+    if (!window._targetMessages[t.id]) window._targetMessages[t.id] = t.draft_message || '';
+  });
 
-      const msgRes = await fetch('/api/connection-message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ targetId: target.id })
-      });
+  const items = inProgress.map(target => {
+    const score = confidenceMap[target.confidence?.toUpperCase()] || 70;
+    const scoreColor = score === 90 ? 'var(--green)' : score === 80 ? '#d9a526' : score === 70 ? 'var(--accent)' : 'var(--red)';
+    // Use the stored draft_message — no API call needed
+    const msg = target.draft_message || '';
+    const displayMsg = msg || '<em style="color:var(--muted);">No message yet — click 🔄 to generate one.</em>';
 
-      const msgData = await msgRes.json();
-
-      // Handle API errors
-      if (msgData.error) {
-        console.error(`Message API error for ${target.name}:`, msgData.error);
-        continue;
-      }
-
-      const msg = msgData.connection_message || `Hi ${target.name}, I'd love to connect and discuss GTM strategies.`;
-      const score = confidenceMap[target.confidence?.toUpperCase()] || 70;
-      const scoreColor = score === 90 ? 'var(--green)' : score === 80 ? '#d9a526' : score === 70 ? 'var(--accent)' : 'var(--red)';
-
-      items.push(`
-        <div data-target-id="${target.id}" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:12px;border-left:3px solid ${scoreColor};">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-            <div>
-              <div style="font-weight:600;color:var(--text);">${target.name}</div>
-              <div style="font-size:11px;color:var(--muted);">${target.business}</div>
-            </div>
-            <div style="background:${scoreColor}20;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px;color:${scoreColor};">${score}</div>
+    return `
+      <div data-target-id="${target.id}" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:12px;border-left:3px solid ${scoreColor};">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div>
+            <div style="font-weight:600;color:var(--text);">${target.name}</div>
+            <div style="font-size:11px;color:var(--muted);">${target.business || ''}</div>
           </div>
-          <div data-message="${msg.replace(/"/g, '&quot;')}" style="background:#fffdf7;border:1px solid var(--border);border-radius:4px;padding:10px;font-size:12px;line-height:1.5;color:var(--text);margin-bottom:8px;white-space:pre-wrap;word-wrap:break-word;">${msg}</div>
-          <div style="display:flex;gap:6px;">
-            <button onclick="copyConnectionMessage(\`${msg.replace(/`/g, '\\`')}\`)" style="flex:1;padding:6px 8px;background:var(--green);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📋 Copy</button>
-            <button onclick="openRegenConnectModal('${target.id}', '${target.name}', '${target.business.replace(/'/g, "\\'")}', \`${msg.replace(/`/g, '\\`')}\`)" style="flex:1;padding:6px 8px;background:var(--accent);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen</button>
-          </div>
+          <div style="background:${scoreColor}20;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px;color:${scoreColor};">${score}</div>
         </div>
-      `);
-    } catch (e) {
-      console.error(`Error generating message for ${target.name}:`, e);
-      // Fallback: Generate a simple message directly
-      const fallbackMsg = `Hi ${target.name}, I've been impressed by your work. I'd love to connect and share insights on GTM scaling.`;
-      const score = confidenceMap[target.confidence?.toUpperCase()] || 70;
-      const scoreColor = score === 90 ? 'var(--green)' : score === 80 ? '#d9a526' : score === 70 ? 'var(--accent)' : 'var(--red)';
-
-      items.push(`
-        <div data-target-id="${target.id}" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:12px;border-left:3px solid ${scoreColor};">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-            <div>
-              <div style="font-weight:600;color:var(--text);">${target.name}</div>
-              <div style="font-size:11px;color:var(--muted);">${target.business}</div>
-            </div>
-            <div style="background:${scoreColor}20;padding:2px 8px;border-radius:3px;font-weight:600;font-size:11px;color:${scoreColor};">${score}</div>
-          </div>
-          <div data-message="${fallbackMsg.replace(/"/g, '&quot;')}" style="background:#fffdf7;border:1px solid var(--border);border-radius:4px;padding:10px;font-size:12px;line-height:1.5;color:var(--text);margin-bottom:8px;white-space:pre-wrap;word-wrap:break-word;">${fallbackMsg}</div>
-          <div style="display:flex;gap:6px;">
-            <button onclick="copyConnectionMessage(\`${fallbackMsg.replace(/`/g, '\\`')}\`)" style="flex:1;padding:6px 8px;background:var(--green);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📋 Copy</button>
-            <button onclick="openRegenConnectModal('${target.id}', '${target.name}', '${target.business.replace(/'/g, "\\'")}', \`${fallbackMsg.replace(/`/g, '\\`')}\`)" style="flex:1;padding:6px 8px;background:var(--accent);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen</button>
-          </div>
+        <div style="background:#fffdf7;border:1px solid var(--border);border-radius:4px;padding:10px;font-size:12px;line-height:1.5;color:var(--text);margin-bottom:8px;white-space:pre-wrap;word-wrap:break-word;">${displayMsg}</div>
+        <div style="display:flex;gap:6px;">
+          <button onclick="copyQueueMessage(${target.id})" style="flex:1;padding:6px 8px;background:var(--green);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">📋 Copy</button>
+          <button onclick="openRegenConnectModalById(${target.id}, '${(target.name||'').replace(/'/g,"\\'")}', '${(target.business||'').replace(/'/g,"\\'")}'" )" style="flex:1;padding:6px 8px;background:var(--accent);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">🔄 Regen</button>
+          <button onclick="updateTargetStatus(${target.id}, 'connected')" style="flex:1;padding:6px 8px;background:var(--blue);color:white;border:none;border-radius:3px;font-size:11px;cursor:pointer;font-weight:500;">✓ Connected</button>
         </div>
-      `);
-    }
-  }
+      </div>
+    `;
+  });
 
   queueDiv.innerHTML = items.join('');
+}
+
+function copyQueueMessage(id) {
+  const msg = (window._targetMessages && window._targetMessages[id]) || '';
+  if (!msg) { alert('No message to copy.'); return; }
+  navigator.clipboard.writeText(msg).then(() => alert('Message copied! 📋')).catch(() => alert('Copy failed — try again.'));
 }
 
 load().catch(err => {
