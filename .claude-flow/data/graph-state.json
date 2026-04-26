@@ -314,8 +314,8 @@
     "mem-project_barnes_offerings-how-to-apply": {
       "id": "mem-project_barnes_offerings-how-to-apply",
       "category": "project_barnes_offerings",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911020
     },
     "mem-project_blotato_channels----": {
@@ -762,8 +762,8 @@
     "mem-project_rin_beta-correct-workflow--fully-implem": {
       "id": "mem-project_rin_beta-correct-workflow--fully-implem",
       "category": "project_rin_beta",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911034
     },
     "mem-project_rin_beta-amendment-flow--new--2026-03-2": {
@@ -867,8 +867,8 @@
     "mem-project_rin_customer_app-todo": {
       "id": "mem-project_rin_customer_app-todo",
       "category": "project_rin_customer_app",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911039
     },
     "mem-project_rin_edge_functions----": {
@@ -1161,8 +1161,8 @@
     "mem-product_system_rebuild-revert-before-go-live": {
       "id": "mem-product_system_rebuild-revert-before-go-live",
       "category": "product_system_rebuild",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911055
     },
     "mem-project_status----": {
@@ -1224,8 +1224,8 @@
     "mem-supabase_setup-tables-in-uat-galoras": {
       "id": "mem-supabase_setup-tables-in-uat-galoras",
       "category": "supabase_setup",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911059
     },
     "mem-supabase_setup-migrations-applied--uat-": {
