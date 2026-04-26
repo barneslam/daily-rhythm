@@ -251,8 +251,8 @@
     "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc": {
       "id": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-competitive-position": {
@@ -573,8 +573,8 @@
     "mem-project_galoras_intelligence_dashboard-how-to-apply": {
       "id": "mem-project_galoras_intelligence_dashboard-how-to-apply",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_sow_status----": {

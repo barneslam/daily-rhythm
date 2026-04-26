@@ -958,9 +958,9 @@
       "content": "When updating Galoras revenue models, pricing, or executive dashboards: reference this tool. Changes go to the single HTML file in `galoras-ops`.",
       "summary": "How to Apply",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.5,
+      "confidence": 0.53,
       "pageRank": 0.009269116546503723,
-      "accessCount": 0,
+      "accessCount": 1,
       "words": [
         "updating",
         "galoras",
@@ -1811,9 +1811,9 @@
       "content": "| Area | Current Plan | Adjustment | Why |\n|---|---|---|---|\n| Coach scaling | 100 by July | 8–15 by Dec 31 | BetterUp = 18mo to 100 with $10M |\n| Freemium conversion | 65% | 25–35% | Industry std: 2–8%; best-in-class: 15–25% |\n| Coachee subscription | Day 1 launch | Defer to Month 4–5 | Reduces friction on unproven product |\n| Churn model | 3% monthly flat | 10–15% early, stabilize Y2 | Market typical for new platforms |\n\n---",
       "summary": "Key Adjustments for Year 1 Success",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.5,
+      "confidence": 0.53,
       "pageRank": 0.007924707380938062,
-      "accessCount": 0,
+      "accessCount": 1,
       "words": [
         "area",
         "current",
