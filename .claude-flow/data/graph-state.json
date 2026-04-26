@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": 1777168414336,
+  "updatedAt": 1777170360482,
   "nodeCount": 184,
   "nodes": {
     "mem-MEMORY-memory-index": {
@@ -251,8 +251,8 @@
     "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc": {
       "id": "mem-galoras_investor_one_pager-key-adjustments-for-year-1-suc",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911019
     },
     "mem-galoras_investor_one_pager-competitive-position": {
@@ -531,8 +531,8 @@
     "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-": {
       "id": "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_intelligence_dashboard----": {
@@ -573,8 +573,8 @@
     "mem-project_galoras_intelligence_dashboard-how-to-apply": {
       "id": "mem-project_galoras_intelligence_dashboard-how-to-apply",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911025
     },
     "mem-project_galoras_sow_status----": {
@@ -601,8 +601,8 @@
     "mem-project_galoras_sow_status-budget-reference": {
       "id": "mem-project_galoras_sow_status-budget-reference",
       "category": "project_galoras_sow_status",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911028
     },
     "mem-project_gtm_engine----": {
@@ -671,8 +671,8 @@
     "mem-project_rin_ai_voice_intake----": {
       "id": "mem-project_rin_ai_voice_intake----",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911032
     },
     "mem-project_rin_ai_voice_intake-architecture": {
@@ -1000,8 +1000,8 @@
     "mem-project_rin_voice_gaps----": {
       "id": "mem-project_rin_voice_gaps----",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911047
     },
     "mem-project_rin_voice_gaps-current-state--dtmf-ivr---voic": {
@@ -1168,8 +1168,8 @@
     "mem-project_status----": {
       "id": "mem-project_status----",
       "category": "project_status",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911056
     },
     "mem-project_status-sow-completion-as-of-2026-04-0": {
@@ -1280,8 +1280,8 @@
     "mem-work_style----": {
       "id": "mem-work_style----",
       "category": "work_style",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.5,
+      "accessCount": 0,
       "createdAt": 1776129911061
     },
     "insight-1776241250022-qrrc": {

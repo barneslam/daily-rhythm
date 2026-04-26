@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "computedAt": 1777168414341,
+  "computedAt": 1777170360490,
   "entries": [
     {
       "id": "mem-galoras_conor_talking_points-one-last-thing",
@@ -958,9 +958,9 @@
       "content": "When updating Galoras revenue models, pricing, or executive dashboards: reference this tool. Changes go to the single HTML file in `galoras-ops`.",
       "summary": "How to Apply",
       "category": "project_galoras_intelligence_dashboard",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.009269116546503723,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "updating",
         "galoras",
@@ -1811,9 +1811,9 @@
       "content": "| Area | Current Plan | Adjustment | Why |\n|---|---|---|---|\n| Coach scaling | 100 by July | 8–15 by Dec 31 | BetterUp = 18mo to 100 with $10M |\n| Freemium conversion | 65% | 25–35% | Industry std: 2–8%; best-in-class: 15–25% |\n| Coachee subscription | Day 1 launch | Defer to Month 4–5 | Reduces friction on unproven product |\n| Churn model | 3% monthly flat | 10–15% early, stabilize Y2 | Market typical for new platforms |\n\n---",
       "summary": "Key Adjustments for Year 1 Success",
       "category": "galoras_investor_one_pager",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.007924707380938062,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "area",
         "current",
@@ -1984,9 +1984,9 @@
       "content": "- Conor McGowan: **$450/hour**\n- Barnes Lam: $300/hour\n- Mitesh: $350/hour",
       "summary": "Coach Rates (Confirmed)",
       "category": "project_galoras_hot_and_revenue_model",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.007924707380938062,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "conor",
         "mcgowan",
@@ -3019,9 +3019,9 @@
       "content": "- Sprint: 60 dev hrs / $4,193 net (CO 2.0 credit applied)\n- Phase 2 Remaining: 208.5 hrs / $21,723 net\n- Total Phase 2: 268.5 hrs / $25,916 net\n- SOW files: Google Drive > Galoras Project Files > Phase 2",
       "summary": "Budget Reference",
       "category": "project_galoras_sow_status",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.006809270347520137,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "sprint",
         "dev",
@@ -8053,9 +8053,9 @@
       "content": "name: WayLift AI Voice Intake\ndescription: ElevenLabs Conversational AI agent for roadside intake via Twilio phone number, with GPS capture and SMS dispatch flow\ntype: project\n---",
       "summary": "---",
       "category": "project_rin_ai_voice_intake",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.0021368272211904848,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "name",
         "waylift",
@@ -8739,9 +8739,9 @@
       "content": "name: RIN Voice IVR — Critical Data Gaps\ndescription: DTMF IVR works but doesn't capture location, name, vehicle info. Need speech-based intake with ElevenLabs.\ntype: project\n---",
       "summary": "---",
       "category": "project_rin_voice_gaps",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.0021368272211904848,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "name",
         "rin",
@@ -9217,9 +9217,9 @@
       "content": "name: Project Status\ndescription: Validation Sprint and Phase 2 SOW completion status, what's done and what's next\ntype: project\n---",
       "summary": "---",
       "category": "project_status",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.0021368272211904848,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "name",
         "project",
@@ -9392,9 +9392,9 @@
       "content": "name: Work Style\ndescription: User's preferred working setup and context\ntype: user\n---\n\nLikes to work with the Coaching Exchange app (galoras-dev) open alongside other browser tabs. The memory directory path (`~/.claude/projects/-Users-b-lamoutlook-com-galoras-dev/memory/`) is a useful reference point he keeps in view.",
       "summary": "---",
       "category": "work_style",
-      "confidence": 0.53,
+      "confidence": 0.5,
       "pageRank": 0.0021368272211904848,
-      "accessCount": 1,
+      "accessCount": 0,
       "words": [
         "name",
         "work",
