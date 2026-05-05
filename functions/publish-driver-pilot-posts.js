@@ -125,7 +125,8 @@ exports.handler = async (event, context) => {
         post: {
           accountId: accounts.instagram.account_id,
           platform: accounts.instagram.platform,
-          text: postContent
+          text: postContent,
+          mediaUrls: [] // Text-only, no carousel
         }
       };
 
@@ -133,12 +134,13 @@ exports.handler = async (event, context) => {
       console.log(`   Response: ${igResult.statusCode}`);
 
       if (igResult.statusCode === 200 || igResult.statusCode === 201) {
-        console.log(`   ✅ Instagram: posted`);
+        console.log(`   ✅ Instagram: posted (text-only)`);
         published++;
         results.push({
           platform: 'instagram',
           status: 'published',
-          variant: variantKey
+          variant: variantKey,
+          type: 'text-only'
         });
       } else {
         console.log(`   ❌ Instagram: ${igResult.statusCode}`);
@@ -167,7 +169,8 @@ exports.handler = async (event, context) => {
           accountId: accounts.facebook.account_id,
           platform: accounts.facebook.platform,
           text: postContent,
-          pageId: accounts.facebook.page_id
+          pageId: accounts.facebook.page_id,
+          mediaUrls: [] // Text-only, no carousel
         }
       };
 
@@ -175,12 +178,13 @@ exports.handler = async (event, context) => {
       console.log(`   Response: ${fbResult.statusCode}`);
 
       if (fbResult.statusCode === 200 || fbResult.statusCode === 201) {
-        console.log(`   ✅ Facebook: posted`);
+        console.log(`   ✅ Facebook: posted (text-only)`);
         published++;
         results.push({
           platform: 'facebook',
           status: 'published',
-          variant: variantKey
+          variant: variantKey,
+          type: 'text-only'
         });
       } else {
         console.log(`   ❌ Facebook: ${fbResult.statusCode}`);
