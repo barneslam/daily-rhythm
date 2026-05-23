@@ -3,9 +3,6 @@ name: Deploy to Netlify
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - 'README.md'
-      - 'docs/**'
 
 jobs:
   deploy:
