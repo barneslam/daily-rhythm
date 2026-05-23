@@ -116,10 +116,10 @@ function discoverLeads() {
     name: lead.name,
     business: lead.company,
     signal: lead.signal,
-    channel: lead.channel,
+    outreach_channel: lead.channel,
     confidence: lead.confidence,
     linkedin_url: lead.linkedin_url,
-    source_channel: 'discovery',
+    source: 'discovery',
     status: 'identified',
     qualified: lead.confidence >= 75,
     created_at: new Date().toISOString()
@@ -145,6 +145,15 @@ async function storeLeads(leads) {
   }
 }
 
+async function logExecution(status, details) {
+  await supabase.from('gtm_daily_logs').insert([{
+    function_name: 'schedule-discovery',
+    status,
+    details,
+    ran_at: new Date().toISOString()
+  }]);
+}
+
 // Netlify scheduled function
 exports.handler = async (event, context) => {
   try {
@@ -154,6 +163,12 @@ exports.handler = async (event, context) => {
     console.log(`📊 Discovered ${discoveredLeads.length} leads`);
 
     const result = await storeLeads(discoveredLeads);
+
+    await logExecution(result.success ? 'success' : 'error', {
+      leads_discovered: discoveredLeads.length,
+      stored: result.success,
+      error: result.error || null
+    });
 
     return {
       statusCode: 200,
@@ -167,6 +182,7 @@ exports.handler = async (event, context) => {
     };
   } catch (e) {
     console.error('Discovery error:', e.message);
+    await logExecution('error', { error: e.message });
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },

@@ -1,16 +1,39 @@
 {
-  "current_week": 1,
-  "start_date": "2026-04-14",
+  "current_week": 6,
+  "start_date": "2026-05-19",
+  "reset_timestamp": "2026-05-22T00:00:00Z",
+  "reset_reason": "Daily rhythm restarted — env restored, discovery resumed",
   "pipeline_status": {
-    "identified": 20,
+    "identified": 0,
     "messaged": 0,
     "responded": 0,
     "call_booked": 0,
     "call_completed": 0,
     "proposal_sent": 0,
-    "estimated_value": "$0 (pending first responses)"
+    "estimated_value": "$0 (pending discovery)"
   },
   "days": {
+    "2026-05-22": {
+      "day_of_week": "Thursday",
+      "blocks_scheduled": [
+        "morning-discovery",
+        "content-review",
+        "closing"
+      ],
+      "status": "in_progress",
+      "morning_focus": "Resume daily lead discovery and connection queue",
+      "expected_outcomes": [
+        "Daily discovery scan completed",
+        "Connection queue populated with new leads",
+        "Content reviewed for publishing"
+      ],
+      "lead_discovery": {
+        "status": "pending",
+        "leads_discovered": 0,
+        "timestamp": null,
+        "next_step": "fetch_from_apollo_and_populate_targets"
+      }
+    },
     "2026-04-13": {
       "day_of_week": "Sunday",
       "blocks_completed": [
@@ -113,7 +136,7 @@
       "lead_discovery": {
         "status": "completed",
         "leads_discovered": 5,
-        "timestamp": "2026-04-18T18:45:20.729Z",
+        "timestamp": "2026-04-18T19:07:30.790Z",
         "next_step": "send_connection_requests"
       }
     },
@@ -128,6 +151,16 @@
         "Proposals drafted (if calls booked)",
         "Week 1 analytics logged"
       ]
+    },
+    "2026-04-29": {
+      "day_of_week": "Wednesday",
+      "blocks_completed": [],
+      "lead_discovery": {
+        "status": "completed",
+        "leads_discovered": 7,
+        "timestamp": "2026-04-29T16:04:05.928Z",
+        "next_step": "send_connection_requests"
+      }
     }
   }
 }

@@ -1,0 +1,5 @@
+#!/bin/bash
+export SUPABASE_URL_RIN='https://zyoszbmahxnfcokuzkuv.supabase.co'
+export SUPABASE_ANON_KEY_RIN='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5b3N6Ym1haHhuZmNva3V6a3V2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MDU3OTMsImV4cCI6MjA4OTA4MTc5M30.Ilz4RYTcgZU3IMnABg0eV7iAfFcC0iykyl4DOln-mjY'
+export BLOTATO_API_KEY='blt_WSloRu5STdZRMT2KSiMEJszhs/fatuTVoq3COpCvZH8='
+node publish-drafts-v2.js rin 2026-05-04

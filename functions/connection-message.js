@@ -40,7 +40,7 @@ Current draft message: ${target.draft_message || '(none)'}
 Additional instruction from Barnes: ${customPrompt}
 
 Rules:
-- Under 300 characters (LinkedIn connection note limit)
+- Under 250 characters (hard limit)
 - No em dashes
 - Specific to the person — reference their signal or context
 - Peer-to-operator tone, not salesy

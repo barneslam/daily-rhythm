@@ -36,42 +36,80 @@ function classifySignal(signal, business) {
   return 'general';
 }
 
+const CHAR_LIMIT = 250;
+const CLOSE = ' Would be great to connect. — Barnes';
+
 function generateStaticMessage(target) {
-  const fn = firstName(target.name);
+  const name = (target.name || 'there').trim();
   const co = companyName(target.business);
-  const bizLower = (target.business || '').toLowerCase();
+  const cd = (co === 'your company') ? 'the company' : co;
+  const sig = (target.signal || '').toLowerCase();
+  const biz = (target.business || '').toLowerCase();
   const type = classifySignal(target.signal, target.business);
-  const hook = target.signal ? target.signal.split(/[.!]\s+/)[0].trim() : null;
+
+  let obs, bld;
 
   switch (type) {
     case 'new_role': {
-      const roleMatch = ((target.signal || '') + ' ' + (target.business || '')).match(/\b(CEO|CRO|COO|CGO|President|Founder|Co-Founder|Managing Director|Chief[\w\s]+Officer)\b/i);
-      const role = roleMatch ? roleMatch[1] : 'your new role';
-      return `${fn} — stepping into ${role} is where the execution model either gets built or deferred. Most new leaders inherit a GTM motion that worked in a different context. The gap between outsider clarity and the org's daily execution is where most transitions stall.\n\nI run a 90-minute diagnostic for executives in their first 90 days — you walk out knowing exactly where the execution gaps are and what to close first.\n\n${CALENDLY}`;
+      const rm = ((target.business || '') + ' ' + (target.signal || '')).match(/\b(CEO|CRO|COO|CGO|President|Chief[\w\s]+Officer)\b/i);
+      const role = rm ? rm[1] : 'the role';
+      obs = `Seen the shift at ${cd} — stepping into ${role} is where execution models get built or inherited.`;
+      bld = `Working with new executives on the execution model that makes strategy stick.`;
+      break;
     }
     case 'hiring_sales':
-      return `${fn} — the moment you bring in a VP Sales or first AE is when the GTM model gets stress-tested. Most founders discover the system the hire is supposed to run doesn't exist yet.\n\nI help operators at ${co} build the execution model before the hire arrives, so you're not paying a sales leader to build the machine from scratch.\n\n90 minutes. One session. ${CALENDLY}`;
+      obs = `Seen ${cd}'s growth — GTM architecture needs to exist before the sales hire can run on it.`;
+      bld = `Working with founders on building the execution layer before the commercial hire arrives.`;
+      break;
     case 'funding':
-      return `${fn} — post-raise, the pressure shifts from "can we get customers" to "can we build the machine that gets them consistently." Most teams have strategy. The execution layer — daily rhythm, pipeline architecture, GTM sequencing — is where the gap is.\n\nI work with operators after a funding event specifically on that transition.\n\n90-minute diagnostic. ${CALENDLY}`;
+      obs = `Post-raise at ${cd}, the question shifts from getting customers to building the machine that does it consistently.`;
+      bld = `Working with operators on the execution layer that makes post-raise growth compound.`;
+      break;
     case 'new_product':
-      return `${fn} — new product launches expose the GTM assumptions that existing customers masked. Positioning, pricing, and ICP all need to reset, and most operators try to run the new offer through the old motion.\n\nI work at that exact transition — rebuilding the GTM architecture so the new offer gets a machine that actually fits it.\n\nWorth 15 minutes? ${CALENDLY}`;
+      obs = `Seen the work at ${cd} — new offers expose the GTM assumptions existing customers had masked.`;
+      bld = `Working with operators on rebuilding GTM architecture so new offers get a motion that fits.`;
+      break;
     case 'plateau':
-      return `${fn} — revenue plateau after initial growth is almost never a sales problem. It's a GTM architecture problem: positioning has drifted, pricing is misaligned, or the sequencing breaks before it reaches qualified buyers.\n\nI diagnose and fix that layer — not surface metrics, the structural gaps that keep the pipeline from compounding.\n\n${CALENDLY}`;
+      obs = `Seen your work at ${cd} — revenue plateau is almost never a sales problem; it's GTM architecture.`;
+      bld = `Working with operators on the structural gaps that keep pipeline from compounding.`;
+      break;
     case 'expansion':
-      return `${fn} — entering a new market usually exposes the cracks in your current GTM model. ICP assumptions don't transfer, pricing doesn't hold, and the motion that worked in your base market stalls.\n\nI work at that transition — ICP clarity, pricing alignment, and GTM sequencing rebuilt for the new context.\n\n${CALENDLY}`;
+      obs = `Seen the expansion at ${cd} — new markets expose gaps the existing base had been covering.`;
+      bld = `Working with operators on ICP clarity, pricing alignment, and GTM sequencing for new contexts.`;
+      break;
     case 'transformation':
-      return `${fn} — AI changes the competitive landscape. It doesn't change the execution gap between strategy and revenue. Most operators end up with a transformed vision and an unchanged daily machine.\n\nI work at that layer — building the operating rhythm that turns a new direction into consistent commercial output.\n\n90-minute diagnostic: ${CALENDLY}`;
-    default: {
-      if (hook && hook.length >= 20 && hook.length <= 150) {
-        return `${fn} — ${hook.toLowerCase().replace(/^i /, 'you ').replace(/^we /, 'you ')}. That's the inflection point where most operators discover the GTM motion needs rebuilding, not just more activity.\n\nI work at the gap between strategy and revenue execution — positioning, pipeline architecture, and daily rhythm for operators at your stage.\n\n15 minutes to see if it's relevant: ${CALENDLY}`;
+      obs = `Seen the shift at ${cd} — AI changes the landscape; it doesn't close the strategy-to-execution gap.`;
+      bld = `Working with operators on the execution layer that turns a new direction into consistent revenue.`;
+      break;
+    default:
+      if (/ai|saas|tech|software|platform|agentic|automation/.test(sig + ' ' + biz)) {
+        obs = `Seen your work at ${cd} — the execution layer between AI tools and real GTM output is where most teams stall.`;
+        bld = `Working with founders on AI-driven GTM systems and execution infrastructure.`;
+      } else if (/board chair|board director|board member|non.?exec|chairm/i.test(sig + ' ' + biz)) {
+        obs = `Seen your governance work — the gap between board decisions and operating execution is where strategy gets lost.`;
+        bld = `Working with board directors and operators on governance meeting real commercial performance.`;
+      } else if (/\bcro\b|chief revenue|vp sales|head of sales/.test(sig + ' ' + biz)) {
+        obs = `Seen your work at ${cd} — the gap between revenue strategy and what the team runs on is rarely where people expect.`;
+        bld = `Working with revenue leaders on the GTM strategy-to-execution gap.`;
+      } else if (/founder|co.?founder/.test(sig + ' ' + biz)) {
+        obs = `Seen the work at ${cd} — at this stage, GTM and product get stress-tested at the same time.`;
+        bld = `Working with founders on GTM architecture — positioning, pipeline, and daily execution rhythm.`;
+      } else {
+        obs = `Seen your work at ${cd} — most growth mandates stall in the gap between strategy and daily execution.`;
+        bld = `Working with operators on the execution layer between strategy and revenue.`;
       }
-      if (/saas|software|platform|app/.test(bizLower))
-        return `${fn} — at ${co}, the gap is usually not product-market fit. It's GTM architecture: why pipeline isn't predictable, why deals stall before they close, and why the motion doesn't compound.\n\nI diagnose and rebuild that layer for SaaS operators at your stage.\n\n${CALENDLY}`;
-      if (/service|consult|agency|advisor/.test(bizLower))
-        return `${fn} — services revenue plateaus when positioning is doing too much heavy lifting and the sales motion hasn't been systematized. I rebuild the commercial architecture — positioning, pricing, and pipeline in sequence.\n\n${CALENDLY}`;
-      return `${fn} — at ${co}, the constraint is rarely strategy or market. It's the execution layer between knowing what to do and the daily machine that does it.\n\nI work with operators at $2M–$50M specifically on that gap — GTM architecture, positioning clarity, and revenue execution rhythm.\n\n15 minutes to see if it applies: ${CALENDLY}`;
-    }
   }
+
+  const prefix = `Hi ${name} — `;
+  const full = prefix + obs + ' ' + bld + CLOSE;
+  if (full.length <= CHAR_LIMIT) return full;
+
+  const obsOnly = prefix + obs + CLOSE;
+  if (obsOnly.length <= CHAR_LIMIT) return obsOnly;
+
+  const maxBody = CHAR_LIMIT - prefix.length - CLOSE.length;
+  const trimmed = (obs + ' ' + bld).slice(0, maxBody).replace(/\s+\S*$/, '');
+  return prefix + trimmed + CLOSE;
 }
 
 exports.handler = async (event) => {
@@ -93,11 +131,11 @@ exports.handler = async (event) => {
     );
 
     if (needsMessage.length > 0) {
-      const updates = needsMessage.map(t => ({
-        id: t.id,
-        draft_message: generateStaticMessage(t),
-        updated_at: new Date().toISOString(),
-      }));
+      const updates = needsMessage.map(t => {
+        const msg = generateStaticMessage(t);
+        if (msg.length > CHAR_LIMIT) console.warn(`Char limit exceeded: ${t.name} — ${msg.length} chars`);
+        return { id: t.id, draft_message: msg, updated_at: new Date().toISOString() };
+      });
 
       for (const update of updates) {
         await supabase

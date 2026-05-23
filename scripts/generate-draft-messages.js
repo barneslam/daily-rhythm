@@ -14,14 +14,20 @@
  *
  *   — Barnes
  *
- * Run: node scripts/generate-draft-messages.js [--all]
+ * Run:
+ *   node scripts/generate-draft-messages.js [--all]          # static templates for all/stale
+ *   node scripts/generate-draft-messages.js --high-conf      # AI-personalised for 80/90 targets
+ *   node scripts/generate-draft-messages.js --high-conf --all # AI for ALL 80/90 (force refresh)
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const Anthropic = require('@anthropic-ai/sdk');
 require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const FORCE_ALL = process.argv.includes('--all');
+const HIGH_CONF_AI = process.argv.includes('--high-conf');
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -84,11 +90,13 @@ function para2Type(signal, business) {
     return 'barnes_lam';
   }
 
-  // Large enterprise C-suite → Axis Chamber (they're peers, not coaching prospects)
+  // CEOs: Axis only if large enterprise or governance-focused
+  // Default: execution-oriented operator CEO → Barnes Lam
   if (aud === 'executive' || aud === 'new_exec') {
-    if (/\$[1-9][0-9]+b\b|billion|\$[1-9][0-9]{2}m\b|[1-9][0-9]{2}m revenue|fortune [0-9]|global enterprise|xerox|insight enterprises/.test(txt)) return 'axis_chamber';
-    // Mid-market execs → Strategy Pitch
-    return 'strategy_pitch';
+    const isLargeEnterprise = /\$[1-9][0-9]+b\b|billion|\$[1-9][0-9]{2}m\b|[1-9][0-9]{2}m revenue|fortune [0-9]|global enterprise|xerox|insight enterprises/.test(txt);
+    const isGovernance = /board chair|board of director|board member|governance|non.?exec|chairm|vice chair/.test(txt);
+    if (isLargeEnterprise || isGovernance) return 'axis_chamber';
+    return 'barnes_lam';
   }
 
   // Revenue leaders → Strategy Pitch (commercial focus)
@@ -98,134 +106,96 @@ function para2Type(signal, business) {
   return 'barnes_lam';
 }
 
-// ─── Para 1: Observation ──────────────────────────────────────────────────────
+// ─── Compact observation (~90 chars) ─────────────────────────────────────────
 
-function observationParagraph(target) {
-  const co = companyName(target.business);
+function compactObs(target, co, aud) {
   const signal = target.signal || '';
-  const aud = audienceType(signal, target.business);
   const hook = cleanSignalHook(signal);
+  const cd = (co === 'your company') ? 'the company' : co;
 
-  // Signal-based openers (highest specificity)
   if (signal) {
     if (/promot|elevated to|stepped into|appointed|named (ceo|cro|coo|cgo|president)|new ceo/i.test(signal)) {
-      const roleM = (target.business || '').match(/\b(CEO|CRO|COO|CGO|President|Chief[\w\s]+Officer|Managing Director)\b/i)
-        || signal.match(/\b(CEO|CRO|COO|CGO|President|Chief[\w\s]+Officer|Managing Director)\b/i);
-      const role = roleM ? roleM[1] : 'the role';
-      const coDisplay = co === 'your company' ? 'the company' : co;
-      return `I've been following the transition at ${coDisplay} — stepping into ${role} is one of the highest-leverage moments in a company's trajectory, and the execution model you build in the first 90 days sets the ceiling.`;
+      const rm = ((target.business || '') + ' ' + signal).match(/\b(CEO|CRO|COO|CGO|President|Chief[\w\s]+Officer)\b/i);
+      const role = rm ? rm[1] : 'the role';
+      return `Seen the shift at ${cd} — stepping into ${role} is where execution models get built or inherited.`;
     }
     if (/hiring|vp sales|head of sales|first (ae|sdr|account exec)|sales (team|leader|hire)/i.test(signal)) {
-      return `I've been following ${co}'s growth — the decision to build a sales function is the moment most founders discover the GTM architecture needs to exist before the hire can run on it.`;
+      return `Seen ${cd}'s growth — GTM architecture needs to exist before the sales hire can run on it.`;
     }
     if (/series [abcde]|raised|funding round|just raised|secured [\$£€]/i.test(signal)) {
-      return `I've been following ${co}'s trajectory — post-raise, the question shifts from "can we get customers" to "can we build the machine that gets them consistently." Most teams have strategy; the execution layer is where the gap opens.`;
+      return `Post-raise at ${cd}, the question shifts from getting customers to building the machine that does it consistently.`;
     }
     if (/new (product|service|offering|launch)|product launch/i.test(signal)) {
-      return `I've been following the work at ${co} — bringing a new offer to market is where GTM assumptions get tested in real time, and most operators try to run the new offer through the old motion.`;
+      return `Seen the work at ${cd} — new offers expose the GTM assumptions existing customers had masked.`;
     }
     if (/expand|new market|international|new region|entering.*market/i.test(signal)) {
-      return `I've been following the expansion work at ${co} — entering a new market exposes the gaps in the underlying GTM model that existing customers had been masking.`;
+      return `Seen the expansion at ${cd} — new markets expose gaps the existing base had been covering.`;
     }
-    if (/dual exec|cmo.*cro|cro.*cmo|new cmo|new cro|cmo.*hire|cro.*hire/i.test(signal)) {
-      return `I've been following the executive buildout at ${co} — a dual CMO/CRO hire signals a commercial rebuild in motion, and the architecture between those two roles is where most GTM execution breaks down.`;
+    if (/dual exec|cmo.*cro|cro.*cmo|new cmo|new cro/i.test(signal)) {
+      return `Seen the commercial rebuild at ${cd} — the architecture between CMO and CRO is where GTM execution usually breaks.`;
     }
-    if (hook) {
-      return `I've been following your work — ${hook.replace(/^[A-Z]/, c => c.toLowerCase())}. That's the kind of operating shift most leaders are still working out in real time.`;
-    }
+    if (hook) return `Seen your work — ${hook.replace(/^[A-Z]/, c => c.toLowerCase())}.`;
   }
 
-  // Audience-based fallbacks
   switch (aud) {
-    case 'board':
-      return `I've been following your work — the intersection of board-level governance and real operating performance is a gap most organizations are still trying to close.`;
-    case 'coach_consultant':
-      return `I've been following your work — practitioners who've been in the seat and built the commercial system tend to bring something that pure advisory never does.`;
-    case 'revenue_leader':
-      return `I've been following your work at ${co} — the gap between revenue strategy and what the team actually executes daily is where most growth mandates stall, and very few executives are positioned to diagnose it clearly.`;
-    case 'new_exec':
-      return `I've been following the leadership transition at ${co} — the first 90 days in a new seat is where the execution model either gets designed or inherited, and the difference shows up 12 months later.`;
-    case 'founder':
-      return `I've been following the work at ${co} — at your stage, the commercial architecture and the product are both getting stress-tested at the same time.`;
-    case 'executive':
-      return `I've been following your work at ${co} — at that level, the alignment between strategic direction and the daily operating layer is one of the few things that actually moves the needle.`;
-    default:
-      return `I've been following your work at ${co} — the distance between a well-designed strategy and a working commercial machine is something very few operators talk about honestly.`;
+    case 'board':            return `Seen your governance work — the gap between board-level decisions and operating execution is where most strategy gets lost.`;
+    case 'coach_consultant': return `Seen your work — operators who've built the commercial system bring something pure advisory doesn't.`;
+    case 'revenue_leader':   return `Seen your work at ${cd} — the gap between revenue strategy and what the team runs on is rarely where people expect it.`;
+    case 'new_exec':         return `Seen the shift at ${cd} — first 90 days is where the execution model gets designed or inherited.`;
+    case 'founder':          return `Seen the work at ${cd} — at this stage, GTM and product get stress-tested at the same time.`;
+    case 'executive':        return `Seen your work at ${cd} — strategy-to-execution alignment is where real operating leverage lives.`;
+    default:                 return `Seen your work at ${cd} — most growth mandates stall in the gap between strategy and daily execution.`;
   }
 }
 
-// ─── Para 2: What Barnes is working on ───────────────────────────────────────
+// ─── Compact building (~75 chars) ────────────────────────────────────────────
 
-function buildingParagraph(target) {
-  const p2 = para2Type(target.signal || '', target.business || '');
-  const aud = audienceType(target.signal || '', target.business || '');
-  const signal = (target.signal || '').toLowerCase();
-  const biz = (target.business || '').toLowerCase();
-
+function compactBld(p2, aud, signal) {
+  const sig = (signal || '').toLowerCase();
   switch (p2) {
     case 'axis_chamber':
-      return `I'm working on bringing together board directors and senior operating partners for direct, candid dialogue on where governance actually meets commercial performance — less conference format, more real exchange between people who've been in the seat.`;
-
+      return `Working with board directors and operators on governance meeting real commercial performance.`;
     case 'strategy_pitch':
-      if (aud === 'revenue_leader') {
-        return `I'm working with revenue leaders on closing the gap between what the GTM strategy says and what the team actually executes — recently focused on where that breakdown happens in sequencing decisions, pipeline architecture, and how commercial leaders communicate priorities down the org.`;
-      }
-      if (aud === 'new_exec') {
-        return `I'm working with executives in new seats on building the execution model that makes their strategic direction actually stick — the daily operating rhythm, the GTM architecture, and the decisions that need to be made in the first 90 days before the org adapts around the old way of doing things.`;
-      }
-      return `I'm working with operators on the gap between commercial strategy and what actually gets executed — recently been deep on how GTM architecture breaks down at inflection points and what it takes to rebuild it without losing momentum.`;
-
+      if (aud === 'revenue_leader') return `Working with revenue leaders on the GTM strategy-to-execution gap.`;
+      if (aud === 'new_exec')       return `Working with new executives on the execution model that makes strategy stick.`;
+      return `Working with executives on closing the gap between commercial strategy and execution.`;
     case 'barnes_lam':
     default:
-      if (/ai|saas|tech|software|platform|agentic|automation/i.test(signal + ' ' + biz)) {
-        return `I'm working with founders on building AI-driven GTM systems — recently been designing execution layers that connect pipeline signals, engagement data, and agentic workflows so the commercial motion actually compounds instead of stalling after initial traction.`;
+      if (/ai|saas|tech|software|platform|agentic|automation/i.test(sig)) {
+        return `Working with founders on AI-driven GTM systems and execution layers.`;
       }
-      if (aud === 'founder') {
-        return `I'm working with founders on rebuilding GTM from the commercial layer up — positioning, pipeline architecture, and the daily rhythm that turns a working offer into predictable revenue rather than a series of one-off wins.`;
-      }
-      return `I'm working with operators on the layer between strategy and revenue — where positioning drifts, pipeline stalls, and the daily machine needs to be rebuilt rather than just optimized. Seeing a consistent gap between what operators know they should do and the system that actually does it.`;
+      if (aud === 'founder') return `Working with founders on GTM architecture — positioning, pipeline, and daily execution rhythm.`;
+      return `Working with operators on the execution layer between strategy and revenue.`;
   }
-}
-
-// ─── Para 3: Observation + close ─────────────────────────────────────────────
-
-function connectParagraph(target) {
-  const p2 = para2Type(target.signal || '', target.business || '');
-  const aud = audienceType(target.signal || '', target.business || '');
-  const signal = (target.signal || '').toLowerCase();
-  const biz = (target.business || '').toLowerCase();
-  const co = companyName(target.business);
-  const coSafe = (!co || co.length < 3 || co === 'your company') ? 'the company' : co;
-
-  // Observation line varies by context
-  let observation;
-  if (/ai|agentic|automation|llm|gpt/i.test(signal + ' ' + biz)) {
-    observation = `Seeing a clear gap between AI tools and real execution systems.`;
-  } else if (p2 === 'axis_chamber') {
-    observation = `The distance between a board conversation and what the team actually executes the next morning is where most strategic decisions get lost.`;
-  } else if (aud === 'new_exec') {
-    observation = `The execution model you inherit is almost never the one that fits where the company needs to go.`;
-  } else if (aud === 'revenue_leader') {
-    observation = `The gap between what a revenue strategy says and what the team actually runs on is rarely where people expect to find it.`;
-  } else if (aud === 'coach_consultant') {
-    observation = `The gap between what good frameworks say and what actually moves operators is something very few people are positioned to bridge.`;
-  } else if (aud === 'founder') {
-    observation = `The commercial layer is almost always where founder-built companies get stuck — not the product, not the market.`;
-  } else {
-    observation = `The gap between strategy and daily execution is rarely where people expect to find it.`;
-  }
-
-  return `${observation} Feels like there's real overlap with your work.\n\nWould be great to connect and exchange perspectives.`;
 }
 
 // ─── Assemble ─────────────────────────────────────────────────────────────────
 
+const CHAR_LIMIT = 250;
+const CLOSE = ' Would be great to connect. — Barnes';
+
 function buildMessage(target) {
   const name = fullName(target.name);
-  const p1 = observationParagraph(target);
-  const p2 = buildingParagraph(target);
-  const p3 = connectParagraph(target); // includes observation + close
-  return `Hi ${name} —\n\n${p1}\n\n${p2}\n\n${p3}\n\n— Barnes`;
+  const co = companyName(target.business);
+  const aud = audienceType(target.signal || '', target.business || '');
+  const p2 = para2Type(target.signal || '', target.business || '');
+
+  const prefix = `Hi ${name} — `;
+  const obs = compactObs(target, co, aud);
+  const bld = compactBld(p2, aud, target.signal || '');
+
+  const full = prefix + obs + ' ' + bld + CLOSE;
+  if (full.length <= CHAR_LIMIT) return full;
+
+  // Drop building sentence if obs alone fits cleanly
+  const obsOnly = prefix + obs + CLOSE;
+  if (obsOnly.length <= CHAR_LIMIT) return obsOnly;
+
+  // Last resort: trim at word boundary
+  const maxBody = CHAR_LIMIT - prefix.length - CLOSE.length;
+  const trimmed = (obs + ' ' + bld).slice(0, maxBody).replace(/\s+\S*$/, '');
+  console.warn(`  ⚠ Trimmed: ${target.name} — ${full.length} chars`);
+  return prefix + trimmed + CLOSE;
 }
 
 function isStale(msg) {
@@ -236,9 +206,101 @@ function isStale(msg) {
   return false;
 }
 
+// ─── AI generation for high-confidence targets ────────────────────────────────
+
+const PLATFORM_CONTEXT = {
+  axis_chamber: {
+    label: 'Axis Chamber',
+    description: 'brings together board directors and senior operating partners for candid dialogue on where governance meets real commercial performance'
+  },
+  strategy_pitch: {
+    label: 'The Strategy Pitch',
+    description: 'works with mid-market executives and revenue leaders on closing the gap between commercial strategy and what the team actually executes'
+  },
+  barnes_lam: {
+    label: 'Barnes Lam',
+    description: 'works with founders and operators on rebuilding GTM from the commercial layer — positioning, pipeline architecture, and the daily execution rhythm that turns a working offer into predictable revenue'
+  }
+};
+
+async function generateAIMessage(target) {
+  const p2 = para2Type(target.signal || '', target.business || '');
+  const aud = audienceType(target.signal || '', target.business || '');
+  const platform = PLATFORM_CONTEXT[p2];
+  const staticDraft = buildMessage(target);
+
+  const prompt = `Write a LinkedIn connection request note for Barnes Lam to send to ${fullName(target.name)}.
+
+About this person:
+- Role/Business: ${target.business || 'unknown'}
+- Signal/Context: ${target.signal || 'B2B operator or executive'}
+- Audience type: ${aud}
+- Platform fit: ${platform.label} — ${platform.description}
+
+Format — single compact message, no line breaks:
+Hi ${fullName(target.name)} — [specific observation about their work or signal, ~80 chars] [what Barnes is currently working on matching their platform fit, ~70 chars] Would be great to connect. — Barnes
+
+Rules:
+- HARD LIMIT: 250 characters total (count carefully)
+- Single flowing sentence structure — no paragraph breaks
+- Observation must be specific to their signal or role context
+- "Working on/with..." framing for Barnes's work — do NOT name platform products
+- Peer tone, not salesy
+- End with exactly: "Would be great to connect. — Barnes"
+- Return only the message text — no quotes, no preamble
+
+Reference draft (for tone only — write a tighter, more specific version):
+${staticDraft}`;
+
+  const res = await anthropic.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 400,
+    messages: [{ role: 'user', content: prompt }]
+  });
+
+  const msg = res.content[0].text.trim();
+  const wc = wordCount(msg);
+  if (wc > WORD_LIMIT) console.warn(`  ⚠ AI message over limit: ${target.name} — ${wc} words`);
+  return msg;
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function run() {
+  if (HIGH_CONF_AI) {
+    console.log('AI mode — fetching 80/90 confidence targets...\n');
+    const { data: allTargets, error: err } = await supabase
+      .from('gtm_targets')
+      .select('id, name, business, signal, draft_message, confidence')
+      .in('confidence', ['HIGH', 'MEDIUM-HIGH'])
+      .order('confidence', { ascending: false });
+
+    if (err) { console.error('Fetch error:', err.message); process.exit(1); }
+
+    const toProcess = FORCE_ALL ? allTargets : allTargets.filter(t => isStale(t.draft_message));
+    console.log(`${allTargets.length} high-conf targets — ${toProcess.length} to AI-generate${FORCE_ALL ? ' (--all)' : ''}\n`);
+
+    let updated = 0, failed = 0;
+    for (const t of toProcess) {
+      try {
+        const msg = await generateAIMessage(t);
+        const p2 = para2Type(t.signal || '', t.business || '');
+        const { error: upErr } = await supabase
+          .from('gtm_targets')
+          .update({ draft_message: msg, needs_regen: false, updated_at: new Date().toISOString() })
+          .eq('id', t.id);
+
+        if (upErr) { console.error(`  ✗ ${t.name} — ${upErr.message}`); failed++; }
+        else { console.log(`  ✓ ${t.name}  [${t.confidence} → ${p2}]`); updated++; }
+      } catch (e) {
+        console.error(`  ✗ ${t.name} — AI error: ${e.message}`);
+        failed++;
+      }
+    }
+    console.log(`\nDone. AI-updated: ${updated} | Failed: ${failed}`);
+    return;
+  }
+
   console.log('Fetching targets...\n');
   const { data: targets, error } = await supabase
     .from('gtm_targets')

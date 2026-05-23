@@ -1,0 +1,87 @@
+{
+  "brand": "RIN (Roadside Intelligence Network)",
+  "voice": "Direct, operator-focused, no fluff. We fix dispatch problems.",
+  "icp": {
+    "label": "Fleet operators stuck with bad dispatch",
+    "description": "Tow operators, courier companies, and small fleets (5-50 vehicles) losing money to manual dispatch, double-booked drivers, and chaotic communication.",
+    "firmographic_filters": {
+      "fleet_size": "5 - 50 vehicles",
+      "roles": ["Fleet Owner", "Dispatch Manager", "Operations Lead"],
+      "pain_points": ["Manual dispatch chaos", "Driver turnover", "Payment delays", "Missed jobs"],
+      "geography": "Ontario, Canada (primary)"
+    },
+    "trigger_set": [
+      "Hiring new dispatch staff — scaling without system",
+      "Driver complaints — about pay timing or job availability",
+      "Losing drivers to competitors — better tech or faster pay",
+      "Revenue leaking — missed jobs, double bookings, downtime",
+      "Growth plateau — can't scale without hiring 3 more dispatchers"
+    ]
+  },
+  "positioning": {
+    "core_message": "Fair dispatch. Consistent work. Real-time payments. Built for independent operators.",
+    "angles": [
+      {
+        "name": "Dispatch Intelligence",
+        "message": "Smart matching. Real-time optimization. Drivers know their next job before the previous one ends."
+      },
+      {
+        "name": "Fair Pay",
+        "message": "Transparent pricing. Same-day payouts. No hidden algorithm, no favoritism."
+      },
+      {
+        "name": "Operator Control",
+        "message": "You set rates, you see everything. No black box. Just tools that work."
+      },
+      {
+        "name": "Reliability",
+        "message": "Uptime matters. We don't go down. Your business doesn't stop."
+      }
+    ]
+  },
+  "content_pillars": {
+    "dispatch_intelligence": {
+      "focus": "How smart matching beats manual dispatch",
+      "examples": ["Save 2 hours/day on dispatch", "Match drivers to jobs in 10 seconds", "Real-time optimization during peak"]
+    },
+    "driver_story": {
+      "focus": "Why drivers stay on RIN",
+      "examples": ["Predictable income", "More jobs, less idle time", "Fair algorithm, no politics"]
+    },
+    "operational_edge": {
+      "focus": "Business impact: revenue, efficiency, growth",
+      "examples": ["Scale without hiring", "Eliminate double-bookings", "Cut communication time by 80%"]
+    },
+    "community": {
+      "focus": "Operator network, peer success, best practices",
+      "examples": ["How operators are growing with RIN", "Peer insights on pricing", "Community wins"]
+    }
+  },
+  "posting_schedule": {
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "time": "9:00 AM EST",
+    "frequency": "6x/week",
+    "content_mix": {
+      "dispatch_intelligence": "2 posts",
+      "driver_story": "1 post",
+      "operational_edge": "2 posts",
+      "community": "1 post"
+    }
+  },
+  "channels": {
+    "facebook": {
+      "page_id": "61589010212907",
+      "page_name": "RIN Tow Driver Network Canada",
+      "audience": "Fleet owners, operators, older demographic, local Ontario community",
+      "tone": "Community-focused, operator-to-operator"
+    },
+    "instagram": {
+      "handle": "roadside_intelligence",
+      "audience": "Younger drivers, operational teams, growth-minded operators",
+      "tone": "Visual, fast-paced, behind-the-scenes",
+      "content_format": "Reels + carousel, real dispatch wins, driver testimonials"
+    }
+  },
+  "cta": "Join the network — drive.roadside.ai",
+  "conversion_goal": "Fleet signup + demo request"
+}

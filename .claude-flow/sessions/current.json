@@ -1,17 +1,19 @@
 {
-  "id": "session-1776537702125",
-  "startedAt": "2026-04-18T18:41:42.125Z",
+  "id": "session-1778256159613",
+  "startedAt": "2026-05-08T16:02:39.613Z",
   "cwd": "/Users/b.lamoutlook.com/daily-rhythm",
   "context": {
     "lastMatchedPatterns": [
-      "mem-project_galoras_hot_and_revenue_model-coach-rates--confirmed-"
+      "insight-1776241250022-qrrc",
+      "mem-project_galoras_161k_gtm_plan-daily-scorecard--track-every-m"
     ]
   },
   "metrics": {
-    "edits": 4,
+    "edits": 30,
     "commands": 0,
     "tasks": 0,
     "errors": 0
   },
-  "updatedAt": "2026-04-18T19:02:15.982Z"
+  "updatedAt": "2026-05-23T17:31:07.099Z",
+  "restoredAt": "2026-05-23T17:07:58.652Z"
 }

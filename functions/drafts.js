@@ -13,8 +13,71 @@ const CORS = {
 };
 
 exports.handler = async (event) => {
+  console.log('🔍 drafts.handler called:', {
+    httpMethod: event.httpMethod,
+    rawUrl: event.rawUrl,
+    rawPath: event.requestContext?.http?.rawPath,
+    path: event.path,
+    url: event.url,
+    pathParameters: event.pathParameters
+  });
+
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers: CORS };
 
+  const rawPath = event.rawUrl || event.requestContext?.http?.rawPath || event.path || '';
+  console.log('📍 Processing path:', rawPath, 'Method:', event.httpMethod);
+
+  // Handle POST /api/drafts/{id}/delete
+  if (event.httpMethod === 'POST' && (rawPath.includes('/delete') || event.path?.includes('/delete'))) {
+    try {
+      // Try multiple path formats that Netlify might pass
+      let match = rawPath.match(/drafts\/([^/]+)\/delete/);
+      if (!match) match = rawPath.match(/\/drafts\/([^/]+)\/delete/);
+      if (!match && event.path) match = event.path.match(/drafts\/([^/]+)\/delete/);
+      if (!match) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Could not extract draft ID from path: ' + rawPath }) };
+
+      const draftId = match[1];
+      const { error } = await supabase.from('gtm_drafts').delete().eq('id', draftId);
+      if (error) throw error;
+
+      return {
+        statusCode: 200,
+        headers: CORS,
+        body: JSON.stringify({ success: true, message: 'Draft deleted' })
+      };
+    } catch (err) {
+      return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message }) };
+    }
+  }
+
+  // Handle POST /api/drafts/{id}/reject
+  if (event.httpMethod === 'POST' && (rawPath.includes('/reject') || event.path?.includes('/reject'))) {
+    try {
+      // Try multiple path formats that Netlify might pass
+      let match = rawPath.match(/drafts\/([^/]+)\/reject/);
+      if (!match) match = rawPath.match(/\/drafts\/([^/]+)\/reject/);
+      if (!match && event.path) match = event.path.match(/drafts\/([^/]+)\/reject/);
+      if (!match) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Could not extract draft ID from path: ' + rawPath }) };
+
+      const draftId = match[1];
+      const { error } = await supabase
+        .from('gtm_drafts')
+        .update({ status: 'rejected', updated_at: new Date().toISOString() })
+        .eq('id', draftId);
+
+      if (error) throw error;
+
+      return {
+        statusCode: 200,
+        headers: CORS,
+        body: JSON.stringify({ success: true, message: 'Draft rejected' })
+      };
+    } catch (err) {
+      return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message }) };
+    }
+  }
+
+  // Handle GET - return all drafts grouped by status
   try {
     const { data, error } = await supabase
       .from('gtm_drafts')

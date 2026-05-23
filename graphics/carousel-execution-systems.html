@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LinkedIn Carousel — Execution Systems | Barnes Lam</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; padding:28px; font-family:Arial,sans-serif; }
+h1 { color:#aaa; text-align:center; font-size:15px; font-weight:400; margin-bottom:16px; }
+.controls { display:flex; justify-content:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.controls button { background:#0A66C2; color:white; border:none; padding:12px 24px; border-radius:6px; font-size:14px; cursor:pointer; }
+.caption-box { background:#141414; border:1px solid #2a2a2a; border-radius:8px; padding:20px; max-width:580px; margin:0 auto 28px; }
+.caption-box h3 { color:#0A66C2; font-size:10px; text-transform:uppercase; letter-spacing:.15em; margin-bottom:10px; }
+.caption-text { color:#ccc; font-size:13px; line-height:1.9; white-space:pre-line; }
+.slides { display:flex; flex-direction:column; align-items:center; gap:14px; }
+.slide-row { display:flex; align-items:flex-start; gap:10px; }
+.slide-label { color:#444; font-size:11px; width:40px; text-align:right; padding-top:8px; }
+.slide-wrapper { width:540px; height:540px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.6); }
+.slide { width:1080px; height:1080px; transform:scale(.5); transform-origin:0 0; display:block; }
+.dl-btn { background:#1a1a1a; color:#666; border:1px solid #2a2a2a; padding:6px 12px; border-radius:4px; font-size:11px; cursor:pointer; margin-top:6px; display:block; width:100%; }
+.dl-btn:hover { color:#ccc; }
+@media print {
+  body { background:white; padding:0; }
+  h1,.controls,.caption-box { display:none !important; }
+  .slides { gap:0; }
+  .slide-row { page-break-after:always; display:block; }
+  .slide-label,.dl-btn { display:none; }
+  .slide-wrapper { width:100%; height:100vh; overflow:visible; box-shadow:none; }
+  .slide { transform:none; width:100% !important; height:100vh !important; }
+  .slide svg { width:100% !important; height:100% !important; }
+  @page { margin:0; size:A4; }
+}
+</style>
+</head>
+<body>
+<h1>LinkedIn Carousel — "Strategy doesn't fail. Execution systems do." — Barnes Lam</h1>
+<div class="controls">
+  <button onclick="window.print()">🖨 Print → Save as PDF (8-page carousel)</button>
+</div>
+<div class="caption-box">
+  <h3>Post Caption — copy this to LinkedIn</h3>
+  <div class="caption-text">You don't get paid for what you fix.
+You get paid for what was agreed.
+
+And those are rarely the same thing.
+
+I used to go beyond the brief — connecting gaps, improving systems, making execution actually work.
+
+Better system. Worse alignment.
+
+Because I crossed a line:
+From delivering work → to taking ownership
+Without resetting the agreement.
+
+That's where most execution breaks.
+
+Not from lack of effort.
+But from lack of system definition.
+
+That's the shift I've made:
+
+I either deliver what's scoped
+Or I stop and redesign the system properly.
+
+No in-between.
+
+Strategy doesn't fail.
+
+Execution systems do.
+
+#Execution #GTM</div>
+</div>
+
+<div class="slides">
+
+<!-- SLIDE 1 -->
+<div class="slide-row">
+  <div class="slide-label">1 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s1" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs>
+          <clipPath id="s1tl"><rect x="0" y="0" width="230" height="230"/></clipPath>
+          <clipPath id="s1tr"><rect x="850" y="0" width="230" height="230"/></clipPath>
+          <clipPath id="s1bl"><rect x="0" y="850" width="230" height="230"/></clipPath>
+          <clipPath id="s1br"><rect x="850" y="850" width="230" height="230"/></clipPath>
+        </defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s1tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s1tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s1bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s1br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="115" y="490" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="800" y="760" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="540" y="390" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">STRATEGY</text>
+        <text x="540" y="478" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">DOESN'T FAIL.</text>
+        <text x="540" y="578" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">EXECUTION</text>
+        <text x="540" y="666" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">SYSTEMS DO.</text>
+        <text x="540" y="748" font-size="30" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">Most breakdowns happen between decisions and results.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s1','carousel-slide-1.png')">⬇ Download Slide 1</button>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide-row">
+  <div class="slide-label">2 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s2" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s2tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s2tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s2bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s2br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s2tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s2tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s2bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s2br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="115" y="490" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="800" y="760" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="540" y="380" font-size="70" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">MOST TEAMS</text>
+        <text x="540" y="462" font-size="70" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">DON'T HAVE A</text>
+        <text x="540" y="544" font-size="70" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">STRATEGY</text>
+        <text x="540" y="626" font-size="70" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">PROBLEM.</text>
+        <text x="540" y="716" font-size="30" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">They have a breakdown between decisions</text>
+        <text x="540" y="754" font-size="30" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">and execution.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s2','carousel-slide-2.png')">⬇ Download Slide 2</button>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide-row">
+  <div class="slide-label">3 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s3" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s3tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s3tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s3bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s3br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s3tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s3tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s3bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s3br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="540" y="350" font-size="58" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">WHEN THE SYSTEM</text>
+        <text x="540" y="420" font-size="58" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">ISN'T DEFINED:</text>
+        <line x1="240" y1="450" x2="840" y2="450" stroke="#3366CC" stroke-width="2"/>
+        <text x="540" y="520" font-size="38" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">• Scope quietly expands</text>
+        <text x="540" y="580" font-size="38" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">• Value becomes subjective</text>
+        <text x="540" y="640" font-size="38" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">• Teams work on different assumptions</text>
+        <text x="540" y="720" font-size="34" fill="#6688AA" text-anchor="middle" font-family="Arial,sans-serif" font-style="italic">And no one notices until it's too late.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s3','carousel-slide-3.png')">⬇ Download Slide 3</button>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide-row">
+  <div class="slide-label">4 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s4" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s4tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s4tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s4bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s4br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s4tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s4tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s4bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s4br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="115" y="490" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="800" y="760" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="540" y="390" font-size="66" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">NO ONE OWNS</text>
+        <text x="540" y="468" font-size="66" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">THE SYSTEM</text>
+        <text x="540" y="546" font-size="66" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">BETWEEN STRATEGY</text>
+        <text x="540" y="624" font-size="66" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">AND RESULTS.</text>
+        <text x="540" y="710" font-size="32" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif" font-style="italic">That's where execution breaks.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s4','carousel-slide-4.png')">⬇ Download Slide 4</button>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide-row">
+  <div class="slide-label">5 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s5" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s5tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s5tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s5bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s5br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s5tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s5tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s5bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s5br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="540" y="350" font-size="52" font-weight="900" fill="#AABBDD" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">I LEARNED THIS</text>
+        <text x="540" y="414" font-size="52" font-weight="900" fill="#AABBDD" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">THE HARD WAY:</text>
+        <line x1="240" y1="440" x2="840" y2="440" stroke="#3366CC" stroke-width="2"/>
+        <text x="540" y="506" font-size="40" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">Going beyond the brief</text>
+        <text x="540" y="558" font-size="40" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">without redefining scope</text>
+        <text x="540" y="630" font-size="40" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">doesn't create value.</text>
+        <text x="540" y="700" font-size="48" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">It creates misalignment.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s5','carousel-slide-5.png')">⬇ Download Slide 5</button>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide-row">
+  <div class="slide-label">6 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s6" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s6tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s6tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s6bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s6br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s6tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s6tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s6bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s6br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="540" y="340" font-size="64" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">I DON'T BLUR</text>
+        <text x="540" y="416" font-size="64" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">THE LINE ANYMORE.</text>
+        <line x1="240" y1="445" x2="840" y2="445" stroke="#3366CC" stroke-width="2"/>
+        <text x="540" y="510" font-size="36" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">I either:</text>
+        <text x="540" y="576" font-size="40" font-weight="700" fill="white" text-anchor="middle" font-family="Arial,sans-serif">1.  Deliver exactly what's scoped</text>
+        <text x="540" y="636" font-size="36" fill="#6688AA" text-anchor="middle" font-family="Arial,sans-serif">OR</text>
+        <text x="540" y="696" font-size="40" font-weight="700" fill="white" text-anchor="middle" font-family="Arial,sans-serif">2.  Redesign the system properly</text>
+        <text x="540" y="770" font-size="32" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif" font-style="italic">No in-between.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s6','carousel-slide-6.png')">⬇ Download Slide 6</button>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide-row">
+  <div class="slide-label">7 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s7" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s7tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s7tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s7bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s7br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s7tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s7tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s7bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s7br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="115" y="490" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="800" y="760" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="540" y="380" font-size="62" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">THE MOMENT YOU</text>
+        <text x="540" y="454" font-size="62" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">BLUR SCOPE —</text>
+        <text x="540" y="558" font-size="48" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif">you don't create more value.</text>
+        <text x="540" y="650" font-size="62" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">YOU CREATE</text>
+        <text x="540" y="726" font-size="62" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">MISALIGNMENT.</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s7','carousel-slide-7.png')">⬇ Download Slide 7</button>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide-row">
+  <div class="slide-label">8 / 8</div>
+  <div>
+    <div class="slide-wrapper">
+      <svg id="s8" class="slide" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" width="1080" height="1080">
+        <defs><clipPath id="s8tl"><rect x="0" y="0" width="230" height="230"/></clipPath><clipPath id="s8tr"><rect x="850" y="0" width="230" height="230"/></clipPath><clipPath id="s8bl"><rect x="0" y="850" width="230" height="230"/></clipPath><clipPath id="s8br"><rect x="850" y="850" width="230" height="230"/></clipPath></defs>
+        <rect width="1080" height="1080" fill="#0B1B3E"/>
+        <g clip-path="url(#s8tl)" opacity=".45"><circle cx="0" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s8tr)" opacity=".45"><circle cx="1080" cy="0" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="0" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s8bl)" opacity=".45"><circle cx="0" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="0" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <g clip-path="url(#s8br)" opacity=".45"><circle cx="1080" cy="1080" r="120" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="158" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="196" fill="none" stroke="#1E4FC9" stroke-width="18"/><circle cx="1080" cy="1080" r="234" fill="none" stroke="#1E4FC9" stroke-width="18"/></g>
+        <path d="M 360,260 C 500,195 720,235 778,368 C 836,500 762,648 608,665 C 454,682 308,598 278,472 C 248,346 260,315 360,260 Z" fill="#1E4FC9"/>
+        <circle cx="230" cy="720" r="13" fill="#7799CC"/><circle cx="272" cy="720" r="13" fill="#7799CC"/><circle cx="314" cy="720" r="13" fill="#7799CC"/><circle cx="356" cy="720" r="13" fill="#7799CC"/><circle cx="398" cy="720" r="13" fill="#7799CC"/>
+        <circle cx="700" cy="295" r="13" fill="#7799CC"/><circle cx="742" cy="295" r="13" fill="#7799CC"/><circle cx="784" cy="295" r="13" fill="#7799CC"/><circle cx="826" cy="295" r="13" fill="#7799CC"/><circle cx="868" cy="295" r="13" fill="#7799CC"/>
+        <text x="115" y="490" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="800" y="760" font-size="200" fill="#1E4FC9" opacity=".55" font-family="Georgia,serif">"</text>
+        <text x="540" y="390" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">STRATEGY</text>
+        <text x="540" y="478" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">DOESN'T FAIL.</text>
+        <text x="540" y="578" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">EXECUTION</text>
+        <text x="540" y="666" font-size="76" font-weight="900" fill="white" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif">SYSTEMS DO.</text>
+        <text x="540" y="756" font-size="34" fill="#AABBDD" text-anchor="middle" font-family="Arial,sans-serif" font-style="italic">— Barnes Lam</text>
+        <rect x="390" y="48" width="300" height="58" rx="29" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="84" font-size="26" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">Barnes Lam</text>
+        <rect x="378" y="978" width="324" height="54" rx="27" fill="none" stroke="white" stroke-width="2" opacity=".75"/>
+        <text x="540" y="1013" font-size="24" fill="white" text-anchor="middle" font-family="Arial,sans-serif" opacity=".9">barneslam.co</text>
+      </svg>
+    </div>
+    <button class="dl-btn" onclick="dlSlide('s8','carousel-slide-8.png')">⬇ Download Slide 8</button>
+  </div>
+</div>
+
+</div><!-- /slides -->
+
+<script>
+function dlSlide(id, filename) {
+  const svg = document.getElementById(id);
+  const s = new XMLSerializer();
+  const str = s.serializeToString(svg);
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080; canvas.height = 1080;
+  const ctx = canvas.getContext('2d');
+  const img = new Image();
+  const blob = new Blob([str], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  img.onload = function() {
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+    const a = document.createElement('a');
+    a.download = filename;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+  img.src = url;
+}
+</script>
+</body>
+</html>

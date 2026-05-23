@@ -20,7 +20,14 @@ const DISCOVERY_CRITERIA = {
   ],
   minEmployees: 20,
   maxEmployees: 150,
-  regions: ['US - SF', 'US - NYC', 'US - Austin', 'US - Boston']
+  regions: ['US - SF', 'US - NYC', 'US - Austin', 'US - Boston'],
+  // Exclude these company/role types
+  excludeTypes: [
+    'consultant', 'consulting', 'advisory', 'advisor',
+    'coach', 'coaching', 'trainer', 'training',
+    'agency', 'service provider', 'freelance', 'contractor',
+    'marketplace', 'platform' // Pure SaaS facilitators
+  ]
 };
 
 // Mock database of known leads from trigger scan and YC batches
@@ -150,6 +157,40 @@ const LEAD_DATABASE = [
   { name: 'Amelia Robinson', company: 'Prompt Engineering', batch: 'YC S25', revenue: '$5M - $19M ARR', fundingStage: 'Series B', trigger: 'new_product_launch', linkedIn: 'https://ycombinator.com', confidence: 'HIGH' }
 ];
 
+// Validation helpers
+function hasFirstAndLastName(name) {
+  if (!name) return false;
+  const parts = name.trim().split(/\s+/).filter(p => p.length > 0);
+  return parts.length >= 2; // Must have at least first and last name
+}
+
+function hasActiveLinkedInProfile(linkedInUrl) {
+  if (!linkedInUrl) return false;
+  // Must be actual LinkedIn profile URL, not YC/generic links
+  return /linkedin\.com\/(in|company)\/[\w-]+/.test(linkedInUrl);
+}
+
+function isExcludedType(lead) {
+  const text = ((lead.name || '') + ' ' + (lead.company || '')).toLowerCase();
+  return DISCOVERY_CRITERIA.excludeTypes.some(type => text.includes(type));
+}
+
+function isQualifiedLead(lead) {
+  // Must have first + last name
+  if (!hasFirstAndLastName(lead.name)) {
+    return { valid: false, reason: 'Missing first/last name' };
+  }
+  // Must have active LinkedIn profile
+  if (!hasActiveLinkedInProfile(lead.linkedIn)) {
+    return { valid: false, reason: 'No active LinkedIn profile' };
+  }
+  // Must not be excluded type
+  if (isExcludedType(lead)) {
+    return { valid: false, reason: 'Excluded type (consultant/coach/etc)' };
+  }
+  return { valid: true, reason: 'Qualified' };
+}
+
 // Helper to read/write JSON files
 function readJSON(filepath) {
   try {
@@ -173,31 +214,44 @@ function writeJSON(filepath, data) {
 function discoverLeads() {
   const now = new Date();
   const discoveredLeads = [];
+  const rejectedLeads = [];
 
   // In production, this would call Growth List API, Crunchbase API, etc.
   // For now, we'll randomly select from database to simulate daily discovery
-  const leadsToDiscover = LEAD_DATABASE
+  let candidates = LEAD_DATABASE
     .sort(() => Math.random() - 0.5)
-    .slice(0, Math.floor(Math.random() * 3) + 5); // 5-8 leads per day
+    .slice(0, Math.floor(Math.random() * 5) + 10); // Pull 10-15 candidates
 
-  leadsToDiscover.forEach((lead, idx) => {
-    discoveredLeads.push({
-      id: `lead_${now.getTime()}_${idx}`,
-      name: lead.name,
-      company: lead.company,
-      batch: lead.batch,
-      revenue: lead.revenue,
-      fundingStage: lead.fundingStage,
-      trigger: lead.trigger,
-      triggeredAt: now.toISOString(),
-      linkedIn: lead.linkedIn,
-      confidence: lead.confidence,
-      status: 'discovered', // Not yet contacted
-      requiresConnectionFirst: true, // CRITICAL: Always require connection request before email
-      nextAction: 'research_company_and_send_connection_request',
-      discoveredAt: now.toISOString()
-    });
+  // Filter for qualified leads
+  candidates.forEach((lead) => {
+    const qualification = isQualifiedLead(lead);
+    if (qualification.valid) {
+      const idx = discoveredLeads.length;
+      discoveredLeads.push({
+        id: `lead_${now.getTime()}_${idx}`,
+        name: lead.name,
+        company: lead.company,
+        batch: lead.batch,
+        revenue: lead.revenue,
+        fundingStage: lead.fundingStage,
+        trigger: lead.trigger,
+        triggeredAt: now.toISOString(),
+        linkedIn: lead.linkedIn,
+        confidence: lead.confidence,
+        status: 'discovered', // Not yet contacted
+        requiresConnectionFirst: true, // CRITICAL: Always require connection request before email
+        nextAction: 'research_company_and_send_connection_request',
+        discoveredAt: now.toISOString()
+      });
+    } else {
+      rejectedLeads.push({ name: lead.name, company: lead.company, reason: qualification.reason });
+    }
   });
+
+  // Log rejections for visibility
+  if (rejectedLeads.length > 0) {
+    console.log(`⚠️  Filtered out ${rejectedLeads.length} leads: ${rejectedLeads.map(r => `${r.name} (${r.reason})`).join(', ')}`);
+  }
 
   return discoveredLeads;
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Execution Gap - Download PNG</title>
+    <style>
+        body { margin: 0; padding: 30px; background: #f5f5f5; font-family: -apple-system, sans-serif; }
+        button { display: block; margin: 20px 0; background: #0A66C2; color: white; border: none; padding: 14px 28px; border-radius: 6px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #084298; }
+        svg { display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    </style>
+</head>
+<body>
+    <button onclick="downloadPNG()">⬇ Download as PNG</button>
+
+    <svg id="graphic" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg" width="1200" height="628">
+        <rect width="1200" height="628" fill="#ffffff"/>
+        <rect width="1200" height="8" fill="#0A66C2"/>
+
+        <rect x="60" y="120" width="220" height="260" rx="8" fill="#E8F0FE"/>
+        <text x="170" y="175" font-size="15" font-weight="700" fill="#0A66C2" text-anchor="middle">STRATEGY</text>
+        <line x1="90" y1="190" x2="250" y2="190" stroke="#0A66C2" stroke-width="1.5" opacity="0.4"/>
+        <text x="90" y="218" font-size="13" fill="#444">• Overbuilt</text>
+        <text x="90" y="246" font-size="13" fill="#444">• Well researched</text>
+        <text x="90" y="274" font-size="13" fill="#444">• Leadership aligned</text>
+        <text x="90" y="302" font-size="13" fill="#444">• Looks right on paper</text>
+        <text x="170" y="350" font-size="28" font-weight="bold" fill="#0A66C2" text-anchor="middle">✓</text>
+
+        <line x1="295" y1="250" x2="385" y2="250" stroke="#cc3300" stroke-width="3" stroke-dasharray="8,5"/>
+        <polygon points="385,243 400,250 385,257" fill="#cc3300"/>
+        <text x="347" y="238" font-size="11" font-weight="700" fill="#cc3300" text-anchor="middle">GAP</text>
+
+        <rect x="415" y="120" width="220" height="260" rx="8" fill="#FEF2F2"/>
+        <text x="525" y="175" font-size="15" font-weight="700" fill="#cc3300" text-anchor="middle">EXECUTION</text>
+        <line x1="440" y1="190" x2="615" y2="190" stroke="#cc3300" stroke-width="1.5" opacity="0.4"/>
+        <text x="440" y="218" font-size="13" fill="#444">• Ownership unclear</text>
+        <text x="440" y="246" font-size="13" fill="#444">• No workflow defined</text>
+        <text x="440" y="274" font-size="13" fill="#444">• Tools disconnected</text>
+        <text x="440" y="302" font-size="13" fill="#444">• Accountability missing</text>
+        <text x="525" y="350" font-size="28" font-weight="bold" fill="#cc3300" text-anchor="middle">✗</text>
+
+        <line x1="337" y1="400" x2="337" y2="455" stroke="#999" stroke-width="2"/>
+        <polygon points="330,455 337,470 344,455" fill="#999"/>
+        <text x="420" y="435" font-size="13" fill="#999">Delays. Wasted spend. Missed revenue.</text>
+
+        <text x="700" y="170" font-size="44" font-weight="bold" fill="#1a1a1a" text-anchor="start">
+            <tspan x="700" dy="0">Most GTM strategies</tspan>
+            <tspan x="700" dy="56">don't fail because</tspan>
+            <tspan x="700" dy="56">they're wrong.</tspan>
+        </text>
+        <text x="700" y="360" font-size="44" font-weight="bold" fill="#0A66C2" text-anchor="start">
+            <tspan x="700" dy="0">They were never</tspan>
+            <tspan x="700" dy="56">executable.</tspan>
+        </text>
+
+        <line x1="660" y1="490" x2="1160" y2="490" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="700" y="530" font-size="16" font-weight="600" fill="#444">Strategy doesn't fail.</text>
+        <text x="700" y="556" font-size="16" font-weight="700" fill="#0A66C2">Execution systems do.</text>
+        <text x="600" y="608" font-size="13" fill="#999" text-anchor="middle">barneslam.co</text>
+    </svg>
+
+    <script>
+        function downloadPNG() {
+            const svg = document.getElementById('graphic');
+            const serializer = new XMLSerializer();
+            const svgStr = serializer.serializeToString(svg);
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 628;
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+                URL.revokeObjectURL(url);
+                const a = document.createElement('a');
+                a.download = 'execution-gap-post1.png';
+                a.href = canvas.toDataURL('image/png');
+                a.click();
+            };
+            img.src = url;
+        }
+    </script>
+</body>
+</html>

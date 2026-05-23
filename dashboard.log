@@ -1,0 +1,12 @@
+⏰ Server started after 7am - running discovery now
+
+📊 Starting lead discovery scan...
+⚠️  Filtered out 12 leads: Andrew Brown (No active LinkedIn profile), Lucas Miller (No active LinkedIn profile), Logan Garcia (No active LinkedIn profile), Lisa Chen (No active LinkedIn profile), Sofia Rodriguez (No active LinkedIn profile), Emma Rodriguez (No active LinkedIn profile), Ava Jackson (No active LinkedIn profile), Emma Wilson (No active LinkedIn profile), Karen White (No active LinkedIn profile), Mark Wilson (No active LinkedIn profile), Corvera Founder (No active LinkedIn profile), Harper Lee (No active LinkedIn profile)
+⚠️  No new qualified leads discovered today
+
+✓ GTM Engine Dashboard running on http://localhost:3001
+
+📊 Lead Discovery: Scheduled daily at 7:00 AM
+Open in browser: http://localhost:3001
+Press Ctrl+C to stop
+

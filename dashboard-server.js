@@ -907,12 +907,13 @@ async function handleRequest(req, res, body) {
     return;
   }
 
-  // Handle /api/drafts/:id/delete (POST)
+  // Handle /api/drafts/:id/delete (POST) - RIN carousel system
   if (req.url.match(/^\/api\/drafts\/[^/]+\/delete$/) && req.method === 'POST') {
     const draftId = req.url.split('/')[3];
+    console.log('📌 DELETE draft:', draftId);
     try {
       const { error } = await supabase
-        .from('content_drafts')
+        .from('gtm_drafts')
         .delete()
         .eq('id', draftId);
 
@@ -922,6 +923,28 @@ async function handleRequest(req, res, body) {
       res.end(JSON.stringify({ success: true, message: 'Draft deleted' }));
     } catch (e) {
       console.error('Delete draft error:', e.message);
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: e.message }));
+    }
+    return;
+  }
+
+  // Handle /api/drafts/:id/reject (POST) - RIN carousel system
+  if (req.url.match(/^\/api\/drafts\/[^/]+\/reject$/) && req.method === 'POST') {
+    const draftId = req.url.split('/')[3];
+    console.log('🚫 REJECT draft:', draftId);
+    try {
+      const { error } = await supabase
+        .from('gtm_drafts')
+        .update({ status: 'rejected', updated_at: new Date().toISOString() })
+        .eq('id', draftId);
+
+      if (error) throw error;
+
+      res.writeHead(200);
+      res.end(JSON.stringify({ success: true, message: 'Draft rejected' }));
+    } catch (e) {
+      console.error('Reject draft error:', e.message);
       res.writeHead(500);
       res.end(JSON.stringify({ error: e.message }));
     }

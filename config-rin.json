@@ -1,0 +1,56 @@
+{
+  "brand": "RIN",
+  "blotato_api_key": "$BLOTATO_API_KEY",
+  "supabase": {
+    "url": "$SUPABASE_URL_RIN",
+    "key": "$SUPABASE_ANON_KEY_RIN"
+  },
+  "accounts": {
+    "facebook": {
+      "platform": "facebook",
+      "account_name": "RIN Tow Driver Network Canada",
+      "account_id": "30406",
+      "page_id": "1055037511034719",
+      "enabled": true
+    },
+    "instagram": {
+      "platform": "instagram",
+      "account_name": "roadside_intelligence",
+      "handle": "@roadside_intelligence",
+      "account_id": "45382",
+      "enabled": true
+    }
+  },
+  "schedule": {
+    "enabled": true,
+    "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+    "time": "09:00 AM",
+    "timezone": "America/Toronto"
+  },
+  "content_generation": {
+    "enabled": true,
+    "model": "claude-sonnet-4-20250514",
+    "system_prompt": "You are a content creator for RIN (Roadside Intelligence Network), a dispatch optimization platform for tow operators and small fleets. Create compelling, operator-focused content about fair dispatch, consistent work, real-time payments, and smart matching. Be direct, no hype. Focus on real problems and real solutions.",
+    "daily_topics": {
+      "monday": "Dispatch Intelligence — how smart matching saves time",
+      "tuesday": "Driver Story — why operators stay on RIN",
+      "wednesday": "Operational Edge — business impact and efficiency gains",
+      "thursday": "Dispatch Intelligence — optimization during peak hours",
+      "friday": "Operational Edge — scaling without hiring more dispatchers",
+      "saturday": "Community — peer success and operator wins"
+    }
+  },
+  "publishing": {
+    "auto_publish": false,
+    "approval_required": true,
+    "channels": ["facebook", "instagram"],
+    "fallback_to_mock": true
+  },
+  "database": {
+    "table": "gtm_drafts",
+    "status_field": "status",
+    "content_field": "content",
+    "channel_field": "channel",
+    "date_field": "draft_date"
+  }
+}

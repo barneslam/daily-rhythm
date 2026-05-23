@@ -60,8 +60,7 @@ async function publishScheduledContent() {
   for (const draft of drafts) {
     const scheduledTime = `${today}T14:00:00Z`;
     const channel = channelMap[draft.channel] || {};
-    const graphicUrl = draft.graphic_url || `${SUPABASE_STORAGE_URL}/${draft.channel}-${today}.png`;
-    const mediaUrls = [graphicUrl];
+    const mediaUrls = draft.graphic_url ? [draft.graphic_url] : []; // Unique graphic per post if available
 
     const linkedinTarget = { targetType: "linkedin" };
     if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;

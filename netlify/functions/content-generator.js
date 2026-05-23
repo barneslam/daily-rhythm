@@ -132,7 +132,7 @@ async function getRecentLeads() {
     const { data, error } = await supabase
       .from('gtm_targets')
       .select('*')
-      .eq('source_channel', 'discovery')
+      .eq('source', 'discovery')
       .gte('created_at', thirtyDaysAgo)
       .order('confidence', { ascending: false })
       .order('created_at', { ascending: false });

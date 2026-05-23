@@ -62,8 +62,7 @@ exports.handler = async (event) => {
       const scheduleDate = draft.draft_date || new Date().toISOString().split('T')[0];
       const scheduledTime = `${scheduleDate}T14:00:00Z`;
       const channel = channelMap[draft.channel] || {};
-      const graphicUrl = draft.graphic_url || `${SUPABASE_STORAGE_URL}/${draft.channel}-${scheduleDate}.png`;
-      const mediaUrls = [graphicUrl];
+      const mediaUrls = draft.graphic_url ? [draft.graphic_url] : []; // Unique graphic per post if available
 
       const linkedinTarget = { targetType: 'linkedin' };
       if (channel.linkedinPageId) linkedinTarget.pageId = channel.linkedinPageId;
