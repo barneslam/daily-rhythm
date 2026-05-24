@@ -1,0 +1,67 @@
+{
+  "week1_photos": {
+    "monday": {
+      "day": "Monday",
+      "theme": "Opportunity Leakage",
+      "image_url": "https://images.unsplash.com/photo-1600267165477-6d4cc741b379",
+      "photographer": "Compagnons (@sigmund)",
+      "description": "Person engaged with laptop, focused expression",
+      "resolution": "5184 x 3456",
+      "filename": "recovery-sprint-monday-inbox.jpg"
+    },
+    "tuesday": {
+      "day": "Tuesday",
+      "theme": "Wasted Lead Spend",
+      "image_url": "https://unsplash.com/photos/office-desk-with-smartphone-and-financial-charts-heiYgqp0Tsk",
+      "photographer": "Jakub Żerdzicki (@jakubzerdzicki)",
+      "description": "Office desk with financial charts and smartphone",
+      "resolution": "3148 x 2100",
+      "filename": "recovery-sprint-tuesday-analytics.jpg"
+    },
+    "wednesday": {
+      "day": "Wednesday",
+      "theme": "Stalled Proposal Recovery",
+      "image_url": "https://unsplash.com/photos/woman-signing-on-white-printer-paper-beside-woman-about-to-touch-the-documents-HJckKnwCXxQ",
+      "photographer": "Gabrielle Henderson (@gabriellefaithhenderson)",
+      "description": "Woman signing document, focused attention on paperwork",
+      "resolution": "6000 x 4000",
+      "filename": "recovery-sprint-wednesday-proposal.jpg"
+    },
+    "thursday": {
+      "day": "Thursday",
+      "theme": "Warm Referrals",
+      "image_url": "https://images.unsplash.com/photo-1630487656049-6db93a53a7e9",
+      "photographer": "Andreea Avramescu (@minakko)",
+      "description": "Professional pair engaged in discussion at table",
+      "resolution": "high-resolution",
+      "filename": "recovery-sprint-thursday-conversation.jpg"
+    },
+    "friday": {
+      "day": "Friday",
+      "theme": "Follow-Up Rhythm",
+      "image_url": "https://images.unsplash.com/photo-1435527173128-983b87201f4d",
+      "photographer": "Eric Rothermel (@erothermel)",
+      "description": "Monthly planner on wooden desk with schedule",
+      "resolution": "3872 x 2592",
+      "filename": "recovery-sprint-friday-planner.jpg"
+    },
+    "saturday": {
+      "day": "Saturday",
+      "theme": "Case Study - Momentum",
+      "image_url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+      "photographer": "Christin Hume",
+      "description": "Person working on laptop, engaged and focused",
+      "resolution": "high-resolution",
+      "filename": "recovery-sprint-saturday-working.jpg"
+    },
+    "sunday": {
+      "day": "Sunday",
+      "theme": "Founder Reflection",
+      "image_url": "https://images.unsplash.com/photo-1511203466129-824e631920d7",
+      "photographer": "Jason Strull",
+      "description": "Person in contemplative pose at computer, thoughtful",
+      "resolution": "high-resolution",
+      "filename": "recovery-sprint-sunday-reflection.jpg"
+    }
+  }
+}

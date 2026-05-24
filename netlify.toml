@@ -48,6 +48,11 @@ cron = "*/30 * * * *"
 function = "dm-to-lead-converter"
 cron = "0 * * * *"
 
+# Publish Recovery Sprint daily posts - Daily at 9 AM EST = 14 UTC (Mon-Sun)
+[[scheduled_functions]]
+function = "publish-recovery-sprint"
+cron = "0 14 * * *"
+
 # Special test run - April 18 at 8 AM UTC
 [[scheduled_functions]]
 function = "test-full-pipeline"
@@ -68,6 +73,12 @@ status = 200
 [[redirects]]
 from = "/api/*"
 to = "/.netlify/functions/:splat"
+status = 200
+
+# Recovery Sprint landing page
+[[redirects]]
+from = "/recover"
+to = "/recover.html"
 status = 200
 
 # Dashboard routing

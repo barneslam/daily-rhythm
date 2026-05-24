@@ -1,0 +1,78 @@
+{
+  "campaign": "48-Hour Recovery Sprint Service Launch",
+  "startDate": "2026-05-26",
+  "endDate": "2026-06-01",
+  "timezone": "America/New_York",
+  "postTime": "09:00",
+  "schedule": [
+    {
+      "day": "Monday",
+      "date": "2026-05-26",
+      "theme": "Opportunity Leakage Pain",
+      "channels": ["linkedin_personal", "instagram"],
+      "image_url": "https://images.unsplash.com/photo-1600267165477-6d4cc741b379",
+      "cta": "Message RECOVER",
+      "notes": "Positioning: pain of lost opportunities before solutions"
+    },
+    {
+      "day": "Tuesday",
+      "date": "2026-05-27",
+      "theme": "Wasted Lead Generation Spend",
+      "channels": ["strategy_pitch", "instagram"],
+      "image_url": "https://unsplash.com/photos/office-desk-with-smartphone-and-financial-charts-heiYgqp0Tsk",
+      "cta": "Message RECOVER",
+      "notes": "Focus: cost of broken follow-up vs new lead acquisition"
+    },
+    {
+      "day": "Wednesday",
+      "date": "2026-05-28",
+      "theme": "Stalled Proposal Recovery",
+      "channels": ["biz_dev_titans", "instagram"],
+      "image_url": "https://unsplash.com/photos/woman-signing-on-white-printer-paper-beside-woman-about-to-touch-the-documents-HJckKnwCXxQ",
+      "cta": "Message RECOVER",
+      "notes": "Specific tactic: proposal recovery messaging framework"
+    },
+    {
+      "day": "Thursday",
+      "date": "2026-05-29",
+      "theme": "Warm Referrals That Went Quiet",
+      "channels": ["linkedin_personal", "instagram"],
+      "image_url": "https://images.unsplash.com/photo-1630487656049-6db93a53a7e9",
+      "cta": "Message RECOVER",
+      "notes": "Positioning: warm referrals as highest-ROI leads"
+    },
+    {
+      "day": "Friday",
+      "date": "2026-05-30",
+      "theme": "Follow-Up Breakdown + Recovery Rhythm",
+      "channels": ["axis_chamber", "instagram"],
+      "image_url": "https://images.unsplash.com/photo-1435527173128-983b87201f4d",
+      "cta": "Message RECOVER",
+      "notes": "System-focused: introducing the 7-day recovery rhythm"
+    },
+    {
+      "day": "Saturday",
+      "date": "2026-05-31",
+      "theme": "Case Study — The $75K Conversation",
+      "channels": ["growth_gurus", "instagram"],
+      "image_url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+      "cta": "Message RECOVER",
+      "notes": "Proof: real case study showing ROI of recovery"
+    },
+    {
+      "day": "Sunday",
+      "date": "2026-06-01",
+      "theme": "Founder Reality / Personal Reflection",
+      "channels": ["linkedin_personal", "instagram"],
+      "image_url": "https://images.unsplash.com/photo-1511203466129-824e631920d7",
+      "cta": "Message RECOVER",
+      "notes": "Honest reflection: the founder's perspective on follow-up"
+    }
+  ],
+  "publishing_instructions": {
+    "blotato_integration": "Use Blotato's native scheduling feature to schedule posts at postTime each day",
+    "image_handling": "All images are public Unsplash URLs (free, high-res, properly attributed)",
+    "cta_link": "Each post should link to landing page: /recover or https://daily-lead-gen-track.netlify.app/recover",
+    "calendar_link": "Add Calendly link in bio or landing page: https://calendly.com/barneslam"
+  }
+}
