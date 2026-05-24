@@ -58,6 +58,13 @@ cron = "0 14 * * *"
 function = "test-full-pipeline"
 cron = "0 8 18 4 *"
 
+# Recovery Sprint landing page (must be before fallback)
+[[redirects]]
+from = "/recover"
+to = "/recover.html"
+status = 200
+force = true
+
 # API routing - explicit routes for delete/reject (must come before wildcard)
 [[redirects]]
 from = "/api/drafts/*/delete"
@@ -73,12 +80,6 @@ status = 200
 [[redirects]]
 from = "/api/*"
 to = "/.netlify/functions/:splat"
-status = 200
-
-# Recovery Sprint landing page
-[[redirects]]
-from = "/recover"
-to = "/recover.html"
 status = 200
 
 # Dashboard routing
