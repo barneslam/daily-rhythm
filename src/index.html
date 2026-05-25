@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Rhythm - Revenue Engine</title>
+  <meta name="description" content="Daily Rhythm: Content and Outreach Engine for the 48-Hour Opportunity Recovery Sprint">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230F172A' width='100' height='100'/><text x='50' y='70' font-size='60' fill='white' text-anchor='middle' font-weight='bold'>DR</text></svg>">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <h1>Daily Rhythm</h1>
+        <p>Revenue Engine</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- Main Navigation -->
+        <li class="sidebar-nav-item">
+          <a href="#dashboard" class="sidebar-nav-link active" data-page="dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/><path d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z"/>
+            </svg>
+            Dashboard
+          </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <a href="#calendar" class="sidebar-nav-link" data-page="calendar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/>
+            </svg>
+            Content Calendar
+          </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <a href="#assets" class="sidebar-nav-link" data-page="assets">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.738-1.769A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"/>
+            </svg>
+            Visual Assets
+          </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <a href="#composer" class="sidebar-nav-link" data-page="composer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+            </svg>
+            Compose Post
+          </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <a href="#outreach" class="sidebar-nav-link" data-page="outreach">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Outreach Hub
+          </a>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <a href="#analytics" class="sidebar-nav-link" data-page="analytics">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+            </svg>
+            Analytics
+          </a>
+        </li>
+
+        <!-- Spacing -->
+        <div class="sidebar-nav-section"></div>
+
+        <li class="sidebar-nav-item">
+          <a href="#settings" class="sidebar-nav-link" data-page="settings">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+            </svg>
+            Settings
+          </a>
+        </li>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="userAvatar">B</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Barnes</div>
+            <div class="sidebar-user-email">barnes@thestrategypitch.com</div>
+          </div>
+        </div>
+        <button class="sidebar-logout" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="main-header-title">
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Today's content status and outreach activity</p>
+        </div>
+
+        <div class="main-header-actions">
+          <button class="button button-primary" id="primaryAction">Compose Post</button>
+
+          <!-- Mobile menu toggle -->
+          <button class="button button-ghost sidebar-toggle-mobile" id="menuToggle" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Dashboard Page (default) -->
+        <div id="dashboard" class="page active">
+          <div class="grid-3-col">
+            <!-- Today's Theme Card -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Today's Theme</div>
+                  <div class="card-subtitle" id="todayTheme">MONDAY: Opportunity Leakage</div>
+                </div>
+              </div>
+              <div class="card-content">
+                <div>
+                  <h3 style="color: var(--color-text-secondary); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-2);">Pain Points</h3>
+                  <ul style="list-style: none; font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                    <li style="margin-bottom: var(--space-2); display: flex; gap: var(--space-2);"><span>•</span><span>Lost revenue in existing relationships</span></li>
+                    <li style="margin-bottom: var(--space-2); display: flex; gap: var(--space-2);"><span>•</span><span>Money sitting on the table</span></li>
+                    <li style="display: flex; gap: var(--space-2);"><span>•</span><span>Opportunities already sitting in inboxes</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="button button-primary button-sm" onclick="goToPage('composer')">Compose for Today</button>
+              </div>
+            </div>
+
+            <!-- Content Status Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Content Status</div>
+              </div>
+              <div class="card-content" style="gap: var(--space-4);">
+                <div>
+                  <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-1); font-weight: var(--font-weight-medium);">LinkedIn</div>
+                  <span class="card-status draft">✎ Draft</span>
+                </div>
+                <div>
+                  <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-1); font-weight: var(--font-weight-medium);">Instagram</div>
+                  <span class="card-status draft">✎ Draft</span>
+                </div>
+                <div style="padding-top: var(--space-3); border-top: 1px solid var(--border-color-light);">
+                  <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-bottom: var(--space-2);">Next: Compose for today</div>
+                  <button class="button button-secondary button-sm" style="width: 100%;" onclick="goToPage('composer')">Compose</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Outreach Pulse Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Outreach Pulse</div>
+              </div>
+              <div class="card-content" style="gap: var(--space-4);">
+                <div>
+                  <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-2);">Recent Activity</div>
+                  <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); text-align: center; padding: var(--space-4) 0;">
+                    No recent messages yet
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Cards -->
+          <div style="margin-top: var(--space-12);">
+            <h2 style="font-size: var(--font-size-md); margin-bottom: var(--space-6);">Week Summary</h2>
+            <div class="grid-2-col">
+              <div class="card">
+                <div class="card-content">
+                  <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); font-weight: var(--font-weight-semibold);">Posts This Week</div>
+                  <div style="font-size: 2rem; font-weight: var(--font-weight-bold); color: var(--color-text-primary); margin: var(--space-2) 0;">0/7</div>
+                  <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">0% of weekly cadence</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-content">
+                  <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); font-weight: var(--font-weight-semibold);">Conversations Started</div>
+                  <div style="font-size: 2rem; font-weight: var(--font-weight-bold); color: var(--color-text-primary); margin: var(--space-2) 0;">0</div>
+                  <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">From content + outreach</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other pages will load here -->
+        <div id="calendar" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Content Calendar view is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="assets" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Visual Asset Manager is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="composer" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Post Composer is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="outreach" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Outreach Hub is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="analytics" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Analytics Dashboard is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="settings" class="page" style="display: none;">
+          <div class="alert alert-primary" style="margin-bottom: var(--space-6);">
+            <span class="alert-icon">ℹ️</span>
+            <div class="alert-content">
+              <div class="alert-title">Coming Soon</div>
+              <div class="alert-message">Settings page is being built. Check back soon!</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
