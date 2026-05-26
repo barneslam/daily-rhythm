@@ -93,3 +93,9 @@ status = 200
 from = "/*"
 to = "/dashboard.html"
 status = 200
+
+[[redirects]]
+from = "/approval"
+to = "/approval-dashboard.html"
+status = 200
+force = true
