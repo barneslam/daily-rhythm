@@ -1,20 +1,152 @@
-<!DOCTYPE html> <html> <head>
-  <title>Opportunity Recovery Approval Dashboard</title> <style>
-    body{font-family:Arial,sans-serif;background:#f7f4ec;color:#222;margin:0;padding:40px} h1{color:#9a6a12} .card{background:white;border:1px solid 
-    #ddd;border-radius:10px;padding:24px;margin:20px 0} .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .pill{background:#9a6a12;color:white;padding:8px 
-    12px;border-radius:20px;display:inline-block} textarea{width:100%;min-height:140px;margin-top:10px} button{background:#9a6a12;color:white;border:0;padding:12px 
-    18px;border-radius:6px}
-  </style> </head> <body> <h1>48-Hour Opportunity Recovery Sprint Approval Dashboard</h1> <p>Daily Rhythm is now the outreach engine, not the product.</p> <div class="card">
-    <span class="pill">Todays Revenue Theme</span> <h2>Stalled proposals, cold leads, and missed revenue already in the inbox.</h2> <p>Use this dashboard to approve LinkedIn, 
-    Instagram, outreach, re-engagement, and DM response assets.</p>
-  </div> <div class="grid">
-    <div class="card"><h3>LinkedIn Post</h3><textarea>Draft LinkedIn recovery post here...</textarea><button>Approve</button></div> <div class="card"><h3>Instagram 
-    Post</h3><textarea>Draft Instagram version here...</textarea><button>Approve</button></div> <div class="card"><h3>Direct Outreach</h3><textarea>Draft direct message 
-    here...</textarea><button>Approve</button></div>
-  </div> <div class="grid">
-    <div class="card"><h3>Re-engagement DM</h3><textarea>Draft follow-up message here...</textarea><button>Approve</button></div> <div class="card"><h3>Inbound DM 
-    Response</h3><textarea>Draft reply here...</textarea><button>Approve</button></div>
-    <div class="card"><h3>Visual Direction</h3><textarea>Real founder/operator image, inbox, CRM, proposal, laptop, or meeting context. No AI 
-avatars.</textarea><button>Approve</button></div>
-  </div> </body>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Opportunity Recovery Approval Dashboard</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f7f4ec;color:#222;margin:0;padding:40px}
+h1{color:#9a6a12;font-size:42px}
+.card{background:white;border:1px solid #ddd;border-radius:20px;padding:24px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pill{background:#9a6a12;color:white;padding:10px 18px;border-radius:20px;display:inline-block;margin-bottom:15px}
+textarea{width:100%;min-height:170px;margin-top:10px;padding:12px;border-radius:12px;border:1px solid #ccc;font-size:15px}
+button{background:#9a6a12;color:white;border:0;padding:12px 18px;border-radius:10px;margin-top:10px;cursor:pointer}
+.secondary{background:#444}
+.status-badge{display:inline-block;margin-top:10px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:bold;background:#fff4d6;color:#8a6100}
+.status-approved{background:#e7f4ea;color:#216e39}
+.status-failed{background:#fde8e8;color:#9b1c1c}
+.status-published{background:#e8f0ff;color:#1f4f99}
+.status-text{font-size:13px;color:#216e39;margin-top:8px}
+.metric{font-size:28px;font-weight:bold;color:#9a6a12}
+</style>
+</head>
+<body>
+
+<h1>48-Hour Opportunity Recovery Sprint Approval Dashboard</h1>
+<p>Daily Rhythm is now the outreach engine, not the product.</p>
+
+<div class="card">
+<span class="pill">Revenue Theme</span>
+<h2>Stalled proposals, cold leads, and missed revenue already in the inbox.</h2>
+<p>Approve assets for LinkedIn, Instagram, outreach, re-engagement, inbound response, and visual direction.</p>
+<button onclick="publishAllApproved()">Publish All Approved</button>
+<button class="secondary" onclick="resetLocal()">Reset Local Drafts</button>
+</div>
+
+<div class="grid" id="cards"></div>
+
+<div class="card">
+<h2>Intelligence Layer</h2>
+<div class="grid">
+<div><div class="metric" id="oppScore">0</div><p>Opportunity Score</p></div>
+<div><div class="metric" id="urgencyScore">0</div><p>Revenue Urgency</p></div>
+<div><div class="metric" id="approvedCount">0</div><p>Approved Assets</p></div>
+</div>
+<p id="recommendation">Recommendation will appear after approvals.</p>
+</div>
+
+<script>
+const items = [
+  ["linkedin","LinkedIn Post","Lead with a painful commercial problem. Mention stalled proposals, cold leads, or missed revenue. CTA: Message RECOVER."],
+  ["instagram","Instagram Post","Shorter version for Instagram. Commercial pain first. CTA: Your next customer may already know your name."],
+  ["outreach","Direct Outreach","Direct message to founder/operator about missed opportunities already sitting in their inbox."],
+  ["reengage","Re-engagement DM","Follow-up message for a warm lead, referral, or old proposal that went quiet."],
+  ["inbound","Inbound DM Response","Reply to someone asking about the 48-Hour Opportunity Recovery Sprint."],
+  ["visual","Visual Direction","Real founder/operator image. Inbox, CRM, proposal, laptop, or meeting context. No AI avatars."]
+];
+
+function loadCards(){
+  const wrap = document.getElementById("cards");
+  wrap.innerHTML = items.map(([id,title,placeholder]) => {
+    const status = localStorage.getItem(id+"Status") || "PENDING";
+    const css = status === "APPROVED" ? "status-approved" : status === "PUBLISHED" ? "status-published" : "";
+    return `
+      <div class="card">
+        <h3>${title}</h3>
+        <div class="status-badge ${css}" id="${id}Badge">${status}</div>
+        <textarea id="${id}Draft">${localStorage.getItem(id+"Draft") || placeholder}</textarea>
+        <button onclick="approveDraft('${id}')">Approve</button>
+        <div class="status-text" id="${id}StatusText">${localStorage.getItem(id+"Time") || ""}</div>
+      </div>`;
+  }).join("");
+  updateScores();
+}
+
+async function approveDraft(type){
+  const content = document.getElementById(type+"Draft").value;
+  localStorage.setItem(type+"Draft", content);
+  localStorage.setItem(type+"Status", "APPROVED");
+  localStorage.setItem(type+"Time", "Approved at " + new Date().toLocaleString());
+
+  const badge = document.getElementById(type+"Badge");
+  badge.innerHTML = "APPROVED";
+  badge.className = "status-badge status-approved";
+  document.getElementById(type+"StatusText").innerHTML = localStorage.getItem(type+"Time");
+
+  updateScores();
+}
+
+async function publishAllApproved(){
+  const posts = items
+    .filter(([id]) => localStorage.getItem(id+"Status") === "APPROVED")
+    .map(([id,title]) => ({
+      channel:id,
+      title:title,
+      content:localStorage.getItem(id+"Draft"),
+      linkedin:id === "linkedin" ? localStorage.getItem(id+"Draft") : "",
+      instagram:id === "instagram" ? localStorage.getItem(id+"Draft") : "",
+      scheduled_for:new Date().toISOString(),
+      status:"approved"
+    }));
+
+  if(posts.length === 0){
+    alert("No approved assets to publish.");
+    return;
+  }
+
+  try{
+    const response = await fetch('/api/publish-posts-to-blotato',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({posts})
+    });
+
+    await response.json();
+
+    posts.forEach(post=>{
+      localStorage.setItem(post.channel+"Status","PUBLISHED");
+      localStorage.setItem(post.channel+"Time","Published/queued at " + new Date().toLocaleString());
+    });
+
+    loadCards();
+    alert("Approved assets queued successfully.");
+  }catch(e){
+    alert("Publish failed. Check server logs.");
+    console.error(e);
+  }
+}
+
+function updateScores(){
+  const approved = items.filter(([id]) => ["APPROVED","PUBLISHED"].includes(localStorage.getItem(id+"Status"))).length;
+  document.getElementById("approvedCount").innerHTML = approved;
+  document.getElementById("oppScore").innerHTML = Math.min(100, approved * 15);
+  document.getElementById("urgencyScore").innerHTML = approved >= 3 ? 85 : approved * 20;
+  document.getElementById("recommendation").innerHTML =
+    approved >= 4
+      ? "Ready to move from approval into publishing and re-engagement execution."
+      : "Approve at least 4 assets before publishing the recovery sequence.";
+}
+
+function resetLocal(){
+  items.forEach(([id])=>{
+    localStorage.removeItem(id+"Draft");
+    localStorage.removeItem(id+"Status");
+    localStorage.removeItem(id+"Time");
+  });
+  loadCards();
+}
+
+loadCards();
+</script>
+
+</body>
 </html>
