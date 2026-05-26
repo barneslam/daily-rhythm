@@ -1,0 +1,324 @@
+/* Daily Rhythm Design Tokens - Complete CSS Variable System */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ========== COLORS ========== */
+
+  /* Primary Colors */
+  --color-primary-900: #0F172A;
+  --color-primary-800: #1E293B;
+  --color-primary-700: #334155;
+  --color-primary-600: #475569;
+
+  /* Accent Colors (CTA, Actions) */
+  --color-accent-600: #0369A1;
+  --color-accent-500: #0EA5E9;
+  --color-accent-400: #38BDF8;
+  --color-accent-100: #E0F2FE;
+
+  /* Neutral Colors */
+  --color-neutral-0: #FFFFFF;
+  --color-neutral-50: #F9FAFB;
+  --color-neutral-100: #F3F4F6;
+  --color-neutral-200: #E5E7EB;
+  --color-neutral-300: #D1D5DB;
+
+  /* Status Colors */
+  --color-success-600: #059669;
+  --color-success-100: #D1FAE5;
+  --color-warning-600: #D97706;
+  --color-warning-100: #FEF3C7;
+  --color-danger-600: #DC2626;
+  --color-danger-100: #FEE2E2;
+  --color-info-600: #2563EB;
+  --color-info-100: #DBEAFE;
+
+  /* Text Colors */
+  --color-text-primary: #020617;
+  --color-text-secondary: #475569;
+  --color-text-muted: #9CA3AF;
+  --color-text-light: #FFFFFF;
+
+  /* Semantic Colors */
+  --bg-primary: var(--color-neutral-0);
+  --bg-page: var(--color-neutral-50);
+  --bg-hover: var(--color-neutral-100);
+
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+
+  --btn-primary-bg: var(--color-accent-600);
+  --btn-primary-hover: var(--color-accent-500);
+  --btn-secondary-border: var(--color-primary-900);
+
+  --status-posted: var(--color-success-600);
+  --status-draft: var(--color-warning-600);
+  --status-error: var(--color-danger-600);
+
+  /* ========== TYPOGRAPHY ========== */
+
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --font-size-hero: 2.5rem;    /* 40px */
+  --font-size-xl: 2rem;        /* 32px */
+  --font-size-lg: 1.875rem;    /* 30px */
+  --font-size-md-lg: 1.5rem;   /* 24px */
+  --font-size-md: 1.25rem;     /* 20px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-xs: 0.75rem;     /* 12px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+
+  /* ========== SPACING (8px base unit) ========== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* ========== BORDERS ========== */
+
+  --border-width: 1px;
+  --border-color-light: var(--color-neutral-200);
+  --border-color-medium: var(--color-neutral-300);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;    /* 6px */
+  --radius-md: 0.5rem;      /* 8px */
+  --radius-lg: 0.75rem;     /* 12px */
+  --radius-xl: 1rem;        /* 16px */
+  --radius-full: 9999px;
+
+  /* ========== SHADOWS ========== */
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 20px 48px rgba(0, 0, 0, 0.2);
+
+  /* ========== MOTION ========== */
+
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-linear: linear;
+
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  /* ========== Z-INDEX SCALE ========== */
+
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+  --z-tooltip: 60;
+
+  /* ========== COMPONENT SIZING ========== */
+
+  /* Buttons */
+  --button-height-sm: 2rem;      /* 32px */
+  --button-height-md: 2.5rem;    /* 40px */
+  --button-height-lg: 3rem;      /* 48px */
+
+  --button-padding-x-sm: 0.75rem;  /* 12px */
+  --button-padding-x-md: 1rem;     /* 16px */
+  --button-padding-x-lg: 1.5rem;   /* 24px */
+
+  --touch-target-min: 2.75rem;   /* 44x44px */
+
+  /* Inputs */
+  --input-height: 2.75rem;       /* 44px */
+  --input-padding: var(--space-3);
+
+  /* ========== FOCUS STATES ========== */
+
+  --focus-outline-width: 2px;
+  --focus-outline-style: solid;
+  --focus-outline-color: var(--color-accent-600);
+  --focus-outline-offset: 2px;
+
+  /* ========== RESPONSIVE BREAKPOINTS ========== */
+
+  --breakpoint-mobile: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* ========== GLOBAL STYLES ========== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+}
+
+/* ========== TYPOGRAPHY DEFAULTS ========== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+}
+
+h2 {
+  font-size: var(--font-size-md-lg);
+}
+
+h3 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  line-height: var(--line-height-normal);
+}
+
+/* ========== FOCUS STATES (CRITICAL) ========== */
+
+:focus-visible {
+  outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Reduce focus visibility for mouse users (optional) */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: var(--focus-outline-width) var(--focus-outline-style) var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* ========== ACCESSIBILITY: REDUCED MOTION ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  max-width: 100%;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* ========== SCROLLBAR STYLING ========== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color-light);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color-medium);
+}
+
+/* ========== SELECTION ========== */
+
+::selection {
+  background-color: var(--color-accent-100);
+  color: var(--color-primary-900);
+}
