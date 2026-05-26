@@ -2,21 +2,25 @@
 
 /* ========== BASE LAYOUT ========== */
 
-html, body {
+html {
   height: 100%;
   width: 100%;
 }
 
 body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  flex-direction: row;
   height: 100vh;
   width: 100%;
+  position: relative;
 }
 
 /* ========== SIDEBAR NAVIGATION ========== */
@@ -30,7 +34,9 @@ body {
   padding: var(--space-6) 0;
   display: flex;
   flex-direction: column;
-}
+  width: 300px;
+  flex-shrink: 0;
+  height: 100%;
 
 .sidebar-logo {
   padding: 0 var(--space-6);
@@ -186,9 +192,11 @@ body {
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex: 1;
+  height: 100%;
   overflow: hidden;
   background-color: var(--bg-page);
+  width: 100%;
 }
 
 .main-header {
@@ -200,6 +208,8 @@ body {
   align-items: center;
   z-index: var(--z-sticky);
   flex-shrink: 0;
+  width: 100%;
+  position: relative;
 }
 
 .main-header-title {
@@ -324,22 +334,28 @@ body {
 
 /* ========== GRID LAYOUTS ========== */
 
-/* 3-column dashboard grid */
+/* 3-column dashboard grid - FLEXBOX VERSION */
 .grid-3-col {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-6);
+  width: 100%;
 }
 
-@media (max-width: 1439px) {
-  .grid-3-col {
-    grid-template-columns: repeat(2, 1fr);
+.grid-3-col > .card {
+  flex: 1 1 calc(33.333% - var(--space-6));
+  min-width: 300px;
+}
+
+@media (max-width: 1400px) {
+  .grid-3-col > .card {
+    flex: 1 1 calc(50% - var(--space-6));
   }
 }
 
-@media (max-width: 1023px) {
-  .grid-3-col {
-    grid-template-columns: 1fr;
+@media (max-width: 900px) {
+  .grid-3-col > .card {
+    flex: 1 1 100%;
   }
 }
 

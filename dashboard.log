@@ -10,3 +10,22 @@
 Open in browser: http://localhost:3001
 Press Ctrl+C to stop
 
+Error fetching discovered leads: {
+  code: 'PGRST205',
+  details: null,
+  hint: null,
+  message: "Could not find the table 'public.discovered_leads' in the schema cache"
+}
+Error fetching discovered leads: {
+  code: 'PGRST205',
+  details: null,
+  hint: null,
+  message: "Could not find the table 'public.discovered_leads' in the schema cache"
+}
+🧪 Running full pipeline test...
+Error fetching discovered leads: {
+  code: 'PGRST205',
+  details: null,
+  hint: null,
+  message: "Could not find the table 'public.discovered_leads' in the schema cache"
+}

@@ -1,116 +1,117 @@
 {
   "icp": {
-    "label": "Execution-stalled operator",
-    "description": "Founders, CEOs, or CROs at $2M-$50M revenue companies in Tech, Telecom, IT Services, or B2B SaaS who have a viable offer but are stuck in the gap between knowing what to do and actually doing it.",
+    "label": "Opportunity recovery prospect",
+    "description": "Founders, consultants, agencies, service businesses, and small B2B teams who manage warm leads and sales conversations. These are operators juggling stalled proposals, warm referrals that went cold, inconsistent follow-up, and wasted lead gen spend. They know what should happen but can't execute the daily rhythm.",
     "firmographic_filters": {
-      "revenue": "$2M - $50M",
-      "roles": ["Founder", "CEO", "CRO", "Chief Revenue Officer", "Co-founder", "Managing Director"],
-      "industries": ["Technology", "Telecom", "IT Services", "B2B SaaS", "Software", "Information Technology"],
-      "exclude": ["Enterprise (>$50M)", "Pre-revenue startups", "Solopreneurs under $2M"],
-      "disqualify_immediately": ["Solo consultants", "Pre-revenue startups", "Exploring ideas", "Freelancers", "Students"]
+      "revenue": "Any (focus: $500K - $10M)",
+      "roles": ["Founder", "CEO", "Owner", "Principal", "Managing Partner", "Head of Sales", "Consultant"],
+      "business_types": ["Consulting firms", "Agencies (marketing/digital/creative)", "Service businesses (B2B)", "Fractional CFO/COO services", "B2B SaaS (mid-market)", "Small teams managing own GTM"],
+      "exclude": ["Pure enterprise (no decision authority)", "Personal brands with no revenue"],
+      "disqualify_immediately": ["No warm lead pipeline", "Outsourced sales entirely", "No direct revenue responsibility"]
     },
     "trigger_set": [
-      "Hiring sales team — posting for SDR, AE, VP Sales, CRO roles",
-      "New product launch — expanding beyond core offering",
-      "Growth plateau — revenue flatlined after initial growth",
-      "Entering new market — geographic or vertical expansion",
-      "Funding event — just raised Series A/B/C, under pressure to execute"
+      "Stalled proposals — opportunities stuck in late stage for 30+ days",
+      "Warm leads going cold — referred leads not converting, falling off",
+      "Lost referrals — referral partners frustrated with no follow-through",
+      "Inconsistent follow-up — team dropping the ball on existing inbound",
+      "Wasted lead gen spend — paying for leads but conversion is broken",
+      "Missed opportunities in inbox — warm conversations abandoned in CRM/email"
     ]
   },
   "triggers": {
-    "label": "Moments of visible tension",
+    "label": "Revenue leakage signals",
     "search_queries": {
-      "hiring_sales_team": [
-        "B2B SaaS company hiring 'VP Sales' OR 'Head of Sales' OR 'CRO' 2026",
-        "tech company hiring 'SDR' OR 'Account Executive' OR 'sales team' 2026",
-        "IT services company 'building sales team' OR 'first sales hire' 2026"
+      "stalled_proposals": [
+        "founder OR consultant 'proposal sitting for months' OR 'stuck deal' 2026",
+        "agency OR consulting 'stalled client opportunities' OR 'pipeline stuck' 2026",
+        "small business owner 'lost deal momentum' OR 'proposal not moving' 2026"
       ],
-      "new_product_offer": [
-        "tech company 'launching new product' OR 'new offering' 2026",
-        "B2B SaaS 'new product launch' OR 'product expansion' 2026",
-        "IT services 'new service line' OR 'new vertical' 2026"
+      "referral_breakdown": [
+        "consultant OR founder 'referral partners' frustrated OR 'referrals not closing' 2026",
+        "service business 'referrals going to competitors' OR 'lost referral momentum' 2026",
+        "agency 'referral network' weak OR 'referrals falling through' 2026"
       ],
-      "growth_plateau": [
-        "CEO OR founder 'growth plateau' OR 'stalled revenue' tech 2026",
-        "B2B SaaS 'struggling to grow' OR 'revenue plateau' 2026",
-        "tech company CEO 'execution challenges' OR 'scaling pain' 2026"
+      "lead_gen_waste": [
+        "founder 'paying for leads but not converting' OR 'lead gen not working' 2026",
+        "consultant 'lead quality dropping' OR 'lead gen ROI broken' 2026",
+        "small business 'expensive leads' going nowhere OR 'CAC out of control' 2026"
       ],
-      "entering_new_market": [
-        "tech company 'entering new market' OR 'geographic expansion' 2026",
-        "B2B company 'expanding into' market CEO announcement 2026",
-        "IT services 'international expansion' OR 'new region' 2026"
+      "follow_up_breakdown": [
+        "founder OR sales 'follow-up system broken' OR 'leads falling through cracks' 2026",
+        "agency 'CRM not being used' OR 'team inconsistent with follow-up' 2026",
+        "consultant 'warm lead' cold OR 'forgot to follow up' 2026"
       ],
-      "funding_event": [
-        "series A OR series B tech company raised funding 2026",
-        "site:crunchbase.com funding round SaaS IT services 2026",
-        "B2B startup 'just raised' OR 'Series A' 2026"
+      "inbox_missed_opportunity": [
+        "founder 'found old opportunity' in inbox OR 'missed warm introduction' 2026",
+        "consultant 'warm intro received' but not acted on OR 'lost in email' 2026",
+        "business owner 'good fit client' never heard back OR 'opportunity buried' 2026"
       ]
     },
-    "sales_navigator_filters": {
-      "revenue_range": "$2M - $50M (Annual Revenue)",
-      "title_filters": ["Founder", "CEO", "CRO", "Chief Revenue Officer", "Co-Founder"],
-      "industry_filters": ["Technology", "IT Services", "Telecommunications", "Software", "SaaS"],
-      "company_headcount": "11-200",
-      "geography": "North America (primary), APAC (secondary)"
-    },
-    "triangulation_method": "Cross-reference: person shows tension signal + company $2M-$50M + person holds Founder/CEO/CRO role. All 3 = HIGH (90). Two of 3 = MEDIUM (80). One = LOW (60)."
+    "triangulation_method": "Proximity signal: look for content, posts, or company activity around follow-up, lead quality, closing, proposal management. Any mention of 'losing deals', 'referrals cold', 'follow-up breakdown' = PROSPECT. No qualification by revenue."
   },
   "outreach_angles": [
     {
-      "name": "Pattern recognition",
-      "template": "Saw your post about [signal]. I work with operators who hit exactly this wall — offer is solid but execution stalls. Not pitching, but I've solved this for similar founders. Worth 15 min?"
+      "name": "Revenue leakage observation",
+      "template": "I noticed you're managing [warm leads/proposals/referrals] — exact place most operators leak 20-40% of potential revenue. Not through bad offers, but broken follow-up rhythm. Built a system to fix this. Worth exploring?"
     },
     {
-      "name": "Rhythm angle",
-      "template": "Your [product] clearly has demand — gap is between knowing what to do and having the daily rhythm to execute. I help operators build that system. Quick call useful?"
+      "name": "Warm opportunity recovery",
+      "template": "Your next customer probably already knows your name — sitting in a warm intro, old proposal, or referral you didn't follow up. I help operators recover those conversations in 48 hours. Sound useful?"
     },
     {
-      "name": "Specificity angle",
-      "template": "I noticed [specific signal: hiring post, launch, pivot]. That signals [what it means]. I help operators at this exact moment build the daily system that turns offers into revenue."
+      "name": "Referral preservation",
+      "template": "Referral partners give out your name once. If you don't close, they stop. I help operators build the rhythm that turns referrals into closed deals. Quick conversation?"
     },
     {
-      "name": "Peer angle",
-      "template": "Been where you are — good offer, real skills, but the daily machine wasn't running. Built a system that fixed it. Now I run 90-min breakdowns for operators in your spot. Interested?"
+      "name": "Specific pain point",
+      "template": "I work with [consultants/agency owners/founders] who are leaking revenue through stalled proposals and cold referrals. We run a 48-hour sprint to diagnose the gap and build the system to fix it. Interested in exploring?"
     }
   ],
   "message_rules": [
-    "Personalize to specific person and their visible tension",
-    "Lead with observation, not pitch",
-    "No pitch in first message — start diagnostic conversation",
-    "Keep under 100 words",
-    "Reference something specific they said publicly",
-    "Reframe as 'inflection point' not 'struggling'"
+    "Lead with revenue leakage observation, not pitch",
+    "Focus on missed revenue in warm pipeline (not cold outreach)",
+    "Keep under 80 words",
+    "Reframe as 'opportunity recovery' not 'sales improvement'",
+    "No qualification gate — if they have warm leads, they're a prospect",
+    "Reference something visible (website, LinkedIn activity, or inferred pain point)"
   ],
   "qualification_metrics": {
     "confidence_score_mapping": {
-      "90": "HIGH - All 3: role (CEO/CRO) + company size ($2M-$50M) + public tension signal",
-      "80": "MEDIUM-HIGH - 2 of 3: role + company size, OR role + tension (smaller company)",
-      "70": "MEDIUM - 2 of 3 signals OR 1 strong signal + industry fit",
-      "60": "LOW - 1 signal OR insufficient data (requires research)"
+      "90": "HIGH - Strong revenue leakage signal + warm pipeline visible + decision authority",
+      "80": "MEDIUM-HIGH - Clear warm pipeline + some leakage indicator",
+      "70": "MEDIUM - Founder/consultant role + possible warm lead management",
+      "60": "LOW - Generic fit but no visible signal yet"
     },
     "disqualification_rules": [
-      "Revenue <$2M OR >$50M = DISQUALIFY",
-      "No identifiable CEO/CRO/Founder = DISQUALIFY",
-      "Person is consultant/contractor/advisor only = DISQUALIFY",
-      "No public GTM tension signal = RESEARCH before qualifying",
-      "Recent restructuring/exec change <6 months = FLAG for review"
+      "No visible warm lead pipeline or proposal management = DISQUALIFY",
+      "Person is pure contractor (no revenue responsibility) = DISQUALIFY",
+      "Company has fully outsourced sales = DISQUALIFY (no internal leakage to fix)",
+      "No clear decision authority = RESEARCH",
+      "Enterprise-only (no founder/lead generator role) = DISQUALIFY"
     ],
-    "daily_scan_volume": "5-8 leads/day (target: 3-5 HIGH, 2-3 MEDIUM)"
+    "daily_scan_volume": "3-5 prospects/day (focus quality over volume)"
+  },
+  "offer": {
+    "name": "48-Hour Opportunity Recovery Sprint",
+    "elevator_pitch": "A working session — not a call. We diagnose your revenue leakage, identify one immediate fix, and map the system that prevents it from happening again.",
+    "target_outcome": "Walk out with diagnosis, recommendation, and clear decision point on next steps.",
+    "booking_link": "https://calendly.com/barnes-lam/48-hour-revenue-recovery-sprint"
   },
   "workflow": {
-    "daily_rhythm": [
-      "6:57 AM - Trigger Scan: Find 5-8 qualified targets with execution tension signals",
-      "8:03 AM - Outreach: Draft personalized messages using angles + observed signals",
-      "Manual Send: Review and send on LinkedIn/email (user handles)",
-      "12:03 PM - Follow-up: Auto-draft for non-responders (3+ days)",
-      "1:03 PM - Content: Auto-generate day-appropriate content",
-      "3:03 PM - Daily Log: Compile scorecard"
+    "discovery_rhythm": [
+      "Identify warm opportunity leakage signals in prospect activity",
+      "Draft personalized outreach connecting their visible pain to recovery sprint",
+      "Send via LinkedIn (primary) or email if available",
+      "Track responses and book calls"
     ],
-    "response_tracking": [
-      "When person responds: Update target-list.json status → 'responded' OR 'booked'",
-      "Rejected: Mark as 'rejected' with reason, do NOT re-prospect",
-      "No response after 5 days: Auto-draft follow-up",
-      "Bounced: Mark as 'invalid_contact', move to next lead"
+    "content_rhythm": [
+      "Monday: Opportunity leakage pain + recovery solution",
+      "Tuesday: Wasted lead gen spend / missed opportunities",
+      "Wednesday: Stalled proposal recovery",
+      "Thursday: Warm referrals that went quiet",
+      "Friday: Follow-up breakdown + recovery rhythm",
+      "Saturday: Short case-style lesson",
+      "Sunday: Founder reality / personal reflection"
     ]
   }
 }
