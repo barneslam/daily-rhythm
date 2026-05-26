@@ -8,10 +8,10 @@ functions = "functions"
 function = "schedule-discovery"
 cron = "0 15 * * *"
 
-# Monday 8 AM EST = 13 UTC (Wednesdays for now, adjust as needed)
+# Sunday 8 AM EST = 13 UTC - Generate next week's 7-day Recovery Sprint batch
 [[scheduled_functions]]
 function = "content-generator"
-cron = "0 13 * * 1"
+cron = "0 13 * * 0"
 
 # Sync carousel drafts to Supabase (Monday 8:01 AM EST = 13:01 UTC)
 [[scheduled_functions]]
@@ -22,6 +22,11 @@ cron = "1 13 * * 1"
 [[scheduled_functions]]
 function = "publish-scheduler"
 cron = "0 14 * * 1-5"
+
+# Publish Instagram case lesson on Saturday 9 AM EST = 14 UTC
+[[scheduled_functions]]
+function = "publish-scheduler"
+cron = "0 14 * * 6"
 
 # Sync RIN carousel drafts to RIN Supabase (Monday 8:00 AM EST = 13:00 UTC)
 [[scheduled_functions]]
