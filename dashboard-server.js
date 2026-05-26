@@ -1210,7 +1210,7 @@ const discoverySchedule = cron.schedule('0 7 * * *', async () => {
   }
 })();
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`\n✓ GTM Engine Dashboard running on http://localhost:${PORT}\n`);
   console.log('📊 Lead Discovery: Scheduled daily at 7:00 AM');
   console.log('Open in browser: http://localhost:3001');
